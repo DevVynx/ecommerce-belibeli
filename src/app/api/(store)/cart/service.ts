@@ -6,7 +6,9 @@ export async function get(userId: number) {
     include: { items: { include: { product: true, productOptions: true } } },
   });
 
-  return cart;
+  const count = cart?.items.reduce((total, item) => total + item.quantity, 0) ?? 0;
+
+  return { cart, count };
 }
 
 export const cartService = { get };

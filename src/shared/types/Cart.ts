@@ -1,0 +1,10 @@
+import type { Prisma } from "@prisma/client";
+
+export type CartInclude = Prisma.CartGetPayload<{
+  include: { items: { include: { product: true } } };
+}>;
+
+export type CartWithCount = {
+  cart: CartInclude | null;
+  count: number;
+};

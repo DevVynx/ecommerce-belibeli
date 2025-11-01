@@ -1,5 +1,5 @@
 "use client";
-import type { ProductOptionWithValues, ProductOptionsArray } from "@/shared/types/product";
+import type { ProductOptionWithValues, ProductOptionsArray } from "@/shared/types/Product";
 import type { SelectedOptionsState } from "./ProductDetails";
 import { ProductOptionSelect } from "./ProductOptionSelect";
 

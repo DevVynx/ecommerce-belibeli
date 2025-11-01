@@ -7,8 +7,7 @@ import { QuantitySelector } from "./QuantitySelector";
 import { useState } from "react";
 import { HeartIcon } from "@/assets/Icons";
 import { useCreateCart } from "@/shared/hooks/data/useCartMutations";
-import type { BackendOption } from "@/shared/types/Params";
-import type { ProductOptionsArray } from "@/shared/types/product";
+import type { BackendOption, ProductOptionsArray } from "@/shared/types/product";
 
 export type SelectedOptionsState = Record<string, number>;
 
@@ -68,7 +67,6 @@ export const ProductDetails = () => {
 
   return (
     <div className="flex h-[500px] gap-10">
-
       {/* Imagem - lado esquerdo */}
       <div className="flex-1 overflow-hidden">
         <div className="flex h-full items-center justify-center bg-black/10 p-4">
@@ -78,7 +76,6 @@ export const ProductDetails = () => {
 
       {/* Detalhes - lado direito */}
       <div className="flex h-full flex-1 flex-col">
-
         {/* ========== SEÇÃO SUPERIOR (altura automática) ========== */}
         <div className="flex-shrink-0">
           <h1 className="text-2xl font-bold">{title}</h1>
@@ -109,7 +106,6 @@ export const ProductDetails = () => {
 
         {/* ========== SEÇÃO DO MEIO (scroll) ========== */}
         <div className="min-h-0 flex-1 overflow-y-auto py-2 pr-2">
-
           {/* Product Options */}
           {productOption.length > 0 && (
             <div className="mb-6">

@@ -5,9 +5,13 @@ import { IconMobileButton } from "@/shared/components/IconMobileButton";
 import { HeaderLogo } from "./Logo";
 import { SideMenu } from "./SideMenu/SideMenu";
 import { useSideMenu } from "@/app/(view)/(store)/contexts/SideMenuMobileContext";
+import { useFindCart } from "@/shared/hooks/data/useCartQueries";
 
 export const NavBar = () => {
   const { isSideMenuMobOpen, setIsSideMenuMobOpen } = useSideMenu();
+  const { data } = useFindCart();
+
+  const cartItemsCount = data ? data.count : 0;
 
   const handleActionClick = (key: string) => {
     key === "Menu" ? setIsSideMenuMobOpen(true) : undefined;
@@ -26,7 +30,9 @@ export const NavBar = () => {
                   {action.icon}
                 </IconMobileButton>
                 {action.key === "Heart" && <span className="mb-2 text-sm font-bold">{0}</span>}
-                {action.key === "Cart" && <span className="mb-2 text-sm font-bold">{0}</span>}
+                {action.key === "Cart" && (
+                  <span className="mb-2 text-sm font-bold">{cartItemsCount}</span>
+                )}
               </div>
             );
           })}

@@ -1,10 +1,10 @@
 import { API } from "@/shared/services/API/API";
-import type { CartInclude } from "@/shared/types/Includes";
+import type { CartWithCount } from "@/shared/types/Cart";
 import type { CreateCartParams } from "@/shared/types/Params";
 import type { CartItem } from "@prisma/client";
 
 async function findCart() {
-  const response = await API.get<CartInclude>("/cart");
+  const response = await API.get<CartWithCount>("/cart");
   return response.data;
 }
 
