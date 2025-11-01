@@ -5,6 +5,6 @@ export type ProductOptionsArray = ProductInclude["productOption"];
 
 export type OptionValue = ProductOptionValue;
 
-export type ProductOption1 = ProductOption & {
+export type ProductOptionWithValues = ProductOption & {
   values: OptionValue[];
 };

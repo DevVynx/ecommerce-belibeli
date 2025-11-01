@@ -31,8 +31,8 @@ export function ProductsCarousel({ isLoading, productsOnSale }: Props) {
       <div className="flex justify-between">
         <SectionHeader />
         <div className="mr-4 hidden gap-3 lg:flex">
-          <CarouselPrevious className="cursor-pointer rounded-md border-1 px-10 transition-colors active:bg-black active:text-white disabled:opacity-50" />
-          <CarouselNext className="cursor-pointer rounded-md border-1 px-10 transition-colors active:bg-black active:text-white disabled:opacity-50" />
+          <CarouselPrevious className="cursor-pointer rounded-md border-1 border-black px-10 transition-colors active:bg-black active:text-white disabled:opacity-50" />
+          <CarouselNext className="cursor-pointer rounded-md border-1 border-black px-10 transition-colors active:bg-black active:text-white disabled:opacity-50" />
         </div>
       </div>
       <CarouselContent className="flex gap-4 py-10">
