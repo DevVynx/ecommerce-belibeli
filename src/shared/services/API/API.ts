@@ -15,16 +15,14 @@ API.interceptors.response.use(
 
     if (!config?.url) return Promise.reject(error);
 
-    const protectedEndpoints = ["/cart", "/wishlist"];
-
-    const isProtectedEndpoint = protectedEndpoints.some((endpoint) =>
+    const criticalProtectedEndpoints = ["/profile"];
+    const isCriticalEndpoint = criticalProtectedEndpoints.some((endpoint) =>
       config.url?.startsWith(endpoint),
     );
 
-    if (status === 401 && isProtectedEndpoint) {
+    if (status === 401 && isCriticalEndpoint) {
       const currentPath = window.location.pathname;
       const isLoginPage = currentPath.startsWith("/login");
-
       if (!isLoginPage) {
         const redirect = encodeURIComponent(currentPath + window.location.search);
         window.location.href = `/login?redirect=${redirect}`;

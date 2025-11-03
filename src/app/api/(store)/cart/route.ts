@@ -1,9 +1,12 @@
+import { NextResponse, type NextRequest } from "next/server";
 import { cartService } from "./service";
 
-export async function GET(req: Request) {
-  const userId = Number(req.headers.get("x-userID"));
+export async function GET(req: NextRequest) {
+  try {
+    const { cart, count, items } = await cartService.get(req);
 
-  const { cart, count } = await cartService.get(userId);
-
-  return Response.json({ cart, count });
+    return NextResponse.json({ cart, items, count });
+  } catch (error) {
+    return NextResponse.json({ count: 0, items: [] });
+  }
 }

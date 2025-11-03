@@ -3,7 +3,7 @@ import { verifyToken } from "./verifyToken";
 
 export async function guardApi(req: NextRequest) {
   const { pathname } = req.nextUrl;
-  const protectedPaths = ["/api/cart"];
+  const protectedPaths = ["/api/cartItem"];
   const isProtectedPath = protectedPaths.some((path) => pathname.startsWith(path));
 
   try {
@@ -11,7 +11,6 @@ export async function guardApi(req: NextRequest) {
 
     const token = req.cookies.get("accessToken");
     const { userId } = await verifyToken(token?.value);
-
     const response = NextResponse.next();
     response.headers.set("x-userID", JSON.stringify(userId));
     return response;

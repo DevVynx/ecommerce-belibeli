@@ -67,15 +67,13 @@ type UpdateParams = {
   quantity: number;
 };
 
-export async function update(props: UpdateParams) {
-  const { cartItemId, quantity } = props;
-
+export async function update({ cartItemId, quantity }: UpdateParams) {
   const cartItem = await db.cartItem.update({
     where: { id: cartItemId },
     data: { quantity: { increment: quantity } },
   });
 
-  return cartItem;
+  return { cartItem };
 }
 
 export const cartItemService = { create, update };

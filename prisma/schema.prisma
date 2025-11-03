@@ -52,20 +52,22 @@ model Product {
 }
 
 model ProductOption {
-  id        Int                  @id @default(autoincrement())
-  product   Product              @relation(fields: [productId], references: [id], onDelete: Cascade)
-  productId Int                  @map("product_id")
-  type      String
-  values    ProductOptionValue[]
+  id             Int                  @id @default(autoincrement())
+  type           String
+  product        Product              @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId      Int                  @map("product_id")
+  values         ProductOptionValue[]
+  CartItemOption CartItemOption[]
 
   @@map("product_options")
 }
 
 model ProductOptionValue {
-  id              Int           @id @default(autoincrement())
+  id              Int              @id @default(autoincrement())
   value           String
-  productOption   ProductOption @relation(fields: [productOptionId], references: [id], onDelete: Cascade)
-  productOptionId Int           @map("product_option_id")
+  productOption   ProductOption    @relation(fields: [productOptionId], references: [id], onDelete: Cascade)
+  productOptionId Int              @map("product_option_id")
+  CartItemOption  CartItemOption[]
 
   @@map("product_option_values")
 }
@@ -103,9 +105,11 @@ model CartItemOption {
   id            Int @id @default(autoincrement())
   optionId      Int @map("option_id")
   optionValueId Int @map("option_value_id")
+  cartItemId    Int @map("cart_item_id")
 
-  cartItemId Int      @map("cart_item_id")
-  CartItem   CartItem @relation(fields: [cartItemId], references: [id], onDelete: Cascade)
+  option      ProductOption      @relation(fields: [optionId], references: [id], onDelete: Cascade)
+  optionValue ProductOptionValue @relation(fields: [optionValueId], references: [id], onDelete: Cascade)
+  CartItem    CartItem           @relation(fields: [cartItemId], references: [id], onDelete: Cascade)
 
   @@unique([cartItemId, optionId])
   @@map("cart_items_options")

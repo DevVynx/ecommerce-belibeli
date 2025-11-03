@@ -10,13 +10,24 @@ export type ProductInclude = Prisma.ProductGetPayload<{
 
 export type ProductOptionsArray = ProductInclude["productOption"];
 
-export type OptionValue = ProductOptionValue;
-
 export type BackendOption = {
   optionId: number;
   optionValueId: number;
-}
+};
 
 export type ProductOptionWithValues = ProductOption & {
-  values: OptionValue[];
+  values: ProductOptionValue[];
 };
+
+export type ProductOptions = {
+  option: {
+    id: number;
+    type: string;
+    productId: number;
+  };
+  optionValue: {
+    id: number;
+    value: string;
+    productOptionId: number;
+  };
+}[];

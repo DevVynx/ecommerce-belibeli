@@ -7,14 +7,14 @@ export const CartHeader = () => {
   const { back } = useRouter();
 
   return (
-    <div className="flex justify-between">
+    <header className="flex justify-between">
       <IconMobileButton onClick={() => back()}>
-        <ArrowLeftIcon className="size-7" />
+        <ArrowLeftIcon className="size-7 md:size-10" />
       </IconMobileButton>
-      <h1 className="text-lg font-bold">Seu Carrinho</h1>
+      <h1 className="text-lg font-bold md:text-2xl">Seu Carrinho</h1>
       <IconMobileButton>
-        <MenuIcon className="size-7" />
+        <MenuIcon className="size-7 md:size-10" />
       </IconMobileButton>
-    </div>
+    </header>
   );
 };

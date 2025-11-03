@@ -2,8 +2,7 @@ import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import { verifyToken } from "./verifyToken";
 
-const protectedPaths = ["/cart"];
-const authPaths = ["/login", "/register"];
+const protectedPaths = ["/cart", "/profile"];
 
 export async function guardFront(req: NextRequest) {
   const { pathname } = req.nextUrl;
@@ -16,12 +15,14 @@ export async function guardFront(req: NextRequest) {
 
     const response = NextResponse.next();
     response.headers.set("x-user", JSON.stringify({ userId, email }));
+
     return response;
   } catch (error) {
     if (!isProtected) return NextResponse.next();
 
-    const signInUrl = new URL("/login", req.url);
-    signInUrl.searchParams.set("redirect", pathname);
-    return NextResponse.redirect(signInUrl);
+    const loginUrl = new URL("/login", req.url);
+    loginUrl.searchParams.set("redirect", pathname);
+
+    return NextResponse.redirect(loginUrl);
   }
 }

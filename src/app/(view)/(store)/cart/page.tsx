@@ -3,7 +3,7 @@ import { CartHeader } from "./components/Header/CartHeader";
 
 const CartPage = () => {
   return (
-    <div className="p-4">
+    <div className="mx-auto p-3 lg:container">
       <CartHeader />
       <CartList />
     </div>

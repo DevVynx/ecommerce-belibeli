@@ -1,9 +1,9 @@
 "use client";
 import { HeartIcon, ShoppingCartIcon, StarIcon } from "@/assets/Icons";
-import type { ProductInclude } from "@/shared/types/Includes";
 import { useProductDetailsContext } from "../contexts/ProductDetailsContext";
 import { isSaleActive } from "@/shared/utils/product/isSaleActive";
 import { getPercentDiscount } from "@/shared/utils/product/getPercentDiscount";
+import type { ProductInclude } from "@/shared/types/product";
 
 type ProductCardProps = {
   product: ProductInclude;
@@ -14,7 +14,7 @@ export const ProductCard = ({ product, grid }: ProductCardProps) => {
   // const [isWishedState, setIsWishedState] = useState(isWished);
   const { handleOpenProductDetails } = useProductDetailsContext();
 
-  const isProductOnSale = isSaleActive(product);
+  const isProductOnSale = isSaleActive(product.promotionEnd);
   const percentDiscount = getPercentDiscount(product);
 
   const onCartClick = async (product: ProductInclude) => handleOpenProductDetails(product);
@@ -76,7 +76,7 @@ export const ProductCard = ({ product, grid }: ProductCardProps) => {
         {/* Price */}
 
         <div className="flex items-center gap-1">
-          <strong className="font-semibold text-gray-800">
+          <strong className="font-semibold">
             R$
             {isProductOnSale
               ? Number(product.promotionPrice)?.toFixed(2)

@@ -1,10 +1,8 @@
-import type { ProductInclude } from "@/shared/types/Includes";
-
-export function isSaleActive(product: ProductInclude) {
-  if (!product.promotionEnd) return false;
+export function isSaleActive(promotionEnd: Date | null) {
+  if (!promotionEnd) return false;
 
   const now = new Date();
-  const end = new Date(product.promotionEnd);
+  const end = new Date(promotionEnd);
 
   return now < end;
 }
