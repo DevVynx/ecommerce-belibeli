@@ -1,25 +1,14 @@
-"use client";
-import { useFindCart } from "@/shared/hooks/data/useCartQueries";
+import type { CartInclude } from "@/shared/types/Cart";
 import { CartItem } from "./CartItem";
 
-export const CartList = () => {
-  const { data, isLoading, isError } = useFindCart();
+type CartListProps = {
+  cart: CartInclude;
+};
 
-  if (isError) {
-    return <h1 className="text-red-500">Falha ao carregar os produtos</h1>;
-  }
-
-  if (isLoading) {
-    return <h1 className="text-red-500">AAAAAAAAAAAAAAAAAAAAA</h1>;
-  }
-
-  if (!data?.cart) {
-    return <h1 className="text-red-500">Você não tem produtos no carrinho</h1>;
-  }
-
+export const CartList = ({ cart }: CartListProps) => {
   return (
-    <div className="mt-2 flex flex-col items-center gap-3 p-3">
-      {data?.cart.items.map((cartItem) => (
+    <div className="flex flex-col items-center gap-3">
+      {cart.items.map((cartItem) => (
         <CartItem
           key={cartItem.id}
           product={cartItem.product}
