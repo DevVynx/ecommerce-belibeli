@@ -1,22 +1,48 @@
 "use client";
 import { useFindCart } from "@/shared/hooks/data/useCartQueries";
 import { CartList } from "./components/CartList/CartList";
-import { CartSummary } from "./components/CartSummary/CartSummary";
-import { CartHeader } from "./components/Header/CartHeader";
+import { CartSummary } from "./components/CartSummary";
+import { CartHeader } from "./components/CartHeader";
+import { RecommendedProducts } from "./components/RecommendedProducts";
+import { CartPageSkeleton } from "./components/CartPageSkeleton";
+import { EmptyCart } from "./components/EmptyCart";
+import { useProductDetailsContext } from "../contexts/ProductDetailsContext";
+import { ProductDetailsModal } from "../components/ProductDetailsModal/ProductDetailsModal";
 
 const CartPage = () => {
   const { data, isLoading, isError } = useFindCart();
+  const { isProductDetailsModalOpen } = useProductDetailsContext();
 
   if (isError) {
-    return <h1 className="text-red-500">Falha ao carregar os produtos</h1>;
+    return (
+      <section className="min-h-screen bg-neutral-100 pb-40 lg:p-0">
+        <div className="mx-auto">
+          <CartHeader />
+          <div className="flex justify-center p-10">
+            <h1 className="text-xl text-red-500">Falha ao carregar os produtos</h1>
+          </div>
+        </div>
+      </section>
+    );
   }
 
   if (isLoading) {
-    return <h1 className="text-red-500">AAAAAAAAAAAAAAAAAAAAA</h1>;
+    return <CartPageSkeleton />;
   }
 
-  if (!data?.cart) {
-    return <h1 className="text-red-500">Você não tem produtos no carrinho</h1>;
+  if (!data?.cart || data.cart.items.length === 0) {
+    return (
+      <section className="bg-neutral-100 pb-40 lg:p-0">
+        <div className="mx-auto">
+          <CartHeader />
+          <div className="flex justify-center p-10">
+            <EmptyCart />
+          </div>
+          <RecommendedProducts />
+        </div>
+        {isProductDetailsModalOpen && <ProductDetailsModal />}
+      </section>
+    );
   }
 
   return (
@@ -27,7 +53,9 @@ const CartPage = () => {
           <CartList cart={data.cart} />
           <CartSummary cart={data.cart} count={data.count} />
         </div>
+        <RecommendedProducts />
       </div>
+      {isProductDetailsModalOpen && <ProductDetailsModal />}
     </section>
   );
 };
