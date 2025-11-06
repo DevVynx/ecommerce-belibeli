@@ -16,6 +16,7 @@ export const MobileBottomNav = () => {
           label={item.label}
           isActive={active === item.label}
           onClick={() => setActive(item.label)}
+          href={item.href}
         />
       ))}
     </nav>
