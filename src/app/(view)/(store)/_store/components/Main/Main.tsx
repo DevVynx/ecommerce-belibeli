@@ -3,7 +3,7 @@ import { useProductDetailsContext } from "../../../contexts/ProductDetailsContex
 import { CategoriesSection } from "./CategoriesSection/CategoriesSection";
 import { FlashSaleSection } from "./FlashSaleSection/FlashSaleSection";
 import { ForYouSection } from "./ForYouSection/ForYouSection";
-import { ProductDetailsModal } from "./ProductDetailsModal/ProductDetailsModal";
+import { ProductDetailsModal } from "../../../components/ProductDetailsModal/ProductDetailsModal";
 
 export const Main = () => {
   const { isProductDetailsModalOpen } = useProductDetailsContext();
