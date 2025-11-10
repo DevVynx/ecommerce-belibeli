@@ -1,27 +1,16 @@
-"use client";
-import { useFindProducts } from "@/app/shared/hooks/data/useProductsQueries";
 import { ProductsCarousel } from "./ProductsCarousel";
+import type { ProductInclude } from "@/app/shared/types/Product";
 
-export const FlashSaleSection = () => {
-  const { data, isLoading, isError } = useFindProducts();
+type FlashSaleSectionProps = {
+  products: ProductInclude[] | undefined;
+  isLoading: boolean;
+};
 
-  const productsOnSale = data?.products.filter((product) => {
-    if (!product.promotionEnd) return false;
-
-    const now = new Date();
-    const end = new Date(product.promotionEnd);
-
-    return now < end;
-  });
-
-  if (isError) {
-    return <section className="p-12 text-center text-red-600">Erro ao carregar ofertas.</section>;
-  }
-
+export const FlashSaleSection = ({ products, isLoading }: FlashSaleSectionProps) => {
   return (
     <section id="flashSaleSection" className="bg-neutral-100 px-3 py-12">
       <div className="mx-auto lg:container">
-        <ProductsCarousel isLoading={isLoading} productsOnSale={productsOnSale} />
+        <ProductsCarousel isLoading={isLoading} productsOnSale={products} />
       </div>
     </section>
   );

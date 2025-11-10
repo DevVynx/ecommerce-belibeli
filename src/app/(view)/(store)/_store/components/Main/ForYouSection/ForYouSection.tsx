@@ -1,11 +1,13 @@
-"use client";
-import { useFindProducts } from "@/app/shared/hooks/data/useProductsQueries";
 import { ProductCardSkeleton } from "../../../../../../shared/components/domain/store/ProductCardSkeleton";
 import { ProductCard } from "@/app/shared/components/domain/store/ProductCard";
+import type { ProductInclude } from "@/app/shared/types/Product";
 
-export const ForYouSection = () => {
-  const { data, isLoading } = useFindProducts();
+type ForYouSectionProps = {
+  products: ProductInclude[] | undefined;
+  isLoading: boolean;
+};
 
+export const ForYouSection = ({ products, isLoading }: ForYouSectionProps) => {
   return (
     <section id="forYouSection" className="px-3 py-12">
       <div className="mx-auto lg:container">
@@ -13,7 +15,7 @@ export const ForYouSection = () => {
         <section className="grid grid-cols-2 items-center justify-center gap-6 py-10 md:grid-cols-3 lg:grid-cols-4">
           {isLoading
             ? [...Array(12)].map((_, index) => <ProductCardSkeleton key={index} grid={true} />)
-            : data?.products?.map((product) => (
+            : products?.map((product) => (
                 <ProductCard key={product.id} product={product} grid={true} />
               ))}
         </section>
