@@ -1,4 +1,4 @@
-import { cartService } from "@/shared/services/API/cart";
+import { cartService } from "@/app/shared/services/API/cart";
 import { useQuery } from "@tanstack/react-query";
 
 export const useFindCart = () => {

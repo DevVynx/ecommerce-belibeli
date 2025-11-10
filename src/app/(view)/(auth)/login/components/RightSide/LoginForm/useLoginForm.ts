@@ -2,7 +2,7 @@ import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { loginSchema, type LoginFormData } from "../../../schemas/loginSchema";
-import { useLogin } from "@/shared/hooks/data/useAuthMutations";
+import { useLogin } from "@/app/shared/hooks/data/useAuthMutations";
 
 export const useLoginForm = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);

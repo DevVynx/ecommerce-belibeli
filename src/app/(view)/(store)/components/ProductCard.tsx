@@ -1,9 +1,9 @@
 "use client";
 import { HeartIcon, ShoppingCartIcon, StarIcon } from "@/assets/Icons";
 import { useProductDetailsContext } from "../contexts/ProductDetailsContext";
-import { isSaleActive } from "@/shared/utils/product/isSaleActive";
-import { getPercentDiscount } from "@/shared/utils/product/getPercentDiscount";
-import type { ProductInclude } from "@/shared/types/Product";
+import { isSaleActive } from "@/app/shared/utils/product/isSaleActive";
+import { getPercentDiscount } from "@/app/shared/utils/product/getPercentDiscount";
+import type { ProductInclude } from "@/app/shared/types/Product";
 
 type ProductCardProps = {
   product: ProductInclude;

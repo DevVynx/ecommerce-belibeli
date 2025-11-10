@@ -1,5 +1,5 @@
 "use client";
-import type { ProductInclude } from "@/shared/types/Product";
+import type { ProductInclude } from "@/app/shared/types/Product";
 import { createContext, useContext, useEffect, useState } from "react";
 
 type ProductDetailsContextType = {

@@ -5,8 +5,8 @@ import { OrDivider } from "@/app/(view)/(auth)/components/OrDivider";
 import { SocialLoginButton } from "@/app/(view)/(auth)/components/SocialLoginButton";
 import googleGLogo from "@/assets/images/auth-logos/google-G.png";
 import Link from "next/link";
-import { ErrorNotification } from "@/shared/components/ErrorNotification";
 import { useLoginForm } from "./useLoginForm";
+import { ErrorNotification } from "@/app/shared/components/ErrorNotification";
 
 export const LoginForm = () => {
   const {

@@ -1,5 +1,5 @@
 "use client";
-import { useFindProducts } from "@/shared/hooks/data/useProductsQueries";
+import { useFindProducts } from "@/app/shared/hooks/data/useProductsQueries";
 import { ProductsCarousel } from "./ProductsCarousel";
 
 export const FlashSaleSection = () => {

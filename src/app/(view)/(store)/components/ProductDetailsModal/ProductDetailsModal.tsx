@@ -1,5 +1,5 @@
 import { ProductDetails } from "./ProductDetails";
-import { IconMobileButton } from "@/shared/components/IconMobileButton";
+import { IconMobileButton } from "@/app/shared/components/IconMobileButton";
 import { XMarkIcon } from "@/assets/Icons";
 import { useProductDetailsContext } from "@/app/(view)/(store)/contexts/ProductDetailsContext";
 

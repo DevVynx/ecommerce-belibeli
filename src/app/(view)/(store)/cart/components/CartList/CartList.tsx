@@ -1,4 +1,4 @@
-import type { CartInclude } from "@/shared/types/Cart";
+import type { CartInclude } from "@/app/shared/types/Cart";
 import { CartItem } from "./CartItem";
 
 type CartListProps = {

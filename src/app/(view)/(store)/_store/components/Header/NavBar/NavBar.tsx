@@ -1,11 +1,11 @@
 "use client";
 import { SearchInput } from "./SearchInput";
 import { headerActionIcons } from "./MenuItems";
-import { IconMobileButton } from "@/shared/components/IconMobileButton";
 import { HeaderLogo } from "./Logo";
 import { SideMenu } from "./SideMenu/SideMenu";
 import { useSideMenu } from "@/app/(view)/(store)/contexts/SideMenuMobileContext";
-import { useFindCart } from "@/shared/hooks/data/useCartQueries";
+import { useFindCart } from "@/app/shared/hooks/data/useCartQueries";
+import { IconMobileButton } from "@/app/shared/components/IconMobileButton";
 
 export const NavBar = () => {
   const { isSideMenuMobOpen, setIsSideMenuMobOpen } = useSideMenu();

@@ -1,5 +1,5 @@
 import { paymentLogos } from "@/assets/images/payment-logos/paymentLogos";
-import type { CartInclude } from "@/shared/types/Cart";
+import type { CartInclude } from "@/app/shared/types/Cart";
 import Image from "next/image";
 
 type CartSummaryProps = {

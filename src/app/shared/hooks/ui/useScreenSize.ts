@@ -1,5 +1,5 @@
 "use client";
-import { debounce } from "@/shared/utils/timing/debounce";
+import { debounce } from "@/app/shared/utils/timing/debounce";
 import { useState, useEffect } from "react";
 
 /**

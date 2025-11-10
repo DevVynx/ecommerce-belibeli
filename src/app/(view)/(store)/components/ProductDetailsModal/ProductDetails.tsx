@@ -1,13 +1,13 @@
 import { useProductDetailsContext } from "@/app/(view)/(store)/contexts/ProductDetailsContext";
-import { getPercentDiscount } from "@/shared/utils/product/getPercentDiscount";
-import { isSaleActive } from "@/shared/utils/product/isSaleActive";
+import { getPercentDiscount } from "@/app/shared/utils/product/getPercentDiscount";
+import { isSaleActive } from "@/app/shared/utils/product/isSaleActive";
 import { Rating } from "@mui/material";
 import { ProductOptions } from "./ProductOptions";
 import { QuantitySelector } from "./QuantitySelector";
 import { useState } from "react";
 import { HeartIcon } from "@/assets/Icons";
-import { useCreateCart } from "@/shared/hooks/data/useCartMutations";
-import type { BackendOption, ProductOptionsArray } from "@/shared/types/Product";
+import { useCreateCart } from "@/app/shared/hooks/data/useCartMutations";
+import type { BackendOption, ProductOptionsArray } from "@/app/shared/types/Product";
 
 export type SelectedOptionsState = Record<string, number>;
 

@@ -1,6 +1,6 @@
 "use client";
 import { ArrowLeftIcon, MenuIcon } from "@/assets/Icons";
-import { IconMobileButton } from "@/shared/components/IconMobileButton";
+import { IconMobileButton } from "@/app/shared/components/IconMobileButton";
 import { LockKeyhole, Verified } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";

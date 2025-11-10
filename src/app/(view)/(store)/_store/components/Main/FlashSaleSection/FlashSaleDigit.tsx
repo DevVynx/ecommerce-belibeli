@@ -1,4 +1,4 @@
-import { formatTime } from "@/shared/utils/number/format-time";
+import { formatTime } from "@/app/shared/utils/number/format-time";
 type Props = {
   digit: number;
   separator: boolean;

@@ -1,5 +1,5 @@
 "use client";
-import { useFindCart } from "@/shared/hooks/data/useCartQueries";
+import { useFindCart } from "@/app/shared/hooks/data/useCartQueries";
 import { CartList } from "./components/CartList/CartList";
 import { CartSummary } from "./components/CartSummary";
 import { CartHeader } from "./components/CartHeader";

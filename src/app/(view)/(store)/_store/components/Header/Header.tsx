@@ -1,5 +1,5 @@
 "use client";
-import { useScrollDirection } from "@/shared/hooks/ui/useScrollDirection";
+import { useScrollDirection } from "@/app/shared/hooks/ui/useScrollDirection";
 import { CategoryBar } from "./CategoryBar/CategoryBar";
 import { NavBar } from "./NavBar/NavBar";
 

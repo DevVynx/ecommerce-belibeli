@@ -2,7 +2,7 @@ import { useForm, type SubmitHandler } from "react-hook-form";
 import { registerSchema, type RegisterFormData } from "../../schemas/registerSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
-import { useRegister } from "@/shared/hooks/data/useAuthMutations";
+import { useRegister } from "@/app/shared/hooks/data/useAuthMutations";
 
 export const useRegisterForm = () => {
   const [currentStep, setCurrentStep] = useState(0);

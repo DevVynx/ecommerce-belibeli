@@ -1,4 +1,4 @@
-import type { ProductInclude } from "@/shared/types/Product";
+import type { ProductInclude } from "@/app/shared/types/Product";
 
 export function getPercentDiscount(product: ProductInclude) {
   if (!product.promotionPrice) return 0;

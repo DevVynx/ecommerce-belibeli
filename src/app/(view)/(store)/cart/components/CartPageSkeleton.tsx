@@ -1,4 +1,4 @@
-import { Skeleton } from "@/shared/components/ui/skeleton";
+import { Skeleton } from "@/app/shared/components/ui/skeleton";
 
 export const CartPageSkeleton = () => {
   return (

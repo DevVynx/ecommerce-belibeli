@@ -1,4 +1,4 @@
-import { db } from "@/shared/lib/db";
+import { db } from "@/app/shared/lib/db";
 import { BadRequestError, ConflictError } from "../HttpErrors";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";

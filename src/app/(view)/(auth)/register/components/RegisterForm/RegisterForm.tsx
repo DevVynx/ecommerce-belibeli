@@ -5,10 +5,10 @@ import googleGLogo from "@/assets/images/auth-logos/google-G.png";
 import Link from "next/link";
 import { SocialLoginButton } from "@/app/(view)/(auth)/components/SocialLoginButton";
 import { SucessRegisterModal } from "../SucessRegisterModal/SucessRegisterModal";
-import { ErrorNotification } from "@/shared/components/ErrorNotification";
 import { Step1Identification } from "./Step1Identification";
 import { Step2Security } from "./Step2Security";
 import { useRegisterForm } from "./useRegisterForm";
+import { ErrorNotification } from "@/app/shared/components/ErrorNotification";
 
 export const RegisterForm = () => {
   const {

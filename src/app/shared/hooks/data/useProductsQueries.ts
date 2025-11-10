@@ -1,4 +1,4 @@
-import { productService } from "@/shared/services/API/products";
+import { productService } from "@/app/shared/services/API/products";
 import { useQuery } from "@tanstack/react-query";
 
 export const useFindProducts = () => {

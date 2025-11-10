@@ -1,4 +1,5 @@
 import { Prisma, PrismaClient } from "@prisma/client";
+
 const prisma = new PrismaClient();
 
 const categories = ["men's clothing", "jewelery", "electronics", "women's clothing"];

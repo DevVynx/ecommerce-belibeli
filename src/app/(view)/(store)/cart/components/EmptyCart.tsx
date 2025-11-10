@@ -1,6 +1,6 @@
 "use client";
-import { Button } from "@/shared/components/ui/button";
-import { CartIcon } from "@/shared/components/ui/cart";
+import { Button } from "@/app/shared/components/ui/button";
+import { CartIcon } from "@/app/shared/components/ui/cart";
 import {
   Empty,
   EmptyContent,
@@ -8,8 +8,8 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/shared/components/ui/empty";
-import { useAnimatedIcon } from "@/shared/hooks/ui/useAnimatedIcon";
+} from "@/app/shared/components/ui/empty";
+import { useAnimatedIcon } from "@/app/shared/hooks/ui/useAnimatedIcon";
 import Link from "next/link";
 import { useEffect } from "react";
 

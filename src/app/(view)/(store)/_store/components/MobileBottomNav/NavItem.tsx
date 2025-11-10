@@ -1,4 +1,4 @@
-import { IconMobileButton } from "@/shared/components/IconMobileButton";
+import { IconMobileButton } from "@/app/shared/components/IconMobileButton";
 import Link from "next/link";
 import type { JSX } from "react";
 

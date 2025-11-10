@@ -1,4 +1,4 @@
-import type { ProductInclude } from "@/shared/types/Product";
+import type { ProductInclude } from "@/app/shared/types/Product";
 import API from "./API";
 
 type Products = { products: ProductInclude[]; count: number };

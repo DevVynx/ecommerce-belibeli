@@ -1,4 +1,4 @@
-import { db } from "@/shared/lib/db";
+import { db } from "@/app/shared/lib/db";
 import { ConflictError } from "../../HttpErrors";
 
 export type OptionInput = { optionId: number; optionValueId: number };

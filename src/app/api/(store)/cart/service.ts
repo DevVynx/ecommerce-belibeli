@@ -1,5 +1,5 @@
 import { verifyToken } from "@/proxy/verifyToken";
-import { db } from "@/shared/lib/db";
+import { db } from "@/app/shared/lib/db";
 import type { NextRequest } from "next/server";
 
 export async function get(req: NextRequest) {

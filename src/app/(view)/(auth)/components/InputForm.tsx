@@ -1,6 +1,6 @@
 "use client";
-import { extractErrorMessage } from "@/shared/utils/form/extract-error-message";
-import { findFieldError } from "@/shared/utils/form/find-field-error";
+import { extractErrorMessage } from "@/app/shared/utils/form/extract-error-message";
+import { findFieldError } from "@/app/shared/utils/form/find-field-error";
 import type { ComponentProps } from "react";
 import type { FieldErrors, FieldPath, FieldValues, UseFormRegister } from "react-hook-form";
 

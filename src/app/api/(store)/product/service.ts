@@ -1,4 +1,4 @@
-import { db } from "@/shared/lib/db";
+import { db } from "@/app/shared/lib/db";
 import { BadRequestError } from "../../HttpErrors";
 
 export async function get(searchParams: URLSearchParams) {

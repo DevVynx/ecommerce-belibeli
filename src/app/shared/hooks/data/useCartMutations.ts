@@ -1,5 +1,5 @@
-import { cartService } from "@/shared/services/API/cart";
-import type { CreateCartParams } from "@/shared/types/Params";
+import { cartService } from "@/app/shared/services/API/cart";
+import type { CreateCartParams } from "@/app/shared/types/Params";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export const useCreateCart = () => {

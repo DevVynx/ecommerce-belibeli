@@ -5,7 +5,7 @@ import type {
   RegisterRequest,
   RegisterResponse,
 } from "@/app/(view)/(auth)/types/Auth";
-import { authService } from "@/shared/services/API/auth";
+import { authService } from "@/app/shared/services/API/auth";
 import { useMutation } from "@tanstack/react-query";
 import type { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
