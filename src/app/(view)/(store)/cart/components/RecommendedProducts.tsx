@@ -1,7 +1,7 @@
 "use client";
 import { useFindProducts } from "@/app/shared/hooks/data/useProductsQueries";
-import { ProductCard } from "../../components/ProductCard";
-import { ProductCardSkeleton } from "../../components/ProductCardSkeleton";
+import { ProductCardSkeleton } from "../../../../shared/components/domain/store/ProductCardSkeleton";
+import { ProductCard } from "@/app/shared/components/domain/store/ProductCard";
 
 export const RecommendedProducts = () => {
   const { data, isLoading, isError } = useFindProducts();

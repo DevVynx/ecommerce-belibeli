@@ -1,3 +1,4 @@
+import { ProductCard } from "@/app/shared/components/domain/store/ProductCard";
 import {
   Carousel,
   CarouselContent,
@@ -6,8 +7,7 @@ import {
   CarouselPrevious,
 } from "./Carousel";
 import { SectionHeader } from "./SectionHeader";
-import { ProductCardSkeleton } from "@/app/(view)/(store)/components/ProductCardSkeleton";
-import { ProductCard } from "@/app/(view)/(store)/components/ProductCard";
+import { ProductCardSkeleton } from "@/app/shared/components/domain/store/ProductCardSkeleton";
 import { useScreenSize } from "@/app/shared/hooks/ui/useScreenSize";
 import type { ProductInclude } from "@/app/shared/types/Product";
 

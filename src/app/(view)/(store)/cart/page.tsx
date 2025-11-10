@@ -7,7 +7,7 @@ import { RecommendedProducts } from "./components/RecommendedProducts";
 import { CartPageSkeleton } from "./components/CartPageSkeleton";
 import { EmptyCart } from "./components/EmptyCart";
 import { useProductDetailsContext } from "../contexts/ProductDetailsContext";
-import { ProductDetailsModal } from "../components/ProductDetailsModal/ProductDetailsModal";
+import { ProductDetailsModal } from "../../../shared/components/domain/store/ProductDetailsModal/ProductDetailsModal";
 
 const CartPage = () => {
   const { data, isLoading, isError } = useFindCart();

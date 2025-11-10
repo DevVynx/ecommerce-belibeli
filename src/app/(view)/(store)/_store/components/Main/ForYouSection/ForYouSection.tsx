@@ -1,10 +1,10 @@
 "use client";
 import { useFindProducts } from "@/app/shared/hooks/data/useProductsQueries";
-import { ProductCard } from "../../../../components/ProductCard";
-import { ProductCardSkeleton } from "../../../../components/ProductCardSkeleton";
+import { ProductCardSkeleton } from "../../../../../../shared/components/domain/store/ProductCardSkeleton";
+import { ProductCard } from "@/app/shared/components/domain/store/ProductCard";
 
 export const ForYouSection = () => {
-  const { data, isLoading } = useFindProducts()
+  const { data, isLoading } = useFindProducts();
 
   return (
     <section id="forYouSection" className="px-3 py-12">
