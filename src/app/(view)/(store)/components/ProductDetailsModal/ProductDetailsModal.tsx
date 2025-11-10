@@ -1,7 +1,7 @@
 import { ProductDetails } from "./ProductDetails";
 import { IconMobileButton } from "@/app/shared/components/IconMobileButton";
-import { XMarkIcon } from "@/assets/Icons";
 import { useProductDetailsContext } from "@/app/(view)/(store)/contexts/ProductDetailsContext";
+import { XIcon } from "lucide-react";
 
 export const ProductDetailsModal = () => {
   const { setIsProductDetailsModalOpen } = useProductDetailsContext();
@@ -13,7 +13,7 @@ export const ProductDetailsModal = () => {
           onClick={() => setIsProductDetailsModalOpen(false)}
           className="absolute top-2 right-2 text-zinc-500"
         >
-          <XMarkIcon className="size-5" />
+          <XIcon className="size-5" />
         </IconMobileButton>
         <ProductDetails />
       </div>

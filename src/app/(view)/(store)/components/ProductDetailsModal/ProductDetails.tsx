@@ -5,9 +5,9 @@ import { Rating } from "@mui/material";
 import { ProductOptions } from "./ProductOptions";
 import { QuantitySelector } from "./QuantitySelector";
 import { useState } from "react";
-import { HeartIcon } from "@/assets/Icons";
 import { useCreateCart } from "@/app/shared/hooks/data/useCartMutations";
 import type { BackendOption, ProductOptionsArray } from "@/app/shared/types/Product";
+import { HeartIcon } from "lucide-react";
 
 export type SelectedOptionsState = Record<string, number>;
 

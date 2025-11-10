@@ -1,12 +1,12 @@
 "use client";
 import { InputForm } from "@/app/(view)/(auth)/components/InputForm";
-import { EnvelopeIcon, EyeIcon, EyeSlashIcon } from "@/assets/Icons";
 import { OrDivider } from "@/app/(view)/(auth)/components/OrDivider";
 import { SocialLoginButton } from "@/app/(view)/(auth)/components/SocialLoginButton";
 import googleGLogo from "@/assets/images/auth-logos/google-G.png";
 import Link from "next/link";
 import { useLoginForm } from "./useLoginForm";
 import { ErrorNotification } from "@/app/shared/components/ErrorNotification";
+import { EyeIcon, EyeOffIcon, MailIcon } from "lucide-react";
 
 export const LoginForm = () => {
   const {
@@ -33,7 +33,7 @@ export const LoginForm = () => {
           label="Email"
           placeholder="Digite o seu email"
           name="email"
-          icon={<EnvelopeIcon className="size-6" />}
+          icon={<MailIcon className="size-6" />}
           register={register}
           errors={errors}
         />
@@ -42,7 +42,7 @@ export const LoginForm = () => {
           isPassword={true}
           type={isPasswordVisible ? "text" : "password"}
           icon={
-            isPasswordVisible ? <EyeIcon className="size-6" /> : <EyeSlashIcon className="size-6" />
+            isPasswordVisible ? <EyeIcon className="size-6" /> : <EyeOffIcon className="size-6" />
           }
           label="Senha"
           placeholder="Digite a sua senha"

@@ -3,7 +3,7 @@ import { InputForm } from "@/app/(view)/(auth)/components/InputForm";
 import type { FieldErrors, UseFormRegister } from "react-hook-form";
 import type { RegisterFormData } from "../../schemas/registerSchema";
 import { useState } from "react";
-import { EyeIcon, EyeSlashIcon } from "@/assets/Icons";
+import { EyeIcon, EyeOffIcon } from "lucide-react";
 
 type StepProps = {
   register: UseFormRegister<RegisterFormData>;
@@ -27,7 +27,7 @@ export const Step2Security = ({ register, errors }: StepProps) => {
         isPassword={true}
         type={isPasswordVisible ? "text" : "password"}
         icon={
-          isPasswordVisible ? <EyeIcon className="size-6" /> : <EyeSlashIcon className="size-6" />
+          isPasswordVisible ? <EyeIcon className="size-6" /> : <EyeOffIcon className="size-6" />
         }
         label="Senha"
         placeholder="Digite a sua senha"
@@ -43,7 +43,7 @@ export const Step2Security = ({ register, errors }: StepProps) => {
           isConfirmPasswordVisible ? (
             <EyeIcon className="size-6" />
           ) : (
-            <EyeSlashIcon className="size-6" />
+            <EyeOffIcon className="size-6" />
           )
         }
         label="Confirme a senha"

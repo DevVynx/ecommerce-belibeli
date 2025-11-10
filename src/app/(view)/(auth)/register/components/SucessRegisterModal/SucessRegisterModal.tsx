@@ -1,4 +1,4 @@
-import { CheckCircleIcon } from "@/assets/Icons";
+import { CheckCircleIcon } from "lucide-react";
 import Link from "next/link";
 
 export const SucessRegisterModal = () => {

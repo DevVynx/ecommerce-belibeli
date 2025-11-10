@@ -1,4 +1,4 @@
-import { ChevronLeftIcon, ChevronRightIcon } from "@/assets/Icons";
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 
 type Props = {
   direction: string;

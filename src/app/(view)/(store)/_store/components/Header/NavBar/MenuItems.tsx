@@ -1,18 +1,5 @@
-import {
-  BoltIcon,
-  BagIcon,
-  CategoryIcon,
-  HeartIcon,
-  MenuIcon,
-  ProfileIcon,
-  QuestionMarkIcon,
-  SparklesIcon,
-  PhoneIcon,
-  DocumentTextIcon,
-  ArrowUturnLeftIcon,
-  CreditCardIcon,
-  ShoppingCartIcon,
-} from "@/assets/Icons";
+import { CreditCardIcon, File, FileBoxIcon, FileQuestionMarkIcon, HandbagIcon, HeartIcon, MenuIcon, PhoneIcon, ShoppingCartIcon, SparklesIcon, TagIcon, UserIcon, ZapIcon } from "lucide-react";
+
 
 export const headerActionIcons = [
   {
@@ -31,7 +18,7 @@ export const headerActionIcons = [
     className: "flex lg:hidden",
   },
   {
-    icon: <ProfileIcon className="size-7 cursor-pointer stroke-2" />,
+    icon: <UserIcon className="size-7 cursor-pointer stroke-2" />,
     key: "Profile",
     className: "hidden lg:flex",
     link: "/profile",
@@ -40,11 +27,11 @@ export const headerActionIcons = [
 
 export const sideMenuMainLinks = [
   {
-    icon: <ProfileIcon className="size-7" />,
+    icon: <UserIcon className="size-7" />,
     label: "Meu Perfil",
   },
   {
-    icon: <BagIcon className="size-7 fill-none stroke-black" />,
+    icon: <HandbagIcon className="size-7 fill-none stroke-black" />,
     label: "Seus Pedidos",
   },
   {
@@ -56,7 +43,7 @@ export const sideMenuMainLinks = [
     label: "Seu Carrinho",
   },
   {
-    icon: <CategoryIcon className="size-7 fill-none stroke-black" />,
+    icon: <TagIcon className="size-7 fill-none stroke-black" />,
     label: "Categorias",
     link: "#categoriesSection",
   },
@@ -65,7 +52,7 @@ export const sideMenuMainLinks = [
     label: "Ofertas",
   },
   {
-    icon: <BoltIcon className="size-7 fill-none stroke-red-500" />,
+    icon: <ZapIcon className="size-7 fill-none stroke-red-500" />,
     className: "text-red-500",
     label: "Ofertas Relâmpago",
     link: "#flashSaleSection",
@@ -82,15 +69,15 @@ export const sideMenuSupportLinks = [
     label: "Métodos de Pagamento",
   },
   {
-    icon: <ArrowUturnLeftIcon className="size-7" />,
+    icon: <FileBoxIcon className="size-7" />,
     label: "Política de Troca",
   },
   {
-    icon: <QuestionMarkIcon className="size-7" />,
+    icon: <FileQuestionMarkIcon className="size-7" />,
     label: "Ajuda e FAQ",
   },
   {
-    icon: <DocumentTextIcon className="size-7" />,
+    icon: <File className="size-7" />,
     label: "Termos de Uso",
   },
 ];

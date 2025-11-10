@@ -1,6 +1,6 @@
-import { DownloadIcon, XMarkIcon } from "@/assets/Icons";
 import { SideMenuItem } from "./SideMenuItem";
 import { sideMenuMainLinks, sideMenuSupportLinks } from "../MenuItems";
+import { DownloadIcon, XIcon } from "lucide-react";
 
 type Props = {
   onClose: () => void;
@@ -25,7 +25,7 @@ export const SideMenu = ({ onClose, backgroundClassName, sideMenuClassName }: Pr
         <div className="flex items-center justify-between px-4">
           <h1 className="text-2xl font-bold">Menu</h1>
           <button onClick={onClose}>
-            <XMarkIcon className="size-7" />
+            <XIcon className="size-7" />
           </button>
         </div>
 
@@ -43,7 +43,7 @@ export const SideMenu = ({ onClose, backgroundClassName, sideMenuClassName }: Pr
             ))}
           </div>
 
-          <div className="border-t-1 border-black/30 px-4 pt-3">
+          <div className="border-t border-black/30 px-4 pt-3">
             <h1 className="mb-4 text-2xl font-bold">Suporte</h1>
             {sideMenuSupportLinks.map((item) => (
               <SideMenuItem

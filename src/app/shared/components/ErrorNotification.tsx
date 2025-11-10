@@ -1,7 +1,6 @@
 "use client";
-
-import { ExclamationCircleIcon } from "@/assets/Icons";
 import { motion, AnimatePresence } from "framer-motion";
+import { BadgeAlertIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 
 type NotificationProps = {
@@ -47,7 +46,7 @@ export const ErrorNotification = ({
         className="fixed top-6 right-6 z-50 flex w-80 flex-col rounded-lg border border-red-300 bg-red-100 shadow-lg"
       >
         <div className="flex items-start gap-3 p-3 text-red-800">
-          <ExclamationCircleIcon className="size-9 stroke-red-500" />
+          <BadgeAlertIcon className="size-9 stroke-red-500" />
           <div>
             <h1 className="font-bold">{title}</h1>
             <p className="text-sm">{message}</p>

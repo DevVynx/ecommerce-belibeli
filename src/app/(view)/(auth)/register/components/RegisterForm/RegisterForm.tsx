@@ -1,5 +1,4 @@
 "use client"
-import { ChevronLeftIcon, LockClosedIcon } from "@/assets/Icons";
 import { OrDivider } from "@/app/(view)/(auth)/components/OrDivider";
 import googleGLogo from "@/assets/images/auth-logos/google-G.png";
 import Link from "next/link";
@@ -9,6 +8,7 @@ import { Step1Identification } from "./Step1Identification";
 import { Step2Security } from "./Step2Security";
 import { useRegisterForm } from "./useRegisterForm";
 import { ErrorNotification } from "@/app/shared/components/ErrorNotification";
+import { ChevronLeftIcon, LockIcon } from "lucide-react";
 
 export const RegisterForm = () => {
   const {
@@ -35,7 +35,7 @@ export const RegisterForm = () => {
       <div>
         <h1 className="mt-5 text-center text-2xl font-bold">Crie a sua conta BeliBeli</h1>
         <p className="flex justify-center text-sm text-green-500">
-          <LockClosedIcon className="size-5" />
+          <LockIcon className="size-5" />
           Seus dados estão protegidos.
         </p>
       </div>
