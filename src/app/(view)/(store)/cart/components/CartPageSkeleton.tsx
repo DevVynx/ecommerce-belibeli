@@ -22,7 +22,7 @@ export const CartPageSkeleton = () => {
           <div className="flex w-full flex-col items-center gap-3 lg:flex-1">
             {[1, 2, 3, 4, 5].map((item) => (
               <div key={item} className="flex w-full gap-3 rounded-md bg-white p-3 lg:max-w-4xl">
-                <Skeleton className="h-24 w-24 flex-shrink-0 rounded-md md:h-40 md:w-32" />
+                <Skeleton className="h-24 w-24 shrink-0 rounded-md md:h-40 md:w-32" />
                 <div className="flex flex-1 flex-col justify-between space-y-2">
                   <div className="space-y-2">
                     <Skeleton className="h-5 w-3/4" />

@@ -8,8 +8,8 @@ async function findCart() {
   return response.data;
 }
 
-async function createCart(Params: CreateCartParams) {
-  const { productID, quantity, productOptions } = Params;
+async function createCart(params: CreateCartParams) {
+  const { productID, quantity, productOptions } = params;
   const response = await API.post<CartItem>("/cartItem", { productID, quantity, productOptions });
   return response.data;
 }

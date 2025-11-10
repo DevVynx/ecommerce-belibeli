@@ -4,7 +4,7 @@ import { ProductCard } from "../../../../components/ProductCard";
 import { ProductCardSkeleton } from "../../../../components/ProductCardSkeleton";
 
 export const ForYouSection = () => {
-  const { data, isLoading } = useFindProducts();
+  const { data, isLoading } = useFindProducts()
 
   return (
     <section id="forYouSection" className="px-3 py-12">

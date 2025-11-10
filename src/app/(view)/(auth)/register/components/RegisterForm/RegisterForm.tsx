@@ -1,10 +1,3 @@
-"use client";
-import { useForm, type SubmitHandler } from "react-hook-form";
-import { registerSchema, type RegisterFormData } from "../../schemas/registerSchema";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
-import { Step1Identification } from "./Step1Identification";
-import { Step2Security } from "./Step2Security";
 import { ChevronLeftIcon, LockClosedIcon } from "@/assets/Icons";
 import { OrDivider } from "@/app/(view)/(auth)/components/OrDivider";
 import googleGLogo from "@/assets/images/auth-logos/google-G.png";
@@ -12,65 +5,24 @@ import Link from "next/link";
 import { SocialLoginButton } from "@/app/(view)/(auth)/components/SocialLoginButton";
 import { SucessRegisterModal } from "../SucessRegisterModal/SucessRegisterModal";
 import { ErrorNotification } from "@/shared/components/ErrorNotification";
-import { useRegister } from "@/shared/hooks/data/useAuthMutations";
+import { Step1Identification } from "./Step1Identification";
+import { Step2Security } from "./Step2Security";
+import { useRegisterForm } from "./useRegisterForm";
 
 export const RegisterForm = () => {
-  const [currentStep, setCurrentStep] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [authError, setAuthError] = useState<string>("");
-  const { mutate } = useRegister();
-
   const {
-    register,
+    authError,
+    errors,
+    handleNextStep,
+    handlePreviousStep,
     handleSubmit,
-    trigger,
-    formState: { errors, isSubmitting },
-  } = useForm<RegisterFormData>({
-    resolver: zodResolver(registerSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      password: {
-        password: "",
-        confirmPassword: "",
-      },
-    },
-    mode: "onChange",
-  });
-
-  const handlePreviousStep = () => setCurrentStep(currentStep - 1);
-
-  const handleNextStep = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    let isValid = false;
-
-    if (currentStep === 0) {
-      isValid = await trigger(["name", "email"]);
-    }
-
-    if (isValid) {
-      setCurrentStep(currentStep + 1);
-    }
-  };
-
-  const onSubmit: SubmitHandler<RegisterFormData> = (data) => {
-    mutate(
-      {
-        ...data,
-        password: data.password.password,
-        confirmPassword: data.password.confirmPassword,
-      },
-      {
-        onSuccess: () => {
-          setIsModalOpen(true);
-        },
-        onError: (error) => {
-          const data = error.response?.data as { message: string };
-          setAuthError(data.message);
-        },
-      },
-    );
-  };
+    isModalOpen,
+    isSubmitting,
+    onSubmit,
+    register,
+    currentStep,
+    setAuthError,
+  } = useRegisterForm();
 
   const StepFormContent = [
     <Step1Identification key="step1" register={register} errors={errors} />,
