@@ -1,12 +1,7 @@
 "use client";
-
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import {
-  heroBanners,
-  BannerIndicator,
-  CarouselButton,
-} from "./index";
+import { heroBanners, BannerIndicator, CarouselButton } from "./index";
 
 export const HeroBanner = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -27,7 +22,7 @@ export const HeroBanner = () => {
   }, [currentIndex]);
 
   return (
-    <section className="relative flex w-screen justify-center overflow-hidden pt-23 lg:pt-0">
+    <section className="relative flex w-screen justify-center overflow-hidden pt-14.5 lg:pt-0">
       <div
         className="flex w-full flex-row transition-transform duration-650"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -37,28 +32,20 @@ export const HeroBanner = () => {
           if (!currentX || !startX) return;
           const deltaX = currentX - startX;
           if (deltaX > threshold)
-            setCurrentIndex(
-              currentIndex === 0 ? heroBanners.length - 1 : currentIndex - 1,
-            );
+            setCurrentIndex(currentIndex === 0 ? heroBanners.length - 1 : currentIndex - 1);
           if (deltaX < -threshold)
-            setCurrentIndex(
-              currentIndex === heroBanners.length - 1 ? 0 : currentIndex + 1,
-            );
+            setCurrentIndex(currentIndex === heroBanners.length - 1 ? 0 : currentIndex + 1);
           setStartX(null);
           setCurrentX(null);
         }}
       >
         {heroBanners.map((banner) => (
           <React.Fragment key={banner.alt}>
-            <Image
-              src={banner.mobile}
-              alt="Hero-Banner"
-              className="w-full flex-shrink-0 md:hidden"
-            />
+            <Image src={banner.mobile} alt="Hero-Banner" className="w-full shrink-0 md:hidden" />
             <Image
               src={banner.desktop}
               alt="Hero-Banner"
-              className="hidden w-full flex-shrink-0 md:block"
+              className="hidden w-full shrink-0 md:block"
             />
           </React.Fragment>
         ))}
@@ -79,18 +66,14 @@ export const HeroBanner = () => {
         key={"prev"}
         direction="prev"
         onClick={() =>
-          setCurrentIndex(
-            currentIndex === 0 ? heroBanners.length - 1 : currentIndex - 1,
-          )
+          setCurrentIndex(currentIndex === 0 ? heroBanners.length - 1 : currentIndex - 1)
         }
       />
       <CarouselButton
         key={"next"}
         direction="next"
         onClick={() =>
-          setCurrentIndex(
-            currentIndex === heroBanners.length - 1 ? 0 : currentIndex + 1,
-          )
+          setCurrentIndex(currentIndex === heroBanners.length - 1 ? 0 : currentIndex + 1)
         }
       />
     </section>

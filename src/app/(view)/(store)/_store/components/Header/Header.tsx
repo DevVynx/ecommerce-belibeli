@@ -1,6 +1,5 @@
 "use client";
 import { useScrollDirection } from "@/app/shared/hooks/ui/useScrollDirection";
-import { CategoryBar } from "./CategoryBar/CategoryBar";
 import { NavBar } from "./NavBar/NavBar";
 
 export function Header() {
@@ -16,7 +15,6 @@ export function Header() {
     >
       <div className="mx-auto lg:container">
         <NavBar />
-        <CategoryBar />
       </div>
     </header>
   );
