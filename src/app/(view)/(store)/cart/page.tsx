@@ -8,9 +8,10 @@ import { CartPageSkeleton } from "./components/CartPageSkeleton";
 import { EmptyCart } from "./components/EmptyCart";
 import { ProductDetailsModal } from "../../../shared/components/domain/store/ProductDetailsModal/ProductDetailsModal";
 import { useProductDetailsContext } from "@/app/shared/contexts/ProductDetailsContext";
+import { CartLoadError } from "@/app/shared/components/domain/store/CartLoadError";
 
 const CartPage = () => {
-  const { data, isLoading, isError } = useFindCart();
+  const { data, isLoading, isError, refetch } = useFindCart();
   const { isProductDetailsModalOpen } = useProductDetailsContext();
 
   if (isError) {
@@ -19,7 +20,7 @@ const CartPage = () => {
         <div className="mx-auto">
           <CartHeader />
           <div className="flex justify-center p-10">
-            <h1 className="text-xl text-red-500">Falha ao carregar os produtos</h1>
+            <CartLoadError onRetry={refetch} />
           </div>
         </div>
       </section>
@@ -51,7 +52,14 @@ const CartPage = () => {
         <CartHeader />
         <div className="mx-auto mt-2 flex justify-center gap-3 p-3 lg:container lg:flex">
           <CartList cartItems={data.cart.items} />
-          <CartSummary cart={data.cart} count={data.count} />
+          <CartSummary
+            summary={{
+              count: data.count,
+              discount: data.discount,
+              subtotal: data.subtotal,
+              total: data.total,
+            }}
+          />
         </div>
         <RecommendedProducts />
       </div>

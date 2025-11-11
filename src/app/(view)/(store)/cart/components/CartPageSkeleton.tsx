@@ -1,10 +1,14 @@
 import { Skeleton } from "@/app/shared/components/ui/skeleton";
 
+/**
+ * Componente Skeleton completo para a página do Carrinho.
+ * Simula o layout (Header, CartList e CartSummary) durante o carregamento.
+ */
 export const CartPageSkeleton = () => {
   return (
-    <section className="bg-neutral-100 pb-40 lg:p-0">
+    <section className="font-inter bg-neutral-100 pb-40 lg:p-0">
       <div className="mx-auto">
-        {/* Header Skeleton */}
+        {/* Header Skeleton (simula o cabeçalho) */}
         <header className="p-3 lg:bg-white">
           <div className="flex justify-between lg:hidden">
             <Skeleton className="h-7 w-7 rounded-full md:h-10 md:w-10" />
@@ -17,63 +21,92 @@ export const CartPageSkeleton = () => {
           </div>
         </header>
 
+        {/* Layout Principal: CartList (esquerda) e CartSummary (direita) */}
         <div className="mx-auto mt-2 flex justify-center gap-3 p-3 lg:container lg:flex">
-          {/* Cart Items Skeleton */}
+          {/* Cart Items Skeleton - Coluna da Esquerda */}
+          {/* Simula CartList */}
           <div className="flex w-full flex-col items-center gap-3 lg:flex-1">
-            {[1, 2, 3, 4, 5].map((item) => (
-              <div key={item} className="flex w-full gap-3 rounded-md bg-white p-3 lg:max-w-4xl">
-                <Skeleton className="h-24 w-24 shrink-0 rounded-md md:h-40 md:w-32" />
-                <div className="flex flex-1 flex-col justify-between space-y-2">
-                  <div className="space-y-2">
-                    <Skeleton className="h-5 w-3/4" />
-                    <Skeleton className="h-4 w-1/2" />
-                    <Skeleton className="h-4 w-1/3" />
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <Skeleton className="h-6 w-20" />
-                    <div className="flex items-center gap-2">
-                      <Skeleton className="h-8 w-8 rounded-full" />
-                      <Skeleton className="h-8 w-12" />
-                      <Skeleton className="h-8 w-8 rounded-full" />
+            {[1, 2, 3].map(
+              (
+                item, // Reduzi para 3 para um carregamento mais rápido, mas pode aumentar
+              ) => (
+                // Simula CartItem
+                <div key={item} className="flex w-full gap-3 rounded-md bg-white p-4 lg:max-w-4xl">
+                  {/* Imagem */}
+                  <Skeleton className="h-24 w-24 shrink-0 rounded-md md:h-40 md:w-32" />
+
+                  {/* Informações e Ações */}
+                  <div className="flex flex-1 flex-col justify-between space-y-2">
+                    <div className="space-y-2">
+                      {/* Título */}
+                      <Skeleton className="h-5 w-3/4" />
+                      {/* Opções */}
+                      <Skeleton className="h-4 w-1/2" />
+                      <Skeleton className="h-4 w-1/3" />
                     </div>
-                    <div className="flex gap-2">
-                      <Skeleton className="h-8 w-8 rounded-md" />
-                      <Skeleton className="h-8 w-8 rounded-md" />
+
+                    {/* Preço e Controles */}
+                    <div className="flex items-end justify-between">
+                      {/* Preço */}
+                      <Skeleton className="h-6 w-20" />
+
+                      {/* Controles de Quantidade */}
+                      <div className="flex items-center gap-2">
+                        <Skeleton className="h-8 w-8 rounded-full" />
+                        <Skeleton className="h-8 w-12" />
+                        <Skeleton className="h-8 w-8 rounded-full" />
+                      </div>
+
+                      {/* Ações Secundárias (Wishlist/Delete) */}
+                      <div className="hidden gap-2 sm:flex">
+                        <Skeleton className="h-8 w-8 rounded-full" />
+                        <Skeleton className="h-8 w-8 rounded-full" />
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ),
+            )}
           </div>
 
-          {/* Summary Skeleton - Desktop */}
-          <div className="hidden lg:block lg:w-100">
+          {/* Summary Skeleton - Coluna da Direita (Desktop) */}
+          {/* Simula CartSummary */}
+          <div className="hidden max-w-sm lg:block lg:w-96">
             <div className="sticky top-0 space-y-3">
+              {/* Bloco de Resumo de Preços */}
               <div className="space-y-3 rounded-sm bg-white p-3">
                 <div className="space-y-2">
                   <Skeleton className="h-7 w-48" />
                   <Skeleton className="h-3 w-full" />
                 </div>
+
                 <div className="space-y-3 border-b pb-4">
+                  {/* Preço de varejo */}
                   <div className="flex justify-between">
                     <Skeleton className="h-4 w-32" />
                     <Skeleton className="h-4 w-24" />
                   </div>
+                  {/* Descontos */}
                   <div className="flex justify-between">
                     <Skeleton className="h-4 w-24" />
                     <Skeleton className="h-4 w-24" />
                   </div>
                 </div>
+
                 <div className="flex items-center justify-between">
                   <Skeleton className="h-5 w-24" />
                   <Skeleton className="h-8 w-32" />
                 </div>
+
+                {/* Botão Finalizar Compra */}
                 <Skeleton className="h-12 w-full rounded-sm" />
               </div>
+
+              {/* Bloco de Pagamento */}
               <div className="space-y-3 rounded-sm bg-white p-3">
                 <Skeleton className="h-7 w-32" />
                 <div className="flex flex-wrap gap-3">
-                  {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
+                  {[1, 2, 3, 4, 5].map((i) => (
                     <Skeleton key={i} className="h-8 w-12" />
                   ))}
                 </div>
