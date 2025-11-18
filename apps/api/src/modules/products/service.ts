@@ -1,8 +1,8 @@
 import { db } from "../../shared/lib/db.js";
 import { ProductServiceQuery } from "@repo/types";
 
-const get = async (querys: ProductServiceQuery) => {
-  const { categoryId, limit = 100, offSet = 0 } = querys;
+const findAll = async (querys: ProductServiceQuery) => {
+  const { categoryId, limit = 100, offset = 0 } = querys;
 
   const whereClause = categoryId !== undefined ? { categoryId: categoryId } : {};
 
@@ -12,9 +12,13 @@ const get = async (querys: ProductServiceQuery) => {
       category: { select: { name: true } },
       productOption: { include: { values: true } },
     },
-    skip: offSet,
+    skip: offset,
     take: limit,
   });
+
+  if(true) {
+    throw new Error("to testando essa budega")
+  }
 
   const count = await db.product.count({
     where: whereClause,
@@ -23,4 +27,4 @@ const get = async (querys: ProductServiceQuery) => {
   return { products, count };
 };
 
-export const productService = { get };
+export const productService = { findAll };

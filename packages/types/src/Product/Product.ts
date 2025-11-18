@@ -1,5 +1,5 @@
 export type ProductServiceQuery = {
   categoryId?: number;
-  offSet?: number;
+  offset?: number;
   limit?: number;
 };

@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import { productRouter } from "./modules/products/routes.js";
 import { authRouter } from "@/modules/auth/routes.js";
 import { cartRouter } from "@/modules/cart/routes.js";
+import { handleGlobalError } from "@/shared/middlewares/handleGlobalError.js";
 
 const app: Express = express();
 
@@ -29,5 +30,7 @@ app.use(
 app.use("/api", authRouter);
 app.use("/api", productRouter);
 app.use("/api", cartRouter);
+
+app.use(handleGlobalError);
 
 export default app;
