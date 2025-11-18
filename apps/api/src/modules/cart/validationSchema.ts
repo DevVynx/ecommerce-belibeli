@@ -5,7 +5,7 @@ const OptionSchema = z.object({
   optionValueId: z.number("Valor inválido"),
 });
 
-const create = z.object({
+const createCartItem = z.object({
   userId: z.coerce.number("Valor inválido.").positive("O número deve ser maior que zero."),
   productId: z.coerce.number("Valor inválido.").positive("O número deve ser maior que zero."),
   productOptions: z.array(OptionSchema, "Valor inválido").default([]),
@@ -17,4 +17,4 @@ const update = z.object({
   quantity: z.coerce.number("Valor inválido."),
 });
 
-export const cartItemSchema = { create, update };
+export const cartItemSchema = { createCartItem, update };

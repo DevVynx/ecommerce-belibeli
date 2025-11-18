@@ -46,14 +46,14 @@ const refresh: RequestHandler = async (req, res) => {
   try {
     const refreshToken = req.cookies.refreshToken;
     const { accessToken } = await authService.refreshAccessToken(refreshToken);
-    
+
     res.cookie("accessToken", accessToken, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
       maxAge: 15 * 60 * 1000, // 15 minutes
     });
-    return res.json({ message: "O token de acesso foi recriado com sucesso" });
+    return res.status(201).json({ message: "O token de acesso foi recriado com sucesso" });
   } catch (error) {
     const dataResponse = handleError(error);
     return handleResponse(res, dataResponse);

@@ -31,3 +31,15 @@ export class UnauthorizedError extends HttpError {
     super(401, "UnauthorizedError", details);
   }
 }
+
+export class ForbiddenError extends HttpError {
+  constructor(details: unknown) {
+    super(403, "ForbiddenError", details);
+  }
+}
+
+export class NotFoundError extends HttpError {
+  constructor(details: unknown) {
+    super(404, "NotFoundError", details);
+  }
+}

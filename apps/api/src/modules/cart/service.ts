@@ -1,9 +1,13 @@
 import { getCartSummary } from "@/modules/cart/utils/getCartSummary.js";
 import { db } from "../../shared/lib/db.js";
-import type { AddItemToCartInput } from "@/modules/cart/types/index.js";
-import { ConflictError } from "@/shared/HttpErrors.js";
+import type {
+  AddItemToCartInput,
+  DeleteCartItem,
+  UpdateCartItemQuantity,
+} from "@/modules/cart/types/index.js";
+import { ConflictError, ForbiddenError, NotFoundError } from "@/shared/HttpErrors.js";
 
-export async function getFullCart(userId: number) {
+export const getFullCart = async (userId: number) => {
   const cart = await db.cart.findUnique({
     where: { userId },
     include: {
@@ -20,9 +24,9 @@ export async function getFullCart(userId: number) {
   const { count, discount, subtotal, total } = getCartSummary(cart);
 
   return { cart, count, subtotal, total, discount };
-}
+};
 
-export async function getCartItems(userId: number) {
+export const getCartItems = async (userId: number) => {
   const cartId = await db.cart.findUnique({
     where: { userId },
     select: { id: true },
@@ -43,9 +47,14 @@ export async function getCartItems(userId: number) {
   const { count } = getCartSummary({ items: cartItems });
 
   return { cartItems, count };
-}
+};
 
-export async function createCartItem({ userId, productId, options, quantity }: AddItemToCartInput) {
+export const createCartItem = async ({
+  userId,
+  productId,
+  options,
+  quantity,
+}: AddItemToCartInput) => {
   const existingCart = await db.cart.findUnique({ where: { userId } });
   const optionsPayload =
     options && options.length > 0
@@ -95,6 +104,55 @@ export async function createCartItem({ userId, productId, options, quantity }: A
   });
 
   return { cartItem };
-}
+};
 
-export const cartService = { getFullCart, getCartItems, createCartItem };
+export const updateCartItemQuantity = async ({
+  userId,
+  cartItemId,
+  quantity,
+}: UpdateCartItemQuantity) => {
+  const item = await db.cartItem.findUnique({
+    where: { id: cartItemId },
+    include: { cart: { select: { userId: true } } },
+  });
+
+  if (!item) {
+    throw new NotFoundError("Carrinho não encontrado para o usuário.");
+  }
+
+  if (item.cart.userId !== userId) {
+    throw new ForbiddenError("Item não pertence ao usuário.");
+  }
+
+  const cartItem = await db.cartItem.update({
+    where: { id: cartItemId },
+    data: { quantity },
+  });
+
+  return { cartItem };
+};
+
+export const deleteCartItem = async ({ userId, cartItemId }: DeleteCartItem) => {
+  const item = await db.cartItem.findUnique({
+    where: { id: cartItemId },
+    include: { cart: { select: { userId: true } } },
+  });
+
+  if (!item) {
+    throw new NotFoundError("Carrinho não encontrado para o usuário.");
+  }
+
+  if (item.cart.userId !== userId) {
+    throw new ForbiddenError("Item não pertence ao usuário.");
+  }
+
+  await db.cartItem.delete({ where: { id: cartItemId } });
+};
+
+export const cartService = {
+  getFullCart,
+  getCartItems,
+  createCartItem,
+  updateCartItemQuantity,
+  deleteCartItem,
+};

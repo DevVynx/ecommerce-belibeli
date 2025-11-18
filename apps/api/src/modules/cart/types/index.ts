@@ -9,3 +9,14 @@ export type AddItemToCartInput = {
   quantity: number;
   options?: CartItemOptionInput[];
 };
+
+export type UpdateCartItemQuantity = {
+  userId: number;
+  cartItemId: number;
+  quantity: number;
+};
+
+export type DeleteCartItem = {
+  userId: number;
+  cartItemId: number;
+};
