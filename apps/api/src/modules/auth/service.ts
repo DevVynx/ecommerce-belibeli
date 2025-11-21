@@ -1,7 +1,7 @@
-import { generateAccessToken, generateRefreshToken } from "@/modules/auth/utils/tokenGenerator.js";
-import { BadRequestError, ConflictError } from "@/shared/utils/HttpErrors.js";
-import { db } from "@/shared/lib/db.js";
-import { verifyToken } from "@/shared/middlewares/utils/verifyToken.js";
+import { generateAccessToken, generateRefreshToken } from "@/modules/auth/utils/tokenGenerator";
+import { BadRequestError, ConflictError } from "@/shared/utils/HttpErrors";
+import { db } from "@/shared/lib/db";
+import { verifyToken } from "@/shared/middlewares/utils/verifyToken";
 import bcrypt from "bcrypt";
 
 const register = async (name: string, email: string, password: string) => {

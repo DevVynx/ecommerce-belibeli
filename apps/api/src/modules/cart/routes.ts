@@ -4,9 +4,9 @@ import {
   findCart,
   removeItemFromCart,
   updateCartItemQuantity,
-} from "@/modules/cart/controller.js";
-import v from "@/modules/cart/validators/index.js";
-import { authMiddleware } from "@/shared/middlewares/auth.js";
+} from "@/modules/cart/controller";
+import v from "@/modules/cart/validators";
+import { authMiddleware } from "@/shared/middlewares/auth";
 import { Router } from "express";
 
 const cartRouter: Router = Router();

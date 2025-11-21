@@ -1,6 +1,6 @@
 import { RequestHandler } from "express";
-import { authService } from "@/modules/auth/service.js";
-import v from "@/modules/auth/validators/index.js";
+import { authService } from "@/modules/auth/service";
+import v from "@/modules/auth/validators";
 
 const register: RequestHandler = async (req, res) => {
   const { name, email, password } = v.register.getValidatedValues(req).body;

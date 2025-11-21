@@ -1,4 +1,4 @@
-import { db } from "../../shared/lib/db.js";
+import { db } from "../../shared/lib/db";
 import { ProductServiceQuery } from "@repo/types";
 
 const findAll = async (querys: ProductServiceQuery) => {

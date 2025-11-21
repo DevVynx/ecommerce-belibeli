@@ -2,12 +2,13 @@ import express, { Express } from "express";
 import cors from "cors";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
-import { productRouter } from "./modules/products/routes.js";
-import { authRouter } from "@/modules/auth/routes.js";
-import { cartRouter } from "@/modules/cart/routes.js";
-import { handleGlobalError } from "@/shared/middlewares/handleGlobalError.js";
+import { productRouter } from "./modules/products/routes";
+import { authRouter } from "@/modules/auth/routes";
+import { cartRouter } from "@/modules/cart/routes";
+import { handleGlobalError } from "@/shared/middlewares/handleGlobalError";
+import { notFoundHandler } from "@/shared/middlewares/notFoundHandler";
 
-const app: Express = express();
+export const app: Express = express();
 
 // Configs -----------------------------------------------------------
 app.use(express.json());
@@ -31,6 +32,5 @@ app.use("/api", authRouter);
 app.use("/api", productRouter);
 app.use("/api", cartRouter);
 
+app.use(notFoundHandler);
 app.use(handleGlobalError);
-
-export default app;

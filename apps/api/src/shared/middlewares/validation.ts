@@ -7,20 +7,20 @@ type Schemas = Partial<Record<Property, z.ZodTypeAny>>;
 
 type ValidationError = Record<string, Object>;
 
+type ValidationReturn<S> = {
+  middleware: RequestHandler;
+  getValidatedValues: (req: Request) => {
+    [K in keyof S]: S[K] extends z.ZodTypeAny ? z.infer<S[K]> : never;
+  };
+};
+
 const formatErrorsZod = (safeParseError: z.ZodSafeParseError<unknown>) => {
   const tree = z.treeifyError(safeParseError.error);
   const details = ("properties" in tree ? tree.properties : tree) as object;
   return details;
 };
 
-export const validation = <S extends Schemas>(
-  schemas: S,
-): {
-  middleware: RequestHandler;
-  getValidatedValues: (req: Request) => {
-    [K in keyof S]: S[K] extends z.ZodTypeAny ? z.infer<S[K]> : never;
-  };
-} => {
+export const validation = <S extends Schemas>(schemas: S): ValidationReturn<S> => {
   const middleware: RequestHandler = (req, res, next) => {
     const schemasArray = Object.entries(schemas);
     const errors: ValidationError = {};

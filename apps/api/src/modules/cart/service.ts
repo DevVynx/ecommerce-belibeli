@@ -1,11 +1,11 @@
-import { getCartSummary } from "@/modules/cart/utils/getCartSummary.js";
-import { db } from "../../shared/lib/db.js";
+import { getCartSummary } from "@/modules/cart/utils/getCartSummary";
+import { db } from "../../shared/lib/db";
 import type {
   AddItemToCartInput,
   DeleteCartItem,
   UpdateCartItemQuantity,
-} from "@/modules/cart/types/index.js";
-import { ConflictError, ForbiddenError, NotFoundError } from "@/shared/utils/HttpErrors.js";
+} from "@/modules/cart/utils/types";
+import { ConflictError, ForbiddenError, NotFoundError } from "@/shared/utils/HttpErrors";
 
 export const getFullCart = async (userId: number) => {
   const cart = await db.cart.findUnique({

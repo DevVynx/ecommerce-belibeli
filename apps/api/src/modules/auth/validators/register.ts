@@ -1,4 +1,4 @@
-import { validation } from "@/shared/middlewares/validation.js";
+import { validation } from "@/shared/middlewares/validation";
 import z from "zod";
 
 const body = z

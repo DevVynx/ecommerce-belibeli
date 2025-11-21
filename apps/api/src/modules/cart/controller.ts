@@ -1,6 +1,6 @@
 import { RequestHandler } from "express";
-import { cartService } from "@/modules/cart/service.js";
-import v from "@/modules/cart/validators/index.js";
+import { cartService } from "@/modules/cart/service";
+import v from "@/modules/cart/validators";
 
 const findCart: RequestHandler = async (req, res) => {
   const { userId } = res.locals.user;

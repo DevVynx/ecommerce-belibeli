@@ -1,5 +1,5 @@
-import { login, refresh, register } from "@/modules/auth/controller.js";
-import v from "@/modules/auth/validators/index.js";
+import { login, refresh, register } from "@/modules/auth/controller";
+import v from "@/modules/auth/validators";
 import { Router } from "express";
 
 const authRouter: Router = Router();

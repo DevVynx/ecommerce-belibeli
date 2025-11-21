@@ -1,4 +1,4 @@
-import v from "@/modules/products/validators/index.js";
+import v from "@/modules/products/validators";
 import { productService } from "./service.js";
 import { RequestHandler } from "express";
 

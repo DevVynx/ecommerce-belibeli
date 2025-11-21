@@ -1,4 +1,4 @@
-import { findAll } from "@/modules/products/validators/findAll.js";
+import { findAll } from "@/modules/products/validators/findAll";
 
 const validations = { findAll };
 
