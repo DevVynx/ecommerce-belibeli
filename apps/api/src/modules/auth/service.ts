@@ -1,10 +1,11 @@
+import bcrypt from "bcrypt";
+import { db } from "@/shared/lib/db";
 import { generateAccessToken, generateRefreshToken } from "@/modules/auth/utils/tokenGenerator";
 import { BadRequestError, ConflictError } from "@/shared/utils/HttpErrors";
-import { db } from "@/shared/lib/db";
-import { verifyToken } from "@/shared/middlewares/utils/verifyToken";
-import bcrypt from "bcrypt";
+import { verifyToken } from "@/shared/utils/verifyToken";
+import { RegisterUser, LoginUser } from "@repo/types/contracts";
 
-const register = async (name: string, email: string, password: string) => {
+const register = async ({ name, email, password }: Omit<RegisterUser, "confirmPassword">) => {
   const existingUser = await db.user.findUnique({ where: { email } });
   if (existingUser) {
     throw new ConflictError("Já existe um usuário com esse e-mail");
@@ -20,7 +21,7 @@ const register = async (name: string, email: string, password: string) => {
   return user;
 };
 
-const login = async (email: string, password: string) => {
+const login = async ({ email, password }: LoginUser) => {
   const user = await db.user.findUnique({ where: { email } });
 
   if (!user) {

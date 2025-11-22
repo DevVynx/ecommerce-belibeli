@@ -1,22 +1,19 @@
-export type CartItemOptionInput = {
+type Options = {
   optionId: number;
   optionValueId: number;
 };
 
-export type AddItemToCartInput = {
-  userId: number;
+export type CreateCartItem = {
   productId: number;
+  productOptions: Options[];
   quantity: number;
-  options?: CartItemOptionInput[];
 };
 
 export type UpdateCartItemQuantity = {
-  userId: number;
   cartItemId: number;
   quantity: number;
 };
 
-export type DeleteCartItem = {
-  userId: number;
+export type RemoveItemFromCart = {
   cartItemId: number;
 };

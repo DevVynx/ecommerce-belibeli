@@ -1,9 +1,7 @@
 import { db } from "../../shared/lib/db";
-import { ProductServiceQuery } from "@repo/types";
+import { FindAllProducts } from "@repo/types/contracts";
 
-const findAll = async (querys: ProductServiceQuery) => {
-  const { categoryId, limit = 100, offset = 0 } = querys;
-
+const findAll = async ({ categoryId, limit, offset }: FindAllProducts) => {
   const whereClause = categoryId !== undefined ? { categoryId: categoryId } : {};
 
   const products = await db.product.findMany({

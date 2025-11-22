@@ -24,7 +24,7 @@ const addItemToCart: RequestHandler = async (req, res) => {
     userId,
     productId,
     quantity,
-    options: productOptions,
+    productOptions,
   });
 
   return res.status(201).json({ cartItem });

@@ -1,11 +1,11 @@
-import { getCartSummary } from "@/modules/cart/utils/getCartSummary";
 import { db } from "../../shared/lib/db";
-import type {
-  AddItemToCartInput,
-  DeleteCartItem,
-  UpdateCartItemQuantity,
-} from "@/modules/cart/utils/types";
+import { getCartSummary } from "@/modules/cart/utils/getCartSummary";
 import { ConflictError, ForbiddenError, NotFoundError } from "@/shared/utils/HttpErrors";
+import type {
+  CreateCartItemDto,
+  RemoveItemFromCartDto,
+  UpdateCartItemQuantityDto,
+} from "@/modules/cart/utils/DTO";
 
 export const getFullCart = async (userId: number) => {
   const cart = await db.cart.findUnique({
@@ -52,16 +52,16 @@ export const getCartItems = async (userId: number) => {
 export const createCartItem = async ({
   userId,
   productId,
-  options,
+  productOptions,
   quantity,
-}: AddItemToCartInput) => {
+}: CreateCartItemDto) => {
   const existingCart = await db.cart.findUnique({ where: { userId } });
   const optionsPayload =
-    options && options.length > 0
+    productOptions && productOptions.length > 0
       ? {
           productOptions: {
             createMany: {
-              data: options,
+              data: productOptions,
             },
           },
         }
@@ -110,7 +110,7 @@ export const updateCartItemQuantity = async ({
   userId,
   cartItemId,
   quantity,
-}: UpdateCartItemQuantity) => {
+}: UpdateCartItemQuantityDto) => {
   const item = await db.cartItem.findUnique({
     where: { id: cartItemId },
     include: { cart: { select: { userId: true } } },
@@ -132,7 +132,7 @@ export const updateCartItemQuantity = async ({
   return { cartItem };
 };
 
-export const deleteCartItem = async ({ userId, cartItemId }: DeleteCartItem) => {
+export const deleteCartItem = async ({ userId, cartItemId }: RemoveItemFromCartDto) => {
   const item = await db.cartItem.findUnique({
     where: { id: cartItemId },
     include: { cart: { select: { userId: true } } },

@@ -1,4 +1,4 @@
-import { verifyToken } from "@/shared/middlewares/utils/verifyToken.js";
+import { verifyToken } from "@/shared/utils/verifyToken.js";
 import type { RequestHandler } from "express";
 
 export const authMiddleware: RequestHandler = async (req, res, next) => {

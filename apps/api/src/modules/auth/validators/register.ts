@@ -1,7 +1,8 @@
-import { validation } from "@/shared/middlewares/validation";
 import z from "zod";
+import { RegisterUser } from "@repo/types/contracts";
+import { validation } from "@/shared/middlewares/validation";
 
-const body = z
+const body: z.ZodType<RegisterUser> = z
   .object({
     name: z.string("Campo obrigatório").min(3, "O nome deve ter pelo menos 3 caracteres."),
     email: z.email("E-mail inválido."),
