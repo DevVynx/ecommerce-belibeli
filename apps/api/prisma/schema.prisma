@@ -1,115 +1,131 @@
 generator client {
-  provider = "prisma-client-js"
+  provider = "prisma-client"
+  output   = "./generated/client"
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  name     String
-  email    String @unique
-  password String
-  Cart     Cart?
+  id        String   @id @default(uuid()) @db.Uuid
+  name      String
+  email     String   @unique
+  password  String
+  cart      Cart?
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz
 
   @@map("users")
 }
 
 model Category {
-  id        Int      @id @default(autoincrement())
-  name      String   @unique
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-
-  product Product[]
+  id        String    @id @default(uuid()) @db.Uuid
+  name      String    @unique
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt DateTime  @updatedAt @map("updated_at") @db.Timestamptz
+  products  Product[]
 
   @@map("categories")
 }
 
 model Product {
-  id             Int       @id @default(autoincrement())
+  id             String    @id @default(uuid()) @db.Uuid
   title          String
-  price          Decimal
-  description    String
+  price          Decimal   @db.Decimal(10, 2)
+  description    String    @db.Text
   image          String
-  promotionPrice Decimal?  @map("promotion_price")
-  promotionEnd   DateTime? @map("promotion_end")
-  stock          Int
-  totalSold      Int       @map("total_sold")
-  ratingRate     Float     @map("rating_rate")
-  ratingCount    Int       @map("rating_count")
-  createdAt      DateTime  @default(now()) @map("created_at")
-  updatedAt      DateTime  @updatedAt @map("updated_at")
+  promotionPrice Decimal?  @map("promotion_price") @db.Decimal(10, 2)
+  promotionEnd   DateTime? @map("promotion_end") @db.Timestamptz
+  stock          Int       @default(0)
+  totalSold      Int       @default(0) @map("total_sold")
+  ratingRate     Decimal   @default(0) @map("rating_rate") @db.Decimal(3, 2)
+  ratingCount    Int       @default(0) @map("rating_count")
+  createdAt      DateTime  @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt      DateTime  @updatedAt @map("updated_at") @db.Timestamptz
 
-  categoryId    Int
-  cartItem      CartItem[]
-  category      Category        @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-  productOption ProductOption[]
+  cartItems      CartItem[]
+  productOptions ProductOption[]
 
+  categoryId String   @map("category_id") @db.Uuid
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@index([categoryId])
+  @@index([createdAt])
   @@map("products")
 }
 
 model ProductOption {
-  id             Int                  @id @default(autoincrement())
-  type           String
-  product        Product              @relation(fields: [productId], references: [id], onDelete: Cascade)
-  productId      Int                  @map("product_id")
-  values         ProductOptionValue[]
-  CartItemOption CartItemOption[]
+  id              String               @id @default(uuid()) @db.Uuid
+  type            String
+  values          ProductOptionValue[]
+  cartItemOptions CartItemOption[]
 
+  productId String  @map("product_id") @db.Uuid
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([productId])
   @@map("product_options")
 }
 
 model ProductOptionValue {
-  id              Int              @id @default(autoincrement())
+  id              String           @id @default(uuid()) @db.Uuid
   value           String
-  productOption   ProductOption    @relation(fields: [productOptionId], references: [id], onDelete: Cascade)
-  productOptionId Int              @map("product_option_id")
-  CartItemOption  CartItemOption[]
+  cartItemOptions CartItemOption[]
 
+  productOptionId String        @map("product_option_id") @db.Uuid
+  productOption   ProductOption @relation(fields: [productOptionId], references: [id], onDelete: Cascade)
+
+  @@index([productOptionId])
   @@map("product_option_values")
 }
 
 model Cart {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
+  id        String     @id @default(uuid()) @db.Uuid
+  createdAt DateTime   @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt DateTime   @updatedAt @map("updated_at") @db.Timestamptz
+  items     CartItem[]
 
-  userId Int        @unique
-  items  CartItem[]
-  user   User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String @unique @map("user_id") @db.Uuid
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("carts")
 }
 
 model CartItem {
-  id        Int      @id @default(autoincrement())
-  quantity  Int      @default(1)
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-
-  cartId    Int     @map("cart_id")
-  productId Int     @map("product_id")
-  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
-  cart      Cart    @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  id          String   @id @default(uuid()) @db.Uuid
+  quantity    Int      @default(1)
+  variantHash String   @map("variant_hash")
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt   DateTime @updatedAt @map("updated_at") @db.Timestamptz
 
   productOptions CartItemOption[]
 
-  @@unique([cartId, productId])
+  productId String  @map("product_id") @db.Uuid
+  cartId    String  @map("cart_id") @db.Uuid
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  cart      Cart    @relation(fields: [cartId], references: [id], onDelete: Cascade)
+
+  @@unique([cartId, productId, variantHash])
+  @@index([cartId])
+  @@index([productId])
   @@map("cart_items")
 }
 
 model CartItemOption {
-  id            Int @id @default(autoincrement())
-  optionId      Int @map("option_id")
-  optionValueId Int @map("option_value_id")
-  cartItemId    Int @map("cart_item_id")
+  id String @id @default(uuid()) @db.Uuid
+
+  optionId      String @map("option_id") @db.Uuid
+  optionValueId String @map("option_value_id") @db.Uuid
+  cartItemId    String @map("cart_item_id") @db.Uuid
 
   option      ProductOption      @relation(fields: [optionId], references: [id], onDelete: Cascade)
   optionValue ProductOptionValue @relation(fields: [optionValueId], references: [id], onDelete: Cascade)
-  CartItem    CartItem           @relation(fields: [cartItemId], references: [id], onDelete: Cascade)
+  cartItem    CartItem           @relation(fields: [cartItemId], references: [id], onDelete: Cascade)
 
   @@unique([cartItemId, optionId])
+  @@index([cartItemId])
+  @@index([optionId])
+  @@index([optionValueId])
   @@map("cart_items_options")
 }

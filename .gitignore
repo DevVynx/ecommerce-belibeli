@@ -36,6 +36,6 @@ yarn-error.log*
 .DS_Store
 *.pem
 
-# DataBase & Prisma
-apps/api/prisma/dev.db
+# Prisma
 apps/api/prisma/migrations
+apps/api/prisma/generated

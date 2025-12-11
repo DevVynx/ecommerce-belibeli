@@ -1,4 +1,15 @@
-import { config } from "@repo/eslint-config/base";
+import baseConfig from "@repo/eslint-config/base.js";
 
-/** @type {import("eslint").Linter.Config[]} */
-export default config;
+export default [
+  ...baseConfig,
+  {
+    ignores: [
+      "node_modules",
+      "dist",
+      ".turbo",
+      "prisma/generated",
+      "*.config.js",
+      "*.config.ts",
+    ],
+  },
+];

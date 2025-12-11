@@ -1,8 +1,18 @@
-import { Prisma, PrismaClient } from "@prisma/client";
+import { PrismaClient } from "./generated/client/client";
+import { PrismaPg } from "@prisma/adapter-pg";
+import { Pool } from "pg";
 
-const prisma = new PrismaClient();
+const connectionString = process.env.DATABASE_URL!;
+const pool = new Pool({ connectionString });
+const adapter = new PrismaPg(pool);
+const prisma = new PrismaClient({ adapter });
 
-const categories = ["men's clothing", "jewelery", "electronics", "women's clothing"];
+const categories = [
+  "men's clothing",
+  "jewelery",
+  "electronics",
+  "women's clothing",
+];
 
 const sizeOptions = {
   type: "Tamanho",
@@ -25,40 +35,42 @@ const storageOptions = {
   },
 };
 
-const products: Prisma.ProductCreateInput[] = [
-  // 1. Fjallraven Backpack (Bags usually don't have size/color options in e-commerce APIs, but we'll add one color)
+const products = [
+  // 1. Fjallraven Backpack
   {
     title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
     price: 109.95,
     promotionPrice: 89.95,
     promotionEnd: new Date("2030-10-25"),
-    description: "Your perfect pack for everyday use and walks in the forest...",
+    description:
+      "Your perfect pack for everyday use and walks in the forest...",
     image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
     ratingRate: 3.9,
     ratingCount: 120,
     stock: 45,
     totalSold: 320,
-    category: { connect: { name: "men's clothing" } }, // NOTE: Backpacks are usually in 'accessories' or 'bags'
-    productOption: {
+    category: { connect: { name: "men's clothing" } },
+    productOptions: {
       create: [colorOptions(["Azul Marinho", "Verde Oliva", "Preto"])],
     },
   },
-  // 2. Mens Casual T-Shirts (Size and basic colors)
+  // 2. Mens Casual T-Shirts
   {
-    title: "Mens Casual Premium Slim Fit T-Shirts ",
+    title: "Mens Casual Premium Slim Fit T-Shirts",
     price: 22.3,
     description: "Slim-fitting style, contrast raglan long sleeve...",
-    image: "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_t.png",
+    image:
+      "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_t.png",
     ratingRate: 4.1,
     ratingCount: 259,
     stock: 120,
     totalSold: 800,
     category: { connect: { name: "men's clothing" } },
-    productOption: {
+    productOptions: {
       create: [sizeOptions, colorOptions(["Branco", "Cinza Mescla", "Preto"])],
     },
   },
-  // 3. Mens Cotton Jacket (Size and classic colors)
+  // 3. Mens Cotton Jacket
   {
     title: "Mens Cotton Jacket",
     price: 55.99,
@@ -71,28 +83,30 @@ const products: Prisma.ProductCreateInput[] = [
     stock: 30,
     totalSold: 950,
     category: { connect: { name: "men's clothing" } },
-    productOption: {
+    productOptions: {
       create: [sizeOptions, colorOptions(["Bege", "Verde Militar"])],
     },
   },
-  // 4. Mens Casual Slim Fit (Size and common colors)
+  // 4. Mens Casual Slim Fit
   {
     title: "Mens Casual Slim Fit",
     price: 15.99,
-    description: "The color could be slightly different between on the screen and in practice...",
+    description:
+      "The color could be slightly different between on the screen and in practice...",
     image: "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_t.png",
     ratingRate: 2.1,
     ratingCount: 430,
     stock: 200,
     totalSold: 150,
     category: { connect: { name: "men's clothing" } },
-    productOption: {
+    productOptions: {
       create: [sizeOptions, colorOptions(["Preto", "Azul"])],
     },
   },
-  // 5. John Hardy Bracelet (Metal type)
+  // 5. John Hardy Bracelet
   {
-    title: "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",
+    title:
+      "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",
     price: 695,
     promotionPrice: 549,
     promotionEnd: new Date("2030-10-30"),
@@ -104,7 +118,7 @@ const products: Prisma.ProductCreateInput[] = [
     stock: 10,
     totalSold: 240,
     category: { connect: { name: "jewelery" } },
-    productOption: {
+    productOptions: {
       create: [
         {
           type: "Material",
@@ -115,44 +129,50 @@ const products: Prisma.ProductCreateInput[] = [
       ],
     },
   },
-  // 6. Solid Gold Ring (Ring size)
+  // 6. Solid Gold Ring
   {
     title: "Solid Gold Petite Micropave",
     price: 168,
-    description: "Satisfaction Guaranteed. Return or exchange any order within 30 days...",
+    description:
+      "Satisfaction Guaranteed. Return or exchange any order within 30 days...",
     image: "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_t.png",
     ratingRate: 3.9,
     ratingCount: 70,
     stock: 25,
     totalSold: 120,
     category: { connect: { name: "jewelery" } },
-    productOption: {
+    productOptions: {
       create: [
         {
           type: "Tamanho do Anel",
           values: {
-            create: [{ value: "14" }, { value: "16" }, { value: "18" }, { value: "20" }],
+            create: [
+              { value: "14" },
+              { value: "16" },
+              { value: "18" },
+              { value: "20" },
+            ],
           },
         },
       ],
     },
   },
-  // 7. White Gold Plated Princess Ring (No options, just the one design)
+  // 7. White Gold Plated Princess Ring
   {
     title: "White Gold Plated Princess",
     price: 9.99,
     promotionPrice: 7.99,
     promotionEnd: new Date("2030-10-23"),
-    description: "Classic Created Wedding Engagement Solitaire Diamond Promise Ring for Her...",
+    description:
+      "Classic Created Wedding Engagement Solitaire Diamond Promise Ring for Her...",
     image: "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_t.png",
     ratingRate: 3.0,
     ratingCount: 400,
     stock: 150,
     totalSold: 500,
     category: { connect: { name: "jewelery" } },
-    // Sem opções para este produto
   },
-  // 8. Pierced Owl Earrings (No options)
+  // 8. Pierced Owl Earrings
   {
     title: "Pierced Owl Rose Gold Plated Stainless Steel Double",
     price: 10.99,
@@ -163,9 +183,8 @@ const products: Prisma.ProductCreateInput[] = [
     stock: 300,
     totalSold: 60,
     category: { connect: { name: "jewelery" } },
-    // Sem opções para este produto
   },
-  // 9. WD 2TB External Hard Drive (Storage options)
+  // 9. WD 2TB External Hard Drive
   {
     title: "WD 2TB Elements Portable External Hard Drive - USB 3.0",
     price: 64,
@@ -178,22 +197,23 @@ const products: Prisma.ProductCreateInput[] = [
     stock: 80,
     totalSold: 430,
     category: { connect: { name: "electronics" } },
-    productOption: {
+    productOptions: {
       create: [storageOptions],
     },
   },
-  // 10. SanDisk SSD (Storage options)
+  // 10. SanDisk SSD
   {
     title: "SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s",
     price: 109,
-    description: "Easy upgrade for faster boot up, shutdown, application load and response...",
+    description:
+      "Easy upgrade for faster boot up, shutdown, application load and response...",
     image: "https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_t.png",
     ratingRate: 2.9,
     ratingCount: 470,
     stock: 50,
     totalSold: 270,
     category: { connect: { name: "electronics" } },
-    productOption: {
+    productOptions: {
       create: [
         {
           type: "Capacidade",
@@ -204,9 +224,10 @@ const products: Prisma.ProductCreateInput[] = [
       ],
     },
   },
-  // 11. Silicon Power SSD (Storage options)
+  // 11. Silicon Power SSD
   {
-    title: "Silicon Power 256GB SSD 3D NAND A55 SLC Cache Performance Boost SATA III 2.5",
+    title:
+      "Silicon Power 256GB SSD 3D NAND A55 SLC Cache Performance Boost SATA III 2.5",
     price: 109,
     promotionPrice: 89,
     promotionEnd: new Date("2030-10-22"),
@@ -217,7 +238,7 @@ const products: Prisma.ProductCreateInput[] = [
     stock: 60,
     totalSold: 980,
     category: { connect: { name: "electronics" } },
-    productOption: {
+    productOptions: {
       create: [
         {
           type: "Capacidade",
@@ -228,18 +249,20 @@ const products: Prisma.ProductCreateInput[] = [
       ],
     },
   },
-  // 12. WD 4TB Gaming Drive (Storage options)
+  // 12. WD 4TB Gaming Drive
   {
-    title: "WD 4TB Gaming Drive Works with Playstation 4 Portable External Hard Drive",
+    title:
+      "WD 4TB Gaming Drive Works with Playstation 4 Portable External Hard Drive",
     price: 114,
-    description: "Expand your PS4 gaming experience, Play anywhere Fast and easy...",
+    description:
+      "Expand your PS4 gaming experience, Play anywhere Fast and easy...",
     image: "https://fakestoreapi.com/img/61mtL65D4cL._AC_SX679_t.png",
     ratingRate: 4.8,
     ratingCount: 400,
     stock: 40,
     totalSold: 850,
     category: { connect: { name: "electronics" } },
-    productOption: {
+    productOptions: {
       create: [
         {
           type: "Compatibilidade",
@@ -250,7 +273,7 @@ const products: Prisma.ProductCreateInput[] = [
       ],
     },
   },
-  // 13. Acer Monitor (Size/Resolution options)
+  // 13. Acer Monitor
   {
     title: "Acer SB220Q bi 21.5 inches Full HD (1920 x 1080) IPS Ultra-Thin",
     price: 599,
@@ -263,7 +286,7 @@ const products: Prisma.ProductCreateInput[] = [
     stock: 15,
     totalSold: 210,
     category: { connect: { name: "electronics" } },
-    productOption: {
+    productOptions: {
       create: [
         {
           type: "Tamanho",
@@ -274,9 +297,10 @@ const products: Prisma.ProductCreateInput[] = [
       ],
     },
   },
-  // 14. Samsung Monitor (Size/Resolution options)
+  // 14. Samsung Monitor
   {
-    title: "Samsung 49-Inch CHG90 144Hz Curved Gaming Monitor – Super Ultrawide Screen QLED",
+    title:
+      "Samsung 49-Inch CHG90 144Hz Curved Gaming Monitor – Super Ultrawide Screen QLED",
     price: 999.99,
     description: "49 INCH SUPER ULTRAWIDE 32:9 CURVED GAMING MONITOR...",
     image: "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_t.png",
@@ -285,7 +309,7 @@ const products: Prisma.ProductCreateInput[] = [
     stock: 10,
     totalSold: 90,
     category: { connect: { name: "electronics" } },
-    productOption: {
+    productOptions: {
       create: [
         {
           type: "Tamanho",
@@ -296,7 +320,7 @@ const products: Prisma.ProductCreateInput[] = [
       ],
     },
   },
-  // 15. BIYLACLESEN Women's Jacket (Size and basic colors)
+  // 15. BIYLACLESEN Women's Jacket
   {
     title: "BIYLACLESEN Women's 3-in-1 Snowboard Jacket Winter Coats",
     price: 56.99,
@@ -307,13 +331,14 @@ const products: Prisma.ProductCreateInput[] = [
     stock: 60,
     totalSold: 140,
     category: { connect: { name: "women's clothing" } },
-    productOption: {
+    productOptions: {
       create: [sizeOptions, colorOptions(["Rosa", "Roxo", "Preto"])],
     },
   },
-  // 16. Lock and Love Women's Jacket (Size and colors)
+  // 16. Lock and Love Women's Jacket
   {
-    title: "Lock and Love Women's Removable Hooded Faux Leather Moto Biker Jacket",
+    title:
+      "Lock and Love Women's Removable Hooded Faux Leather Moto Biker Jacket",
     price: 29.95,
     promotionPrice: 24.95,
     promotionEnd: new Date("2030-10-26"),
@@ -324,11 +349,11 @@ const products: Prisma.ProductCreateInput[] = [
     stock: 80,
     totalSold: 250,
     category: { connect: { name: "women's clothing" } },
-    productOption: {
+    productOptions: {
       create: [sizeOptions, colorOptions(["Preto", "Marrom", "Vermelho"])],
     },
   },
-  // 17. Rain Jacket Women Windbreaker (Size and colors)
+  // 17. Rain Jacket Women Windbreaker
   {
     title: "Rain Jacket Women Windbreaker Striped Climbing Raincoats",
     price: 39.99,
@@ -339,13 +364,13 @@ const products: Prisma.ProductCreateInput[] = [
     stock: 40,
     totalSold: 900,
     category: { connect: { name: "women's clothing" } },
-    productOption: {
+    productOptions: {
       create: [sizeOptions, colorOptions(["Azul", "Branco"])],
     },
   },
-  // 18. MBJ Women's T Shirt (Size and colors)
+  // 18. MBJ Women's T Shirt
   {
-    title: "MBJ Women's Solid Short Sleeve Boat Neck V ",
+    title: "MBJ Women's Solid Short Sleeve Boat Neck V",
     price: 9.85,
     promotionPrice: 8.5,
     promotionEnd: new Date("2030-10-22"),
@@ -356,11 +381,11 @@ const products: Prisma.ProductCreateInput[] = [
     stock: 25,
     totalSold: 620,
     category: { connect: { name: "women's clothing" } },
-    productOption: {
+    productOptions: {
       create: [sizeOptions, colorOptions(["Preto", "Rosa", "Bege"])],
     },
   },
-  // 19. Opna Women's Short Sleeve Moisture (Size and colors)
+  // 19. Opna Women's Short Sleeve Moisture
   {
     title: "Opna Women's Short Sleeve Moisture",
     price: 7.95,
@@ -371,11 +396,11 @@ const products: Prisma.ProductCreateInput[] = [
     stock: 70,
     totalSold: 380,
     category: { connect: { name: "women's clothing" } },
-    productOption: {
+    productOptions: {
       create: [sizeOptions, colorOptions(["Cinza", "Azul Claro"])],
     },
   },
-  // 20. DANVOUY Womens T Shirt (Size and colors)
+  // 20. DANVOUY Womens T Shirt
   {
     title: "DANVOUY Womens T Shirt Casual Cotton Short",
     price: 12.99,
@@ -388,7 +413,7 @@ const products: Prisma.ProductCreateInput[] = [
     stock: 90,
     totalSold: 310,
     category: { connect: { name: "women's clothing" } },
-    productOption: {
+    productOptions: {
       create: [sizeOptions, colorOptions(["Verde", "Branco"])],
     },
   },
@@ -398,8 +423,14 @@ async function main() {
   console.log("🚀 Iniciando o processo de seed...");
 
   console.log("🧹 Limpando tabelas...");
+  await prisma.cartItemOption.deleteMany();
+  await prisma.cartItem.deleteMany();
+  await prisma.cart.deleteMany();
+  await prisma.productOptionValue.deleteMany();
+  await prisma.productOption.deleteMany();
   await prisma.product.deleteMany();
   await prisma.category.deleteMany();
+  await prisma.user.deleteMany();
 
   console.log("🌱 Inserindo categorias...");
   await prisma.category.createMany({
@@ -420,9 +451,10 @@ async function main() {
 
 main()
   .catch(async (e) => {
-    console.error(e);
+    console.error("❌ Erro no seed:", e);
     process.exit(1);
   })
   .finally(async () => {
     await prisma.$disconnect();
+    await pool.end();
   });
