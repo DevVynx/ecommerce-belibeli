@@ -1,4 +1,4 @@
-import { login, refresh, register } from "@/modules/auth/controller";
+import { login, refresh, register } from "@/modules/auth/controllers";
 import v from "@/modules/auth/validators";
 import { Router } from "express";
 

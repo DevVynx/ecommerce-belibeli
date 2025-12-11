@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { findAll } from "./controller";
+import { findAll } from "./controllers";
 import v from "@/modules/products/validators";
 
 const productRouter: Router = Router();

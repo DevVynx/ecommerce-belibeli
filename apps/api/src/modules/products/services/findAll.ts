@@ -1,9 +1,14 @@
-import { db } from "../../shared/lib/db";
+import { db } from "@/shared/lib/db";
 import type { FindAllProductsParams } from "@/modules/products/types/ServicesParams";
 import { controllerProductListMapper } from "@/modules/products/mappers";
 
-const findAll = async ({ categoryId, limit, offset }: FindAllProductsParams) => {
-  const whereClause = categoryId !== undefined ? { categoryId: categoryId } : {};
+export const findAll = async ({
+  categoryId,
+  limit,
+  offset,
+}: FindAllProductsParams) => {
+  const whereClause =
+    categoryId !== undefined ? { categoryId: categoryId } : {};
 
   const rawProducts = await db.product.findMany({
     where: whereClause,
@@ -27,5 +32,3 @@ const findAll = async ({ categoryId, limit, offset }: FindAllProductsParams) => 
 
   return { products, count };
 };
-
-export const productService = { findAll };
