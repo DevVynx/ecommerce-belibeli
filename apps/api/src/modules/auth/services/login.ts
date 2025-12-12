@@ -1,11 +1,12 @@
 import bcrypt from "bcrypt";
-import { db } from "@/shared/lib/db";
+
+import { LoginParams } from "@/modules/auth/types/ServicesParams";
 import {
   generateAccessToken,
   generateRefreshToken,
 } from "@/modules/auth/utils/tokenGenerator";
+import { db } from "@/shared/lib/db";
 import { BadRequestError } from "@/shared/utils/HttpErrors";
-import { LoginParams } from "@/modules/auth/types/ServicesParams";
 
 export const login = async ({ email, password }: LoginParams) => {
   const user = await db.user.findUnique({
@@ -23,7 +24,7 @@ export const login = async ({ email, password }: LoginParams) => {
     throw new BadRequestError("E-mail ou senha incorretos.");
   }
 
-  const { password: _pw, ...userWithoutPassword } = user;
+  const { password: _pw, ...userWithoutPassword } = user; // eslint-disable-line @typescript-eslint/no-unused-vars
 
   const accessToken = generateAccessToken(user.id);
   const refreshToken = generateRefreshToken(user.id);

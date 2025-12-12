@@ -1,14 +1,17 @@
 {
   "name": "ecommerce-belibeli",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
+    "lint:fix": "turbo run lint -- --fix",
     "check-types": "turbo run check-types"
   },
   "devDependencies": {
-    "turbo": "^2.6.1"
+    "turbo": "^2.6.1",
+    "typescript": "^5.9.3"
   },
   "packageManager": "pnpm@10.25.0",
   "engines": {

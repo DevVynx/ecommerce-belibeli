@@ -1,6 +1,6 @@
+import type { UpdateCartItemQuantityParams } from "@/modules/cart/types/ServiceParams";
 import { db } from "@/shared/lib/db";
 import { ForbiddenError, NotFoundError } from "@/shared/utils/HttpErrors";
-import type { UpdateCartItemQuantityParams } from "@/modules/cart/types/ServiceParams";
 
 export const updateCartItemQuantity = async ({
   userId,

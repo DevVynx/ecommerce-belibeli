@@ -1,6 +1,7 @@
+import jwt from "jsonwebtoken";
+
 import { JWT_ACCESS_SECRET, JWT_REFRESH_SECRET } from "@/shared/utils/env";
 import { UnauthorizedError } from "@/shared/utils/HttpErrors.js";
-import jwt from "jsonwebtoken";
 
 export async function verifyToken(
   token: string = "",

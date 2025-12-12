@@ -1,11 +1,11 @@
+import { Request,RequestHandler } from "express";
 import z from "zod";
-import { RequestHandler, Request } from "express";
 
 type Property = "body" | "query" | "header" | "params";
 
 type Schemas = Partial<Record<Property, z.ZodTypeAny>>;
 
-type ValidationError = Record<string, Object>;
+type ValidationError = Record<string, object>;
 
 type ValidationReturn<S> = {
   middleware: RequestHandler;
@@ -63,7 +63,7 @@ export const validation = <S extends Schemas>(schemas: S): ValidationReturn<S> =
   };
 
   const getValidatedValues = (req: Request) => {
-    const output: any = {};
+    const output: any = {}; // eslint-disable-line @typescript-eslint/no-explicit-any
 
     for (const key of Object.keys(schemas) as (keyof S)[]) {
       output[key] = req.validated?.[key as Property];

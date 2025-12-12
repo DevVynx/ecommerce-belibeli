@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "tsx watch --env-file=.env src/server.ts",
     "build": "tsup",
-    "lint": "eslint",
+    "lint": "eslint .",
     "check-types": "tsc --noEmit",
     "prisma:migrate": "dotenv -e .env -- prisma migrate dev",
     "prisma:studio": "dotenv -e .env -- prisma studio",
@@ -36,10 +36,10 @@
     "zod": "^4.1.12"
   },
   "devDependencies": {
-    "@repo/prettier-config": "workspace:*",
     "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@repo/prettier-config": "workspace:*",
     "@repo/types": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
     "@types/bcrypt": "6.0.0",
     "@types/cookie-parser": "^1.4.10",
     "@types/cors": "^2.8.19",
@@ -49,6 +49,7 @@
     "@types/pg": "^8.16.0",
     "cookie-parser": "^1.4.7",
     "dotenv-cli": "^11.0.0",
+    "eslint": "^9.39.1",
     "tsup": "^8.5.1",
     "tsx": "^4.20.6"
   },

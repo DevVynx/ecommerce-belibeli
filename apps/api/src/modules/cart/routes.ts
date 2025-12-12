@@ -1,3 +1,5 @@
+import { Router } from "express";
+
 import {
   addItemToCart,
   findAllCartItems,
@@ -7,7 +9,6 @@ import {
 } from "@/modules/cart/controllers";
 import v from "@/modules/cart/validators";
 import { authMiddleware } from "@/shared/middlewares/auth";
-import { Router } from "express";
 
 const cartRouter: Router = Router();
 

@@ -1,7 +1,7 @@
 import {
   addItemToCartRequest,
-  UpdateCartItemQuantityRequest,
   RemoveItemFromCartRequest,
+  UpdateCartItemQuantityRequest,
 } from "@repo/types/contracts";
 
 export type GetFullCartParams = {

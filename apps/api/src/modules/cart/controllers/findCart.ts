@@ -1,6 +1,7 @@
-import { RequestHandler, Response } from "express";
-import { cartServices } from "@/modules/cart/services";
 import { FindCartResponse } from "@repo/types/contracts";
+import { RequestHandler, Response } from "express";
+
+import { cartServices } from "@/modules/cart/services";
 
 export const findCart: RequestHandler = async (
   _req,

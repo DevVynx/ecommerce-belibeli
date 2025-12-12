@@ -1,6 +1,7 @@
-import { RequestHandler, Response } from "express";
-import { cartServices } from "@/modules/cart/services";
 import { UpdateCartItemQuantityResponse } from "@repo/types/contracts";
+import { RequestHandler, Response } from "express";
+
+import { cartServices } from "@/modules/cart/services";
 import v from "@/modules/cart/validators";
 
 export const updateCartItemQuantity: RequestHandler = async (

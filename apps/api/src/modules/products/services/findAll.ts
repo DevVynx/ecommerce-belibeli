@@ -1,6 +1,6 @@
-import { db } from "@/shared/lib/db";
-import type { FindAllProductsParams } from "@/modules/products/types/ServicesParams";
 import { controllerProductListMapper } from "@/modules/products/mappers";
+import type { FindAllProductsParams } from "@/modules/products/types/ServicesParams";
+import { db } from "@/shared/lib/db";
 
 export const findAll = async ({
   categoryId,

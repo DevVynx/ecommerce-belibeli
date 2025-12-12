@@ -1,7 +1,9 @@
-import { RequestHandler, Response } from "express";
-import { productServices } from "../services";
 import { FindAllProductsResponse } from "@repo/types/contracts";
+import { RequestHandler, Response } from "express";
+
 import v from "@/modules/products/validators";
+
+import { productServices } from "../services";
 
 export const findAll: RequestHandler = async (
   req,

@@ -1,8 +1,8 @@
-import { db } from "@/shared/lib/db";
+import { RefreshAccessTokenParams } from "@/modules/auth/types/ServicesParams";
 import { generateAccessToken } from "@/modules/auth/utils/tokenGenerator";
+import { db } from "@/shared/lib/db";
 import { BadRequestError } from "@/shared/utils/HttpErrors";
 import { verifyToken } from "@/shared/utils/verifyToken";
-import { RefreshAccessTokenParams } from "@/modules/auth/types/ServicesParams";
 
 export const refreshAccessToken = async ({
   refreshToken,

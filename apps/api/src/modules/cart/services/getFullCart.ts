@@ -1,7 +1,7 @@
-import { db } from "@/shared/lib/db";
-import { getCartSummary } from "@/modules/cart/utils/getCartSummary";
 import { controllerFullCartMapper } from "@/modules/cart/mappers";
 import type { GetFullCartParams } from "@/modules/cart/types/ServiceParams";
+import { getCartSummary } from "@/modules/cart/utils/getCartSummary";
+import { db } from "@/shared/lib/db";
 
 export const getFullCart = async ({ userId }: GetFullCartParams) => {
   const rawCart = await db.cart.findUnique({

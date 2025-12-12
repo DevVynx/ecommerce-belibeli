@@ -1,4 +1,5 @@
 import z from "zod";
+
 import { validation } from "@/shared/middlewares/validation";
 
 const body = z

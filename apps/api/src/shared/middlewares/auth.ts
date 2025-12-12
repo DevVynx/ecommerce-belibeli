@@ -1,5 +1,6 @@
-import { verifyToken } from "@/shared/utils/verifyToken.js";
 import type { RequestHandler } from "express";
+
+import { verifyToken } from "@/shared/utils/verifyToken.js";
 
 export const authMiddleware: RequestHandler = async (req, res, next) => {
   const accessToken = req.cookies.accessToken;

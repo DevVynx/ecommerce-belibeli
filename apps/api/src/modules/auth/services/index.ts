@@ -1,6 +1,6 @@
 import { login } from "./login";
-import { register } from "./register";
 import { refreshAccessToken } from "./refreshAccessToken";
+import { register } from "./register";
 
 export const authServices = {
   login,

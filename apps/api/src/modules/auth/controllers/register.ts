@@ -1,6 +1,7 @@
-import { RequestHandler, Response } from "express";
-import { authServices } from "@/modules/auth/services";
 import { RegisterResponse } from "@repo/types/contracts";
+import { RequestHandler, Response } from "express";
+
+import { authServices } from "@/modules/auth/services";
 import v from "@/modules/auth/validators";
 
 export const register: RequestHandler = async (

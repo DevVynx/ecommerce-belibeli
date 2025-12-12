@@ -1,6 +1,6 @@
+import type { CreateCartItemParams } from "@/modules/cart/types/ServiceParams";
 import { db } from "@/shared/lib/db";
 import { BadRequestError, NotFoundError } from "@/shared/utils/HttpErrors";
-import type { CreateCartItemParams } from "@/modules/cart/types/ServiceParams";
 import { buildVariantHash } from "@/shared/utils/variantHash";
 
 export const createCartItem = async ({

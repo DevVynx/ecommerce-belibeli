@@ -1,6 +1,6 @@
 import { addItemToCart } from "./addItemToCart";
-import { updateCartItemQuantity } from "./updateCartItemQuantity";
 import { removeItemFromCart } from "./removeItemFromCart";
+import { updateCartItemQuantity } from "./updateCartItemQuantity";
 
 const validations = { updateCartItemQuantity, addItemToCart, removeItemFromCart };
 

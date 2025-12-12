@@ -1,12 +1,14 @@
-import express, { Express } from "express";
-import cors from "cors";
-import helmet from "helmet";
 import cookieParser from "cookie-parser";
-import { productRouter } from "./modules/products/routes";
+import cors from "cors";
+import express, { Express } from "express";
+import helmet from "helmet";
+
 import { authRouter } from "@/modules/auth/routes";
 import { cartRouter } from "@/modules/cart/routes";
 import { handleGlobalError } from "@/shared/middlewares/handleGlobalError";
 import { notFoundHandler } from "@/shared/middlewares/notFoundHandler";
+
+import { productRouter } from "./modules/products/routes";
 
 export const app: Express = express();
 

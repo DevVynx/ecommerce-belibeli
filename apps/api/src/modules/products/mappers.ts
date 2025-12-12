@@ -1,4 +1,5 @@
 import { ProductDto } from "@repo/types/contracts";
+
 import type { Decimal } from "../../../prisma/generated/client/internal/prismaNamespace";
 
 type RawProduct = {

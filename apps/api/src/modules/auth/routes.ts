@@ -1,6 +1,7 @@
+import { Router } from "express";
+
 import { login, refresh, register } from "@/modules/auth/controllers";
 import v from "@/modules/auth/validators";
-import { Router } from "express";
 
 const authRouter: Router = Router();
 

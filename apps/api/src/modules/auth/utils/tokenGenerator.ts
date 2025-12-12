@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+
 import { JWT_ACCESS_SECRET, JWT_REFRESH_SECRET } from "@/shared/utils/env";
 
 export const generateAccessToken = (userId: string) => {

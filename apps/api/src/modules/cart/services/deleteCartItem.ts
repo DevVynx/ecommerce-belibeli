@@ -1,6 +1,6 @@
+import type { RemoveItemFromCartParams } from "@/modules/cart/types/ServiceParams";
 import { db } from "@/shared/lib/db";
 import { ForbiddenError, NotFoundError } from "@/shared/utils/HttpErrors";
-import type { RemoveItemFromCartParams } from "@/modules/cart/types/ServiceParams";
 
 export const deleteCartItem = async ({
   userId,

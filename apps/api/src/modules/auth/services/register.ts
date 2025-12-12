@@ -1,7 +1,8 @@
 import bcrypt from "bcrypt";
+
+import { RegisterParams } from "@/modules/auth/types/ServicesParams";
 import { db } from "@/shared/lib/db";
 import { ConflictError } from "@/shared/utils/HttpErrors";
-import { RegisterParams } from "@/modules/auth/types/ServicesParams";
 
 export const register = async ({ name, email, password }: RegisterParams) => {
   const existingUser = await db.user.findUnique({ where: { email } });
