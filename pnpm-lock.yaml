@@ -117,9 +117,6 @@ importers:
       '@mui/material':
         specifier: ^7.3.4
         version: 7.3.6(@emotion/react@11.14.0(@types/react@19.2.7)(react@19.2.3))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.7)(react@19.2.3))(@types/react@19.2.7)(react@19.2.3))(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-      '@prisma/client':
-        specifier: ^6.17.1
-        version: 6.19.1(prisma@7.1.0(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3))(typescript@5.9.3)
       '@radix-ui/react-dialog':
         specifier: ^1.1.15
         version: 1.1.15(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -141,9 +138,6 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
-      daisyui:
-        specifier: ^5.3.1
-        version: 5.5.13
       embla-carousel-react:
         specifier: ^8.6.0
         version: 8.6.0(react@19.2.3)
@@ -154,7 +148,7 @@ importers:
         specifier: ^0.548.0
         version: 0.548.0(react@19.2.3)
       motion:
-        specifier: ^12.23.24
+        specifier: ^12.23.26
         version: 12.23.26(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       next:
         specifier: ^16.0.10
@@ -987,18 +981,6 @@ packages:
 
   '@prisma/client-runtime-utils@7.1.0':
     resolution: {integrity: sha512-39xmeBrNTN40FzF34aJMjfX1PowVCqoT3UKUWBBSP3aXV05NRqGBC3x2wCDs96ti6ZgdiVzqnRDHtbzU8X+lPQ==}
-
-  '@prisma/client@6.19.1':
-    resolution: {integrity: sha512-4SXj4Oo6HyQkLUWT8Ke5R0PTAfVOKip5Roo+6+b2EDTkFg5be0FnBWiuRJc0BC0sRQIWGMLKW1XguhVfW/z3/A==}
-    engines: {node: '>=18.18'}
-    peerDependencies:
-      prisma: '*'
-      typescript: '>=5.1.0'
-    peerDependenciesMeta:
-      prisma:
-        optional: true
-      typescript:
-        optional: true
 
   '@prisma/client@7.1.0':
     resolution: {integrity: sha512-qf7GPYHmS/xybNiSOpzv9wBo+UwqfL2PeyX+08v+KVHDI0AlSCQIh5bBySkH3alu06NX9wy98JEnckhMHoMFfA==}
@@ -2067,9 +2049,6 @@ packages:
 
   csstype@3.2.3:
     resolution: {integrity: sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ==}
-
-  daisyui@5.5.13:
-    resolution: {integrity: sha512-Y1tHPzxU3a/MsArjQ5Bw4DaOnC1IsT9O+M9Wz2NwCw08vuCGhM+xx3ScWfL6IS4YiJXZHh73qNK9GhBWMRKY6Q==}
 
   damerau-levenshtein@1.0.8:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
@@ -4689,11 +4668,6 @@ snapshots:
 
   '@prisma/client-runtime-utils@7.1.0': {}
 
-  '@prisma/client@6.19.1(prisma@7.1.0(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3))(typescript@5.9.3)':
-    optionalDependencies:
-      prisma: 7.1.0(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
-      typescript: 5.9.3
-
   '@prisma/client@7.1.0(prisma@7.1.0(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3))(typescript@5.9.3)':
     dependencies:
       '@prisma/client-runtime-utils': 7.1.0
@@ -5738,8 +5712,6 @@ snapshots:
       which: 2.0.2
 
   csstype@3.2.3: {}
-
-  daisyui@5.5.13: {}
 
   damerau-levenshtein@1.0.8: {}
 
