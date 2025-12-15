@@ -1,23 +1,28 @@
 "use client";
-import { AnimatePresence,motion } from "framer-motion";
-import { BadgeAlertIcon } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
+
+import { BadgeAlertIcon } from "@/app/shared/assets/animatedIcons/badge-alert";
+import { useAnimatedIcon } from "@/app/shared/hooks/ui/useAnimatedIcon";
+import { useScreenSize } from "@/app/shared/hooks/ui/useScreenSize";
 
 type NotificationProps = {
   title: string;
   message: string;
-  duration?: number; // ms
-  onClose?: () => void;
+  duration?: number;
+  onCloseAction?: () => void;
 };
 
 export const ErrorNotification = ({
   title,
   message,
   duration = 3000,
-  onClose,
+  onCloseAction,
 }: NotificationProps) => {
   const [progress, setProgress] = useState(100);
   const [isVisible, setIsVisible] = useState(true);
+  const { isMobile } = useScreenSize();
+  const { iconRef, handleMouseEnter, handleMouseLeave } = useAnimatedIcon();
 
   useEffect(() => {
     const interval = 50;
@@ -25,47 +30,58 @@ export const ErrorNotification = ({
 
     const timer = setInterval(() => {
       setProgress((prev) => {
-        const newProgress = prev - decrement;
-        if (newProgress <= 0) {
+        const next = prev - decrement;
+        if (next <= 0) {
           clearInterval(timer);
-          // Inicia animação de saída
           setIsVisible(false);
           return 0;
         }
-        return newProgress;
+        return next;
       });
     }, interval);
 
-    return () => {
-      clearInterval(timer);
-    };
+    return () => clearInterval(timer);
   }, [duration]);
 
-  // Chama onClose DEPOIS da animação de saída
-  const handleExitComplete = () => {
-    onClose?.();
-  };
+  useEffect(() => {
+    const startTimer = setTimeout(() => {
+      iconRef.current?.startAnimation();
+      setTimeout(() => {
+        iconRef.current?.stopAnimation();
+      }, 1000);
+    }, 100);
+    return () => {
+      clearTimeout(startTimer);
+    };
+  }, [iconRef]);
 
   return (
-    <AnimatePresence onExitComplete={handleExitComplete}>
+    <AnimatePresence onExitComplete={onCloseAction}>
       {isVisible && (
         <motion.div
           key="error-notification"
-          initial={{ x: "100%", opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          exit={{ x: "100%", opacity: 0 }}
+          initial={isMobile ? { y: -24, opacity: 0 } : { x: 100, opacity: 0 }}
+          animate={isMobile ? { y: 0, opacity: 1 } : { x: 0, opacity: 1 }}
+          exit={isMobile ? { y: -24, opacity: 0 } : { x: 100, opacity: 0 }}
           transition={{ type: "spring", stiffness: 400, damping: 30 }}
-          className="fixed top-6 right-6 z-50 flex w-80 flex-col rounded-lg border border-red-300 bg-red-100 shadow-lg"
+          style={isMobile ? { left: "50%", x: "-50%" } : undefined}
+          className={`
+            fixed z-50 top-6
+            flex w-[90%] flex-col
+            rounded-lg border border-red-300 bg-red-100 shadow-lg
+            ${isMobile ? "max-w-lg" : "right-6 max-w-sm"}
+          `}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         >
           <div className="flex items-start gap-3 p-3 text-red-800">
-            <BadgeAlertIcon className="size-9 stroke-red-500" />
-            <div>
+            <BadgeAlertIcon ref={iconRef} size={35} className="text-red-500" />
+            <div className="min-w-0 flex-1">
               <h1 className="font-bold">{title}</h1>
               <p className="text-sm">{message}</p>
             </div>
           </div>
 
-          {/* Barra de progresso */}
           <div className="h-1 w-full overflow-hidden rounded-b-lg bg-red-300">
             <motion.div
               style={{ width: `${progress}%` }}

@@ -1,15 +1,15 @@
 "use client";
 import { useEffect } from "react";
 
+import { WifiOffIcon } from "@/app/shared/assets/animatedIcons/wifioff";
 import { LoadError } from "@/app/shared/components/LoadError";
 import { useAnimatedIcon } from "@/app/shared/hooks/ui/useAnimatedIcon";
-import { WifiOffIcon } from "@/assets/animatedIcons/wifioff";
 
 type ProductLoadErrorProps = {
-  onRetry: () => void;
+  onRetryAction: () => void;
 };
 
-export const CartLoadError = ({ onRetry }: ProductLoadErrorProps) => {
+export const CartLoadError = ({ onRetryAction }: ProductLoadErrorProps) => {
   const { handleMouseEnter, handleMouseLeave, iconRef } = useAnimatedIcon();
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export const CartLoadError = ({ onRetry }: ProductLoadErrorProps) => {
       icon={<WifiOffIcon ref={iconRef} size={40} className="text-red-500" />}
       title="Não foi possivel carregar o seu carrinho"
       description="Parece que estamos com problemas para buscar o seu carrinho. Por favor, verifique sua conexão com a internet ou aguarde alguns instantes."
-      onRetry={onRetry}
+      onRetryAction={onRetryAction}
       buttonText="Tentar novamente"
     />
   );

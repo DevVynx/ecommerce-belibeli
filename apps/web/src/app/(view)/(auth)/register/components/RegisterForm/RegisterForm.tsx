@@ -4,8 +4,8 @@ import Link from "next/link";
 
 import { OrDivider } from "@/app/(view)/(auth)/components/OrDivider";
 import { SocialLoginButton } from "@/app/(view)/(auth)/components/SocialLoginButton";
+import googleGLogo from "@/app/shared/assets/images/auth-logos/google-G.png";
 import { ErrorNotification } from "@/app/shared/components/ErrorNotification";
-import googleGLogo from "@/assets/images/auth-logos/google-G.png";
 
 import { Step1Identification } from "./Step1Identification";
 import { Step2Security } from "./Step2Security";
@@ -109,7 +109,7 @@ export const RegisterForm = () => {
         <ErrorNotification
           title="Erro ao tentar criar a sua conta"
           message={authError}
-          onClose={() => setAuthError("")}
+          onCloseAction={() => setAuthError("")}
         />
       )}
     </div>

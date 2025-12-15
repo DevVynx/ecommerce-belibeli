@@ -1,4 +1,4 @@
-import GeometricPattern from "@/assets/images/backgrounds/gray-geometric-pattern.jpg";
+import GeometricPattern from "@/app/shared/assets/images/backgrounds/gray-geometric-pattern.jpg";
 
 export const LeftLoginSide = () => {
   return (

@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useEffect } from "react";
 
+import { CartIcon } from "@/app/shared/assets/animatedIcons/cart";
 import { Button } from "@/app/shared/components/ui/button";
 import {
   Empty,
@@ -12,7 +13,6 @@ import {
   EmptyTitle,
 } from "@/app/shared/components/ui/empty";
 import { useAnimatedIcon } from "@/app/shared/hooks/ui/useAnimatedIcon";
-import { CartIcon } from "@/assets/animatedIcons/cart";
 
 export const EmptyCart = () => {
   const { handleMouseEnter, handleMouseLeave, iconRef } = useAnimatedIcon();

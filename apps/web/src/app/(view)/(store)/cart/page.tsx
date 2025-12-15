@@ -21,7 +21,7 @@ const CartPage = () => {
         <div className="mx-auto">
           <CartHeader />
           <div className="flex justify-center p-10">
-            <CartLoadError onRetry={refetch} />
+            <CartLoadError onRetryAction={refetch} />
           </div>
         </div>
       </section>

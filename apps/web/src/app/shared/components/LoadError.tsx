@@ -16,7 +16,7 @@ type EmptyMediaProps = HTMLAttributes<HTMLDivElement>;
 
 type LoadErrorProps = {
   /** Ação a ser executada ao clicar no botão */
-  onRetry: () => void;
+  onRetryAction: () => void;
   /** O elemento do ícone a ser renderizado */
   icon: ReactNode;
   /** O título principal */
@@ -32,7 +32,7 @@ type LoadErrorProps = {
 };
 
 export const LoadError = ({
-  onRetry,
+  onRetryAction,
   icon,
   title,
   description,
@@ -66,7 +66,7 @@ export const LoadError = ({
           variant="default"
           size="lg"
           className="cursor-pointer bg-blue-500 px-30 font-bold hover:bg-blue-500/80 active:bg-blue-500/50"
-          onClick={onRetry}
+          onClick={onRetryAction}
         >
           {buttonText}
         </Button>

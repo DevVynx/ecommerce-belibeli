@@ -16,7 +16,7 @@ export const Main = () => {
   if (isError) {
     return (
       <main className="max-w-9xl mx-auto flex flex-col bg-white pb-14 lg:pb-0">
-        <ProductLoadError onRetry={refetch} />
+        <ProductLoadError onRetryAction={refetch} />
       </main>
     );
   }
