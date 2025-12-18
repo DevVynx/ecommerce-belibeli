@@ -1,7 +1,7 @@
 "use client";
 import { IconMobileButton } from "@/app/shared/components/IconMobileButton";
 import { useSideMenu } from "@/app/shared/contexts/SideMenuMobileContext";
-import { useFindCart } from "@/app/shared/hooks/data/useCartQueries";
+import { useFindCartItems } from "@/app/shared/hooks/data/useCartQueries";
 
 import { HeaderLogo } from "./Logo";
 import { headerActionIcons } from "./MenuItems";
@@ -10,7 +10,7 @@ import { SideMenu } from "./SideMenu/SideMenu";
 
 export const NavBar = () => {
   const { isSideMenuMobOpen, setIsSideMenuMobOpen } = useSideMenu();
-  const { data } = useFindCart();
+  const { data } = useFindCartItems();
 
   const cartItemsCount = data ? data.count : 0;
 
