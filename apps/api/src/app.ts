@@ -5,6 +5,7 @@ import helmet from "helmet";
 
 import { authRouter } from "@/modules/auth/routes";
 import { cartRouter } from "@/modules/cart/routes";
+import { wishlistRouter } from "@/modules/wishlist/routes";
 import { handleGlobalError } from "@/shared/middlewares/handleGlobalError";
 import { notFoundHandler } from "@/shared/middlewares/notFoundHandler";
 
@@ -33,6 +34,7 @@ app.use(
 app.use("/api", authRouter);
 app.use("/api", productRouter);
 app.use("/api", cartRouter);
+app.use("/api", wishlistRouter);
 
 app.use(notFoundHandler);
 app.use(handleGlobalError);

@@ -4,3 +4,5 @@ export * from "./Auth/Requests";
 export * from "./Auth/Responses";
 export * from "./Cart/Requests";
 export * from "./Cart/Responses";
+export * from "./Wishlist/Requests";
+export * from "./Wishlist/Responses";
