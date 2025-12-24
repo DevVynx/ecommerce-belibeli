@@ -8,7 +8,7 @@ type ForYouSectionProps = {
 
 export const ForYouSection = ({ products }: ForYouSectionProps) => {
   return (
-    <section id="forYouSection" className="px-3 py-12">
+    <section id="forYouSection" className="px-2 py-12">
       <div className="mx-auto lg:container">
         <h1 className="text-center text-xl font-bold">Para você!</h1>
 

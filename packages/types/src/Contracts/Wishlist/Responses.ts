@@ -8,6 +8,7 @@ export type WishlistItemDto = {
     promotionPrice: number | null;
     promotionEnd: string | null;
     ratingRate: number;
+    ratingCount: number;
   };
 };
 

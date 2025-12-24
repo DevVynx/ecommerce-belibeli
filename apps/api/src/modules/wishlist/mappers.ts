@@ -12,6 +12,7 @@ type RawWishlistItem = {
     promotionPrice: Decimal | null;
     promotionEnd: Date | null;
     ratingRate: Decimal;
+    ratingCount: number;
   };
 };
 
@@ -41,6 +42,7 @@ export const controllerWishlistMapper = (
           ? item.product.promotionEnd.toISOString()
           : null,
         ratingRate: Number(item.product.ratingRate),
+        ratingCount: item.product.ratingCount,
       },
     })),
   };

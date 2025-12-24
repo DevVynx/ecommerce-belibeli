@@ -1,4 +1,4 @@
-export type addItemToWishlistRequest = {
+export type AddItemToWishlistRequest = {
   productId: string;
 };
 

@@ -17,6 +17,7 @@ export const findById = async ({ userId }: FindWishlistByIdParams) => {
               promotionPrice: true,
               promotionEnd: true,
               ratingRate: true,
+              ratingCount: true,
             },
           },
         },
