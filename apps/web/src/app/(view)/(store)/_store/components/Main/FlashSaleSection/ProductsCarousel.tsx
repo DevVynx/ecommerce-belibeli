@@ -1,7 +1,7 @@
 "use client";
 import type { ProductDto } from "@repo/types/contracts";
 
-import { ProductCard } from "@/app/shared/components/domain/store/ProductCard";
+import { ProductCard } from "@/app/shared/components/store/ProductCard";
 import { useScreenSize } from "@/app/shared/hooks/ui/useScreenSize";
 
 import {

@@ -6,8 +6,8 @@ import { CartPageSkeleton } from "@/app/(view)/(store)/cart/components/CartPageS
 import { CartSummary } from "@/app/(view)/(store)/cart/components/CartSummary";
 import { EmptyCart } from "@/app/(view)/(store)/cart/components/EmptyCart";
 import { RecommendedProducts } from "@/app/(view)/(store)/cart/components/RecommendedProducts";
-import { CartLoadError } from "@/app/shared/components/domain/store/CartLoadError";
-import { ProductDetailsModal } from "@/app/shared/components/domain/store/ProductDetailsModal/ProductDetailsModal";
+import { CartLoadError } from "@/app/shared/components/store/CartLoadError";
+import { ProductDetailsModal } from "@/app/shared/components/store/ProductDetailsModal/ProductDetailsModal";
 import { useFindCart } from "@/app/shared/hooks/data/useCartQueries";
 
 type CartPageProps = {

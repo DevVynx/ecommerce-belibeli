@@ -3,12 +3,12 @@
 import { useEffect } from "react";
 
 import { useGetUser } from "@/app/shared/hooks/data/useAuthQueries";
-import { useUserStore } from "@/app/shared/store/useUser";
+import { useUserState } from "@/app/shared/states/useUser";
 
 export function UserInitializer({ children }: { children: React.ReactNode }) {
   const { data, isError } = useGetUser();
-  const setUser = useUserStore((s) => s.setUser);
-  const clearUser = useUserStore((s) => s.clearUser);
+  const setUser = useUserState((s) => s.setUser);
+  const clearUser = useUserState((s) => s.clearUser);
 
   useEffect(() => {
     if (data?.user) {

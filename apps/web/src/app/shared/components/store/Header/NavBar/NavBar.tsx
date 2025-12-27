@@ -6,7 +6,7 @@ import { Button } from "@/app/shared/components/ui/button";
 import { useSideMenu } from "@/app/shared/contexts/SideMenuMobileContext";
 import { useFindCartItems } from "@/app/shared/hooks/data/useCartQueries";
 import { useFindWishlist } from "@/app/shared/hooks/data/useWishlistQueries";
-import { useUserStore } from "@/app/shared/store/useUser";
+import { useUserState } from "@/app/shared/states/useUser";
 
 import { HeaderLogo } from "./Logo";
 import { headerActionIcons } from "./MenuItems";
@@ -17,7 +17,7 @@ export const NavBar = () => {
   const { isSideMenuMobOpen, setIsSideMenuMobOpen } = useSideMenu();
   const { data: cartData } = useFindCartItems();
   const { data: wishlistData } = useFindWishlist();
-  const user = useUserStore((s) => s.user);
+  const user = useUserState((s) => s.user);
 
   const cartItemsCount = cartData ? cartData.count : 0;
   const wishlistItemsCount = wishlistData ? wishlistData.count : 0;

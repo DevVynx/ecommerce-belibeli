@@ -4,7 +4,7 @@ import type { FindAllProductsResponse } from "@repo/types/contracts";
 import { useProductDetailsContext } from "@/app/shared/contexts/ProductDetailsContext";
 import { getProductsOnSale } from "@/app/shared/utils/product/getProductsOnSale";
 
-import { ProductDetailsModal } from "../../../../../shared/components/domain/store/ProductDetailsModal/ProductDetailsModal";
+import { ProductDetailsModal } from "../../../../../shared/components/store/ProductDetailsModal/ProductDetailsModal";
 import { CategoriesSection } from "./CategoriesSection/CategoriesSection";
 import { FlashSaleSection } from "./FlashSaleSection/FlashSaleSection";
 import { ForYouSection } from "./ForYouSection/ForYouSection";

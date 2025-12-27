@@ -1,6 +1,6 @@
 import type { ProductDto } from "@repo/types/contracts";
 
-import { ProductCard } from "@/app/shared/components/domain/store/ProductCard";
+import { ProductCard } from "@/app/shared/components/store/ProductCard";
 
 type ForYouSectionProps = {
   products: ProductDto[];

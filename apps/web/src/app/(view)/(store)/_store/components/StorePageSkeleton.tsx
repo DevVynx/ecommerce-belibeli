@@ -1,5 +1,5 @@
-import { HeaderSkeleton } from "@/app/shared/components/domain/store/Skeletons/HeaderSkeleton";
-import { ProductCardSkeleton } from "@/app/shared/components/domain/store/Skeletons/ProductCardSkeleton";
+import { HeaderSkeleton } from "@/app/shared/components/store/Skeletons/HeaderSkeleton";
+import { ProductCardSkeleton } from "@/app/shared/components/store/Skeletons/ProductCardSkeleton";
 import { Skeleton } from "@/app/shared/components/ui/skeleton";
 
 export const StorePageSkeleton = () => {

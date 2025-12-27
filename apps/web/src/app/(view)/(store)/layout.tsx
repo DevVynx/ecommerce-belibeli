@@ -1,4 +1,4 @@
-import { Header } from "@/app/shared/components/domain/store/Header/Header";
+import { Header } from "@/app/shared/components/store/Header/Header";
 import { ProductDetailsProvider } from "@/app/shared/contexts/ProductDetailsContext";
 import { SideMenuProvider } from "@/app/shared/contexts/SideMenuMobileContext";
 import AuthListenerClient from "@/app/shared/providers/AuthListenerClient";

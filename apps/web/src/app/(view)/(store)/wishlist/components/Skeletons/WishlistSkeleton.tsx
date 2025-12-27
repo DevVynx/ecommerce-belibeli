@@ -1,6 +1,6 @@
 import { ExplorationSectionSkeleton } from "@/app/(view)/(store)/wishlist/components/Skeletons/ExplorationSectionSkeleton";
 import { WishlistItemsSkeleton } from "@/app/(view)/(store)/wishlist/components/Skeletons/WishlistItemsSkeleton";
-import { HeaderSkeleton } from "@/app/shared/components/domain/store/Skeletons/HeaderSkeleton";
+import { HeaderSkeleton } from "@/app/shared/components/store/Skeletons/HeaderSkeleton";
 import { Skeleton } from "@/app/shared/components/ui/skeleton";
 
 export const WishlistSkeleton = () => {

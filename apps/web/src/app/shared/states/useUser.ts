@@ -7,7 +7,7 @@ type UserState = {
   clearUser: () => void;
 };
 
-export const useUserStore = create<UserState>((set) => ({
+export const useUserState = create<UserState>((set) => ({
   user: null,
   setUser: (user) => set({ user }),
   clearUser: () => set({ user: null }),
