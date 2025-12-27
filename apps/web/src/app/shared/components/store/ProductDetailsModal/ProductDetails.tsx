@@ -1,11 +1,16 @@
 "use client";
 import { Rating } from "@mui/material";
-import { addItemToCartRequest } from "@repo/types/contracts";
+import { addItemToCartRequest, type ProductDto } from "@repo/types/contracts";
+import { motion, useAnimation } from "framer-motion";
 import { HeartIcon } from "lucide-react";
 import { useState } from "react";
 
-import { useProductDetailsContext } from "@/app/shared/contexts/ProductDetailsContext";
 import { useAddItemToCart } from "@/app/shared/hooks/data/useCartMutations";
+import {
+  useAddItemToWishlist,
+  useRemoveItemFromWishlist,
+} from "@/app/shared/hooks/data/useWishlistMutations";
+import { useWishlistStore } from "@/app/shared/states/useWishlist";
 import { getPercentDiscount } from "@/app/shared/utils/product/getPercentDiscount";
 import { isSaleActive } from "@/app/shared/utils/product/isSaleActive";
 
@@ -14,20 +19,39 @@ import { QuantitySelector } from "./QuantitySelector";
 
 export type SelectedOptionsState = Record<string, string>;
 
-export const ProductDetails = () => {
-  const { selectedProduct, setIsProductDetailsModalOpen } = useProductDetailsContext();
-  const { mutate } = useAddItemToCart();
+type ProductDetailsProps = {
+  setIsProductDetailsModalOpenAction: (open: boolean) => void;
+  selectedProduct: ProductDto;
+};
+
+export const ProductDetails = ({
+  selectedProduct,
+  setIsProductDetailsModalOpenAction,
+}: ProductDetailsProps) => {
+  const { mutate: addToCart } = useAddItemToCart();
+  const { mutate: addToWishlist } = useAddItemToWishlist();
+  const { mutate: removeFromWishlist } = useRemoveItemFromWishlist();
+
+  const { id, image, title, ratingRate, ratingCount, price, promotionPrice, productOptions } =
+    selectedProduct;
 
   const [count, setCount] = useState(1);
   const [selectedOptions, setSelectedOptions] = useState<SelectedOptionsState>({});
   const [showError, setShowError] = useState(false);
+  const isWishlisted = useWishlistStore((state) => !!state.map[id]);
+  const add = useWishlistStore((s) => s.add);
+  const remove = useWishlistStore((s) => s.remove);
+  const controls = useAnimation();
 
-  if (!selectedProduct) {
-    return <p className="text-red-500">Falha ao carregar os detalhes do produto</p>;
-  }
-
-  const { id, image, title, ratingRate, ratingCount, price, promotionPrice, productOptions } =
-    selectedProduct;
+  const handleToggleWishlist = () => {
+    if (isWishlisted) {
+      remove(id);
+      removeFromWishlist({ productId: id });
+    } else {
+      add(id);
+      addToWishlist({ productId: id });
+    }
+  };
 
   const areAllOptionsSelected = (): boolean => {
     if (productOptions.length === 0) return true;
@@ -37,8 +61,6 @@ export const ProductDetails = () => {
       return selectedValue !== undefined && selectedValue !== "";
     });
   };
-
-  console.log(areAllOptionsSelected());
 
   const buildPayload = (): addItemToCartRequest => {
     return {
@@ -65,12 +87,21 @@ export const ProductDetails = () => {
   const handleAddToCart = () => {
     if (!areAllOptionsSelected()) {
       setShowError(true);
+
+      controls.start({
+        x: [0, -8, 8, -8, 8, -8, 8, -6, 6, 0],
+        transition: {
+          duration: 0.8,
+          ease: "easeInOut",
+        },
+      });
+
       return;
     }
 
     const payload = buildPayload();
-    mutate(payload);
-    setIsProductDetailsModalOpen(false);
+    addToCart(payload);
+    setIsProductDetailsModalOpenAction(false);
   };
 
   const handleIncrement = () => setCount(count + 1);
@@ -123,25 +154,27 @@ export const ProductDetails = () => {
         </div>
 
         {/* ========== SEÇÃO DO MEIO (scroll) ========== */}
-        <div className="min-h-0 flex-1 overflow-y-auto py-2 pr-2">
+        <div className="min-h-0 flex-1 overflow-y-auto py-2 pr-2 pl-2">
           {/* Product Options */}
-          {productOptions.length > 0 && (
-            <div className="mb-6">
-              <ProductOptions
-                key={id}
-                productOptions={productOptions}
-                onSelectOption={handleSelectOption}
-                selectedOptions={selectedOptions}
-              />
+          <motion.div animate={controls}>
+            {productOptions.length > 0 && (
+              <div className="mb-6">
+                <ProductOptions
+                  key={id}
+                  productOptions={productOptions}
+                  onSelectOption={handleSelectOption}
+                  selectedOptions={selectedOptions}
+                />
 
-              {/* Mensagem de erro */}
-              {showError && (
-                <p className="mt-2 text-sm text-red-500">
-                  Por favor, selecione todas as opções antes de adicionar ao carrinho.
-                </p>
-              )}
-            </div>
-          )}
+                {/* Mensagem de erro */}
+                {showError && (
+                  <p className="mt-2 text-sm text-red-500">
+                    Por favor, selecione todas as opções antes de adicionar ao carrinho.
+                  </p>
+                )}
+              </div>
+            )}
+          </motion.div>
 
           {/* Quantity Selector */}
           <QuantitySelector
@@ -156,18 +189,20 @@ export const ProductDetails = () => {
           <div className="flex items-center justify-center gap-4">
             <button
               onClick={handleAddToCart}
-              disabled={!areAllOptionsSelected()}
-              className={`flex-1 px-8 py-4 font-bold text-white uppercase transition-colors ${
-                areAllOptionsSelected()
-                  ? "cursor-pointer bg-black hover:bg-black/80"
-                  : "cursor-not-allowed bg-black/40"
-              } `}
+              className="flex-1 cursor-pointer bg-black px-8 py-4 font-bold text-white uppercase transition-colors hover:bg-black/80"
             >
               Adicionar ao Carrinho
             </button>
 
-            <button className="group cursor-pointer rounded-full border border-black/10 p-3 transition-transform hover:scale-105">
-              <HeartIcon className="h-10 w-10 text-black/80 group-hover:fill-red-500 group-hover:text-red-500" />
+            <button
+              onClick={handleToggleWishlist}
+              className="group cursor-pointer rounded-full border border-black/10 p-3 transition-transform hover:scale-110 active:scale-130"
+            >
+              <HeartIcon
+                className={`size-9 ${
+                  isWishlisted ? "fill-red-500 text-red-500" : "fill-gray-400 text-gray-400"
+                }`}
+              />
             </button>
           </div>
         </div>

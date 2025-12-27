@@ -7,7 +7,7 @@ import {
   useAddItemToWishlist,
   useRemoveItemFromWishlist,
 } from "@/app/shared/hooks/data/useWishlistMutations";
-import { useIsWishlisted } from "@/app/shared/hooks/ui/useIsWishlisted";
+import { useWishlistStore } from "@/app/shared/states/useWishlist";
 import { getPercentDiscount } from "@/app/shared/utils/product/getPercentDiscount";
 import { isSaleActive } from "@/app/shared/utils/product/isSaleActive";
 
@@ -17,9 +17,11 @@ type ProductCardProps = {
 };
 
 export const ProductCard = ({ product, grid }: ProductCardProps) => {
-  const { mutate: wishProduct } = useAddItemToWishlist();
-  const { mutate: unwishProduct } = useRemoveItemFromWishlist();
-  const { isWishlisted } = useIsWishlisted(product.id);
+  const { mutate: addToWishlist } = useAddItemToWishlist();
+  const { mutate: removeFromWishlist } = useRemoveItemFromWishlist();
+  const isWishlisted = useWishlistStore((state) => !!state.map[product.id]);
+  const add = useWishlistStore((s) => s.add);
+  const remove = useWishlistStore((s) => s.remove);
   const { handleOpenProductDetails } = useProductDetailsContext();
 
   const isProductOnSale = isSaleActive(product.promotionEnd);
@@ -29,9 +31,11 @@ export const ProductCard = ({ product, grid }: ProductCardProps) => {
 
   const handleToggleWishlist = () => {
     if (isWishlisted) {
-      unwishProduct({ productId: product.id });
+      remove(product.id);
+      removeFromWishlist({ productId: product.id });
     } else {
-      wishProduct({ productId: product.id });
+      add(product.id);
+      addToWishlist({ productId: product.id });
     }
   };
 

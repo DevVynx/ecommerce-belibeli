@@ -8,7 +8,6 @@ export const refreshAccessToken = async ({
   refreshToken,
 }: RefreshAccessTokenParams) => {
   const { userId } = await verifyToken(refreshToken, "refresh");
-  console.log(userId);
 
   const user = await db.user.findUnique({ where: { id: userId } });
 

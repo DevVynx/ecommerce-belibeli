@@ -1,6 +1,7 @@
 "use client";
 
 import { XIcon } from "lucide-react";
+import { createPortal } from "react-dom";
 
 import { IconMobileButton } from "@/app/shared/components/IconMobileButton";
 import { useProductDetailsContext } from "@/app/shared/contexts/ProductDetailsContext";
@@ -8,12 +9,16 @@ import { useProductDetailsContext } from "@/app/shared/contexts/ProductDetailsCo
 import { ProductDetails } from "./ProductDetails";
 
 export const ProductDetailsModal = () => {
-  const { setIsProductDetailsModalOpen, isProductDetailsModalOpen } = useProductDetailsContext();
+  const { setIsProductDetailsModalOpen, isProductDetailsModalOpen, selectedProduct } =
+    useProductDetailsContext();
 
   if (!isProductDetailsModalOpen) return null;
+  if (!selectedProduct) {
+    return <p className="text-red-500">Falha ao carregar os detalhes do produto</p>;
+  }
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
+  return createPortal(
+    <div className="fixed inset-0 z-30 flex items-center justify-center bg-black/70 p-4">
       <div className="relative w-full max-w-5xl rounded-md bg-white p-6 md:p-10">
         <IconMobileButton
           onClick={() => setIsProductDetailsModalOpen(false)}
@@ -21,9 +26,12 @@ export const ProductDetailsModal = () => {
         >
           <XIcon className="size-5" />
         </IconMobileButton>
-
-        <ProductDetails />
+        <ProductDetails
+          selectedProduct={selectedProduct}
+          setIsProductDetailsModalOpenAction={setIsProductDetailsModalOpen}
+        />
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };

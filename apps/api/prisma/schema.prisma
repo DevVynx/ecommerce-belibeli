@@ -103,11 +103,10 @@ model CartItem {
 
   productOptions CartItemOption[]
 
-  productId  String  @map("product_id") @db.Uuid
-  cartId     String  @map("cart_id") @db.Uuid
-  product    Product @relation(fields: [productId], references: [id], onDelete: Cascade)
-  cart       Cart    @relation(fields: [cartId], references: [id], onDelete: Cascade)
-  wishlistId String? @db.Uuid
+  productId String  @map("product_id") @db.Uuid
+  cartId    String  @map("cart_id") @db.Uuid
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  cart      Cart    @relation(fields: [cartId], references: [id], onDelete: Cascade)
 
   @@unique([cartId, productId, variantHash])
   @@index([cartId])
