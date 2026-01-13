@@ -14,9 +14,6 @@
     "db:seed": "dotenv -e .env -- tsx prisma/seed.ts",
     "db:reset": "prisma migrate reset --skip-seed && pnpm db:seed"
   },
-  "prisma": {
-    "seed": "tsx prisma/seed.ts"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -24,7 +21,6 @@
   "dependencies": {
     "@prisma/adapter-pg": "^7.1.0",
     "@prisma/client": "7.1.0",
-    "@repo/utils": "workspace:*",
     "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",

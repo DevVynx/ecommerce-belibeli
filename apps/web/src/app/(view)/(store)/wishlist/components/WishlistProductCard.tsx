@@ -88,10 +88,10 @@ export const WishlistProductCard = ({ product: p }: WishlistProductCardProps) =>
               onMouseLeave={handleMouseLeave}
               onMouseEnter={handleMouseEnter}
               type="button"
-              className="font-semi-bold mt-2 w-full rounded-xl border border-gray-500 bg-white px-4 py-2 text-sm text-black hover:bg-neutral-200"
+              className="font-semi-bold mt-2 h-8 w-full rounded-xl border border-gray-500 bg-white px-4 py-2 text-sm text-black hover:bg-neutral-200"
             >
               Remover da lista
-              <TrashIcon ref={iconRef} />
+              <TrashIcon ref={iconRef} size={15} />
             </Button>
           </div>
         </div>

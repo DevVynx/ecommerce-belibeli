@@ -1,7 +1,10 @@
 import type { CartItemDto } from "@repo/types/contracts";
-import { Heart, Minus, Plus, Trash } from "lucide-react";
+import { Minus, Plus } from "lucide-react";
 import React from "react";
 
+import { HeartIcon } from "@/app/shared/assets/animatedIcons/heart";
+import { TrashIcon } from "@/app/shared/assets/animatedIcons/trash";
+import { Button } from "@/app/shared/components/ui/button";
 import { isSaleActive } from "@/app/shared/utils/product/isSaleActive";
 
 type CartItemProps = {
@@ -161,10 +164,10 @@ const CartItemQuantityControl = ({
   onDecrease,
 }: CartItemQuantityControlProps) => {
   return (
-    <div className="flex items-center sm:gap-1">
+    <div className="flex items-center gap-1">
       <button
         onClick={onDecrease}
-        className="flex h-5 w-5 cursor-pointer items-center justify-center rounded-full border border-gray-300 text-sm hover:bg-gray-50 active:bg-gray-200 sm:h-6 sm:w-6 md:h-8 md:w-8 md:text-base"
+        className="flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border border-gray-300 text-sm hover:bg-gray-50 active:bg-gray-200 md:h-8 md:w-8 md:text-base"
         aria-label="Diminuir quantidade"
       >
         <Minus className="size-2.5 stroke-black/70 md:size-4" />
@@ -174,7 +177,7 @@ const CartItemQuantityControl = ({
       </span>
       <button
         onClick={onIncrease}
-        className="flex h-5 w-5 cursor-pointer items-center justify-center rounded-full border border-gray-300 text-sm hover:bg-gray-50 active:bg-gray-200 sm:h-6 sm:w-6 md:h-8 md:w-8 md:text-base"
+        className="flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border border-gray-300 text-sm hover:bg-gray-50 active:bg-gray-200 md:h-8 md:w-8 md:text-base"
         aria-label="Aumentar quantidade"
       >
         <Plus className="size-2.5 stroke-black/70 md:size-4" />
@@ -190,21 +193,21 @@ type CartItemSecondaryActionsProps = {
 
 const CartItemSecondaryActions = ({ onDelete, onAddToWishlist }: CartItemSecondaryActionsProps) => {
   return (
-    <div className="flex items-center gap-4 sm:gap-5 md:flex-row">
-      <button
+    <div className="flex items-center gap-6.5 md:flex-row">
+      <Button
         onClick={onAddToWishlist}
-        className="flex h-5 w-5 cursor-pointer items-center justify-center rounded-full transition-colors hover:bg-gray-100 active:bg-gray-200 sm:h-6 sm:w-6 md:h-8 md:w-8"
+        className="flex cursor-pointer items-center justify-center rounded-full bg-transparent p-1 transition-colors hover:bg-red-400 active:bg-gray-200 sm:h-6 sm:w-6 md:h-8 md:w-8"
         aria-label="Adicionar à lista de desejos"
       >
-        <Heart className="size-4 stroke-black/70 sm:size-5 md:size-6" />
-      </button>
-      <button
+        <HeartIcon size={20} className="text-black/70" />
+      </Button>
+      <Button
         onClick={onDelete}
-        className="flex h-5 w-5 cursor-pointer items-center justify-center rounded-full transition-colors hover:bg-red-50 active:bg-red-100 sm:h-6 sm:w-6 md:h-8 md:w-8"
+        className="flex cursor-pointer items-center justify-center rounded-full bg-transparent p-1 transition-colors hover:bg-red-200 active:bg-red-100 sm:h-6 sm:w-6 md:h-8 md:w-8"
         aria-label="Remover do carrinho"
       >
-        <Trash className="size-4 stroke-black/70 sm:size-5 md:size-6" />
-      </button>
+        <TrashIcon size={20} className="text-black/70" />
+      </Button>
     </div>
   );
 };
