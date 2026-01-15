@@ -10,3 +10,4 @@ export function getEnvOrThrow(name: string): string {
 
 export const JWT_ACCESS_SECRET = getEnvOrThrow("JWT_ACCESS_SECRET");
 export const JWT_REFRESH_SECRET = getEnvOrThrow("JWT_REFRESH_SECRET");
+export const IP_ADDRESS = getEnvOrThrow("IP_ADDRESS");
