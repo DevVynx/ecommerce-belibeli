@@ -1,7 +1,7 @@
 services:
   db:
     image: postgres:16-alpine
-    container_name: ecommerce-belibeli-db
+    container_name: belibeli-db
     restart: always
     environment:
       POSTGRES_USER: dev
@@ -17,6 +17,31 @@ services:
       timeout: 5s
       retries: 5
 
+  api:
+    container_name: belibeli-api
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    image: belibeli/api:local
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - apps/api/.env.docker
+    ports:
+      - "8000:8000"
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:8000/api
+    image: belibeli/web:local
+    depends_on:
+      - api
+    ports:
+      - "3000:3000"
+
 volumes:
   postgres_data:
-    driver: local

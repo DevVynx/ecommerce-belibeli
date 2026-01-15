@@ -1,10 +1,8 @@
-import { createRequire } from "module";
+/** @typedef {import('prettier').Config} PrettierConfig */
 
-const require = createRequire(import.meta.url);
+/** @type { PrettierConfig } */
 
-/** @type {import("prettier").Config} */
-
-export default {
+const config = {
   printWidth: 100,
   tabWidth: 2,
   useTabs: false,
@@ -19,3 +17,5 @@ export default {
   endOfLine: "auto",
   plugins: [require.resolve("prettier-plugin-tailwindcss")],
 };
+
+export default config;

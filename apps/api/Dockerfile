@@ -35,4 +35,4 @@ RUN apk add --no-cache curl
 
 COPY --from=builder /out ./
 
-CMD ["node", "dist/server.cjs"]
+CMD ["node", "dist/server.js"]
