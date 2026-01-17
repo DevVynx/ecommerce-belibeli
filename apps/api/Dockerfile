@@ -2,7 +2,7 @@
 # -------- Production Builder --------
 FROM node:24-alpine AS builder
 
-RUN corepack enable pnpm && corepack install -g pnpm@10.14.0
+RUN corepack enable pnpm && corepack install -g pnpm@10.28.0
 
 WORKDIR /belibeli
 
@@ -36,3 +36,16 @@ RUN apk add --no-cache curl
 COPY --from=builder /out ./
 
 CMD ["node", "dist/server.js"]
+
+
+
+# -------- Dev (with hot reload) --------
+FROM node:24-alpine AS dev
+
+RUN apk add --no-cache curl
+
+RUN corepack enable pnpm && corepack install -g pnpm@10.14.0
+
+WORKDIR /belibeli
+
+CMD ["pnpm", "dev", "--filter=api"]

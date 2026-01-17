@@ -14,10 +14,6 @@
     "db:seed": "dotenv -e .env -- tsx prisma/seed.ts",
     "db:reset": "prisma migrate reset --skip-seed && pnpm db:seed"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "packageManager": "pnpm@10.20.0",
   "dependencies": {
     "@prisma/adapter-pg": "^7.1.0",
     "@prisma/client": "7.1.0",

@@ -1,10 +1,7 @@
 # -------- BUILD STAGE --------
 FROM node:24-alpine AS builder
 
-ARG NEXT_PUBLIC_API_URL
-ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
-
-RUN corepack enable && corepack prepare pnpm@10.14.0 --activate
+RUN corepack enable && corepack prepare pnpm@10.28.0 --activate
 
 WORKDIR /belibeli
 
@@ -36,3 +33,16 @@ COPY --from=builder /belibeli/apps/web/.next/static ./apps/web/.next/static
 
 # run the Next standalone server
 CMD ["node", "apps/web/server.js"]
+
+
+
+# -------- Dev (with hot reload) --------
+FROM node:24-alpine AS dev
+
+RUN apk add --no-cache curl
+
+RUN corepack enable pnpm && corepack install -g pnpm@10.14.0
+
+WORKDIR /belibeli
+
+CMD ["pnpm", "dev", "--filter=web"]

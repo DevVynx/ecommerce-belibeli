@@ -12,6 +12,7 @@
 **/.next/
 **/.pnp
 **/.pnp.*
+**/.pnpm-store/
 **/.yarn/
 **/node_modules/
 
