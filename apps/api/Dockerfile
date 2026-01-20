@@ -44,7 +44,7 @@ FROM node:24-alpine AS dev
 
 RUN apk add --no-cache curl
 
-RUN corepack enable pnpm && corepack install -g pnpm@10.14.0
+RUN corepack enable pnpm && corepack install -g pnpm@10.28.0
 
 WORKDIR /belibeli
 

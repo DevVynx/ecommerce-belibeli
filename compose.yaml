@@ -5,8 +5,7 @@ services:
       context: .
       dockerfile: docker/Dockerfile.cli
     volumes:
-      - .:/belibeli:cached
-      - node_modules:/belibeli/node_modules
+      - .:/belibeli
     environment:
       CI: true
     command: sh -lc "pnpm install"
@@ -21,8 +20,7 @@ services:
       setup:
         condition: service_completed_successfully
     volumes:
-      - .:/belibeli:cached
-      - node_modules:/belibeli/node_modules
+      - .:/belibeli
     command: sh -c "tail -f /dev/null"
     restart: "no"
 
@@ -60,16 +58,9 @@ services:
       setup:
         condition: service_completed_successfully
     volumes:
-      - .:/belibeli:cached
-      - node_modules:/belibeli/node_modules
+      - .:/belibeli
     ports:
       - "8000:8000"
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/health || exit 1"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 30s
 
   web:
     container_name: web
@@ -82,17 +73,16 @@ services:
     depends_on:
       setup:
         condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://$${HOSTNAME}:$${PORT}/health || exit 1"]
+      start_period: 10s
+      interval: 5s
+      timeout: 3s
+      retries: 10
     volumes:
-      - .:/belibeli:cached
-      - node_modules:/belibeli/node_modules
+      - .:/belibeli
     ports:
       - "3000:3000"
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000 || exit 1"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 30s
 
 networks:
   default:
@@ -101,4 +91,3 @@ networks:
 
 volumes:
   postgres_data:
-  node_modules:

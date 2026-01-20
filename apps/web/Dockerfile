@@ -10,13 +10,17 @@ COPY package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json ./
 COPY apps/web/package.json apps/web/
 COPY --parents packages/*/package.json ./
 
+# Install workspace deps
 RUN pnpm install --frozen-lockfile
 
-COPY . .
+# Copy in only what the API needs
+COPY apps/web apps/web
+COPY packages packages
 
 # build only the web (Next.js)
-# ensure next.config.js has: output: 'standalone'
 RUN pnpm turbo run build --filter=web
+
+
 
 # -------- PRODUCTION STAGE --------
 FROM node:24-alpine AS prod
@@ -41,7 +45,7 @@ FROM node:24-alpine AS dev
 
 RUN apk add --no-cache curl
 
-RUN corepack enable pnpm && corepack install -g pnpm@10.14.0
+RUN corepack enable pnpm && corepack install -g pnpm@10.28.0
 
 WORKDIR /belibeli
 
