@@ -57,4 +57,4 @@ export type UpdateCartItemQuantityResponse = {
   };
 };
 
-export type RemoveCartItemResponse = void;
+export type RemoveItemFromCartResponse = void;

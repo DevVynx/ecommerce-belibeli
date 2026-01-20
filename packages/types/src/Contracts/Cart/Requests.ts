@@ -3,7 +3,7 @@ export type OptionsDto = {
   optionValueId: string;
 };
 
-export type addItemToCartRequest = {
+export type AddItemToCartRequest = {
   productId: string;
   productOptions: OptionsDto[];
   quantity: number;

@@ -26,7 +26,7 @@ services:
 
   db:
     image: postgres:16-alpine
-    container_name: belibeli-db
+    container_name: db
     restart: always
     environment:
       POSTGRES_USER: dev

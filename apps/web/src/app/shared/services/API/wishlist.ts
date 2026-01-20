@@ -19,8 +19,8 @@ const addItemToWishlist = async ({ productId }: AddItemToWishlistRequest) => {
   return response.data;
 };
 
-const removeItemToWishlist = async ({ productId }: RemoveItemFromWishlistRequest) => {
+const removeItemFromWishlist = async ({ productId }: RemoveItemFromWishlistRequest) => {
   await API.delete(`/wishlist/${productId}`);
 };
 
-export const wishlistService = { findWishlist, addItemToWishlist, removeItemToWishlist };
+export const wishlistService = { findWishlist, addItemToWishlist, removeItemFromWishlist };

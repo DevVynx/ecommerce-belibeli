@@ -1,58 +1,89 @@
 import type { CartItemDto } from "@repo/types/contracts";
 import { Minus, Plus } from "lucide-react";
+import { useState } from "react";
 import React from "react";
 
 import { HeartIcon } from "@/app/shared/assets/animatedIcons/heart";
 import { TrashIcon } from "@/app/shared/assets/animatedIcons/trash";
 import { Button } from "@/app/shared/components/ui/button";
+import {
+  useRemoveItemFromCart,
+  useUpdateCartItemQuantity,
+} from "@/app/shared/hooks/data/useCartMutations";
+import { useAddItemToWishlist } from "@/app/shared/hooks/data/useWishlistMutations";
 import { isSaleActive } from "@/app/shared/utils/product/isSaleActive";
 
 type CartItemProps = {
-  product: CartItemDto["product"];
-  productOptions: CartItemDto["productOptions"];
-  quantity: number;
-  onDelete?: () => void;
-  onAddToWishlist?: () => void;
-  onQuantityChange?: (newQuantity: number) => void;
+  item: CartItemDto;
 };
 
-export const CartItem = ({
-  product,
-  productOptions,
-  quantity,
-  onDelete,
-  onAddToWishlist,
-  onQuantityChange,
-}: CartItemProps) => {
-  const isProductOnSale = isSaleActive(product.promotionEnd);
+export const CartItem = ({ item }: CartItemProps) => {
+  const { mutate: addtoWishlist } = useAddItemToWishlist();
+  const { mutate: removeFromCart } = useRemoveItemFromCart();
+  const { mutate: updateCartItemQuantity } = useUpdateCartItemQuantity();
+  const [quantity, setQuantity] = useState(item.quantity);
+
+  const isProductOnSale = isSaleActive(item.product.promotionEnd);
 
   const handleIncrease = () => {
-    onQuantityChange?.(quantity + 1);
+    if (quantity >= 99) return;
+    const nextQuantity = quantity + 1;
+
+    setQuantity(nextQuantity);
+
+    updateCartItemQuantity({
+      cartItemId: item.id,
+      quantity: nextQuantity,
+    });
   };
 
   const handleDecrease = () => {
-    if (quantity > 1) {
-      onQuantityChange?.(quantity - 1);
-    }
+    if (quantity <= 1) return;
+    const nextQuantity = quantity - 1;
+
+    setQuantity(nextQuantity);
+
+    updateCartItemQuantity({
+      cartItemId: item.id,
+      quantity: nextQuantity,
+    });
+  };
+
+  const handleAddToWishlist = () => {
+    addtoWishlist({
+      productId: item.product.id,
+    });
+    removeFromCart({
+      cartItemId: item.id,
+    });
+  };
+
+  const handleRemoveFromCart = () => {
+    removeFromCart({
+      cartItemId: item.id,
+    });
   };
 
   return (
     <div className="flex w-full rounded-sm bg-neutral-100 p-4 text-xs md:text-lg">
-      <CartItemImage product={product} />
+      <CartItemImage product={item.product} />
       <div className="relative ml-3 flex flex-1">
         <CartItemInfo>
           <div>
-            <CartItemTitle productTitle={product.title} />
-            <CartItemSpecifications productOptions={productOptions} />
+            <CartItemTitle productTitle={item.product.title} />
+            <CartItemSpecifications productOptions={item.productOptions} />
           </div>
           <CartItemPrice
-            productPrice={product.price}
-            productPromoPrice={product.promotionPrice}
+            productPrice={item.product.price}
+            productPromoPrice={item.product.promotionPrice}
             isProductOnSale={isProductOnSale}
           />
         </CartItemInfo>
         <CartItemActions>
-          <CartItemSecondaryActions onDelete={onDelete} onAddToWishlist={onAddToWishlist} />
+          <CartItemSecondaryActions
+            handleAddToWishlist={handleAddToWishlist}
+            handleRemoveFromCart={handleRemoveFromCart}
+          />
           <CartItemQuantityControl
             quantity={quantity}
             onIncrease={handleIncrease}
@@ -154,8 +185,8 @@ const CartItemActions = ({ children }: CartItemActionsProps) => {
 
 type CartItemQuantityControlProps = {
   quantity: number;
-  onIncrease?: () => void;
-  onDecrease?: () => void;
+  onIncrease: () => void;
+  onDecrease: () => void;
 };
 
 const CartItemQuantityControl = ({
@@ -187,22 +218,25 @@ const CartItemQuantityControl = ({
 };
 
 type CartItemSecondaryActionsProps = {
-  onDelete?: () => void;
-  onAddToWishlist?: () => void;
+  handleAddToWishlist: () => void;
+  handleRemoveFromCart?: () => void;
 };
 
-const CartItemSecondaryActions = ({ onDelete, onAddToWishlist }: CartItemSecondaryActionsProps) => {
+const CartItemSecondaryActions = ({
+  handleAddToWishlist,
+  handleRemoveFromCart,
+}: CartItemSecondaryActionsProps) => {
   return (
     <div className="flex items-center gap-6.5 md:flex-row">
       <Button
-        onClick={onAddToWishlist}
+        onClick={handleAddToWishlist}
         className="flex cursor-pointer items-center justify-center rounded-full bg-transparent p-1 transition-colors hover:bg-red-400 active:bg-gray-200 sm:h-6 sm:w-6 md:h-8 md:w-8"
         aria-label="Adicionar à lista de desejos"
       >
         <HeartIcon size={20} className="text-black/70" />
       </Button>
       <Button
-        onClick={onDelete}
+        onClick={handleRemoveFromCart}
         className="flex cursor-pointer items-center justify-center rounded-full bg-transparent p-1 transition-colors hover:bg-red-200 active:bg-red-100 sm:h-6 sm:w-6 md:h-8 md:w-8"
         aria-label="Remover do carrinho"
       >

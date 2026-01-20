@@ -25,7 +25,7 @@ export const useRemoveItemFromWishlist = () => {
 
   return useMutation<RemoveWishlistItemResponse, AxiosError, RemoveItemFromWishlistRequest>({
     mutationFn: (params: RemoveItemFromWishlistRequest) =>
-      wishlistService.removeItemToWishlist(params),
+      wishlistService.removeItemFromWishlist(params),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["wishlist"] });
     },

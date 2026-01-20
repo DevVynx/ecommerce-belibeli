@@ -1,4 +1,4 @@
-import { RemoveCartItemResponse } from "@repo/types/contracts";
+import { RemoveItemFromCartResponse } from "@repo/types/contracts";
 import { RequestHandler, Response } from "express";
 
 import { cartServices } from "@/modules/cart/services";
@@ -6,7 +6,7 @@ import v from "@/modules/cart/validators";
 
 export const removeItemFromCart: RequestHandler = async (
   req,
-  res: Response<RemoveCartItemResponse>
+  res: Response<RemoveItemFromCartResponse>
 ) => {
   const { userId } = res.locals.user;
   const { cartItemId } = v.removeItemFromCart.getValidatedValues(req).params;

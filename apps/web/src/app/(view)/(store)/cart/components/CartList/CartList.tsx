@@ -12,9 +12,7 @@ export const CartList = ({ items }: CartListProps) => {
       {items.map((item) => (
         <CartItem
           key={item.id}
-          product={item.product}
-          productOptions={item.productOptions}
-          quantity={item.quantity}
+          item={item}
         />
       ))}
     </div>

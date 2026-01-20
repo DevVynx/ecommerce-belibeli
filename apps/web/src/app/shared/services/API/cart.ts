@@ -1,8 +1,11 @@
 import {
-  addItemToCartRequest,
+  AddItemToCartRequest,
   AddItemToCartResponse,
   FindAllCartItemsResponse,
   FindCartResponse,
+  type RemoveItemFromCartRequest,
+  type UpdateCartItemQuantityRequest,
+  type UpdateCartItemQuantityResponse,
 } from "@repo/types/contracts";
 
 import { API } from "@/app/shared/services/API/API";
@@ -19,7 +22,7 @@ const findCartItems = async () => {
   return response.data;
 };
 
-const addItemToCart = async ({ productId, quantity, productOptions }: addItemToCartRequest) => {
+const addItemToCart = async ({ productId, quantity, productOptions }: AddItemToCartRequest) => {
   const response = await API.post<AddItemToCartResponse>("/cart/items", {
     productId,
     productOptions,
@@ -29,4 +32,26 @@ const addItemToCart = async ({ productId, quantity, productOptions }: addItemToC
   return response.data;
 };
 
-export const cartService = { findCart, findCartItems, addItemToCart };
+const updateCartItemQuantity = async ({ cartItemId, quantity }: UpdateCartItemQuantityRequest) => {
+  const response = await API.patch<UpdateCartItemQuantityResponse>(
+    `/cart/items/${cartItemId}/quantity`,
+    {
+      cartItemId,
+      quantity,
+    }
+  );
+
+  return response.data;
+};
+
+const removeItemFromCart = async ({ cartItemId }: RemoveItemFromCartRequest) => {
+  await API.delete(`/cart/items/${cartItemId}`);
+};
+
+export const cartService = {
+  findCart,
+  findCartItems,
+  addItemToCart,
+  updateCartItemQuantity,
+  removeItemFromCart,
+};
