@@ -1,10 +1,8 @@
 import type { CartItemDto } from "@repo/types/contracts";
-import { Minus, Plus } from "lucide-react";
+import { Heart, Minus, Plus, Trash2 } from "lucide-react";
 import { useRef, useState } from "react";
 import React from "react";
 
-import { HeartIcon } from "@/app/shared/assets/animatedIcons/heart";
-import { TrashIcon } from "@/app/shared/assets/animatedIcons/trash";
 import { Button } from "@/app/shared/components/ui/button";
 import {
   useRemoveItemFromCart,
@@ -30,7 +28,8 @@ export const CartItem = ({ item, addPendingItem, removePendingItem }: CartItemPr
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleQuantityChange = (nextQuantity: number) => {
-    if (nextQuantity === quantity) return;
+    if (nextQuantity >= 99) return;
+    if (nextQuantity < 1) handleRemoveFromCart();
     addPendingItem(item.id);
     setQuantity(nextQuantity);
 
@@ -67,7 +66,7 @@ export const CartItem = ({ item, addPendingItem, removePendingItem }: CartItemPr
   };
 
   return (
-    <div className="flex w-full rounded-sm bg-neutral-100 p-4 text-xs md:text-lg">
+    <div className="flex h-auto w-full rounded-sm bg-neutral-100 p-4 text-xs md:h-51.5 md:text-lg">
       <CartItemImage product={item.product} />
       <div className="relative ml-3 flex flex-1">
         <CartItemInfo>
@@ -82,10 +81,7 @@ export const CartItem = ({ item, addPendingItem, removePendingItem }: CartItemPr
           />
         </CartItemInfo>
         <CartItemActions>
-          <CartItemSecondaryActions
-            handleAddToWishlist={handleAddToWishlist}
-            handleRemoveFromCart={handleRemoveFromCart}
-          />
+          <CartItemSecondaryActions handleAddToWishlist={handleAddToWishlist} />
           <CartItemQuantityControl
             quantity={quantity}
             onIncrease={handleQuantityChange}
@@ -104,7 +100,7 @@ type CartItemImageProps = {
 const CartItemImage = ({ product }: CartItemImageProps) => {
   return (
     <img
-      className="aspect-square w-20 rounded-sm bg-black/10 object-contain p-1 sm:w-30 md:w-40"
+      className="aspect-square w-30 rounded-sm bg-black/10 object-contain p-1 md:w-40"
       src={product.image}
       alt={product.title}
     />
@@ -139,8 +135,9 @@ const CartItemSpecifications = ({ productOptions }: CartItemSpecificationsProps)
   return (
     <div className="mt-1 flex flex-col gap-1">
       {productOptions.map((opt) => (
-        <span key={opt.option.id} className="text-xs font-semibold text-black/80 md:text-sm">
-          {opt.option.type}: <span className="text-black/60">{opt.optionValue.value}</span>
+        <span key={opt.option.id} className="text-sm font-semibold text-black/80 md:text-base">
+          {opt.option.type}:{" "}
+          <span className="text-xs text-black/60 md:text-sm">{opt.optionValue.value}</span>
         </span>
       ))}
     </div>
@@ -159,13 +156,13 @@ const CartItemPrice = ({
   isProductOnSale,
 }: CartItemPriceProps) => {
   return (
-    <div className="flex items-center gap-1 self-stretch">
-      <strong className="text-xs font-semibold sm:text-base md:text-lg">
+    <div className="flex flex-col sm:flex-row sm:items-center sm:gap-1">
+      <strong className="text-sm font-semibold sm:text-base md:text-xl">
         R$
         {isProductOnSale ? productPromoPrice?.toFixed(2) : productPrice.toFixed(2)}
       </strong>
       {isProductOnSale && (
-        <span className="text-xs text-red-500 line-through md:text-sm">
+        <span className="text-xs text-red-500 line-through sm:text-sm">
           R${Number(productPrice).toFixed(2)}
         </span>
       )}
@@ -199,21 +196,23 @@ const CartItemQuantityControl = ({
   return (
     <div className="flex items-center gap-1">
       <button
-        onClick={() => onDecrease(quantity <= 1 ? 1 : quantity - 1)}
-        className="flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border border-gray-300 text-sm hover:bg-gray-50 active:bg-gray-200 md:h-8 md:w-8 md:text-base"
+        onClick={() => onDecrease(quantity - 1)}
+        className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-full border border-gray-300 text-sm hover:bg-gray-50 active:bg-gray-200 md:h-8 md:w-8 md:text-base"
         aria-label="Diminuir quantidade"
       >
-        <Minus className="size-2.5 stroke-black/70 md:size-4" />
+        {quantity > 1 ? (
+          <Minus className="size-4 stroke-black/70 md:size-4" />
+        ) : (
+          <Trash2 className="size-4 stroke-black/70 md:size-4" />
+        )}
       </button>
-      <span className="w-6 text-center text-xs sm:w-8 sm:text-sm md:w-10 md:text-lg">
-        {quantity}
-      </span>
+      <span className="w-6 text-center text-sm sm:w-8 md:w-10 md:text-lg">{quantity}</span>
       <button
-        onClick={() => onIncrease(quantity >= 99 ? 99 : quantity + 1)}
-        className="flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border border-gray-300 text-sm hover:bg-gray-50 active:bg-gray-200 md:h-8 md:w-8 md:text-base"
+        onClick={() => onIncrease(quantity + 1)}
+        className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-full border border-gray-300 text-sm hover:bg-gray-50 active:bg-gray-200 md:h-8 md:w-8 md:text-base"
         aria-label="Aumentar quantidade"
       >
-        <Plus className="size-2.5 stroke-black/70 md:size-4" />
+        <Plus className="size-4 stroke-black/70 md:size-4" />
       </button>
     </div>
   );
@@ -221,28 +220,17 @@ const CartItemQuantityControl = ({
 
 type CartItemSecondaryActionsProps = {
   handleAddToWishlist: () => void;
-  handleRemoveFromCart?: () => void;
 };
 
-const CartItemSecondaryActions = ({
-  handleAddToWishlist,
-  handleRemoveFromCart,
-}: CartItemSecondaryActionsProps) => {
+const CartItemSecondaryActions = ({ handleAddToWishlist }: CartItemSecondaryActionsProps) => {
   return (
     <div className="flex items-center gap-6.5 md:flex-row">
       <Button
         onClick={handleAddToWishlist}
-        className="flex cursor-pointer items-center justify-center rounded-full bg-transparent p-1 transition-colors hover:bg-red-400 active:bg-gray-200 sm:h-6 sm:w-6 md:h-8 md:w-8"
+        className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-transparent transition-colors hover:bg-black/10 active:bg-gray-200 md:h-8 md:w-8"
         aria-label="Adicionar à lista de desejos"
       >
-        <HeartIcon size={20} className="text-black/70" />
-      </Button>
-      <Button
-        onClick={handleRemoveFromCart}
-        className="flex cursor-pointer items-center justify-center rounded-full bg-transparent p-1 transition-colors hover:bg-red-200 active:bg-red-100 sm:h-6 sm:w-6 md:h-8 md:w-8"
-        aria-label="Remover do carrinho"
-      >
-        <TrashIcon size={20} className="text-black/70" />
+        <Heart className="size-8 p-1 text-black/70" />
       </Button>
     </div>
   );
