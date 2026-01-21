@@ -32,6 +32,7 @@ export const getFullCart = async ({ userId }: GetFullCartParams) => {
           createdAt: true,
           updatedAt: true,
         },
+        orderBy: { createdAt: "asc" },
       },
     },
     omit: { userId: true, createdAt: true, updatedAt: true },

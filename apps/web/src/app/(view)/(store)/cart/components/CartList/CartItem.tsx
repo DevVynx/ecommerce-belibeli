@@ -1,6 +1,6 @@
 import type { CartItemDto } from "@repo/types/contracts";
 import { Minus, Plus } from "lucide-react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import React from "react";
 
 import { HeartIcon } from "@/app/shared/assets/animatedIcons/heart";
@@ -15,9 +15,11 @@ import { isSaleActive } from "@/app/shared/utils/product/isSaleActive";
 
 type CartItemProps = {
   item: CartItemDto;
+  addPendingItem: (itemId: string) => void;
+  removePendingItem: (itemId: string) => void;
 };
 
-export const CartItem = ({ item }: CartItemProps) => {
+export const CartItem = ({ item, addPendingItem, removePendingItem }: CartItemProps) => {
   const { mutate: addtoWishlist } = useAddItemToWishlist();
   const { mutate: removeFromCart } = useRemoveItemFromCart();
   const { mutate: updateCartItemQuantity } = useUpdateCartItemQuantity();
@@ -25,28 +27,28 @@ export const CartItem = ({ item }: CartItemProps) => {
 
   const isProductOnSale = isSaleActive(item.product.promotionEnd);
 
-  const handleIncrease = () => {
-    if (quantity >= 99) return;
-    const nextQuantity = quantity + 1;
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
+  const handleQuantityChange = (nextQuantity: number) => {
+    if (nextQuantity === quantity) return;
+    addPendingItem(item.id);
     setQuantity(nextQuantity);
 
-    updateCartItemQuantity({
-      cartItemId: item.id,
-      quantity: nextQuantity,
-    });
-  };
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
 
-  const handleDecrease = () => {
-    if (quantity <= 1) return;
-    const nextQuantity = quantity - 1;
-
-    setQuantity(nextQuantity);
-
-    updateCartItemQuantity({
-      cartItemId: item.id,
-      quantity: nextQuantity,
-    });
+    timeoutRef.current = setTimeout(() => {
+      try {
+        updateCartItemQuantity({
+          cartItemId: item.id,
+          quantity: nextQuantity,
+        });
+      } finally {
+        removePendingItem(item.id);
+        timeoutRef.current = null;
+      }
+    }, 500);
   };
 
   const handleAddToWishlist = () => {
@@ -86,8 +88,8 @@ export const CartItem = ({ item }: CartItemProps) => {
           />
           <CartItemQuantityControl
             quantity={quantity}
-            onIncrease={handleIncrease}
-            onDecrease={handleDecrease}
+            onIncrease={handleQuantityChange}
+            onDecrease={handleQuantityChange}
           />
         </CartItemActions>
       </div>
@@ -185,8 +187,8 @@ const CartItemActions = ({ children }: CartItemActionsProps) => {
 
 type CartItemQuantityControlProps = {
   quantity: number;
-  onIncrease: () => void;
-  onDecrease: () => void;
+  onIncrease: (nextQuantity: number) => void;
+  onDecrease: (nextQuantity: number) => void;
 };
 
 const CartItemQuantityControl = ({
@@ -197,7 +199,7 @@ const CartItemQuantityControl = ({
   return (
     <div className="flex items-center gap-1">
       <button
-        onClick={onDecrease}
+        onClick={() => onDecrease(quantity <= 1 ? 1 : quantity - 1)}
         className="flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border border-gray-300 text-sm hover:bg-gray-50 active:bg-gray-200 md:h-8 md:w-8 md:text-base"
         aria-label="Diminuir quantidade"
       >
@@ -207,7 +209,7 @@ const CartItemQuantityControl = ({
         {quantity}
       </span>
       <button
-        onClick={onIncrease}
+        onClick={() => onIncrease(quantity >= 99 ? 99 : quantity + 1)}
         className="flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border border-gray-300 text-sm hover:bg-gray-50 active:bg-gray-200 md:h-8 md:w-8 md:text-base"
         aria-label="Aumentar quantidade"
       >

@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { paymentLogos } from "@/app/shared/assets/images/payment-logos/paymentLogos";
+import { Spinner } from "@/app/shared/components/ui/spinner";
 
 type CartSummaryProps = {
   summary: {
@@ -9,9 +10,10 @@ type CartSummaryProps = {
     subtotal: number;
     discount: number;
   };
+  isCartLoading: boolean;
 };
 
-export const CartSummary = ({ summary }: CartSummaryProps) => {
+export const CartSummary = ({ summary, isCartLoading }: CartSummaryProps) => {
   return (
     <div className="max-w-sm xl:max-w-lg">
       <div className="fixed right-0 bottom-0 left-0 z-10 flex flex-col items-center gap-2 bg-neutral-100 p-3 text-sm sm:text-base md:text-lg lg:hidden">
@@ -50,8 +52,15 @@ export const CartSummary = ({ summary }: CartSummaryProps) => {
             <span className="text-2xl font-bold">R${summary.total.toFixed(2)}</span>
           </div>
 
-          <button className="active:black/90 mt-3 w-full cursor-pointer rounded-sm bg-black py-3 font-bold text-white hover:bg-black/80 active:bg-black/70">
-            Finalizar Compra ({summary.count})
+          <button
+            disabled={isCartLoading}
+            className="active:black/90 mt-3 w-full cursor-pointer rounded-sm bg-black py-3 font-bold text-white hover:bg-black/80 active:bg-black/70 disabled:cursor-not-allowed disabled:bg-black/50"
+          >
+            {isCartLoading ? (
+              <Spinner className="mx-auto size-6" />
+            ) : (
+              `Finalizar Compra (${summary.count})`
+            )}
           </button>
         </div>
 

@@ -1,4 +1,6 @@
 "use client";
+import { useState } from "react";
+
 import { CartList } from "@/app/(view)/(store)/cart/components/CartList/CartList";
 import { CartPageSkeleton } from "@/app/(view)/(store)/cart/components/CartPageSkeleton";
 import { CartSummary } from "@/app/(view)/(store)/cart/components/CartSummary";
@@ -12,6 +14,15 @@ import { useFindProducts } from "@/app/shared/hooks/data/useProductsQueries";
 const CartPage = () => {
   const { data: cartData, refetch, isError, isLoading } = useFindCart();
   const { data: productsData } = useFindProducts();
+  const [pendingSyncItemIds, setPendingSyncItemIds] = useState<string[]>([]);
+
+  const addPendingItem = (id: string) => {
+    setPendingSyncItemIds((prev) => (prev.includes(id) ? prev : [...prev, id]));
+  };
+
+  const removePendingItem = (id: string) => {
+    setPendingSyncItemIds((prev) => prev.filter((itemId) => itemId !== id));
+  };
 
   if (isLoading) {
     return <CartPageSkeleton />;
@@ -36,7 +47,11 @@ const CartPage = () => {
     <section className="mt-14.5 bg-white pb-40 lg:pb-0">
       {/* <CartHeader /> */}
       <div className="mx-auto my-2 justify-center gap-3 p-3 lg:container lg:flex">
-        <CartList items={cartData.cart.items} />
+        <CartList
+          items={cartData.cart.items}
+          addPendingItem={addPendingItem}
+          removePendingItem={removePendingItem}
+        />
         <CartSummary
           summary={{
             count: cartData.count,
@@ -44,6 +59,7 @@ const CartPage = () => {
             subtotal: cartData.subtotal,
             total: cartData.total,
           }}
+          isCartLoading={pendingSyncItemIds.length > 0}
         />
       </div>
       <RecommendedProducts products={productsData.products} />
