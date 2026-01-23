@@ -63,7 +63,7 @@ export function DesktopCartSummary({
           disabled={isCartLoading}
           {...getHandlers("arrow-desktop")}
           type="button"
-          className="active:black/90 mt-3 w-full cursor-pointer rounded-sm py-3 font-bold text-white active:bg-black/70 disabled:cursor-not-allowed disabled:bg-black/50"
+          className="mt-3 w-full py-3 font-bold"
         >
           {isCartLoading ? (
             <Spinner className="mx-auto size-6" />
