@@ -66,7 +66,7 @@ export const CartItem = ({ item, addPendingItem, removePendingItem }: CartItemPr
   };
 
   return (
-    <div className="flex h-auto w-full rounded-sm bg-neutral-100 p-4 text-xs md:h-51.5 md:text-lg">
+    <div className="flex w-full rounded-sm bg-neutral-100 p-4 text-xs md:text-lg">
       <CartItemImage product={item.product} />
       <div className="relative ml-3 flex flex-1">
         <CartItemInfo>

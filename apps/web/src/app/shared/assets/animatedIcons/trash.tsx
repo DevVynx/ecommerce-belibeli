@@ -4,7 +4,7 @@ import { motion, useAnimation, useReducedMotion } from "motion/react";
 import type { HTMLAttributes } from "react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
-import { cn } from "@/app/shared/lib/utils";
+import { cn } from "@/app/shared/utils/lib/utils";
 
 export interface TrashIconHandle {
   startAnimation: () => void;

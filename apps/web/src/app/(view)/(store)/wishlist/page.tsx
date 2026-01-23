@@ -15,7 +15,7 @@ const WishlistPage = () => {
     <section className="mt-20 px-2">
       <div className="mx-auto lg:container">
         <div className="mb-10 border-b pb-5">
-          <h1 className="text-2xl font-bold lg:text-5xl lg:font-semibold">Lista de Desejos</h1>
+          <h1 className="text-2xl font-bold lg:text-4xl lg:font-semibold">Lista de Desejos</h1>
           <p className="mt-1 ml-0.5 text-sm font-semibold text-gray-500 lg:text-base">
             {data.count} itens salvos para comprar depois
           </p>

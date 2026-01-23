@@ -3,7 +3,7 @@ import useEmblaCarousel, { type UseEmblaCarouselType } from "embla-carousel-reac
 import { MoveLeftIcon, MoveRightIcon } from "lucide-react";
 import * as React from "react";
 
-import { cn } from "@/app/shared/lib/utils";
+import { cn } from "@/app/shared/utils/lib/utils";
 
 import { Button } from "./Button";
 

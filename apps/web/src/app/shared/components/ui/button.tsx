@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 
 import { useAnimatedIcon } from "@/app/shared/hooks/ui/useAnimatedIcon";
-import { cn } from "@/app/shared/lib/utils";
+import { cn } from "@/app/shared/utils/lib/utils";
 import type { AnimatedIconComponent } from "@/app/shared/types/Icon";
 
 const buttonVariants = cva(
