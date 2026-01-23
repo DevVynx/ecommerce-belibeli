@@ -8,8 +8,8 @@ import { TrashIcon } from "@/app/shared/assets/animatedIcons/trash";
 import { Button } from "@/app/shared/components/ui/button";
 import { useRemoveItemFromWishlist } from "@/app/shared/hooks/data/useWishlistMutations";
 import { useAnimatedIcon } from "@/app/shared/hooks/ui/useAnimatedIcon";
-import { getPercentDiscount } from "@/app/shared/utils/product/getPercentDiscount";
-import { isSaleActive } from "@/app/shared/utils/product/isSaleActive";
+import { getPercentDiscount } from "@/app/shared/utils/store/product/getPercentDiscount";
+import { isSaleActive } from "@/app/shared/utils/store/product/isSaleActive";
 
 type WishlistProductCardProps = {
   product: WishlistItemDto["product"];

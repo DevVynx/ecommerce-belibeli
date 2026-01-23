@@ -11,8 +11,8 @@ import {
   useRemoveItemFromWishlist,
 } from "@/app/shared/hooks/data/useWishlistMutations";
 import { useWishlistStore } from "@/app/shared/states/useWishlist";
-import { getPercentDiscount } from "@/app/shared/utils/product/getPercentDiscount";
-import { isSaleActive } from "@/app/shared/utils/product/isSaleActive";
+import { getPercentDiscount } from "@/app/shared/utils/store/product/getPercentDiscount";
+import { isSaleActive } from "@/app/shared/utils/store/product/isSaleActive";
 
 import { ProductOptions } from "./ProductOptions";
 import { QuantitySelector } from "./QuantitySelector";

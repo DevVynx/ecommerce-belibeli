@@ -2,7 +2,7 @@
 import type { FindAllProductsResponse } from "@repo/types/contracts";
 
 import { useProductDetailsContext } from "@/app/shared/contexts/ProductDetailsContext";
-import { getProductsOnSale } from "@/app/shared/utils/product/getProductsOnSale";
+import { getProductsOnSale } from "@/app/shared/utils/store/product/getProductsOnSale";
 
 import { ProductDetailsModal } from "../../../../../shared/components/store/ProductDetailsModal/ProductDetailsModal";
 import { CategoriesSection } from "./CategoriesSection/CategoriesSection";

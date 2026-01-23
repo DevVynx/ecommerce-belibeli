@@ -9,7 +9,7 @@ import {
   useUpdateCartItemQuantity,
 } from "@/app/shared/hooks/data/useCartMutations";
 import { useAddItemToWishlist } from "@/app/shared/hooks/data/useWishlistMutations";
-import { isSaleActive } from "@/app/shared/utils/product/isSaleActive";
+import { isSaleActive } from "@/app/shared/utils/store/product/isSaleActive";
 
 type CartItemProps = {
   item: CartItemDto;
