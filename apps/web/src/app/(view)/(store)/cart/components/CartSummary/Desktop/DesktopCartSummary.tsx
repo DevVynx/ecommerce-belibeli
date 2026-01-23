@@ -1,3 +1,4 @@
+import { CouponApplier } from "@/app/(view)/(store)/cart/components/CartSummary/Desktop/CouponApplier";
 import { ShippingCalculator } from "@/app/(view)/(store)/cart/components/CartSummary/Desktop/ShippingCalculator";
 import { ArrowRightIcon } from "@/app/shared/assets/animatedIcons/arrow-right";
 import { Button } from "@/app/shared/components/ui/button";
@@ -74,6 +75,7 @@ export function DesktopCartSummary({
           )}
         </Button>
       </div>
+      <CouponApplier />
       <PaymentsMethods />
     </div>
   );
