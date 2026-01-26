@@ -1,29 +1,4 @@
 services:
-  setup:
-    container_name: setup
-    build:
-      context: .
-      dockerfile: docker/Dockerfile.cli
-    volumes:
-      - .:/belibeli
-    environment:
-      CI: true
-    command: sh -lc "pnpm install"
-    restart: "no"
-
-  workspace:
-    container_name: workspace
-    build:
-      context: .
-      dockerfile: docker/Dockerfile.cli
-    depends_on:
-      setup:
-        condition: service_completed_successfully
-    volumes:
-      - .:/belibeli
-    command: sh -c "tail -f /dev/null"
-    restart: "no"
-
   db:
     image: postgres:16-alpine
     container_name: db
@@ -41,53 +16,6 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-
-  api:
-    container_name: api
-    build:
-      context: .
-      target: dev
-      dockerfile: apps/api/Dockerfile
-    env_file:
-      - ./apps/api/.env
-    depends_on:
-      db:
-        condition: service_healthy
-      workspace:
-        condition: service_started
-      setup:
-        condition: service_completed_successfully
-    volumes:
-      - .:/belibeli
-    ports:
-      - "8000:8000"
-
-  web:
-    container_name: web
-    build:
-      context: .
-      target: dev
-      dockerfile: apps/web/Dockerfile
-    env_file:
-      - ./apps/web/.env
-    depends_on:
-      setup:
-        condition: service_completed_successfully
-    healthcheck:
-      test: ["CMD-SHELL", "curl -fsS http://$${HOSTNAME}:$${PORT}/health || exit 1"]
-      start_period: 10s
-      interval: 5s
-      timeout: 3s
-      retries: 10
-    volumes:
-      - .:/belibeli
-    ports:
-      - "3000:3000"
-
-networks:
-  default:
-    name: belibeli
-    driver: bridge
 
 volumes:
   postgres_data:
