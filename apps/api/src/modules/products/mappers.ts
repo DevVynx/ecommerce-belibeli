@@ -12,8 +12,9 @@ type RawProduct = {
   promotionEnd: Date | null;
   stock: number;
   totalSold: number;
-  ratingRate: Decimal;
+  ratingRate: number;
   ratingCount: number;
+  weigth: number;
   category: {
     id: string;
     name: string;
@@ -39,7 +40,7 @@ export const controllerProductMapper = (product: RawProduct): ProductDto => {
     promotionEnd: product.promotionEnd ? product.promotionEnd.toISOString() : null,
     stock: product.stock,
     totalSold: product.totalSold,
-    ratingRate: Number(product.ratingRate),
+    ratingRate: product.ratingRate,
     ratingCount: product.ratingCount,
 
     category: {

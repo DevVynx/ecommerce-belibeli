@@ -1,12 +1,13 @@
 export type ShippingOptionDto = {
-  code: string;
+  service: string;
   price: number;
-  deadline: string;
+  deadline: {
+    min: number;
+    max: number;
+  };
 };
 
 export type QuoteShippingResponse = {
-  destinationCep: string;
-  originCep: string;
   items: {
     quantity: number;
     weight: number;

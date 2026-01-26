@@ -1,3 +1,5 @@
+import type { ShippingOptionDto } from "@repo/types/contracts";
+
 import { SHIPPING_ORIGIN_CEP } from "@/shared/utils/env";
 
 type CalculateShippingInput = {
@@ -6,20 +8,11 @@ type CalculateShippingInput = {
   price: number; // price do pedido
 };
 
-type ShippingOption = {
-  service: string;
-  price: number;
-  deadline: {
-    min: number;
-    max: number;
-  };
-};
-
 export const calculateShippings = ({
   destinyCep,
   weight,
   price,
-}: CalculateShippingInput): ShippingOption[] => {
+}: CalculateShippingInput): ShippingOptionDto[] => {
   // CEP de origem fixo (ex: CD em SP capital)
   const cepOrigem = SHIPPING_ORIGIN_CEP;
 
