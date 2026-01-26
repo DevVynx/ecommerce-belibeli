@@ -6,3 +6,5 @@ export * from "./Cart/Requests";
 export * from "./Cart/Responses";
 export * from "./Wishlist/Requests";
 export * from "./Wishlist/Responses";
+export * from "./Shipping/Responses";
+export * from "./Shipping/Requests";

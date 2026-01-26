@@ -40,10 +40,11 @@ model Product {
   promotionEnd   DateTime? @map("promotion_end") @db.Timestamptz
   stock          Int       @default(0)
   totalSold      Int       @default(0) @map("total_sold")
-  ratingRate     Decimal   @default(0) @map("rating_rate") @db.Decimal(3, 2)
+  ratingRate     Float     @default(0) @map("rating_rate")
   ratingCount    Int       @default(0) @map("rating_count")
   createdAt      DateTime  @default(now()) @map("created_at") @db.Timestamptz
   updatedAt      DateTime  @updatedAt @map("updated_at") @db.Timestamptz
+  weight         Float     @default(0)
 
   cartItems      CartItem[]
   productOptions ProductOption[]
