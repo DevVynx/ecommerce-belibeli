@@ -1,6 +1,6 @@
 "use client";
 import { Rating } from "@mui/material";
-import { addItemToCartRequest, type ProductDto } from "@repo/types/contracts";
+import { AddItemToCartRequest, type ProductDto } from "@repo/types/contracts";
 import { motion, useAnimation } from "framer-motion";
 import { HeartIcon } from "lucide-react";
 import { useState } from "react";
@@ -62,7 +62,7 @@ export const ProductDetails = ({
     });
   };
 
-  const buildPayload = (): addItemToCartRequest => {
+  const buildPayload = (): AddItemToCartRequest => {
     return {
       productId: id,
       productOptions: Object.entries(selectedOptions).map(([optionId, optionValueId]) => ({
