@@ -31,7 +31,7 @@ const CartPage = () => {
     return <CartLoadError refetchAction={refetch} />;
   }
 
-  if (!cartData.cart) {
+  if (!cartData.cart || cartData.count === 0) {
     return (
       <section className="bg-neutral-100 pb-40 lg:p-0">
         <div className="mx-auto flex justify-center p-10">

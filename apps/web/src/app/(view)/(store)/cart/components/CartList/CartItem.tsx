@@ -29,7 +29,10 @@ export const CartItem = ({ item, addPendingItem, removePendingItem }: CartItemPr
 
   const handleQuantityChange = (nextQuantity: number) => {
     if (nextQuantity >= 99) return;
-    if (nextQuantity < 1) handleRemoveFromCart();
+    if (nextQuantity < 1) {
+      handleRemoveFromCart();
+      return;
+    }
     addPendingItem(item.id);
     setQuantity(nextQuantity);
 
