@@ -27,7 +27,12 @@ export const CartSummary = ({ summary, isCartLoading }: CartSummaryProps) => {
 
   return (
     <>
-      <MobileCartSummary summary={summary} getHandlers={getHandlers} getIconRef={getIconRef} />
+      <MobileCartSummary
+        summary={summary}
+        isCartLoading={isCartLoading}
+        getHandlers={getHandlers}
+        getIconRef={getIconRef}
+      />
       <DesktopCartSummary
         summary={summary}
         isCartLoading={isCartLoading}

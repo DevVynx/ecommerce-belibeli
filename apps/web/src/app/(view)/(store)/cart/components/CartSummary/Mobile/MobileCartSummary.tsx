@@ -1,6 +1,7 @@
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
 
+import { AppliedCouponItem } from "@/app/(view)/(store)/cart/components/CartSummary/AppliedCouponItem";
 import { MobCouponApplier } from "@/app/(view)/(store)/cart/components/CartSummary/Mobile/MobCouponApplier";
 import { MobDeliveryDestination } from "@/app/(view)/(store)/cart/components/CartSummary/Mobile/MobDeliveryDestination";
 import { ArrowRightIcon } from "@/app/shared/assets/animatedIcons/arrow-right";
@@ -10,6 +11,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/app/shared/components/ui/collapsible";
+import { Spinner } from "@/app/shared/components/ui/spinner";
 import type { AnimatedIconHandle } from "@/app/shared/types/Icon";
 
 type MobileCartSummaryProps = {
@@ -19,6 +21,7 @@ type MobileCartSummaryProps = {
     subtotal: number;
     discount: number;
   };
+  isCartLoading: boolean;
   getHandlers: (id: string) => {
     onMouseEnter: () => void;
     onMouseLeave: () => void;
@@ -26,8 +29,14 @@ type MobileCartSummaryProps = {
   getIconRef: (id: string) => (ref: AnimatedIconHandle | null) => void;
 };
 
-export function MobileCartSummary({ summary, getHandlers, getIconRef }: MobileCartSummaryProps) {
+export function MobileCartSummary({
+  summary,
+  isCartLoading,
+  getHandlers,
+  getIconRef,
+}: MobileCartSummaryProps) {
   const [open, setOpen] = useState(false);
+  const [isCouponApplied, setIsCouponApplied] = useState(false);
 
   return (
     <Collapsible
@@ -53,11 +62,12 @@ export function MobileCartSummary({ summary, getHandlers, getIconRef }: MobileCa
             <span>Frete:</span>
             <span className="font-semibold">R${summary.subtotal.toFixed(2)}</span>
           </div>
-          <div className="flex justify-between">
+          <div className="mb-4 flex justify-between">
             <span>Subtotal:</span>
             <span className="font-semibold">R${summary.subtotal.toFixed(2)}</span>
           </div>
           <MobCouponApplier />
+          {isCouponApplied && <AppliedCouponItem setIsCouponApplied={setIsCouponApplied} />}
         </CollapsibleContent>
       </div>
       <div className={`flex w-full ${open ? "flex-col" : "flex-row items-center gap-4"}`}>
@@ -68,6 +78,9 @@ export function MobileCartSummary({ summary, getHandlers, getIconRef }: MobileCa
             className={`${open ? "font-bold text-black" : "text-left text-sm font-semibold tracking-wide text-black/80 uppercase"}`}
           >
             Total:
+            {isCouponApplied && (
+              <p className="text-xs tracking-wide text-green-600 uppercase">Cupom aplicado</p>
+            )}
           </strong>
           <span className={`font-bold text-black ${open ? "" : "text-2xl"}`}>
             R${summary.total.toFixed(2)}
@@ -76,10 +89,17 @@ export function MobileCartSummary({ summary, getHandlers, getIconRef }: MobileCa
         <Button
           {...getHandlers("arrow-mobile")}
           type="button"
-          className={`active:black/90 w-full flex-1 rounded-xl bg-black py-4 font-bold text-white hover:bg-black/90 active:bg-black/80`}
+          disabled={isCartLoading}
+          className={`w-full flex-1 rounded-xl bg-black py-4 font-bold text-white`}
         >
-          Finalizar Compra ({summary.count})
-          <ArrowRightIcon ref={getIconRef("arrow-mobile")} size={25} />
+          {isCartLoading ? (
+            <Spinner className="mx-auto size-6" />
+          ) : (
+            <>
+              Finalizar Compra ({summary.count})
+              <ArrowRightIcon ref={getIconRef("arrow-mobile")} size={25} />
+            </>
+          )}
         </Button>
       </div>
     </Collapsible>
