@@ -1,8 +1,8 @@
 "use client";
-import { Rating } from "@mui/material";
+import { Rating, RatingItem } from "@/app/shared/components/ui/rating";
 import { AddItemToCartRequest, type ProductDto } from "@repo/types/contracts";
 import { motion, useAnimation } from "framer-motion";
-import { HeartIcon } from "lucide-react";
+import { HeartIcon, Star } from "lucide-react";
 import { useState } from "react";
 
 import { useAddItemToCart } from "@/app/shared/hooks/data/useCartMutations";
@@ -131,7 +131,13 @@ export const ProductDetails = ({
 
           {/* Rating */}
           <div className="my-3 flex items-center gap-2">
-            <Rating defaultValue={ratingRate} precision={0.1} size="small" readOnly={true} />
+            <Rating defaultValue={ratingRate} size="sm" readOnly={true}>
+              {Array.from({ length: 5 }, (_, i) => (
+                <RatingItem key={i}>
+                  <Star className="stroke-yellow-500 text-yellow-500" />
+                </RatingItem>
+              ))}
+            </Rating>
             <span className="text-sm text-zinc-400">({ratingCount} Avaliações)</span>
           </div>
 

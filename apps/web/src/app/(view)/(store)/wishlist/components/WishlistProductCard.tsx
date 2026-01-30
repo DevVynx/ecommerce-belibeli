@@ -1,10 +1,10 @@
-import { Rating } from "@mui/material";
 import type { WishlistItemDto } from "@repo/types/contracts";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect } from "react";
 
 import { TrashIcon } from "@/app/shared/assets/animatedIcons/trash";
+import { Rating } from "@/app/shared/components/ui/rating";
 import { Button } from "@/app/shared/components/ui/button";
 import { useRemoveItemFromWishlist } from "@/app/shared/hooks/data/useWishlistMutations";
 import { useAnimatedIcon } from "@/app/shared/hooks/ui/useAnimatedIcon";
@@ -60,7 +60,7 @@ export const WishlistProductCard = ({ product: p }: WishlistProductCardProps) =>
 
           {/* Rating */}
           <div className="flex items-center gap-1 text-sm text-neutral-500">
-            <Rating defaultValue={p.ratingRate} precision={0.1} size="small" readOnly={true} />
+            <Rating defaultValue={p.ratingRate} size="sm" readOnly={true} />
             <span className="text-sm text-zinc-400">({p.ratingCount} Avaliações)</span>
           </div>
 
