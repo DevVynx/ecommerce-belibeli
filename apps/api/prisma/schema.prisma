@@ -214,7 +214,7 @@ model Wishlist {
   updatedAt DateTime       @updatedAt @db.Timestamptz
   items     WishlistItem[]
 
-  userId String @map("user_id") @db.Uuid
+  userId String @db.Uuid
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId])
