@@ -62,9 +62,9 @@ export const RegisterForm = () => {
 
             <div className="mt-2 flex flex-col items-center gap-3">
               <p className="text-center text-sm text-black/60">
-                Não possui uma conta?{" "}
+                Já possui uma conta?{" "}
                 <span className="cursor-pointer font-bold text-black underline active:text-black/70">
-                  <Link href={"/register"}>Crie uma</Link>
+                  <Link href={"/login"}>Faça login</Link>
                 </span>
               </p>
 
