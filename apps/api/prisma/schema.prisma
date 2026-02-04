@@ -30,35 +30,30 @@ model Category {
   createdAt DateTime @default(now()) @db.Timestamptz
   updatedAt DateTime @updatedAt @db.Timestamptz
 
-  products Product[]
+  products   Product[]
+  promotions Promotion[]
 
   @@unique([name])
   @@map("categories")
 }
 
 model Product {
-  id             String    @id @default(uuid()) @db.Uuid
-  title          String
-  price          Decimal   @db.Decimal(10, 2)
-  description    String    @db.Text
-  image          String
-  promotionPrice Decimal?  @db.Decimal(10, 2)
-  promotionEnd   DateTime? @db.Timestamptz
-  stock          Int       @default(0)
-  totalSold      Int       @default(0)
-  ratingRate     Float     @default(0)
-  ratingCount    Int       @default(0)
-  weight         Float     @default(0)
-  createdAt      DateTime  @default(now()) @db.Timestamptz
-  updatedAt      DateTime  @updatedAt @db.Timestamptz
+  id          String   @id @default(uuid()) @db.Uuid
+  title       String
+  description String   @db.Text
+  image       String
+  ratingRate  Decimal  @default(0) @db.Decimal(5, 1)
+  ratingCount Int      @default(0)
+  createdAt   DateTime @default(now()) @db.Timestamptz
+  updatedAt   DateTime @updatedAt @db.Timestamptz
 
-  cartItems      CartItem[]
   productOptions ProductOption[]
 
-  categoryId    String         @db.Uuid
-  category      Category       @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-  wishlistItems WishlistItem[]
-  orderItems    OrderItem[]
+  categoryId      String           @db.Uuid
+  category        Category         @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  wishlistItems   WishlistItem[]
+  productVariants ProductVariant[]
+  promotions      Promotion[]
 
   @@index([categoryId])
   @@index([createdAt])
@@ -67,10 +62,9 @@ model Product {
 
 model ProductOption {
   id   String @id @default(uuid()) @db.Uuid
-  type String
+  name String
 
-  values          ProductOptionValue[]
-  cartItemOptions CartItemOption[]
+  values ProductOptionValue[]
 
   productId String  @db.Uuid
   product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
@@ -83,13 +77,64 @@ model ProductOptionValue {
   id    String @id @default(uuid()) @db.Uuid
   value String
 
-  cartItemOptions CartItemOption[]
-
-  productOptionId String        @db.Uuid
-  productOption   ProductOption @relation(fields: [productOptionId], references: [id], onDelete: Cascade)
+  productOptionId       String                 @db.Uuid
+  productOption         ProductOption          @relation(fields: [productOptionId], references: [id], onDelete: Cascade)
+  productVariantOptions ProductVariantOption[]
 
   @@index([productOptionId])
   @@map("product_option_values")
+}
+
+model ProductVariant {
+  id        String   @id @default(uuid()) @db.Uuid
+  sku       String
+  price     Decimal  @db.Decimal(10, 2)
+  stock     Int      @default(0)
+  weight    Float
+  isActive  Boolean
+  createdAt DateTime @default(now()) @db.Timestamptz
+  updatedAt DateTime @updatedAt @db.Timestamptz
+
+  productId             String                 @db.Uuid
+  product               Product                @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productVariantOptions ProductVariantOption[]
+  cartItems             CartItem[]
+  promotions            Promotion[]
+  orderItems            OrderItem[]
+
+  @@unique([sku])
+  @@map("product_variants")
+}
+
+model ProductVariantOption {
+  id String @id @default(uuid()) @db.Uuid
+
+  productVariantId     String             @db.Uuid
+  productOptionValueId String             @db.Uuid
+  productVariant       ProductVariant     @relation(fields: [productVariantId], references: [id], onDelete: Cascade)
+  productOptionValue   ProductOptionValue @relation(fields: [productOptionValueId], references: [id], onDelete: Cascade)
+
+  @@map("product_variants_options")
+}
+
+model Promotion {
+  id            String          @id @default(uuid()) @db.Uuid
+  name          String
+  type          PromotionTypes
+  discountValue Decimal         @db.Decimal(10, 2)
+  isActive      Boolean
+  startsAt      DateTime        @db.Timestamptz()
+  endsAt        DateTime        @db.Timestamptz()
+  createdAt     DateTime        @default(now()) @db.Timestamptz
+  updatedAt     DateTime        @updatedAt @db.Timestamptz
+  categoryId    String?         @db.Uuid
+  category      Category?       @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  productId     String?         @db.Uuid
+  product       Product?        @relation(fields: [productId], references: [id], onDelete: Cascade)
+  variantId     String?         @db.Uuid
+  variant       ProductVariant? @relation(fields: [variantId], references: [id], onDelete: Cascade)
+
+  @@map("promotions")
 }
 
 model Cart {
@@ -107,44 +152,25 @@ model Cart {
 }
 
 model CartItem {
-  id          String   @id @default(uuid()) @db.Uuid
-  quantity    Int      @default(1)
-  variantHash String
-  createdAt   DateTime @default(now()) @db.Timestamptz
-  updatedAt   DateTime @updatedAt @db.Timestamptz
+  id        String   @id @default(uuid()) @db.Uuid
+  quantity  Int      @default(1)
+  createdAt DateTime @default(now()) @db.Timestamptz
+  updatedAt DateTime @updatedAt @db.Timestamptz
 
-  productOptions CartItemOption[]
+  productVariantId String         @db.Uuid
+  cartId           String         @db.Uuid
+  productVariant   ProductVariant @relation(fields: [productVariantId], references: [id], onDelete: Cascade)
+  cart             Cart           @relation(fields: [cartId], references: [id], onDelete: Cascade)
 
-  productId String  @db.Uuid
-  cartId    String  @db.Uuid
-  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
-  cart      Cart    @relation(fields: [cartId], references: [id], onDelete: Cascade)
-
-  @@unique([cartId, productId, variantHash])
-  @@index([productId, cartId])
+  @@unique([cartId, productVariantId])
   @@map("cart_items")
-}
-
-model CartItemOption {
-  id String @id @default(uuid()) @db.Uuid
-
-  optionId      String             @db.Uuid
-  optionValueId String             @db.Uuid
-  cartItemId    String             @db.Uuid
-  option        ProductOption      @relation(fields: [optionId], references: [id], onDelete: Cascade)
-  optionValue   ProductOptionValue @relation(fields: [optionValueId], references: [id], onDelete: Cascade)
-  cartItem      CartItem           @relation(fields: [cartItemId], references: [id], onDelete: Cascade)
-
-  @@unique([cartItemId, optionId])
-  @@index([cartItemId, optionId, optionValueId])
-  @@map("cart_items_options")
 }
 
 model Order {
   id        String      @id @default(uuid()) @db.Uuid
-  total     Decimal
-  subtotal  Decimal
-  shipping  Decimal
+  total     Decimal     @db.Decimal(10, 2)
+  subtotal  Decimal     @db.Decimal(10, 2)
+  shipping  Decimal     @db.Decimal(10, 2)
   status    OrderStatus @default(PENDING)
   createdAt DateTime    @default(now()) @db.Timestamptz
   updatedAt DateTime    @updatedAt @db.Timestamptz
@@ -161,31 +187,31 @@ model Order {
 model OrderItem {
   id        String   @id @default(uuid()) @db.Uuid
   quantity  Int
-  unitPrice Decimal
+  unitPrice Decimal  @db.Decimal(10, 2)
   createdAt DateTime @default(now()) @db.Timestamptz
   updatedAt DateTime @updatedAt @db.Timestamptz
 
-  orderId   String  @db.Uuid
-  productId String  @db.Uuid
-  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
-  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  orderId          String         @db.Uuid
+  productVariantId String         @db.Uuid
+  order            Order          @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productVariant   ProductVariant @relation(fields: [productVariantId], references: [id], onDelete: Cascade)
 
   @@map("order_items")
 }
 
 model Coupon {
-  id                String        @id @default(uuid()) @db.Uuid
+  id                String         @id @default(uuid()) @db.Uuid
   code              String
-  type              CouponTypes
+  type              PromotionTypes
   value             Int
-  minOrderValue     Decimal
+  minOrderValue     Decimal        @db.Decimal(10, 2)
   startsAt          DateTime
   endsAt            DateTime
   usageLimit        Int
   usageLimitPerUser Int
   isActive          Boolean
-  createdAt         DateTime      @default(now()) @db.Timestamptz
-  updatedAt         DateTime      @updatedAt @db.Timestamptz
+  createdAt         DateTime       @default(now()) @db.Timestamptz
+  updatedAt         DateTime       @updatedAt @db.Timestamptz
   couponUsages      CouponUsage[]
 
   @@unique([code])
@@ -194,7 +220,7 @@ model Coupon {
 
 model CouponUsage {
   id            String   @id @default(uuid()) @db.Uuid
-  discountValue Decimal
+  discountValue Decimal  @db.Decimal(10, 2)
   usedAt        DateTime @default(now()) @db.Timestamptz()
 
   userId   String @db.Uuid
@@ -232,7 +258,6 @@ model WishlistItem {
   wishlist   Wishlist @relation(fields: [wishlistId], references: [id], onDelete: Cascade)
 
   @@unique([wishlistId, productId])
-  @@index([productId, wishlistId])
   @@map("wishlist_items")
 }
 
@@ -246,7 +271,7 @@ enum OrderStatus {
   REFUNDED
 }
 
-enum CouponTypes {
+enum PromotionTypes {
   PERCENTAGE
   FIXED
 }
