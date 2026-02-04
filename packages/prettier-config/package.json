@@ -1,10 +1,11 @@
 {
   "name": "@repo/prettier-config",
   "version": "0.0.0",
-  "main": "index.mjs",
-  "private": true,
-  "devDependencies": {
-    "prettier": "^3.6.2",
-    "prettier-plugin-tailwindcss": "^0.7.2"
-  }
+  "main": "base.mjs",
+  "exports": {
+    ".": "./base.mjs",
+    "./base": "./base.mjs",
+    "./next": "./next.mjs"
+  },
+  "private": true
 }

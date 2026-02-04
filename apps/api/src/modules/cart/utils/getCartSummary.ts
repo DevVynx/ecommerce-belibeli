@@ -13,10 +13,7 @@ export function getCartSummary(cart: CartDto): CartSummary {
   const count = cart.items.reduce((acc, item) => acc + item.quantity, 0);
 
   const subtotal = round(
-    cart.items.reduce(
-      (acc, item) => acc + item.product.price * item.quantity,
-      0
-    )
+    cart.items.reduce((acc, item) => acc + item.product.price * item.quantity, 0)
   );
 
   const total = round(

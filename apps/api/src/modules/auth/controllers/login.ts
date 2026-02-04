@@ -4,10 +4,7 @@ import { RequestHandler, Response } from "express";
 import { authServices } from "@/modules/auth/services";
 import v from "@/modules/auth/validators";
 
-export const login: RequestHandler = async (
-  req,
-  res: Response<LoginResponse>
-) => {
+export const login: RequestHandler = async (req, res: Response<LoginResponse>) => {
   const { email, password } = v.login.getValidatedValues(req).body;
   const { user, accessToken, refreshToken } = await authServices.login({
     email,

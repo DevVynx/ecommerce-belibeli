@@ -145,7 +145,7 @@ model Order {
   total     Decimal
   subtotal  Decimal
   shipping  Decimal
-  status    OrderStatus
+  status    OrderStatus @default(PENDING)
   createdAt DateTime    @default(now()) @db.Timestamptz
   updatedAt DateTime    @updatedAt @db.Timestamptz
 

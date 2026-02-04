@@ -10,8 +10,7 @@ export const updateCartItemQuantity: RequestHandler = async (
 ) => {
   const { userId } = res.locals.user;
   const { quantity } = v.updateCartItemQuantity.getValidatedValues(req).body;
-  const { cartItemId } =
-    v.updateCartItemQuantity.getValidatedValues(req).params;
+  const { cartItemId } = v.updateCartItemQuantity.getValidatedValues(req).params;
 
   const { cartItem } = await cartServices.updateCartItemQuantity({
     cartItemId,

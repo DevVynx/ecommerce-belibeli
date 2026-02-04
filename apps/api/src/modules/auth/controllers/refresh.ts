@@ -16,7 +16,5 @@ export const refresh: RequestHandler = async (req, res) => {
     maxAge: 15 * 60 * 1000, // 15 minutes
   });
 
-  return res
-    .status(201)
-    .json({ message: "O token de acesso foi recriado com sucesso" });
+  return res.status(201).json({ message: "O token de acesso foi recriado com sucesso" });
 };

@@ -14,12 +14,7 @@ const cartRouter: Router = Router();
 
 cartRouter.get("/cart", authMiddleware, findCart);
 cartRouter.get("/cart/items", authMiddleware, findAllCartItems);
-cartRouter.post(
-  "/cart/items",
-  authMiddleware,
-  v.addItemToCart.middleware,
-  addItemToCart
-);
+cartRouter.post("/cart/items", authMiddleware, v.addItemToCart.middleware, addItemToCart);
 cartRouter.patch(
   "/cart/items/:cartItemId/quantity",
   authMiddleware,

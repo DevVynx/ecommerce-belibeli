@@ -13,9 +13,7 @@ const body = z.object({
     if (val == null) return [];
     return val;
   }, z.array(OptionSchema).default([])),
-  quantity: z.coerce
-    .number("Valor inválido.")
-    .min(1, "A quantidade mínima é 1."),
+  quantity: z.coerce.number("Valor inválido.").min(1, "A quantidade mínima é 1."),
 });
 
 export const addItemToCart = validation({ body });

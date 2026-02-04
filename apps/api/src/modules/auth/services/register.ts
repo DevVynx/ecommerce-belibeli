@@ -1,10 +1,7 @@
 import bcrypt from "bcrypt";
 
 import { RegisterParams } from "@/modules/auth/types/ServicesParams";
-import {
-  generateAccessToken,
-  generateRefreshToken,
-} from "@/modules/auth/utils/tokenGenerator";
+import { generateAccessToken, generateRefreshToken } from "@/modules/auth/utils/tokenGenerator";
 import { db } from "@/shared/lib/db";
 import { ConflictError } from "@/shared/utils/HttpErrors";
 

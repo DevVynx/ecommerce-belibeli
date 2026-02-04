@@ -11,7 +11,7 @@ export const WishlistItems = ({ wishlist }: WishlistItemsProps) => {
   const hasItems = !!wishlist && wishlist.items.length > 0;
 
   return hasItems ? (
-    <div className="grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-20">
+    <div className="mb-20 grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {wishlist.items.map((item) => (
         <WishlistProductCard key={item.id} product={item.product} />
       ))}

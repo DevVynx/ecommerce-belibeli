@@ -1,7 +1,7 @@
-// packages/eslint-config/next.js
 import baseConfig from "./base.js";
 import reactPlugin from "eslint-plugin-react";
 import jsxA11yPlugin from "eslint-plugin-jsx-a11y";
+import reactHooksPlugin from "eslint-plugin-react-hooks";
 import globals from "globals";
 
 export default [
@@ -28,6 +28,7 @@ export default [
     plugins: {
       react: reactPlugin,
       "jsx-a11y": jsxA11yPlugin,
+      "react-hooks": reactHooksPlugin,
     },
 
     // 5. Regras
@@ -36,7 +37,6 @@ export default [
       "react/jsx-key": "error",
       "react/react-in-jsx-scope": "off",
       "react/prop-types": "off",
-
       // Hooks — só o que quebra app
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "off",

@@ -20,10 +20,7 @@ export const createCartItem = async ({
 
   if (productOptions.length > 0) {
     const optionMap = new Map(
-      product.productOptions.map((o) => [
-        o.id,
-        new Set(o.values.map((v) => v.id)),
-      ])
+      product.productOptions.map((o) => [o.id, new Set(o.values.map((v) => v.id))])
     );
 
     productOptions.forEach(({ optionId, optionValueId }) => {

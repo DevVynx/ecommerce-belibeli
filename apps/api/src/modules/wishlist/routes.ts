@@ -11,12 +11,7 @@ import { authMiddleware } from "@/shared/middlewares/auth";
 const wishlistRouter: Router = Router();
 
 wishlistRouter.get("/wishlist", authMiddleware, findWishlist);
-wishlistRouter.post(
-  "/wishlist",
-  authMiddleware,
-  v.addItemToWishlist.middleware,
-  addItemToWishlist
-);
+wishlistRouter.post("/wishlist", authMiddleware, v.addItemToWishlist.middleware, addItemToWishlist);
 wishlistRouter.delete(
   "/wishlist/:productId",
   authMiddleware,

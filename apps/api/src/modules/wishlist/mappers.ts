@@ -21,9 +21,7 @@ type RawWishlist = {
   items: RawWishlistItem[];
 } | null;
 
-export const controllerWishlistMapper = (
-  rawWishlist: RawWishlist
-): WishlistDto | null => {
+export const controllerWishlistMapper = (rawWishlist: RawWishlist): WishlistDto | null => {
   if (!rawWishlist) return null;
 
   return {
@@ -35,12 +33,8 @@ export const controllerWishlistMapper = (
         title: item.product.title,
         image: item.product.image,
         price: Number(item.product.price),
-        promotionPrice: item.product.promotionPrice
-          ? Number(item.product.promotionPrice)
-          : null,
-        promotionEnd: item.product.promotionEnd
-          ? item.product.promotionEnd.toISOString()
-          : null,
+        promotionPrice: item.product.promotionPrice ? Number(item.product.promotionPrice) : null,
+        promotionEnd: item.product.promotionEnd ? item.product.promotionEnd.toISOString() : null,
         ratingRate: Number(item.product.ratingRate),
         ratingCount: item.product.ratingCount,
       },

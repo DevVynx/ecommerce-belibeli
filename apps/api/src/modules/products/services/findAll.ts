@@ -2,13 +2,8 @@ import { controllerProductListMapper } from "@/modules/products/mappers";
 import type { FindAllProductsParams } from "@/modules/products/types/ServicesParams";
 import { db } from "@/shared/lib/db";
 
-export const findAll = async ({
-  categoryId,
-  limit,
-  offset,
-}: FindAllProductsParams) => {
-  const whereClause =
-    categoryId !== undefined ? { categoryId: categoryId } : {};
+export const findAll = async ({ categoryId, limit, offset }: FindAllProductsParams) => {
+  const whereClause = categoryId !== undefined ? { categoryId: categoryId } : {};
 
   const rawProducts = await db.product.findMany({
     where: whereClause,

@@ -2,10 +2,7 @@ import type { CreateWishlistItemParams } from "@/modules/wishlist/types/ServiceP
 import { db } from "@/shared/lib/db";
 import { ConflictError, NotFoundError } from "@/shared/utils/HttpErrors";
 
-export const createWishlistItem = async ({
-  userId,
-  productId,
-}: CreateWishlistItemParams) => {
+export const createWishlistItem = async ({ userId, productId }: CreateWishlistItemParams) => {
   const product = await db.product.findUnique({
     where: { id: productId },
     include: { productOptions: { include: { values: true } } },

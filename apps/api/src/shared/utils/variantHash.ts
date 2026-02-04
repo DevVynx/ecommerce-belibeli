@@ -14,10 +14,7 @@ function normalizeId(id: string) {
  * or
  *   productId|no-opts
  */
-export function buildVariantHash(
-  productId: string,
-  productOptions?: OptionPair[] | []
-): string {
+export function buildVariantHash(productId: string, productOptions?: OptionPair[] | []): string {
   const pId = normalizeId(productId);
 
   const opts = Array.isArray(productOptions) ? productOptions : [];
@@ -28,14 +25,8 @@ export function buildVariantHash(
 
   // Validate and normalize each option, then sort by optionId to be deterministic
   const normalized = opts.map((o, i) => {
-    if (
-      !o ||
-      typeof o.optionId !== "string" ||
-      typeof o.optionValueId !== "string"
-    ) {
-      throw new TypeError(
-        `productOptions[${i}] must have optionId and optionValueId strings`
-      );
+    if (!o || typeof o.optionId !== "string" || typeof o.optionValueId !== "string") {
+      throw new TypeError(`productOptions[${i}] must have optionId and optionValueId strings`);
     }
     return {
       optionId: normalizeId(o.optionId),
@@ -43,9 +34,7 @@ export function buildVariantHash(
     };
   });
 
-  normalized.sort((a, b) =>
-    a.optionId < b.optionId ? -1 : a.optionId > b.optionId ? 1 : 0
-  );
+  normalized.sort((a, b) => (a.optionId < b.optionId ? -1 : a.optionId > b.optionId ? 1 : 0));
 
   const parts = normalized.map((o) => `${o.optionId}:${o.optionValueId}`);
 

@@ -5,10 +5,7 @@ import v from "@/modules/products/validators";
 
 import { productServices } from "../services";
 
-export const findAll: RequestHandler = async (
-  req,
-  res: Response<FindAllProductsResponse>
-) => {
+export const findAll: RequestHandler = async (req, res: Response<FindAllProductsResponse>) => {
   const { query } = v.findAll.getValidatedValues(req);
   const { categoryId, limit, offset } = query;
 

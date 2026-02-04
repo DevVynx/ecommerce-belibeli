@@ -23,7 +23,7 @@ export const HeroBanner = () => {
   }, [currentIndex]);
 
   return (
-    <section className="relative flex w-screen justify-center overflow-hidden mt-14.5 lg:pt-0">
+    <section className="relative mt-14.5 flex w-screen justify-center overflow-hidden lg:pt-0">
       <div
         className="flex w-full flex-row transition-transform duration-650"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}

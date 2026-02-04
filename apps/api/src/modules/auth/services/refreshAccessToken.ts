@@ -4,9 +4,7 @@ import { db } from "@/shared/lib/db";
 import { BadRequestError } from "@/shared/utils/HttpErrors";
 import { verifyToken } from "@/shared/utils/verifyToken";
 
-export const refreshAccessToken = async ({
-  refreshToken,
-}: RefreshAccessTokenParams) => {
+export const refreshAccessToken = async ({ refreshToken }: RefreshAccessTokenParams) => {
   const { userId } = await verifyToken(refreshToken, "refresh");
 
   const user = await db.user.findUnique({ where: { id: userId } });
