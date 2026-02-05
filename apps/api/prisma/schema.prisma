@@ -56,7 +56,7 @@ model Product {
   promotions      Promotion[]
 
   @@index([categoryId])
-  @@index([createdAt])
+  @@index([createdAt(sort: Desc)])
   @@map("products")
 }
 
@@ -103,6 +103,7 @@ model ProductVariant {
   orderItems            OrderItem[]
 
   @@unique([sku])
+  @@index([isActive, stock])
   @@map("product_variants")
 }
 

@@ -1,3 +1,8 @@
+export enum PromotionTypes {
+  PERCENTAGE = "PERCENTAGE",
+  FIXED = "FIXED",
+}
+
 export type ProductValueDto = {
   id: string;
   value: string;
@@ -5,20 +10,24 @@ export type ProductValueDto = {
 
 export type ProductOptionDto = {
   id: string;
-  type: string;
+  name: string;
   values: ProductValueDto[];
 };
 
-export type ProductDto = {
+export type PublicVariantDto = {
+  id: string;
+  sku: string;
+  price: number;
+  salePrice: number;
+  stock: number;
+  optionValueIds: string[];
+};
+
+export type PublicProductDto = {
   id: string;
   title: string;
   description: string;
-  price: number;
   image: string;
-  promotionPrice: number | null;
-  promotionEnd: string | null;
-  stock: number;
-  totalSold: number;
   ratingRate: number;
   ratingCount: number;
   category: {
@@ -26,9 +35,9 @@ export type ProductDto = {
     name: string;
   };
   productOptions: ProductOptionDto[];
+  variants: PublicVariantDto[];
 };
 
 export type FindAllProductsResponse = {
-  products: ProductDto[];
-  count: number;
+  products: PublicProductDto[];
 };

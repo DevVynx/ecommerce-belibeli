@@ -2,28 +2,50 @@ import { controllerProductListMapper } from "@/modules/products/mappers";
 import type { FindAllProductsParams } from "@/modules/products/types/ServicesParams";
 import { db } from "@/shared/lib/db";
 
-export const findAll = async ({ categoryId, limit, offset }: FindAllProductsParams) => {
-  const whereClause = categoryId !== undefined ? { categoryId: categoryId } : {};
+import { Prisma } from "../../../../prisma/generated/client/client";
+
+export const findAll = async ({ categoryId, limit = 20, offset = 0 }: FindAllProductsParams) => {
+  const whereClause: Prisma.ProductWhereInput = {
+    productVariants: {
+      some: {
+        isActive: true,
+        stock: { gt: 0 },
+      },
+    },
+    ...(categoryId && { categoryId }),
+  };
 
   const rawProducts = await db.product.findMany({
     where: whereClause,
     include: {
-      category: { select: { id: true, name: true } },
+      category: {
+        include: {
+          promotions: { where: { isActive: true } },
+        },
+      },
+      promotions: { where: { isActive: true } },
       productOptions: {
-        include: { values: { select: { id: true, value: true } } },
-        omit: { productId: true },
+        include: { values: true },
+      },
+      productVariants: {
+        where: {
+          isActive: true,
+          stock: { gt: 0 },
+        },
+        include: {
+          promotions: { where: { isActive: true } },
+          productVariantOptions: {
+            select: { productOptionValueId: true },
+          },
+        },
       },
     },
-    omit: { categoryId: true, createdAt: true, updatedAt: true },
+    orderBy: { createdAt: "desc" },
     skip: offset,
     take: limit,
   });
 
   const products = controllerProductListMapper(rawProducts);
 
-  const count = await db.product.count({
-    where: whereClause,
-  });
-
-  return { products, count };
+  return { products };
 };
