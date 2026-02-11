@@ -1,8 +1,3 @@
-export enum PromotionTypes {
-  PERCENTAGE = "PERCENTAGE",
-  FIXED = "FIXED",
-}
-
 export type ProductValueDto = {
   id: string;
   value: string;
@@ -19,7 +14,7 @@ export type PublicVariantDto = {
   sku: string;
   price: number;
   salePrice: number;
-  stock: number;
+  isAvailable: boolean;
   optionValueIds: string[];
 };
 
@@ -38,6 +33,6 @@ export type PublicProductDto = {
   variants: PublicVariantDto[];
 };
 
-export type FindAllProductsResponse = {
+export type GetAllProductsResponse = {
   products: PublicProductDto[];
 };

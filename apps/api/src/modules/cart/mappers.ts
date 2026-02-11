@@ -1,6 +1,6 @@
 import { CartDto, CartItemDto } from "@repo/types/contracts";
 
-import type { Decimal } from "../../../prisma/generated/client/internal/prismaNamespace";
+import { Decimal } from "../../../prisma/generated/client/internal/prismaNamespace";
 
 type RawCartItem = {
   id: string;
