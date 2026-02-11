@@ -8,4 +8,4 @@ const query = z.object({
   limit: z.coerce.number("Valor Inválido").positive().max(100).optional(),
 });
 
-export const findAll = validation({ query });
+export const getAll = validation({ query });

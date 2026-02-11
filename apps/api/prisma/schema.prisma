@@ -42,6 +42,7 @@ model Product {
   title       String
   description String   @db.Text
   image       String
+  totalStock  Int      @default(0)
   ratingRate  Decimal  @default(0) @db.Decimal(5, 1)
   ratingCount Int      @default(0)
   createdAt   DateTime @default(now()) @db.Timestamptz
