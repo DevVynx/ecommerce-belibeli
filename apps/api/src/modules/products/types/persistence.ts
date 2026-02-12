@@ -1,15 +1,23 @@
 import type { Prisma } from "../../../../prisma/generated/client/client";
 
 export const ProductListInclude = {
-  category: { include: { promotions: true } },
-  promotions: true,
-  productOptions: { include: { values: true } },
-  productVariants: {
-    include: {
-      promotions: true,
-      productVariantOptions: { select: { productOptionValueId: true } },
+  include: {
+    category: {
+      include: {
+        promotions: true,
+      },
+    },
+    promotions: true,
+    productVariants: {
+      select: {
+        id: true,
+        price: true,
+        stock: true,
+        isActive: true,
+        promotions: true,
+      },
     },
   },
 } as const;
 
-export type RawProductList = Prisma.ProductGetPayload<{ include: typeof ProductListInclude }>;
+export type RawProductList = Prisma.ProductGetPayload<typeof ProductListInclude>;

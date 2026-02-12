@@ -25,12 +25,12 @@ export type PublicProductDto = {
   image: string;
   ratingRate: number;
   ratingCount: number;
-  category: {
-    id: string;
-    name: string;
+  display: {
+    price: number;
+    salePrice: number;
+    isOnSale: boolean;
+    variantId: string;
   };
-  productOptions: ProductOptionDto[];
-  variants: PublicVariantDto[];
 };
 
 export type GetAllProductsResponse = {

@@ -1,13 +1,14 @@
-import { calculateSalePrice } from "@/modules/products/core/calculateSalePrice";
 import { ProductFormmater } from "@/modules/products/formatters";
 import type { FindAllProductsParams } from "@/modules/products/types/ServicesParams";
+import { ProductEnricher } from "@/modules/products/utils/productEnricher";
 import { db } from "@/shared/lib/db";
 
 import { Prisma } from "../../../../prisma/generated/client/client";
 
-export const findAll = async ({ categoryId, limit = 20, offset = 0 }: FindAllProductsParams) => {
+export const findAll = async ({ categoryId, limit = 10, offset = 0 }: FindAllProductsParams) => {
   const whereClause: Prisma.ProductWhereInput = {
     ...(categoryId && { categoryId }),
+    productVariants: { some: { isActive: true, stock: { gt: 0 } } },
   };
 
   const now = new Date();
@@ -26,45 +27,27 @@ export const findAll = async ({ categoryId, limit = 20, offset = 0 }: FindAllPro
           },
         },
       },
-      promotions: { where: { isActive: true, startsAt: { lte: now }, endsAt: { gte: now } } },
-      productOptions: {
-        include: { values: true },
+      promotions: {
+        where: { isActive: true, startsAt: { lte: now }, endsAt: { gte: now } },
       },
       productVariants: {
-        include: {
-          promotions: { where: { isActive: true, startsAt: { lte: now }, endsAt: { gte: now } } },
-          productVariantOptions: {
-            select: { productOptionValueId: true },
+        select: {
+          id: true,
+          price: true,
+          stock: true,
+          isActive: true,
+          promotions: {
+            where: { isActive: true, startsAt: { lte: now }, endsAt: { gte: now } },
           },
         },
       },
     },
     skip: offset,
     take: limit,
+    orderBy: { createdAt: "desc" },
   });
 
-  const productsWithCalculatedData = rawProducts.map((product) => {
-    const variantsWithPrices = product.productVariants.map((variant) => {
-      const salePrice = calculateSalePrice(
-        variant.price,
-        variant.promotions,
-        product.promotions,
-        product.category.promotions
-      );
-
-      const isAvailable = variant.stock > 0 && variant.isActive;
-
-      return {
-        ...variant,
-        salePrice,
-        isAvailable,
-      };
-    });
-    return {
-      ...product,
-      variants: variantsWithPrices,
-    };
-  });
+  const productsWithCalculatedData = ProductEnricher.enrichList(rawProducts);
 
   const { products } = ProductFormmater.toList(productsWithCalculatedData);
 
