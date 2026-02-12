@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import v from "@/modules/products/validators";
+import v from "@/modules/products/helpers/validators";
 
 import { getAll } from "./controllers";
 

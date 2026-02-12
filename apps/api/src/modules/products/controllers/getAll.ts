@@ -1,7 +1,7 @@
 import { GetAllProductsResponse } from "@repo/types/contracts";
 import { RequestHandler, Response } from "express";
 
-import v from "@/modules/products/validators";
+import v from "@/modules/products/helpers/validators";
 
 import { productServices } from "../services";
 

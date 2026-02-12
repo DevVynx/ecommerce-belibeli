@@ -1,7 +1,7 @@
 import { calculateSalePrice } from "@/modules/products/core/calculateSalePrice";
+import { pickHeroVariant } from "@/modules/products/helpers/pickHeroVariant";
 import type { EnrichedProductList, EnrichedVariant } from "@/modules/products/types/enriched";
 import type { RawProductList } from "@/modules/products/types/persistence";
-import { pickHeroVariant } from "@/modules/products/utils/pickHeroVariant";
 
 function enrichList(rawProducts: RawProductList[]): EnrichedProductList[] {
   return rawProducts

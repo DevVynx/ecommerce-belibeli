@@ -1,6 +1,6 @@
-import { ProductFormmater } from "@/modules/products/formatters";
+import { ProductFormmater } from "@/modules/products/helpers/formatters";
+import { ProductEnricher } from "@/modules/products/helpers/productEnricher";
 import type { FindAllProductsParams } from "@/modules/products/types/ServicesParams";
-import { ProductEnricher } from "@/modules/products/utils/productEnricher";
 import { db } from "@/shared/lib/db";
 
 import { Prisma } from "../../../../prisma/generated/client/client";
