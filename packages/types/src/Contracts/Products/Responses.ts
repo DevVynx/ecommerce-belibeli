@@ -22,10 +22,10 @@ export type PublicProductDto = {
   id: string;
   title: string;
   description: string;
-  image: string;
   ratingRate: number;
   ratingCount: number;
   display: {
+    image: string;
     price: number;
     salePrice: number;
     isOnSale: boolean;

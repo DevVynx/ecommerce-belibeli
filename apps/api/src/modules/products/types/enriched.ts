@@ -1,13 +1,15 @@
-import type { RawProductList } from "@/modules/products/types/persistence";
+import type { RawProduct } from "@/modules/products/types/persistence";
 
 import type { Prisma } from "../../../../prisma/generated/client/client";
 
-export type EnrichedVariant = RawProductList["productVariants"][0] & {
+export type EnrichedVariant = RawProduct["productVariants"][0] & {
   salePrice: Prisma.Decimal;
   isAvailable: boolean;
   isOnSale: boolean;
 };
 
-export type EnrichedProductList = Omit<RawProductList, "productVariants"> & {
+export type EnrichedProduct = RawProduct & {
   heroVariant: EnrichedVariant;
 };
+
+export type EnrichedProductList = EnrichedProduct[];

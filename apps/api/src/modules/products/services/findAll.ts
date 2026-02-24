@@ -1,55 +1,52 @@
-import { ProductFormmater } from "@/modules/products/helpers/formatters";
-import { ProductEnricher } from "@/modules/products/helpers/productEnricher";
+import { calculateSalePrice } from "@/modules/products/helpers/calculateSalePrice";
+import { pickHeroVariant } from "@/modules/products/helpers/pickHeroVariant";
+import { productRepositories } from "@/modules/products/repositories";
+import type { EnrichedProduct, EnrichedVariant } from "@/modules/products/types/enriched";
 import type { FindAllProductsParams } from "@/modules/products/types/ServicesParams";
-import { db } from "@/shared/lib/db";
 
-import { Prisma } from "../../../../prisma/generated/client/client";
-
-export const findAll = async ({ categoryId, limit = 10, offset = 0 }: FindAllProductsParams) => {
-  const whereClause: Prisma.ProductWhereInput = {
-    ...(categoryId && { categoryId }),
-    productVariants: { some: { isActive: true, stock: { gt: 0 } } },
-  };
-
-  const now = new Date();
-
-  const rawProducts = await db.product.findMany({
-    where: whereClause,
-    include: {
-      category: {
-        include: {
-          promotions: {
-            where: {
-              isActive: true,
-              startsAt: { lte: now },
-              endsAt: { gte: now },
-            },
-          },
-        },
-      },
-      promotions: {
-        where: { isActive: true, startsAt: { lte: now }, endsAt: { gte: now } },
-      },
-      productVariants: {
-        select: {
-          id: true,
-          price: true,
-          stock: true,
-          isActive: true,
-          promotions: {
-            where: { isActive: true, startsAt: { lte: now }, endsAt: { gte: now } },
-          },
-        },
-      },
-    },
-    skip: offset,
-    take: limit,
-    orderBy: { createdAt: "desc" },
+export const findAll = async ({
+  categoryId,
+  limit,
+  offset,
+  onlyAvailable,
+}: FindAllProductsParams) => {
+  const rawProducts = await productRepositories.findAll({
+    categoryId,
+    limit,
+    offset,
+    onlyAvailable,
   });
 
-  const productsWithCalculatedData = ProductEnricher.enrichList(rawProducts);
+  const enrichedProducts = rawProducts
+    .map((p) => {
+      const variantsWithPrices: EnrichedVariant[] = p.productVariants.map((variant) => {
+        const salePrice = calculateSalePrice(
+          variant.price,
+          variant.promotions,
+          p.promotions,
+          p.category.promotions
+        );
 
-  const { products } = ProductFormmater.toList(productsWithCalculatedData);
+        return {
+          ...variant,
+          salePrice,
+          isAvailable: variant.stock > 0 && variant.isActive,
+          isOnSale: salePrice.lessThan(variant.price),
+        };
+      });
 
-  return { products };
+      const heroVariant = pickHeroVariant(variantsWithPrices);
+
+      if (!heroVariant) {
+        return null;
+      }
+
+      return {
+        ...p,
+        heroVariant,
+      };
+    })
+    .filter((p): p is EnrichedProduct => p !== null);
+
+  return { products: enrichedProducts };
 };
