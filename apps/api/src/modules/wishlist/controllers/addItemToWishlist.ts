@@ -1,8 +1,8 @@
 import { AddItemToWishlistResponse } from "@repo/types/contracts";
 import { RequestHandler, Response } from "express";
 
+import v from "@/modules/wishlist/helpers/validators";
 import { wishlistServices } from "@/modules/wishlist/services";
-import v from "@/modules/wishlist/validators";
 
 export const addItemToWishlist: RequestHandler = async (
   req,

@@ -1,10 +1,10 @@
 import { ProductEnricher } from "@/modules/products/helpers/productEnricher";
-import { findWishlistByUserId } from "@/modules/wishlist/repositories/findByUserId";
+import { wishlistRepositories } from "@/modules/wishlist/repositories";
 import type { EnrichedWishlistItem } from "@/modules/wishlist/types/Enriched";
 import type { FindWishlistByUserIdParams } from "@/modules/wishlist/types/ServiceParams";
 
 export const findByUserId = async ({ userId }: FindWishlistByUserIdParams) => {
-  const rawWishlist = await findWishlistByUserId({ userId });
+  const rawWishlist = await wishlistRepositories.findByUserId(userId);
 
   if (!rawWishlist) return { wishlist: null, count: 0 };
 

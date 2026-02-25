@@ -1,4 +1,4 @@
-import { createWishlistItem } from "@/modules/wishlist/services/createWishlistItem";
+import { createWishlistItem } from "@/modules/wishlist/services/addWishlistItem";
 import { deleteWishlistItem } from "@/modules/wishlist/services/deleteWishlistItem";
 import { findByUserId } from "@/modules/wishlist/services/findByUserId";
 
