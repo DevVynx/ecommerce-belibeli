@@ -1,6 +1,6 @@
 import type { GetAllProductsResponse } from "@repo/types/contracts";
 
-import type { EnrichedProductList } from "@/modules/products/types/enriched";
+import type { EnrichedProductList } from "@/modules/products/types/Enriched";
 
 export function ProductMapperToCatalogSummary(
   products: EnrichedProductList

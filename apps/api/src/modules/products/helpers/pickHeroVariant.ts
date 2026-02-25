@@ -1,4 +1,4 @@
-import type { EnrichedVariant } from "@/modules/products/types/enriched";
+import type { EnrichedVariant } from "@/modules/products/types/Enriched";
 
 export function pickHeroVariant(variants: EnrichedVariant[]): EnrichedVariant | undefined {
   if (variants.length === 0) return undefined;

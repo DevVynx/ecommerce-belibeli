@@ -1,4 +1,4 @@
-import type { RawProduct } from "@/modules/products/types/persistence";
+import type { RawProduct } from "@/modules/products/types/Persistence";
 
 import type { Prisma } from "../../../../prisma/generated/client/client";
 
