@@ -1,4 +1,4 @@
-export type FindWishlistByIdParams = {
+export type FindWishlistByUserIdParams = {
   userId: string;
 };
 

@@ -2,22 +2,23 @@ export type WishlistItemDto = {
   id: string;
   product: {
     id: string;
-    title: string;
-    price: number;
     image: string;
-    promotionPrice: number | null;
-    promotionEnd: string | null;
+    title: string;
     ratingRate: number;
     ratingCount: number;
+    price: number;
+    salePrice: number;
+    isOnSale: boolean;
+    isAvailable: boolean;
   };
 };
 
 export type WishlistDto = {
   id: string;
-  items: WishlistItemDto[] | [];
+  items: WishlistItemDto[];
 };
 
-export type FindWishlistResponse = {
+export type GetUserWishlistResponse = {
   wishlist: WishlistDto | null;
   count: number;
 };

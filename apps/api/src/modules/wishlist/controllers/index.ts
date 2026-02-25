@@ -1,3 +1,3 @@
 export * from "./addItemToWishlist";
-export * from "./findWishlist";
+export * from "./getUserWishlist";
 export * from "./removeItemFromWishlist";
