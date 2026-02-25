@@ -6,11 +6,14 @@ import { ProductMapper } from "@/modules/products/mappers";
 
 import { productServices } from "../services";
 
-export const getAll: RequestHandler = async (req, res: Response<GetAllProductsResponse>) => {
+export const getAllProductsResponse: RequestHandler = async (
+  req,
+  res: Response<GetAllProductsResponse>
+) => {
   const { query } = v.getAll.getValidatedValues(req);
   const { categoryId, limit, offset } = query;
 
-  const { products: rawProducts } = await productServices.findAll({
+  const { products: rawProducts } = await productServices.findMany({
     categoryId,
     offset,
     limit,

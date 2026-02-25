@@ -1,8 +1,8 @@
-import { findProductById } from "@/modules/products/repositories/findProductById";
+import { productRepositories } from "@/modules/products/repositories";
 import type { FindProductByIdParams } from "@/modules/products/types/ServicesParams";
 
-export const findById = async ({ productId }: FindProductByIdParams) => {
-  const product = await findProductById({ productId });
+export const findProductById = async ({ productId }: FindProductByIdParams) => {
+  const product = await productRepositories.findById({ productId });
 
   return product;
 };

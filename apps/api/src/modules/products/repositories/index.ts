@@ -1,5 +1,7 @@
-import { findAllProducts } from "@/modules/products/repositories/findAllProducts";
+import { findProductById } from "@/modules/products/repositories/findById";
+import { findManyProducts } from "@/modules/products/repositories/findMany";
 
 export const productRepositories = {
-  findAll: findAllProducts,
+  findMany: findManyProducts,
+  findById: findProductById,
 };

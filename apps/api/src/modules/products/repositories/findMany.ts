@@ -3,12 +3,12 @@ import { db } from "@/shared/lib/db";
 
 import type { Prisma } from "../../../../prisma/generated/client/client";
 
-export async function findAllProducts({
+export const findManyProducts = async ({
   categoryId,
   limit = 10,
   offset = 0,
   onlyAvailable = false,
-}: FindAllProductsParams) {
+}: FindAllProductsParams) => {
   const availabilityCriteria = {
     isActive: true,
     stock: { gt: 0 },
@@ -59,4 +59,4 @@ export async function findAllProducts({
   });
 
   return rawProducts;
-}
+};
