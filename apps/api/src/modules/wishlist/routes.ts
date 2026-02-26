@@ -18,7 +18,7 @@ wishlistRouter.post(
   addItemToWishlist
 );
 wishlistRouter.delete(
-  "/wishlist/items/:wishlistItemId",
+  "/wishlist/items/:productId",
   authMiddleware,
   v.removeItemFromWishlist.middleware,
   removeItemFromWishlist
