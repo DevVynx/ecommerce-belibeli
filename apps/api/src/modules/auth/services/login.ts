@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 
 import { LoginParams } from "@/modules/auth/types/ServicesParams";
-import { generateAccessToken, generateRefreshToken } from "@/modules/auth/utils/tokenGenerator";
+import { generateAccessToken, generateRefreshToken } from "@/modules/auth/helpers/tokenGenerator";
 import { db } from "@/shared/lib/db";
 import { BadRequestError } from "@/shared/utils/HttpErrors";
 
