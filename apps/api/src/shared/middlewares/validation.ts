@@ -52,7 +52,11 @@ export const validation = <S extends Schemas>(schemas: S): ValidationReturn<S> =
     const hasErrors = Object.keys(errors).length !== 0;
 
     if (hasErrors) {
-      res.status(400).json({ errors });
+      res.status(400).json({
+        error: "BadRequestError",
+        message: errors,
+        code: "VALIDATION_ERROR",
+      });
       return;
     }
 

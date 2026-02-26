@@ -4,10 +4,18 @@ import { HttpError } from "@/shared/utils/HttpErrors.js";
 
 export const handleGlobalError: ErrorRequestHandler = (error, _req, res, _next) => {
   if (error instanceof HttpError) {
-    const { message, details, status } = error;
-    return res.status(status).json({ message, details });
+    const { name, message, status, code } = error;
+    return res.status(status).json({
+      error: name,
+      message,
+      code,
+    });
   }
 
-  console.log(error);
-  return res.status(500).json({ message: "Erro interno do servidor", details: null });
+  console.error(error);
+  return res.status(500).json({
+    error: "InternalServerError",
+    message: "Internal Server Error",
+    code: "INTERNAL_SERVER_ERROR",
+  });
 };

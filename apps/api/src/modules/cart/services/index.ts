@@ -1,13 +1,13 @@
-import { createCartItem } from "./createCartItem";
+import { addCartItem } from "./addItem";
 import { deleteCartItem } from "./deleteCartItem";
 import { getCartItems } from "./getCartItems";
 import { getFullCart } from "./getFullCart";
-import { updateCartItemQuantity } from "./updateCartItemQuantity";
+import { updateCartItemQuantity } from "./updateItemQuantity";
 
 export const cartServices = {
   getFullCart,
   getCartItems,
-  createCartItem,
+  addCartItem,
   updateCartItemQuantity,
   deleteCartItem,
 };

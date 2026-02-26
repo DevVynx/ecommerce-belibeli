@@ -1,51 +1,53 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export class HttpError extends Error {
   constructor(
     public status: number,
-    message: string,
-    public details: unknown
+    public name: string,
+    public message: any,
+    public code?: string
   ) {
-    super(message);
+    super(typeof message === "string" ? message : name);
   }
 }
 
 export class BadRequestError extends HttpError {
-  constructor(details: unknown) {
-    super(400, "BadRequestError", details);
+  constructor(message: any, code?: string) {
+    super(400, "BadRequestError", message, code);
   }
 }
 
 export class UnauthorizedError extends HttpError {
-  constructor(details: unknown) {
-    super(401, "UnauthorizedError", details);
+  constructor(message: any, code?: string) {
+    super(401, "UnauthorizedError", message, code);
   }
 }
 
 export class ForbiddenError extends HttpError {
-  constructor(details: unknown) {
-    super(403, "ForbiddenError", details);
+  constructor(message: any, code?: string) {
+    super(403, "ForbiddenError", message, code);
   }
 }
 
 export class NotFoundError extends HttpError {
-  constructor(details: unknown) {
-    super(404, "NotFoundError", details);
+  constructor(message: any, code?: string) {
+    super(404, "NotFoundError", message, code);
   }
 }
 
 export class ConflictError extends HttpError {
-  constructor(details: unknown) {
-    super(409, "ConflictError", details);
+  constructor(message: any, code?: string) {
+    super(409, "ConflictError", message, code);
   }
 }
 
 export class UnprocessableEntityError extends HttpError {
-  constructor(details: unknown) {
-    super(422, "UnprocessableEntity", details);
+  constructor(message: any, code?: string) {
+    super(422, "UnprocessableEntity", message, code);
   }
 }
 
 export class InternalServerError extends HttpError {
-  constructor(details: unknown) {
-    super(500, "InternalServerError", details);
+  constructor(message: any, code?: string) {
+    super(500, "InternalServerError", message, code);
   }
 }

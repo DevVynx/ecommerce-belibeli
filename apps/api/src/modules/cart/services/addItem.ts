@@ -1,12 +1,10 @@
 import { cartRepositories } from "@/modules/cart/repositories";
+import { cartServices } from "@/modules/cart/services";
 import type { CreateCartItemParams } from "@/modules/cart/types/ServiceParams";
 import { productServices } from "@/modules/products/services";
-import {
-  NotFoundError,
-  UnprocessableEntityError,
-} from "@/shared/utils/HttpErrors";
+import { NotFoundError, UnprocessableEntityError } from "@/shared/utils/HttpErrors";
 
-export const createCartItem = async ({
+export const addCartItem = async ({
   userId,
   productVariantId,
   quantity,
@@ -34,15 +32,11 @@ export const createCartItem = async ({
   const existingItem = await cartRepositories.findItemByVariantId(cart.id, productVariantId);
 
   if (existingItem) {
-    const updatedQuantity = existingItem.quantity + quantity;
-
-    if (variant.stock < updatedQuantity) {
-      throw new UnprocessableEntityError(
-        "Estoque insuficiente para atualizar a quantidade no carrinho."
-      );
-    }
-
-    const cartItem = await cartRepositories.updateItemQuantity(existingItem.id, updatedQuantity);
+    const { cartItem } = await cartServices.updateCartItemQuantity({
+      userId,
+      cartItemId: existingItem.id,
+      quantity: quantity + existingItem.quantity,
+    });
 
     return { cartItem };
   }

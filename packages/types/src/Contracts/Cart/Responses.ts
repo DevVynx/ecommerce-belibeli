@@ -51,9 +51,9 @@ export type AddItemToCartResponse = {
 export type UpdateCartItemQuantityResponse = {
   cartItem: {
     id: string;
-    quantity: number;
     cartId: string;
-    productId: string;
+    productVariantId: string;
+    quantity: number;
   };
 };
 
