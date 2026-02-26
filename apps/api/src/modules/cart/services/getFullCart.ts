@@ -1,6 +1,5 @@
-import { controllerFullCartMapper } from "@/modules/cart/mappers";
+import { getCartSummary } from "@/modules/cart/helpers/getCartSummary";
 import type { GetFullCartParams } from "@/modules/cart/types/ServiceParams";
-import { getCartSummary } from "@/modules/cart/utils/getCartSummary";
 import { db } from "@/shared/lib/db";
 
 export const getFullCart = async ({ userId }: GetFullCartParams) => {

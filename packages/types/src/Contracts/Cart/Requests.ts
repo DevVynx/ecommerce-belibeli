@@ -1,11 +1,5 @@
-export type OptionsDto = {
-  optionId: string;
-  optionValueId: string;
-};
-
 export type AddItemToCartRequest = {
-  productId: string;
-  productOptions: OptionsDto[];
+  productVariantId: string;
   quantity: number;
 };
 

@@ -44,7 +44,7 @@ export type AddItemToCartResponse = {
     id: string;
     quantity: number;
     cartId: string;
-    productId: string;
+    productVariantId: string;
   };
 };
 

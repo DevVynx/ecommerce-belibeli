@@ -14,18 +14,6 @@ export class BadRequestError extends HttpError {
   }
 }
 
-export class InternalServerError extends HttpError {
-  constructor(details: unknown) {
-    super(500, "InternalServerError", details);
-  }
-}
-
-export class ConflictError extends HttpError {
-  constructor(details: unknown) {
-    super(409, "ConflictError", details);
-  }
-}
-
 export class UnauthorizedError extends HttpError {
   constructor(details: unknown) {
     super(401, "UnauthorizedError", details);
@@ -41,5 +29,23 @@ export class ForbiddenError extends HttpError {
 export class NotFoundError extends HttpError {
   constructor(details: unknown) {
     super(404, "NotFoundError", details);
+  }
+}
+
+export class ConflictError extends HttpError {
+  constructor(details: unknown) {
+    super(409, "ConflictError", details);
+  }
+}
+
+export class UnprocessableEntityError extends HttpError {
+  constructor(details: unknown) {
+    super(422, "UnprocessableEntity", details);
+  }
+}
+
+export class InternalServerError extends HttpError {
+  constructor(details: unknown) {
+    super(500, "InternalServerError", details);
   }
 }

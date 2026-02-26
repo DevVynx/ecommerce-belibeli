@@ -1,96 +1,53 @@
+import { cartRepositories } from "@/modules/cart/repositories";
 import type { CreateCartItemParams } from "@/modules/cart/types/ServiceParams";
-import { db } from "@/shared/lib/db";
-import { BadRequestError, NotFoundError } from "@/shared/utils/HttpErrors";
-import { buildVariantHash } from "@/shared/utils/variantHash";
+import { productServices } from "@/modules/products/services";
+import {
+  NotFoundError,
+  UnprocessableEntityError,
+} from "@/shared/utils/HttpErrors";
 
 export const createCartItem = async ({
   userId,
-  productId,
-  productOptions,
+  productVariantId,
   quantity,
 }: CreateCartItemParams) => {
-  const product = await db.product.findUnique({
-    where: { id: productId },
-    include: { productOptions: { include: { values: true } } },
-  });
+  const variant = await productServices.findVariantById(productVariantId);
 
-  if (!product) {
-    throw new NotFoundError("Produto não encontrado.");
+  if (!variant) {
+    throw new NotFoundError("Variante do produto não encontrada.");
   }
 
-  if (productOptions.length > 0) {
-    const optionMap = new Map(
-      product.productOptions.map((o) => [o.id, new Set(o.values.map((v) => v.id))])
-    );
-
-    productOptions.forEach(({ optionId, optionValueId }) => {
-      const allowed = optionMap.get(optionId);
-      if (!allowed) throw new BadRequestError(`optionId inválido: ${optionId}`);
-      if (!allowed.has(optionValueId))
-        throw new BadRequestError(`optionValueId inválido: ${optionValueId}`);
-    });
+  if (!variant.isActive) {
+    throw new UnprocessableEntityError("Esta variante do produto não está ativa.");
   }
 
-  const existingCart = await db.cart.findUnique({ where: { userId } });
+  if (variant.stock < quantity) {
+    throw new UnprocessableEntityError("Estoque insuficiente para esta variante.");
+  }
 
-  const variantHash = buildVariantHash(productId, productOptions);
+  let cart = await cartRepositories.existsByUserId(userId);
 
-  const optionsPayload =
-    productOptions && productOptions.length > 0
-      ? {
-          productOptions: {
-            createMany: {
-              data: productOptions,
-            },
-          },
-        }
-      : {};
+  if (!cart) {
+    cart = await cartRepositories.create(userId);
+  }
 
-  if (!existingCart) {
-    const { id } = await db.cart.create({ data: { userId } });
-    const cartItem = await db.cartItem.create({
-      data: {
-        cartId: id,
-        productId,
-        variantHash,
-        quantity,
-        ...optionsPayload,
-      },
-      omit: { createdAt: true, updatedAt: true },
-    });
+  const existingItem = await cartRepositories.findItemByVariantId(cart.id, productVariantId);
+
+  if (existingItem) {
+    const updatedQuantity = existingItem.quantity + quantity;
+
+    if (variant.stock < updatedQuantity) {
+      throw new UnprocessableEntityError(
+        "Estoque insuficiente para atualizar a quantidade no carrinho."
+      );
+    }
+
+    const cartItem = await cartRepositories.updateItemQuantity(existingItem.id, updatedQuantity);
 
     return { cartItem };
   }
 
-  const existingItem = await db.cartItem.findUnique({
-    where: {
-      cartId_productId_variantHash: {
-        cartId: existingCart.id,
-        productId,
-        variantHash,
-      },
-    },
-    omit: { createdAt: true, updatedAt: true },
-  });
-
-  if (existingItem) {
-    await db.cartItem.update({
-      where: { id: existingItem.id },
-      data: { quantity: existingItem.quantity + quantity },
-    });
-    return { cartItem: existingItem };
-  }
-
-  const cartItem = await db.cartItem.create({
-    data: {
-      cartId: existingCart.id,
-      productId,
-      variantHash,
-      quantity,
-      ...optionsPayload,
-    },
-    omit: { createdAt: true, updatedAt: true },
-  });
+  const cartItem = await cartRepositories.addItem(cart.id, productVariantId, quantity);
 
   return { cartItem };
 };
