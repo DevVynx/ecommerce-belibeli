@@ -1,5 +1,5 @@
 import type { GetShippingQuoteParams } from "@/modules/shipping/types/ServiceParams";
-import { calculateShippings } from "@/modules/shipping/utils/calculateShippings";
+import { calculateShippings } from "@/modules/shipping/helpers/calculateShippings";
 import { db } from "@/shared/lib/db";
 import { ForbiddenError, NotFoundError } from "@/shared/utils/HttpErrors";
 
