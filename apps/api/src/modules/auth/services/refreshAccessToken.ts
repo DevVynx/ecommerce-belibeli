@@ -1,5 +1,5 @@
-import { RefreshAccessTokenParams } from "@/modules/auth/types/ServicesParams";
 import { generateAccessToken } from "@/modules/auth/helpers/tokenGenerator";
+import { RefreshAccessTokenParams } from "@/modules/auth/types/ServicesParams";
 import { db } from "@/shared/lib/db";
 import { BadRequestError } from "@/shared/utils/HttpErrors";
 import { verifyToken } from "@/shared/utils/verifyToken";

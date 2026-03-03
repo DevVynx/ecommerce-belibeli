@@ -4,8 +4,8 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 
 import { TrashIcon } from "@/app/shared/assets/animatedIcons/trash";
-import { Rating } from "@/app/shared/components/ui/rating";
 import { Button } from "@/app/shared/components/ui/button";
+import { Rating } from "@/app/shared/components/ui/rating";
 import { useRemoveItemFromWishlist } from "@/app/shared/hooks/data/useWishlistMutations";
 import { useAnimatedIcon } from "@/app/shared/hooks/ui/useAnimatedIcon";
 import { getPercentDiscount } from "@/app/shared/utils/store/product/getPercentDiscount";

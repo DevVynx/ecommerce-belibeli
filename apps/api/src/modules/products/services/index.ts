@@ -1,5 +1,5 @@
-import { findManyProducts } from "@/modules/products/services/findMany";
 import { findProductById } from "@/modules/products/services/findById";
+import { findManyProducts } from "@/modules/products/services/findMany";
 import { findVariantById } from "@/modules/products/services/findVariantById";
 
 export const productServices = {

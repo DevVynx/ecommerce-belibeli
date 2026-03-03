@@ -1,10 +1,10 @@
 "use client";
-import { Rating, RatingItem } from "@/app/shared/components/ui/rating";
 import { AddItemToCartRequest, type ProductDto } from "@repo/types/contracts";
 import { motion, useAnimation } from "framer-motion";
 import { HeartIcon, Star } from "lucide-react";
 import { useState } from "react";
 
+import { Rating, RatingItem } from "@/app/shared/components/ui/rating";
 import { useAddItemToCart } from "@/app/shared/hooks/data/useCartMutations";
 import {
   useAddItemToWishlist,
