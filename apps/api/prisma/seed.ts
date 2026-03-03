@@ -13,9 +13,11 @@
 import { PrismaPg } from "@prisma/adapter-pg";
 import { Pool } from "pg";
 
+import { DATABASE_URL } from "@/shared/utils/env";
+
 import { PrismaClient } from "./generated/client/client";
 
-const connectionString = process.env.DATABASE_URL!;
+const connectionString = DATABASE_URL;
 const pool = new Pool({ connectionString });
 const adapter = new PrismaPg(pool);
 const prisma = new PrismaClient({ adapter });
@@ -889,8 +891,7 @@ async function main() {
   let totalPromotions = 0;
   let totalVariantPromotions = 0;
 
-  for (let i = 0; i < productsData.length; i++) {
-    const data = productsData[i];
+  for (const [i, data] of productsData.entries()) {
     const categoryId = categoryMap.get(data.category);
 
     if (!categoryId) {
@@ -939,8 +940,7 @@ async function main() {
     }
 
     // Criar ProductVariants
-    for (let variantIndex = 0; variantIndex < data.variants.length; variantIndex++) {
-      const variantData = data.variants[variantIndex];
+    for (const [variantIndex, variantData] of data.variants.entries()) {
       const sku = generateSku(data.title, variantIndex);
 
       const variant = await prisma.productVariant.create({
