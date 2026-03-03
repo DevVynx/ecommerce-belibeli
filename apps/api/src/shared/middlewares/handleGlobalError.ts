@@ -15,7 +15,7 @@ export const handleGlobalError: ErrorRequestHandler = (error, _req, res, _next) 
   console.error(error);
   return res.status(500).json({
     error: "InternalServerError",
-    message: "Internal Server Error",
+    message: "Erro interno no servidor.",
     code: "INTERNAL_SERVER_ERROR",
   });
 };

@@ -1,7 +1,7 @@
 import { GetUserWishlistResponse } from "@repo/types/contracts";
 import { RequestHandler, Response } from "express";
 
-import { wishlistMapperToUserWishlist } from "@/modules/wishlist/mappers/toUserWishlist";
+import { wishlistMappers } from "@/modules/wishlist/mappers";
 import { wishlistServices } from "@/modules/wishlist/services";
 
 export const getUserWishlist: RequestHandler = async (
@@ -10,9 +10,9 @@ export const getUserWishlist: RequestHandler = async (
 ) => {
   const { userId } = res.locals.user;
 
-  const { wishlist, count } = await wishlistServices.findByUserId({ userId });
+  const { wishlist } = await wishlistServices.findByUserId({ userId });
 
-  const formmatedWishlist = wishlistMapperToUserWishlist(wishlist);
+  const { wishlist: formmatedWishlist } = wishlistMappers.toUserWishlist(wishlist);
 
-  return res.json({ wishlist: formmatedWishlist, count });
+  return res.json({ wishlist: formmatedWishlist });
 };

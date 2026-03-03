@@ -8,7 +8,7 @@ export const authMiddleware: RequestHandler = async (req, res, next) => {
   if (!accessToken)
     return res.status(401).json({
       error: "UnauthorizedError",
-      message: "No token provided",
+      message: "Token não fornecido.",
       code: "NO_TOKEN_PROVIDED",
     });
 
@@ -19,7 +19,7 @@ export const authMiddleware: RequestHandler = async (req, res, next) => {
   } catch {
     return res.status(401).json({
       error: "UnauthorizedError",
-      message: "Invalid token",
+      message: "Token inválido.",
       code: "INVALID_TOKEN",
     });
   }

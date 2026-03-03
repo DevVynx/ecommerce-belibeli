@@ -1,7 +1,6 @@
-import { ProductEnricher } from "@/modules/products/helpers/productEnricher";
 import { wishlistRepositories } from "@/modules/wishlist/repositories";
-import type { EnrichedWishlistItem } from "@/modules/wishlist/types/Enriched";
 import type { FindWishlistByUserIdParams } from "@/modules/wishlist/types/ServiceParams";
+import { productLogic } from "@/shared/utils/productLogic";
 
 export const findByUserId = async ({ userId }: FindWishlistByUserIdParams) => {
   const rawWishlist = await wishlistRepositories.findByUserId(userId);
@@ -10,11 +9,39 @@ export const findByUserId = async ({ userId }: FindWishlistByUserIdParams) => {
 
   const enrichedItems = rawWishlist.items
     .map((item) => {
-      const enrichedProduct = ProductEnricher.enrichSingle(item.product);
+      const enrichedVariants = item.product.productVariants.map((variant) => {
+        const { isAvailable, isOnSale, salePrice } = productLogic.calculateEnrichment(variant, {
+          variant: variant.promotions,
+          product: item.product.promotions,
+          category: item.product.category.promotions,
+        });
 
-      return enrichedProduct ? { ...item, product: enrichedProduct } : null;
+        return {
+          ...variant,
+          isOnSale,
+          salePrice,
+          isAvailable,
+        };
+      });
+
+      const heroVariant = productLogic.pickHeroVariant(enrichedVariants);
+      return heroVariant
+        ? {
+            ...item,
+            product: {
+              ...item.product,
+              heroVariant,
+            },
+          }
+        : null;
     })
-    .filter((item): item is EnrichedWishlistItem => item != null);
+    .filter((item) => item != null);
 
-  return { wishlist: { ...rawWishlist, items: enrichedItems }, count: enrichedItems.length };
+  const wishlist = {
+    id: rawWishlist.id,
+    items: enrichedItems,
+    count: enrichedItems.length,
+  };
+
+  return { wishlist };
 };

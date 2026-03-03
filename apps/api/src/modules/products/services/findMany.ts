@@ -1,6 +1,6 @@
-import { ProductEnricher } from "@/modules/products/helpers/productEnricher";
 import { productRepositories } from "@/modules/products/repositories";
 import type { FindAllProductsParams } from "@/modules/products/types/ServicesParams";
+import { productLogic } from "@/shared/utils/productLogic";
 
 export const findManyProducts = async ({
   categoryId,
@@ -15,7 +15,32 @@ export const findManyProducts = async ({
     onlyAvailable,
   });
 
-  const enrichedProducts = ProductEnricher.enrichMany(rawProducts);
+  const enrichedProducts = rawProducts
+    .map((product) => {
+      const variantsWithEnrichment = product.productVariants.map((variant) => {
+        const enrichment = productLogic.calculateEnrichment(variant, {
+          variant: variant.promotions,
+          product: product.promotions,
+          category: product.category.promotions,
+        });
+
+        return {
+          ...variant,
+          ...enrichment,
+        };
+      });
+
+      const heroVariant = productLogic.pickHeroVariant(variantsWithEnrichment);
+
+      if (!heroVariant) return null;
+
+      return {
+        ...product,
+        productVariants: variantsWithEnrichment,
+        heroVariant,
+      };
+    })
+    .filter((p) => p !== null);
 
   return { products: enrichedProducts };
 };

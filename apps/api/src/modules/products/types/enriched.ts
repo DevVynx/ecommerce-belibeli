@@ -1,9 +1,9 @@
 import type { RawProduct } from "@/modules/products/types/Persistence";
 
-import type { Prisma } from "../../../../prisma/generated/client/client";
+import type { Decimal } from "../../../../prisma/generated/client/internal/prismaNamespace";
 
 export type EnrichedVariant = RawProduct["productVariants"][0] & {
-  salePrice: Prisma.Decimal;
+  salePrice: Decimal;
   isAvailable: boolean;
   isOnSale: boolean;
 };

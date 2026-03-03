@@ -1,11 +1,11 @@
 import { addCartItem } from "./addItem";
 import { deleteCartItem } from "./deleteCartItem";
-import { getCartItems } from "./getCartItems";
-import { getFullCart } from "./getFullCart";
+import { findCartByIdCart } from "./findByUserId";
+import { getCartItems } from "./findItemsByUserId";
 import { updateCartItemQuantity } from "./updateItemQuantity";
 
 export const cartServices = {
-  getFullCart,
+  findById: findCartByIdCart,
   getCartItems,
   addCartItem,
   updateCartItemQuantity,

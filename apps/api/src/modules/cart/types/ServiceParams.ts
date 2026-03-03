@@ -4,7 +4,7 @@ import {
   UpdateCartItemQuantityRequest,
 } from "@repo/types/contracts";
 
-export type GetFullCartParams = {
+export type FindCartByIdParams = {
   userId: string;
 };
 

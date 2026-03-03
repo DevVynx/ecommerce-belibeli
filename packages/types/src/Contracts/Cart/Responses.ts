@@ -4,38 +4,38 @@ export type CartItemDto = {
   product: {
     id: string;
     title: string;
-    price: number;
-    image: string;
-    promotionPrice: number | null;
-    promotionEnd: string | null;
+    variant: {
+      id: string;
+      image: string;
+      price: number;
+      salePrice: number;
+      isOnSale: boolean;
+      isAvailable: boolean;
+    };
   };
-  productOptions: {
-    option: {
-      id: string;
-      type: string;
-    };
-    optionValue: {
-      id: string;
-      value: string;
-    };
+  selectedOptions: {
+    name: string;
+    value: string;
   }[];
 };
 
 export type CartDto = {
   id: string;
   items: CartItemDto[];
+  summary: {
+    count: number;
+    subtotal: number;
+    total: number;
+    discount: number;
+  };
 };
 
-export type FindCartResponse = {
+export type GetCartResponse = {
   cart: CartDto | null;
-  count: number;
-  subtotal: number;
-  total: number;
-  discount: number;
 };
 
-export type FindAllCartItemsResponse = {
-  items: CartItemDto[] | [];
+export type GetCartItemsResponse = {
+  items: CartItemDto[] | null;
   count: number;
 };
 

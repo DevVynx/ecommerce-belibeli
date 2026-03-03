@@ -1,29 +1,41 @@
-import type { CartDto } from "@repo/types/contracts";
+import { Decimal } from "../../../../prisma/generated/client/internal/prismaNamespace";
 
-type CartSummary = {
+export interface CartItemSummaryInput {
+  quantity: number;
+  product: {
+    variant: {
+      price: Decimal;
+      salePrice: Decimal;
+    };
+  };
+}
+
+export type CartSummary = {
   count: number;
-  subtotal: number;
-  total: number;
-  discount: number;
+  subtotal: Decimal;
+  total: Decimal;
+  discount: Decimal;
 };
 
-const round = (value: number) => Math.round(value * 100) / 100;
+export function getCartSummary(items: CartItemSummaryInput[]): CartSummary {
+  const zero = new Decimal(0);
 
-export function getCartSummary(cart: CartDto): CartSummary {
-  const count = cart.items.reduce((acc, item) => acc + item.quantity, 0);
+  const count = items.reduce((acc, item) => acc + item.quantity, 0);
 
-  const subtotal = round(
-    cart.items.reduce((acc, item) => acc + item.product.price * item.quantity, 0)
-  );
+  const subtotal = items.reduce((acc, item) => {
+    return acc.plus(item.product.variant.price.times(item.quantity));
+  }, zero);
 
-  const total = round(
-    cart.items.reduce((acc, item) => {
-      const price = item.product.promotionPrice ?? item.product.price;
-      return acc + price * item.quantity;
-    }, 0)
-  );
+  const total = items.reduce((acc, item) => {
+    return acc.plus(item.product.variant.salePrice.times(item.quantity));
+  }, zero);
 
-  const discount = round(subtotal - total);
+  const discount = subtotal.minus(total);
 
-  return { count, subtotal, total, discount };
+  return {
+    count,
+    subtotal,
+    total,
+    discount,
+  };
 }
