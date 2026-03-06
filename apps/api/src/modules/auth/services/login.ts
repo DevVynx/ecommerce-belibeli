@@ -1,15 +1,13 @@
 import bcrypt from "bcrypt";
 
+import { getTokenExpDate } from "@/modules/auth/helpers/getTokenExpDate";
 import { generateAccessToken, generateRefreshToken } from "@/modules/auth/helpers/tokenGenerator";
+import { authRepositories } from "@/modules/auth/repositories";
 import { LoginParams } from "@/modules/auth/types/ServicesParams";
-import { db } from "@/shared/lib/db";
 import { BadRequestError } from "@/shared/utils/HttpErrors";
 
 export const login = async ({ email, password }: LoginParams) => {
-  const user = await db.user.findUnique({
-    where: { email },
-    omit: { createdAt: true, updatedAt: true },
-  });
+  const user = await authRepositories.findUserByEmail({ email });
 
   if (!user) {
     throw new BadRequestError("E-mail ou senha incorretos.");
@@ -25,6 +23,11 @@ export const login = async ({ email, password }: LoginParams) => {
 
   const accessToken = generateAccessToken(user.id);
   const refreshToken = generateRefreshToken(user.id);
+
+  await authRepositories.createRefreshToken({
+    refreshToken: { token: refreshToken, expiresAt: getTokenExpDate(refreshToken) },
+    userId: user.id,
+  });
 
   return { user: userWithoutPassword, accessToken, refreshToken };
 };

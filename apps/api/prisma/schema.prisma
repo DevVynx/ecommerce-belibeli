@@ -15,13 +15,27 @@ model User {
   createdAt DateTime @default(now()) @db.Timestamptz
   updatedAt DateTime @updatedAt @db.Timestamptz
 
-  cart         Cart?
-  wishlist     Wishlist?
-  orders       Order[]
-  couponUsages CouponUsage[]
+  refreshTokens RefreshToken[]
+  cart          Cart?
+  wishlist      Wishlist?
+  orders        Order[]
+  couponUsages  CouponUsage[]
 
   @@unique([email])
   @@map("users")
+}
+
+model RefreshToken {
+  id        String   @id @default(uuid()) @db.Uuid
+  token     String   @unique
+  isUsed    Boolean  @default(false)
+  expiresAt DateTime
+
+  userId String @db.Uuid
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("refresh_token")
 }
 
 model Category {

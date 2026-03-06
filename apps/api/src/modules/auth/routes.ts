@@ -10,6 +10,6 @@ const authRouter: Router = Router();
 authRouter.get("/auth/me", authMiddleware, getUser);
 authRouter.post("/auth/register", v.register.middleware, register);
 authRouter.post("/auth/login", v.login.middleware, login);
-authRouter.post("/auth/refresh", refresh);
+authRouter.post("/auth/refresh", v.refresh.middleware, refresh);
 
 export { authRouter };

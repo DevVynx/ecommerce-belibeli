@@ -1,3 +1,11 @@
+export type RegisterResponse = {
+  user: {
+    id: string;
+    name: string;
+    email: string;
+  };
+};
+
 export type LoginResponse = {
   user: {
     id: string;
@@ -8,12 +16,9 @@ export type LoginResponse = {
   refreshToken: string;
 };
 
-export type RegisterResponse = {
-  user: {
-    id: string;
-    name: string;
-    email: string;
-  };
+export type RefreshResponse = {
+  accessToken: string;
+  refreshToken: string;
 };
 
 export type GetUserResponse = {

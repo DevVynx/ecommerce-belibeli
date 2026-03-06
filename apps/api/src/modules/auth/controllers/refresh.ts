@@ -1,20 +1,15 @@
-import { RequestHandler } from "express";
+import type { RefreshResponse } from "@repo/types/contracts";
+import { RequestHandler, Response } from "express";
 
+import v from "@/modules/auth/helpers/validators";
 import { authServices } from "@/modules/auth/services";
 
-export const refresh: RequestHandler = async (req, res) => {
-  const refreshToken = req.cookies.refreshToken;
+export const refresh: RequestHandler = async (req, res: Response<RefreshResponse>) => {
+  const { refreshToken } = v.refresh.getValidatedValues(req).body;
 
-  const { accessToken } = await authServices.refreshAccessToken({
+  const { accessToken, newRefreshToken } = await authServices.refreshAccessToken({
     refreshToken,
   });
 
-  res.cookie("accessToken", accessToken, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
-    maxAge: 15 * 60 * 1000, // 15 minutes
-  });
-
-  return res.status(201).json({ message: "O token de acesso foi recriado com sucesso" });
+  return res.status(201).json({ accessToken, refreshToken: newRefreshToken });
 };
