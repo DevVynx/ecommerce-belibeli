@@ -12,11 +12,11 @@
   },
   "iconLibrary": "lucide",
   "aliases": {
-    "components": "@/app/shared/components",
-    "utils": "@/app/shared/utils/lib/utils",
-    "ui": "@/app/shared/components/ui",
-    "lib": "@/app/shared/utils/lib",
-    "hooks": "@/app/shared/hooks"
+    "components": "@/shared/components",
+    "utils": "@/shared/utils/lib/utils",
+    "shadcn-ui": "@/shared/components/shadcn-ui",
+    "lib": "@/shared/utils/lib",
+    "hooks": "@/shared/hooks/lib"
   },
   "registries": {
     "@diceui": "https://diceui.com/r/{name}.json"

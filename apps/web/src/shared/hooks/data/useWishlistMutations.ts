@@ -1,0 +1,31 @@
+import {
+  AddItemToWishlistRequest,
+  AddItemToWishlistResponse,
+  RemoveItemFromWishlistRequest,
+  RemoveWishlistItemResponse,
+} from "@repo/types/contracts";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+
+
+export const useAddItemToWishlist = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation<AddItemToWishlistResponse, AxiosError, AddItemToWishlistRequest>({
+    mutationFn: (params: AddItemToWishlistRequest) => wishlistService.addItemToWishlist(params),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["wishlist"] });
+    },
+  });
+};
+
+export const useRemoveItemFromWishlist = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation<RemoveWishlistItemResponse, AxiosError, RemoveItemFromWishlistRequest>({
+    mutationFn: (params: RemoveItemFromWishlistRequest) =>
+      wishlistService.removeItemFromWishlist(params),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["wishlist"] });
+    },
+  });
+};

@@ -17,6 +17,9 @@ node_modules
 # Testing
 coverage
 
+# Legacy files
+legacy
+
 # Turbo
 .turbo
 

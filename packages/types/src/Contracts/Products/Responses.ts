@@ -33,6 +33,6 @@ export type PublicProductDto = {
   };
 };
 
-export type GetAllProductsResponse = {
+export type GetProductsResponse = {
   products: PublicProductDto[];
 };

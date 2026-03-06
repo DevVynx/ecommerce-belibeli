@@ -4,6 +4,8 @@ export type LoginResponse = {
     name: string;
     email: string;
   };
+  accessToken: string;
+  refreshToken: string;
 };
 
 export type RegisterResponse = {
