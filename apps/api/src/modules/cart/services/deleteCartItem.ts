@@ -3,7 +3,7 @@ import type { RemoveItemFromCartParams } from "@/modules/cart/types/ServiceParam
 import { ForbiddenError, NotFoundError } from "@/shared/utils/HttpErrors";
 
 export const deleteCartItem = async ({ userId, cartItemId }: RemoveItemFromCartParams) => {
-  const cartItem = await cartRepositories.findItemById(cartItemId);
+  const cartItem = await cartRepositories.findItemById({ cartItemId });
 
   if (!cartItem) {
     throw new NotFoundError("Item do carrinho não encontrado.");
@@ -13,5 +13,5 @@ export const deleteCartItem = async ({ userId, cartItemId }: RemoveItemFromCartP
     throw new ForbiddenError("Item do carrinho não pertence ao usuário.");
   }
 
-  await cartRepositories.deleteItem(cartItemId);
+  await cartRepositories.deleteItem({ cartItemId });
 };

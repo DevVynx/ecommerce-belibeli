@@ -1,6 +1,14 @@
 import { db } from "@/shared/lib/db";
 
-export const findCartItemByVariantId = async (cartId: string, productVariantId: string) => {
+type findCartItemByVariantIdProps = {
+  cartId: string;
+  productVariantId: string;
+};
+
+export const findCartItemByVariantId = async ({
+  cartId,
+  productVariantId,
+}: findCartItemByVariantIdProps) => {
   const cartItem = await db.cartItem.findUnique({
     where: {
       cartId_productVariantId: {

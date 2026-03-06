@@ -1,6 +1,10 @@
 import { db } from "@/shared/lib/db";
 
-export const findWishlistByUserId = async (userId: string) => {
+type findWishlistByUserIdProps = {
+  userId: string;
+};
+
+export const findWishlistByUserId = async ({ userId }: findWishlistByUserIdProps) => {
   const now = new Date();
 
   const rawWishlist = await db.wishlist.findUnique({

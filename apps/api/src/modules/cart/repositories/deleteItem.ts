@@ -1,5 +1,9 @@
 import { db } from "@/shared/lib/db";
 
-export const deleteCartItem = async (cartItemId: string) => {
+type deleteCartItemProps = {
+  cartItemId: string;
+};
+
+export const deleteCartItem = async ({ cartItemId }: deleteCartItemProps) => {
   await db.cartItem.delete({ where: { id: cartItemId } });
 };

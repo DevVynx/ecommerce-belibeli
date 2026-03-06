@@ -1,10 +1,8 @@
-import type { GetAllProductsResponse } from "@repo/types/contracts";
+import type { GetProductsResponse } from "@repo/types/contracts";
 
 import type { EnrichedProductList } from "@/modules/products/types/Enriched";
 
-export function ProductMapperToCatalogSummary(
-  products: EnrichedProductList
-): GetAllProductsResponse {
+export function ProductMapperToCatalogSummary(products: EnrichedProductList): GetProductsResponse {
   const formattedProducts = products.map((product) => {
     return {
       id: product.id,

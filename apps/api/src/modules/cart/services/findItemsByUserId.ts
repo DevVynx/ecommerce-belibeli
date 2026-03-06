@@ -4,7 +4,7 @@ import type { GetCartItemsParams } from "@/modules/cart/types/ServiceParams";
 import { productLogic } from "@/shared/utils/productLogic";
 
 export const getCartItems = async ({ userId }: GetCartItemsParams) => {
-  const rawCart = await cartRepositories.findByUserId(userId);
+  const rawCart = await cartRepositories.findByUserId({ userId });
 
   if (!rawCart) {
     return { items: null, count: 0 };

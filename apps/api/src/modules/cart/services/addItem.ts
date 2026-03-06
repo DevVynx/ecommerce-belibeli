@@ -23,13 +23,16 @@ export const addCartItem = async ({
     throw new UnprocessableEntityError("Estoque insuficiente para esta variante.");
   }
 
-  let cart = await cartRepositories.existsByUserId(userId);
+  let cart = await cartRepositories.existsByUserId({ userId });
 
   if (!cart) {
-    cart = await cartRepositories.create(userId);
+    cart = await cartRepositories.create({ userId });
   }
 
-  const existingItem = await cartRepositories.findItemByVariantId(cart.id, productVariantId);
+  const existingItem = await cartRepositories.findItemByVariantId({
+    cartId: cart.id,
+    productVariantId,
+  });
 
   if (existingItem) {
     const { cartItem } = await cartServices.updateCartItemQuantity({
@@ -41,7 +44,11 @@ export const addCartItem = async ({
     return { cartItem };
   }
 
-  const cartItem = await cartRepositories.addItem(cart.id, productVariantId, quantity);
+  const cartItem = await cartRepositories.addItem({
+    cartId: cart.id,
+    productVariantId,
+    quantity,
+  });
 
   return { cartItem };
 };

@@ -1,14 +1,20 @@
-import type { FindAllProductsParams } from "@/modules/products/types/ServicesParams";
 import { db } from "@/shared/lib/db";
 
 import type { Prisma } from "../../../../prisma/generated/client/client";
+
+type findManyProductsProps = {
+  categoryId?: string;
+  limit?: number;
+  offset?: number;
+  onlyAvailable?: boolean;
+};
 
 export const findManyProducts = async ({
   categoryId,
   limit = 10,
   offset = 0,
   onlyAvailable = false,
-}: FindAllProductsParams) => {
+}: findManyProductsProps) => {
   const availabilityCriteria = {
     isActive: true,
     stock: { gt: 0 },

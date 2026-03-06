@@ -1,6 +1,14 @@
 import { db } from "@/shared/lib/db";
 
-export const updateCartItemQuantity = async (cartItemId: string, quantity: number) => {
+type updateCartItemQuantityProps = {
+  cartItemId: string;
+  quantity: number;
+};
+
+export const updateCartItemQuantity = async ({
+  cartItemId,
+  quantity,
+}: updateCartItemQuantityProps) => {
   const cartItem = await db.cartItem.update({
     where: { id: cartItemId },
     data: { quantity },

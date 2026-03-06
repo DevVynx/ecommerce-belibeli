@@ -8,7 +8,7 @@ export const updateCartItemQuantity = async ({
   cartItemId,
   quantity,
 }: UpdateCartItemQuantityParams) => {
-  const item = await cartRepositories.findItemById(cartItemId);
+  const item = await cartRepositories.findItemById({ cartItemId });
 
   if (!item) {
     throw new NotFoundError("Item do carrinho não encontrado.");
@@ -25,22 +25,25 @@ export const updateCartItemQuantity = async ({
   }
 
   if (!variant.isActive) {
-    await cartRepositories.deleteItem(cartItemId);
+    await cartRepositories.deleteItem({ cartItemId });
     throw new UnprocessableEntityError("Variante do produto não está ativa.");
   }
 
   if (variant.stock === 0) {
-    await cartRepositories.deleteItem(cartItemId);
+    await cartRepositories.deleteItem({ cartItemId });
     throw new UnprocessableEntityError("Variante do produto está sem estoque.");
   }
 
   if (quantity > variant.stock) {
-    const cartItem = await cartRepositories.updateItemQuantity(cartItemId, variant.stock);
+    const cartItem = await cartRepositories.updateItemQuantity({
+      cartItemId,
+      quantity: variant.stock,
+    });
 
     return { cartItem };
   }
 
-  const cartItem = await cartRepositories.updateItemQuantity(cartItemId, quantity);
+  const cartItem = await cartRepositories.updateItemQuantity({ cartItemId, quantity });
 
   return { cartItem };
 };

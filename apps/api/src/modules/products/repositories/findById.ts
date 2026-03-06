@@ -1,7 +1,10 @@
-import type { FindProductByIdParams } from "@/modules/products/types/ServicesParams";
 import { db } from "@/shared/lib/db";
 
-export const findProductById = async ({ productId }: FindProductByIdParams) => {
+type findProductByIdProps = {
+  productId: string;
+};
+
+export const findProductById = async ({ productId }: findProductByIdProps) => {
   const product = await db.product.findUnique({
     where: { id: productId },
   });

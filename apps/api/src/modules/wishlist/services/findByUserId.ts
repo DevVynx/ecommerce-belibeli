@@ -3,7 +3,7 @@ import type { FindWishlistByUserIdParams } from "@/modules/wishlist/types/Servic
 import { productLogic } from "@/shared/utils/productLogic";
 
 export const findByUserId = async ({ userId }: FindWishlistByUserIdParams) => {
-  const rawWishlist = await wishlistRepositories.findByUserId(userId);
+  const rawWishlist = await wishlistRepositories.findByUserId({ userId });
 
   if (!rawWishlist) return { wishlist: null, count: 0 };
 

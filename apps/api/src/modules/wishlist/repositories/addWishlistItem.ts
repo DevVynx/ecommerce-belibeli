@@ -1,6 +1,11 @@
 import { db } from "@/shared/lib/db";
 
-export const addWishlistItem = async (wishlistId: string, productId: string) => {
+type addWishlistItemProps = {
+  wishlistId: string;
+  productId: string;
+};
+
+export const addWishlistItem = async ({ wishlistId, productId }: addWishlistItemProps) => {
   const wishlistItem = await db.wishlistItem.create({
     data: {
       wishlistId,

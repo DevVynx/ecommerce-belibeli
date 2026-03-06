@@ -1,6 +1,12 @@
 import { db } from "@/shared/lib/db";
 
-export const addCartItem = async (cartId: string, productVariantId: string, quantity: number) => {
+type addCartItemProps = {
+  cartId: string;
+  productVariantId: string;
+  quantity: number;
+};
+
+export const addCartItem = async ({ cartId, productVariantId, quantity }: addCartItemProps) => {
   const cartItem = await db.cartItem.create({
     data: {
       cartId,
