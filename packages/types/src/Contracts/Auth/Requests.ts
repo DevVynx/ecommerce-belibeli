@@ -8,8 +8,13 @@ export type RegisterRequest = {
 export type LoginRequest = {
   email: string;
   password: string;
+  rememberMe?: boolean;
 };
 
 export type RefreshRequest = {
   refreshToken: string;
+};
+
+export type GoogleAuthRequest = {
+  code: string;
 };

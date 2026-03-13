@@ -2,14 +2,16 @@ import { db } from "@/shared/lib/db";
 
 import type { Prisma } from "../../../../prisma/generated/client/client";
 
-type findUserByIdProps = {
+type UpdateUserByIdProps = {
   userId: string;
+  data: Prisma.UserUpdateInput;
   select?: Prisma.UserSelect;
 };
 
-export const findUserById = async ({ userId, select }: findUserByIdProps) => {
-  const user = db.user.findUnique({
+export const updateUserById = async ({ userId, data, select }: UpdateUserByIdProps) => {
+  const user = await db.user.update({
     where: { id: userId },
+    data,
     select,
   });
 

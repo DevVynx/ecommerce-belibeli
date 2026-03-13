@@ -21,6 +21,16 @@ export type RefreshResponse = {
   refreshToken: string;
 };
 
+export type GoogleAuthResponse = {
+  user: {
+    id: string;
+    name: string;
+    email: string;
+  };
+  accessToken: string;
+  refreshToken: string;
+};
+
 export type GetUserResponse = {
   user: {
     id: string;

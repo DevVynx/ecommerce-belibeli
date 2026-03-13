@@ -3,6 +3,7 @@ import { RequestHandler, Response } from "express";
 
 import v from "@/modules/auth/helpers/validators";
 import { authServices } from "@/modules/auth/services";
+import { ENV } from "@/shared/utils/env";
 
 export const register: RequestHandler = async (req, res: Response<RegisterResponse>) => {
   const { name, email, password } = v.register.getValidatedValues(req).body;
@@ -14,14 +15,14 @@ export const register: RequestHandler = async (req, res: Response<RegisterRespon
 
   res.cookie("accessToken", accessToken, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
+    secure: ENV.NODE_ENV === "production",
     sameSite: "strict",
     maxAge: 15 * 60 * 1000, // 15 minutes
   });
 
   res.cookie("refreshToken", refreshToken, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
+    secure: ENV.NODE_ENV === "production",
     sameSite: "strict",
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
   });

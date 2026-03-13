@@ -1,15 +1,16 @@
 import { db } from "@/shared/lib/db";
 
+import type { Prisma } from "../../../../prisma/generated/client/client";
+
 type createUserProps = {
-  name: string;
-  email: string;
-  hashedPassword: string;
+  data: Prisma.UserCreateInput;
+  select?: Prisma.UserSelect;
 };
 
-export const createUser = async ({ name, email, hashedPassword }: createUserProps) => {
+export const createUser = async ({ data, select }: createUserProps) => {
   const user = await db.user.create({
-    data: { name, email, password: hashedPassword },
-    select: { id: true, name: true, email: true },
+    data,
+    select,
   });
 
   return user;

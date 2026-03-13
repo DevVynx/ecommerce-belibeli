@@ -1,4 +1,5 @@
 import { findUserById } from "./findUserById";
+import { googleAuth } from "./googleAuth";
 import { login } from "./login";
 import { refreshAccessToken } from "./refreshAccessToken";
 import { register } from "./register";
@@ -8,4 +9,5 @@ export const authServices = {
   register,
   refreshAccessToken,
   findUserById,
+  googleAuth,
 };

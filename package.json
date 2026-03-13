@@ -10,13 +10,13 @@
     "check-types": "turbo run check-types"
   },
   "devDependencies": {
-    "turbo": "^2.6.1",
-    "typescript": "^5.9.3",
     "eslint": "^9.39.2",
     "prettier": "^3.8.1",
-    "prettier-plugin-tailwindcss": "^0.7.2"
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "turbo": "^2.6.1",
+    "typescript": "^5.9.3"
   },
-  "packageManager": "pnpm@10.28.0",
+  "packageManager": "pnpm@10.32.1",
   "engines": {
     "node": ">=18"
   }

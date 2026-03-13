@@ -5,10 +5,11 @@ import v from "@/modules/auth/helpers/validators";
 import { authServices } from "@/modules/auth/services";
 
 export const login: RequestHandler = async (req, res: Response<LoginResponse>) => {
-  const { email, password } = v.login.getValidatedValues(req).body;
+  const { email, password, rememberMe } = v.login.getValidatedValues(req).body;
   const { user, accessToken, refreshToken } = await authServices.login({
     email,
     password,
+    rememberMe,
   });
 
   return res.json({ user, accessToken, refreshToken });

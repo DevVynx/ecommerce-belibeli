@@ -1,19 +1,15 @@
 "use server";
 
-import type { LoginRequest, LoginResponse } from "@repo/types/contracts";
+import type { GoogleAuthResponse } from "@repo/types/contracts";
 
 import { fetchClient } from "@/shared/utils/api/fetchClient";
 
 import { setAuthCookies } from "./cookieActions";
 
-export const login = async ({
-  email,
-  password,
-  rememberMe,
-}: LoginRequest & { rememberMe: boolean }) => {
-  const { data, error } = await fetchClient<LoginResponse>("/auth/login", {
+export const googleAuthAction = async (code: string) => {
+  const { data, error } = await fetchClient<GoogleAuthResponse>("/auth/google", {
     method: "POST",
-    body: { email, password, rememberMe },
+    body: { code },
   });
 
   if (error) {
@@ -26,7 +22,7 @@ export const login = async ({
         accessToken: data.accessToken,
         refreshToken: data.refreshToken,
       },
-      rememberMe
+      true
     );
   }
 

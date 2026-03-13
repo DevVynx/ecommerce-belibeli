@@ -8,9 +8,14 @@ export function getEnvOrThrow(name: string): string {
   return value;
 }
 
-export const PORT = getEnvOrThrow("PORT");
-export const DATABASE_URL = getEnvOrThrow("DATABASE_URL");
-export const IP_ADDRESS = getEnvOrThrow("IP_ADDRESS");
-export const SHIPPING_ORIGIN_CEP = getEnvOrThrow("SHIPPING_ORIGIN_CEP");
-export const JWT_ACCESS_SECRET = getEnvOrThrow("JWT_ACCESS_SECRET");
-export const JWT_REFRESH_SECRET = getEnvOrThrow("JWT_REFRESH_SECRET");
+export const ENV = {
+  NODE_ENV: getEnvOrThrow("NODE_ENV"),
+  PORT: getEnvOrThrow("PORT"),
+  DATABASE_URL: getEnvOrThrow("DATABASE_URL"),
+  IP_ADDRESS: getEnvOrThrow("IP_ADDRESS"),
+  SHIPPING_ORIGIN_CEP: getEnvOrThrow("SHIPPING_ORIGIN_CEP"),
+  JWT_ACCESS_SECRET: getEnvOrThrow("JWT_ACCESS_SECRET"),
+  JWT_REFRESH_SECRET: getEnvOrThrow("JWT_REFRESH_SECRET"),
+  GOOGLE_CLIENT_ID: getEnvOrThrow("GOOGLE_CLIENT_ID"),
+  GOOGLE_CLIENT_SECRET: getEnvOrThrow("GOOGLE_CLIENT_SECRET"),
+};

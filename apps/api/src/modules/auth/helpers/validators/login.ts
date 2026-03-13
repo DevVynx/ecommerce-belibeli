@@ -9,6 +9,7 @@ const body = z.object({
     .min(6, "A senha precisa ter pelo menos 6 caracteres.")
     .regex(/[a-zA-Z]/, "A senha deve conter pelo menos uma letra.")
     .regex(/\d/, "A senha deve conter pelo menos um número."),
+  rememberMe: z.boolean().optional(),
 });
 
 export const login = validation({ body });

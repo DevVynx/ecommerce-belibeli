@@ -38,8 +38,7 @@ type RegisterFormProps = {
 
 export const RegisterForm = ({ redirectTo = "/" }: RegisterFormProps) => {
   const [step, setStep] = useState("account");
-  const [authError, setAuthError] = useState<string>("");
-  const { setUser } = useAuthState();
+  const { setUser, authError, setAuthError } = useAuthState();
   const router = useRouter();
 
   const form = useForm<RegisterFormData>({
@@ -52,7 +51,7 @@ export const RegisterForm = ({ redirectTo = "/" }: RegisterFormProps) => {
         confirmPassword: "",
       },
     },
-    mode: "onChange",
+    mode: "onTouched",
   });
 
   const stepIndex = useMemo(() => registerSteps.findIndex((s) => s.value === step), [step]);
@@ -155,7 +154,7 @@ export const RegisterForm = ({ redirectTo = "/" }: RegisterFormProps) => {
           key={"error"}
           title={step === "account" ? "Erro ao prosseguir" : "Erro ao tentar criar conta"}
           message={authError}
-          onCloseAction={() => setAuthError("")}
+          onCloseAction={() => setAuthError(null)}
           position="top-left"
         />
       )}

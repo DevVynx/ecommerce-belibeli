@@ -6,6 +6,7 @@ import { findRefreshTokenByToken } from "@/modules/auth/repositories/findRefresh
 import { findUserByEmail } from "@/modules/auth/repositories/findUserByEmail";
 import { findUserById } from "@/modules/auth/repositories/findUserById";
 import { markRefreshTokenAsUsed } from "@/modules/auth/repositories/markRefreshTokenAsUsed";
+import { updateUserById } from "@/modules/auth/repositories/updateUserById";
 
 export const authRepositories = {
   findUserByEmail,
@@ -13,6 +14,7 @@ export const authRepositories = {
   findRefreshTokenByToken,
   createUser,
   createRefreshToken,
+  updateUserById,
   markRefreshTokenAsUsed,
   deleteManyRefreshTokensByUserId,
   deleteRefreshTokenByToken,

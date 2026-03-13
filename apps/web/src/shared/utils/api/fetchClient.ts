@@ -1,5 +1,6 @@
 import { getAccessToken } from "@/shared/actions/auth/cookieActions";
 import type { ApiErrorResponse } from "@/shared/types/api/error";
+import { ENV } from "@/shared/utils/env";
 
 import { parseActionError } from "./parseActionError";
 
@@ -19,7 +20,7 @@ export async function fetchClient<T>(
 ): Promise<{ data: T | null; error: ApiErrorResponse | null }> {
   const { isPrivate = false, params, body: originalBody, ...rest } = options;
 
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL?.replace(/\/+$/, "") || "";
+  const baseUrl = ENV.NEXT_PUBLIC_API_URL.replace(/\/+$/, "");
   const cleanEndpoint = endpoint.startsWith("/") ? endpoint : `/${endpoint}`;
   let url = `${baseUrl}${cleanEndpoint}`;
 

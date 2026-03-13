@@ -13,7 +13,10 @@ export const register = async ({ name, email, password }: RegisterParams) => {
 
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  const user = await authRepositories.createUser({ name, email, hashedPassword });
+  const user = await authRepositories.createUser({
+    data: { name, email, password: hashedPassword },
+    select: { id: true, name: true, email: true },
+  });
 
   const accessToken = generateAccessToken(user.id);
   const refreshToken = generateRefreshToken(user.id);

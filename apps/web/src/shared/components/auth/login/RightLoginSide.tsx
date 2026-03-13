@@ -2,9 +2,8 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-import googleGLogo from "@/shared/assets/images/authLogos/google-G.png";
+import { GoogleSocialLoginButton } from "@/shared/components/auth/GoogleSocialLoginButton";
 import { OrDivider } from "@/shared/components/auth/OrDivider";
-import { SocialLoginButton } from "@/shared/components/auth/SocialLoginButton";
 
 import { LoginForm } from "./LoginForm";
 
@@ -14,7 +13,7 @@ export const RightLoginSide = () => {
       layoutId="auth-form"
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ type: "spring", stiffness: 380, damping: 30, mass: 1 }}
+      transition={{ type: "spring", stiffness: 220, damping: 30, mass: 1 }}
       className="bg-card flex h-full w-full flex-1 flex-col items-center justify-center overflow-hidden p-6"
     >
       <div className="z-10 flex w-full max-w-lg flex-col items-center gap-3">
@@ -54,7 +53,7 @@ export const RightLoginSide = () => {
         <div className="w-full">
           <OrDivider />
           <div className="flex flex-col gap-3">
-            <SocialLoginButton src={googleGLogo} alt="Prosseguir com o Google" />
+            <GoogleSocialLoginButton />
           </div>
         </div>
       </div>

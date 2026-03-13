@@ -27,8 +27,7 @@ type LoginFormProps = {
 export const LoginForm = ({ redirectTo = "/" }: LoginFormProps) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [checked, setChecked] = useState(false);
-  const [authError, setAuthError] = useState("");
-  const { setUser } = useAuthState();
+  const { setUser, authError, setAuthError } = useAuthState();
   const router = useRouter();
 
   const form = useForm<LoginFormData>({
@@ -41,7 +40,6 @@ export const LoginForm = ({ redirectTo = "/" }: LoginFormProps) => {
   });
 
   const onSubmit = async ({ email, password }: LoginRequest) => {
-    setAuthError("");
     const { data, error } = await login({ email, password, rememberMe: checked });
 
     if (error) {
@@ -161,7 +159,7 @@ export const LoginForm = ({ redirectTo = "/" }: LoginFormProps) => {
           key={"error"}
           title="Erro ao tentar fazer login"
           message={authError}
-          onCloseAction={() => setAuthError("")}
+          onCloseAction={() => setAuthError(null)}
         />
       )}
     </>

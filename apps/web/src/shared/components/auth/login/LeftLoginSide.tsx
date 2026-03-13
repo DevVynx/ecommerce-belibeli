@@ -9,7 +9,7 @@ export const LeftLoginSide = () => {
     <div className="bg-muted hidden h-full flex-2 items-center justify-center lg:flex">
       <motion.div
         layoutId="auth-illustration"
-        transition={{ type: "spring", stiffness: 200, damping: 30, mass: 1 }}
+        transition={{ type: "spring", stiffness: 220, damping: 30, mass: 1 }}
         className="bg-card border-border mx-20 flex h-[calc(100vh-10rem)] w-full flex-col items-center justify-between gap-2 overflow-hidden rounded-3xl border p-12 shadow-sm"
       >
         <motion.div

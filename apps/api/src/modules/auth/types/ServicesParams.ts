@@ -11,3 +11,7 @@ export type RegisterParams = Omit<RegisterRequest, "confirmPassword">;
 export type RefreshAccessTokenParams = {
   refreshToken: string;
 };
+
+export type GoogleAuthParams = {
+  code: string;
+};

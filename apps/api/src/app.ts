@@ -9,7 +9,7 @@ import { shippingRouter } from "@/modules/shipping/routes";
 import { wishlistRouter } from "@/modules/wishlist/routes";
 import { handleGlobalError } from "@/shared/middlewares/handleGlobalError";
 import { notFoundHandler } from "@/shared/middlewares/notFoundHandler";
-import { IP_ADDRESS } from "@/shared/utils/env";
+import { ENV } from "@/shared/utils/env";
 
 import { productRouter } from "./modules/products/routes";
 
@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: ["http://localhost:3000", `http://${IP_ADDRESS}:3000`],
+    origin: ["http://localhost:3000", `http://${ENV.IP_ADDRESS}:3000`],
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   })
