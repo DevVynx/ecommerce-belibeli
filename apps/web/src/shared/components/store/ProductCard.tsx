@@ -1,6 +1,7 @@
 "use client";
 
 import type { PublicProductDto } from "@repo/types/contracts";
+import { HeartIcon, ShoppingCartIcon, StarIcon } from "lucide-react";
 
 import { useProductDetailsContext } from "@/shared/contexts/ProductDetailsContext";
 import {
@@ -22,10 +23,9 @@ export const ProductCard = ({ product, grid }: ProductCardProps) => {
   const remove = useWishlistStore((s) => s.remove);
   const { handleOpenProductDetails } = useProductDetailsContext();
 
-  const isProductOnSale = isSaleActive(product.promotionEnd);
-  const percentDiscount = getPercentDiscount(product);
+  const percentDiscount = "10";
 
-  const onCartClick = async (product: ProductDto) => handleOpenProductDetails(product);
+  const onCartClick = async (product: PublicProductDto) => handleOpenProductDetails(product);
 
   const handleToggleWishlist = () => {
     if (isWishlisted) {
@@ -47,13 +47,13 @@ export const ProductCard = ({ product, grid }: ProductCardProps) => {
       <div className="relative bg-black/10 p-4">
         {/* Image */}
         <img
-          src={product.image}
+          src={product.display.image}
           alt={product.title}
           className="aspect-square w-full object-contain"
         />
 
         {/* Percent */}
-        {isProductOnSale && (
+        {product.display.isOnSale && (
           <strong className="absolute top-2 left-2 my-1 inline-block rounded-4xl bg-red-500 px-2 py-1 text-sm font-bold text-white">
             - {percentDiscount}% off
           </strong>
@@ -84,20 +84,20 @@ export const ProductCard = ({ product, grid }: ProductCardProps) => {
           <StarIcon className="mr-1 h-3 w-3 fill-yellow-400 stroke-yellow-400" />
           <span className="font-bold text-black">{product.ratingRate.toFixed(1) ?? "–"}</span>
           <span className="mx-1">·</span>
-          <span>{product.ratingCount ? `${product.totalSold} vendidos` : "Novo"}</span>
+          <span>{product.ratingCount ? `${product.ratingCount} vendidos` : "Novo"}</span>
         </div>
 
         {/* Price */}
         <div className="flex items-center gap-1">
           <strong className="font-semibold">
             R$
-            {isProductOnSale
-              ? Number(product.promotionPrice)?.toFixed(2)
-              : Number(product.price).toFixed(2)}
+            {product.display.isOnSale
+              ? Number(product.display.salePrice)?.toFixed(2)
+              : Number(product.display.price).toFixed(2)}
           </strong>
-          {isProductOnSale && (
+          {product.display.isOnSale && (
             <span className="text-sm text-red-500 line-through">
-              R${Number(product.price).toFixed(2)}
+              R${Number(product.display.salePrice).toFixed(2)}
             </span>
           )}
         </div>

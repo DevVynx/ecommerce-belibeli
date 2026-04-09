@@ -48,6 +48,7 @@ html {
   --font-sans: Geist, sans-serif;
   --font-serif: Georgia, serif;
   --font-mono: Geist Mono, monospace;
+  --font-kotta: var(--font-kotta-one);
   --radius: 0.5rem;
   --shadow-x: 0px;
   --shadow-y: 1px;

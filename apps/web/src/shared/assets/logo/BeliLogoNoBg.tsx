@@ -16,7 +16,7 @@ export const Logo = ({ width = 40, height = 0, onClick }: Props) => {
       alt="logo"
       width={width}
       height={height}
-      className="cursor-pointer lg:hidden"
+      className="cursor-pointer md:hidden"
     />
   );
 };

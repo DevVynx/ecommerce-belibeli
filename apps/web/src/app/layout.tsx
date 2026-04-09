@@ -38,13 +38,7 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${kottaOne.variable} antialiased`}
       >
-        <QueryProvider>
-          {/* <UserInitializer> */}
-          {/* <WishlistInitializer> */}
-          {children}
-          {/* </WishlistInitializer> */}
-          {/* </UserInitializer> */}
-        </QueryProvider>
+        <QueryProvider>{children}</QueryProvider>
       </body>
     </html>
   );
