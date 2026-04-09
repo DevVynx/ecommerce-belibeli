@@ -16,6 +16,8 @@ export type LoginResponse = {
   refreshToken: string;
 };
 
+export type LogoutResponse = void;
+
 export type RefreshResponse = {
   accessToken: string;
   refreshToken: string;
