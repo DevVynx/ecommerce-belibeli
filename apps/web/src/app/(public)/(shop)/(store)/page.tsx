@@ -1,29 +1,22 @@
-"use client";
-
+import { HeroBanner } from "@/shared/components/store/Banner";
+import { CategoriesSection } from "@/shared/components/store/CategoriesSection/CategoriesSection";
+import { HOME_CATEGORIES } from "@/shared/components/store/CategoriesSection/categoryConsts";
+import { FlashSaleSection } from "@/shared/components/store/FlashSaleSection/FlashSaleSection";
+import { ForYouSection } from "@/shared/components/store/ForYouSection/ForYouSection";
 import { Header } from "@/shared/components/store/Header/Header";
-import { ProductLoadError } from "@/shared/components/store/ProductLoadError";
-import { useFindProducts } from "@/shared/hooks/data/useProductsQueries";
 
-import { HeroBanner } from "../../../../../legacy/(view)/(store)/_store/components/Banner";
-import { StorePageSkeleton } from "../../../../../legacy/(view)/(store)/_store/components/StorePageSkeleton";
-
-const Home = () => {
-  const { data, isLoading, isError, refetch } = useFindProducts();
-
-  if (isLoading) {
-    return <StorePageSkeleton />;
-  }
-  if (isError || !data) {
-    return <ProductLoadError refetchAction={refetch} />;
-  }
-
+const Home = async () => {
   return (
     <div className="relative z-10 overflow-x-hidden">
-      <div className="relative z-10 overflow-x-hidden">
-        <Header />
-        <HeroBanner />
-        <Main products={data.products} />
-      </div>
+      <Header />
+      <HeroBanner />
+      <main className="max-w-9xl mx-auto flex flex-col bg-white pb-14 lg:pb-0">
+        <CategoriesSection categories={HOME_CATEGORIES} />
+
+        <FlashSaleSection />
+
+        <ForYouSection />
+      </main>
     </div>
   );
 };
