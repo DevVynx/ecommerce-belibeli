@@ -67,7 +67,7 @@ export const googleAuth = async ({ code }: GoogleAuthParams) => {
       }
     }
 
-    const accessToken = generateAccessToken(user.id);
+    const accessToken = generateAccessToken(user.id, user.name, user.email);
     const refreshToken = generateRefreshToken(user.id);
 
     await authRepositories.createRefreshToken({

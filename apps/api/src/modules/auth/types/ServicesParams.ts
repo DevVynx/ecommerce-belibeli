@@ -6,6 +6,10 @@ export type GetUserByIdParams = {
 
 export type LoginParams = LoginRequest;
 
+export type LogoutParams = {
+  userId: string;
+};
+
 export type RegisterParams = Omit<RegisterRequest, "confirmPassword">;
 
 export type RefreshAccessTokenParams = {

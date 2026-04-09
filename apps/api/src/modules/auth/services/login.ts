@@ -29,7 +29,7 @@ export const login = async ({ email, password, rememberMe }: LoginParams) => {
 
   const { password: _pw, ...userWithoutPassword } = user;
 
-  const accessToken = generateAccessToken(user.id);
+  const accessToken = generateAccessToken(user.id, user.name, user.email);
   const refreshToken = generateRefreshToken(user.id, rememberMe ? "7d" : "6h");
 
   await authRepositories.createRefreshToken({

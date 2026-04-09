@@ -18,7 +18,7 @@ export const register = async ({ name, email, password }: RegisterParams) => {
     select: { id: true, name: true, email: true },
   });
 
-  const accessToken = generateAccessToken(user.id);
+  const accessToken = generateAccessToken(user.id, user.name, user.email);
   const refreshToken = generateRefreshToken(user.id);
 
   return { user, accessToken, refreshToken };

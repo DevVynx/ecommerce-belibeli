@@ -29,7 +29,7 @@ export const refreshAccessToken = async ({ refreshToken }: RefreshAccessTokenPar
 
   await authRepositories.markRefreshTokenAsUsed({ token: refreshToken });
 
-  const newAccessToken = generateAccessToken(user.id);
+  const newAccessToken = generateAccessToken(user.id, user.name, user.email);
   const newRefreshToken = generateRefreshToken(user.id);
 
   await authRepositories.createRefreshToken({
