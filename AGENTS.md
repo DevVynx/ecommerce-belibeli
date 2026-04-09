@@ -111,6 +111,17 @@ These principles **MUST** be followed in every task, regardless of context:
 3. **`type` over `interface`** - Prefer `type` for object shapes, except when interface is required.
 4. **Zod validation** - Validate all inputs with Zod on both API and Web.
 
+### Code Quality Standards
+
+When writing code, follow these standards:
+
+- **Security**: Never hardcode secrets, validate all inputs, enforce auth on protected routes.
+- **Error Handling**: Use HttpError classes on API, proper error states on Web.
+- **Patterns**: Follow the module/controller/service/repository pattern for API. Follow Server Actions + React Query pattern for Web.
+- **Readability**: Clear naming, single responsibility, minimal nesting.
+
+For detailed patterns, see the guides in @docs/guides/. For code review, use the `@pragmatic-code-review` skill.
+
 ---
 
 ## Deep-Dive Guides

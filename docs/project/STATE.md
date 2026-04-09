@@ -7,7 +7,12 @@
 
 ## Current Task
 
-Skill development is **COMPLETE**. Created pragmatic-commit skill for atomic commits.
+**Frontend Refactoring** - Major refactor of the web application:
+
+- Migrating from TanStack Query to Next.js Server Actions
+- Implementing new Next.js caching strategies
+- UI/UX improvements
+- General code quality improvements
 
 ---
 
@@ -20,6 +25,17 @@ Skill development is **COMPLETE**. Created pragmatic-commit skill for atomic com
 - **Date**: 2026-04-07 to 2026-04-08
 - **Decision**: Created comprehensive AGENTS.md and guide documentation for the codebase
 - **Result**: All guides created (API-OVERVIEW, API-MODULES, API-SHARED, API-VALIDATION, DATABASE, SHARED-TYPES, WEB-OVERVIEW, WEB-COMPONENTS, WEB-STATE, WEB-DATA-LAYER)
+
+### [Task] Pragmatic Code Review Skill
+
+- **Date**: 2026-04-09
+- **Decision**: Created `pragmatic-code-review` skill for Opencode
+- **Features**:
+  - Read-only analysis (no code modification)
+  - Hierarchical review framework (7 categories)
+  - Triage categories: Critical, Improvement, Nit
+  - Based on engineering principles (SOLID, DRY, KISS)
+- **Location**: `.opencode/skills/pragmatic-code-review/SKILL.md`
 
 ### [Task] Pragmatic Commit Skill
 
