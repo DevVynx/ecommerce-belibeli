@@ -8,7 +8,7 @@ import { FlashSaleTimer } from "./FlashSaleTimer";
 export const FlashSaleSection = () => {
   return (
     <section id="flashSaleSection" className="bg-neutral-100 px-3 py-12">
-      <div className="mx-auto lg:container">
+      <div className="mx-auto lg:container relative">
         <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
           <header className="flex flex-wrap items-center gap-3">
             <ZapIcon className="h-8 w-8 rounded-full bg-black fill-current stroke-0 p-1.5 text-white" />

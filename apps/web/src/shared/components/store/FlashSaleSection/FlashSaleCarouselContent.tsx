@@ -23,7 +23,7 @@ export const FlashSaleCarouselContent = ({ products }: FlashSaleCarouselContentP
 
   return (
     <>
-      <div className="mb-6 flex justify-end">
+      <div className="absolute top-0 right-0 hidden lg:flex">
         <ProductsCarouselControls api={api} />
       </div>
 

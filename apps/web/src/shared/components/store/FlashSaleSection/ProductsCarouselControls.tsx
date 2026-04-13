@@ -1,5 +1,5 @@
 "use client";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { MoveLeft, MoveRight } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 
 import type { CarouselApi } from "@/shared/components/shadcn-ui/carousel";
@@ -39,20 +39,20 @@ export const ProductsCarouselControls = ({ api }: ProductsCarouselControlsProps)
   }, [api]);
 
   return (
-    <div className="hidden gap-2 lg:flex">
+    <div className="flex gap-2">
       <button
         onClick={scrollPrev}
         disabled={!canScrollPrev}
         className="hover:bg-muted flex h-8 w-20 cursor-pointer items-center justify-center rounded-md border border-black transition-colors disabled:cursor-auto disabled:opacity-50"
       >
-        <ChevronLeft className="size-5" />
+        <MoveLeft className="size-5" />
       </button>
       <button
         onClick={scrollNext}
         disabled={!canScrollNext}
         className="hover:bg-muted flex h-8 w-20 cursor-pointer items-center justify-center rounded-md border border-black transition-colors disabled:cursor-auto disabled:opacity-50"
       >
-        <ChevronRight className="size-5" />
+        <MoveRight className="size-5" />
       </button>
     </div>
   );
