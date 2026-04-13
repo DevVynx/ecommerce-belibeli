@@ -23,7 +23,9 @@ export const ProductCard = ({ product, grid }: ProductCardProps) => {
   const remove = useWishlistStore((s) => s.remove);
   const { handleOpenProductDetails } = useProductDetailsContext();
 
-  const percentDiscount = "10";
+  const percentDiscount = product.display.isOnSale
+    ? Math.round(100 - (product.display.salePrice / product.display.price) * 100)
+    : 0;
 
   const onCartClick = async (product: PublicProductDto) => handleOpenProductDetails(product);
 
