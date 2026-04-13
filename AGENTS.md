@@ -66,20 +66,33 @@ If a loaded guide references another guide for deeper details, load that guide t
 
 ## CRITICAL: Always Ask Before Making Decisions
 
-**STOP AND ASK when you encounter anything that would require a guess.**
+**STOP AND WAIT** - Não execute ações automaticamente, sempre confirme antes.
 
-If at any point you need to make a decision that isn't clearly documented:
+### Quando SEMPRE Perguntar
 
-- Missing business rule
-- Contradictory behavior
-- Undocumented architecture decision
-- Ambiguous requirement
-- Naming convention not specified
-- Pattern or approach not covered
+Se em qualquer momento você precisar fazer algo que não foi explicitamente solicitado, **PARE e PERGUNTE**:
 
-**You MUST stop, make no assumptions, and ask the user directly.**
+- Adicionar arquivos em um commit que não foram mencionados
+- Modificar código que não estava no escopo da solicitação
+- Fazer operações de git (reset, stash, commit) sem confirmação explícita
+- Alterar descrições de commits além do solicitado
+- Reverter código antes de confirmar o escopo
 
-Do not proceed until you receive explicit confirmation. It is better to ask ten unnecessary questions than to make one wrong assumption.
+### Exemplos de O que NÃO Fazer
+
+- ❌ Usuário pede "ajustar commit" → Você adiciona mais arquivos sem perguntar quais
+- ❌ Usuário pede para "voltar atrás" → Você modifica código enquanto faz o reset
+- ❌ Usuário pergunta algo → Você responde sem verificar se entendeu corretamente
+
+### Exemplos de O que FAZER
+
+- ✅ "Posso incluir o arquivo X no commit também?"
+- ✅ "Quer que eu reverte apenas o arquivo Y ou todos?"
+- ✅ "Entendi corretamente que você quer fazer X com Y?"
+
+### Regra de Ouro
+
+> É melhor perguntar 10 vezes do que fazer 1 mudança errada.
 
 ---
 

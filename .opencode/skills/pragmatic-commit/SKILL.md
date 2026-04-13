@@ -60,17 +60,27 @@ This allows the user to review exactly what will be committed.
 
 ### 4. Present Commit Plan
 
-Show the proposed structure:
+Show the complete proposed structure with message AND body:
 
 ```
 ## Commit Plan
 
-### 1. feat(api/auth): add refresh token rotation
+### 1. refactor(api/auth): add refresh token rotation
 **Files:** api/auth/service.ts, api/auth/routes.ts
-**Rationale:** Complete refresh token security feature
+**Description:**
+- Add token expiration validation
+- Create refresh token repository
+- Implement token rotation logic
 
 Status: ⏳ Awaiting review
 ```
+
+The user needs to see:
+
+- **Commit message** (type(scope): description)
+- **Body points** (- action 1, - action 2, etc.)
+- **Files** that will be committed
+- **Rationale** behind the change
 
 ### 5. Wait for Approval
 
