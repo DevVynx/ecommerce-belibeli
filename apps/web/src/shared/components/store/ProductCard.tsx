@@ -1,5 +1,4 @@
 "use client";
-
 import type { PublicProductDto } from "@repo/types/contracts";
 import { HeartIcon, ShoppingCartIcon, StarIcon } from "lucide-react";
 
@@ -86,20 +85,18 @@ export const ProductCard = ({ product, grid }: ProductCardProps) => {
           <StarIcon className="mr-1 h-3 w-3 fill-yellow-400 stroke-yellow-400" />
           <span className="font-bold text-black">{product.ratingRate.toFixed(1) ?? "–"}</span>
           <span className="mx-1">·</span>
-          <span>{product.ratingCount ? `${product.ratingCount} vendidos` : "Novo"}</span>
+          <span>+{product.ratingCount ? `${product.ratingCount} vendidos` : "Novo"}</span>
         </div>
 
         {/* Price */}
         <div className="flex items-center gap-1">
           <strong className="font-semibold">
             R$
-            {product.display.isOnSale
-              ? Number(product.display.salePrice)?.toFixed(2)
-              : Number(product.display.price).toFixed(2)}
+            {Number(product.display.salePrice)}
           </strong>
           {product.display.isOnSale && (
             <span className="text-sm text-red-500 line-through">
-              R${Number(product.display.salePrice).toFixed(2)}
+              R${Number(product.display.price)}
             </span>
           )}
         </div>
