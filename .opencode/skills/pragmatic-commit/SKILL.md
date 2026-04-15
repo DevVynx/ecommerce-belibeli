@@ -161,7 +161,10 @@ The scope indicates where the change applies:
 - <action 3>
 ```
 
-**Note:** No footer. Body uses `-` prefix for each line.
+**Note:**
+
+- No footer. Body uses `-` prefix for each line.
+- **Always use English** for commit messages and descriptions.
 
 ### Examples
 
