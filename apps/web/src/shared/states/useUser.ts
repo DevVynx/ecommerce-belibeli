@@ -23,11 +23,14 @@ export const useAuthState = create<AuthState>()(
 
       setHasHydrated: (hydrated) => set({ hasHydrated: hydrated }),
       setUser: (user) => set({ user, isAuthenticated: true, authError: null }),
-      clearUser: () => set({ user: null, isAuthenticated: false, authError: null }),
+      clearUser: () => {
+        localStorage.removeItem("wishlist-storage");
+        set({ user: null, isAuthenticated: false, authError: null });
+      },
       setAuthError: (error) => set({ authError: error }),
     }),
     {
-      name: "auth-storage", // Nome da chave que ficará salva no localStorage
+      name: "auth-storage",
       onRehydrateStorage: () => (state) => {
         state?.setHasHydrated(true);
       },
