@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Kotta_One } from "next/font/google";
 
 import { QueryProvider } from "@/shared/providers/QueryProvider";
+import { WishlistProvider } from "@/shared/providers/WishlistProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,7 +39,10 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${kottaOne.variable} antialiased`}
       >
-        <QueryProvider>{children}</QueryProvider>
+        <QueryProvider>
+          <WishlistProvider />
+          {children}
+        </QueryProvider>
       </body>
     </html>
   );
