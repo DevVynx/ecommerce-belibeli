@@ -3,19 +3,14 @@ import { Heart, ShoppingCart } from "lucide-react";
 
 import { BadgedIconButton } from "@/shared/components/BadgedIconButton";
 import { UserMenu } from "@/shared/components/store/Header/UserMenu";
-import { useFindCartItems } from "@/shared/hooks/data/useCartQueries";
-import { useFindWishlist } from "@/shared/hooks/data/useWishlistQueries";
+import { useWishlistState } from "@/shared/states/useWishlist";
 
 import { HeaderLogo } from "./Logo";
 import { MobileSideMenu } from "./MobileSideMenu";
 import { SearchInput } from "./SearchInput";
 
 export const NavBar = () => {
-  const { data: cartData } = useFindCartItems();
-  const { data: wishlistData } = useFindWishlist();
-
-  const wishlistItemsCount = wishlistData ? wishlistData.count : 0;
-  const cartItemsCount = cartData ? cartData.count : 0;
+  const wishlistCount = useWishlistState((state) => state.count);
 
   return (
     <nav className="flex h-12 items-center justify-center gap-3 lg:gap-6">
@@ -28,14 +23,14 @@ export const NavBar = () => {
         {/* Wishlist - Desktop and Mobile */}
         <BadgedIconButton
           icon={<Heart className="size-7 cursor-pointer stroke-2" />}
-          count={wishlistItemsCount}
+          count={wishlistCount}
           link="/wishlist"
         />
 
         {/* Cart - Desktop and Mobile */}
         <BadgedIconButton
           icon={<ShoppingCart className="size-7 cursor-pointer stroke-2" />}
-          count={cartItemsCount}
+          count={0}
           link="/cart"
         />
 

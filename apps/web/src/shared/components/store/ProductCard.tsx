@@ -2,12 +2,10 @@
 import type { PublicProductDto } from "@repo/types/contracts";
 import { HeartIcon, ShoppingCartIcon, StarIcon } from "lucide-react";
 
+import { addToWishlist } from "@/shared/actions/wishlist/addToWishlist";
+import { removeFromWishlist } from "@/shared/actions/wishlist/removeFromWishlist";
 import { useProductDetailsContext } from "@/shared/contexts/ProductDetailsContext";
-import {
-  useAddItemToWishlist,
-  useRemoveItemFromWishlist,
-} from "@/shared/hooks/data/useWishlistMutations";
-import { useWishlistStore } from "@/shared/states/useWishlist";
+import { useWishlistState } from "@/shared/states/useWishlist";
 
 type ProductCardProps = {
   product: PublicProductDto;
@@ -15,12 +13,12 @@ type ProductCardProps = {
 };
 
 export const ProductCard = ({ product, grid }: ProductCardProps) => {
-  const { mutate: addToWishlist } = useAddItemToWishlist();
-  const { mutate: removeFromWishlist } = useRemoveItemFromWishlist();
-  const isWishlisted = useWishlistStore((state) => !!state.map[product.id]);
-  const add = useWishlistStore((s) => s.add);
-  const remove = useWishlistStore((s) => s.remove);
+  const { add, remove, rollback } = useWishlistState();
+  const hasHydrated = useWishlistState((state) => state.hasHydrated);
+  const ids = useWishlistState((state) => state.ids);
   const { handleOpenProductDetails } = useProductDetailsContext();
+
+  const isWishlisted = hasHydrated && ids.includes(product.id);
 
   const percentDiscount = product.display.isOnSale
     ? Math.round(100 - (product.display.salePrice / product.display.price) * 100)
@@ -28,13 +26,20 @@ export const ProductCard = ({ product, grid }: ProductCardProps) => {
 
   const onCartClick = async (product: PublicProductDto) => handleOpenProductDetails(product);
 
-  const handleToggleWishlist = () => {
+  const handleToggleWishlist = async () => {
     if (isWishlisted) {
       remove(product.id);
-      removeFromWishlist({ productId: product.id });
-    } else {
-      add(product.id);
-      addToWishlist({ productId: product.id });
+      const { error } = await removeFromWishlist(product.id);
+      if (error) {
+        rollback();
+      }
+      return;
+    }
+
+    add(product.id);
+    const { error } = await addToWishlist(product.id);
+    if (error) {
+      rollback();
     }
   };
 

@@ -4,11 +4,9 @@ import { motion, useAnimation } from "framer-motion";
 import { HeartIcon, Star } from "lucide-react";
 import { useState } from "react";
 
+import { addToWishlist } from "@/shared/actions/wishlist/addToWishlist";
+import { removeFromWishlist } from "@/shared/actions/wishlist/removeFromWishlist";
 import { useAddItemToCart } from "@/shared/hooks/data/useCartMutations";
-import {
-  useAddItemToWishlist,
-  useRemoveItemFromWishlist,
-} from "@/shared/hooks/data/useWishlistMutations";
 import { useWishlistStore } from "@/shared/states/useWishlist";
 
 import { ProductOptions } from "./ProductOptions";
@@ -35,18 +33,23 @@ export const ProductDetails = ({
   const [count, setCount] = useState(1);
   const [selectedOptions, setSelectedOptions] = useState<SelectedOptionsState>({});
   const [showError, setShowError] = useState(false);
-  const isWishlisted = useWishlistStore((state) => !!state.map[id]);
+  const hasHydrated = useWishlistStore((state) => state.hasHydrated);
+  const ids = useWishlistStore((state) => state.ids);
+  const isWishlisted = hasHydrated && ids.includes(id);
   const add = useWishlistStore((s) => s.add);
   const remove = useWishlistStore((s) => s.remove);
+  const rollback = useWishlistStore((s) => s.rollback);
   const controls = useAnimation();
 
-  const handleToggleWishlist = () => {
+  const handleToggleWishlist = async () => {
     if (isWishlisted) {
       remove(id);
-      removeFromWishlist({ productId: id });
+      const { error } = await removeFromWishlist(id);
+      if (error) rollback();
     } else {
       add(id);
-      addToWishlist({ productId: id });
+      const { error } = await addToWishlist(id);
+      if (error) rollback();
     }
   };
 
