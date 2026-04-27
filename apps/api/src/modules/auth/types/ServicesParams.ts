@@ -12,7 +12,7 @@ export type LogoutParams = {
 
 export type RegisterParams = Omit<RegisterRequest, "confirmPassword">;
 
-export type RefreshAccessTokenParams = {
+export type RefreshTokensParams = {
   refreshToken: string;
 };
 

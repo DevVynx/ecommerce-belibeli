@@ -1,10 +1,10 @@
 import { getTokenExpDate } from "@/modules/auth/helpers/getTokenExpDate";
 import { generateAccessToken, generateRefreshToken } from "@/modules/auth/helpers/tokenGenerator";
 import { authRepositories } from "@/modules/auth/repositories";
-import { RefreshAccessTokenParams } from "@/modules/auth/types/ServicesParams";
+import { RefreshTokensParams } from "@/modules/auth/types/ServicesParams";
 import { UnauthorizedError } from "@/shared/utils/HttpErrors";
 
-export const refreshAccessToken = async ({ refreshToken }: RefreshAccessTokenParams) => {
+export const refreshTokens = async ({ refreshToken }: RefreshTokensParams) => {
   const existingToken = await authRepositories.findRefreshTokenByToken({ token: refreshToken });
 
   if (!existingToken) {

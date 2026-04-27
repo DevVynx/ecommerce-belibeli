@@ -7,7 +7,7 @@ import { authServices } from "@/modules/auth/services";
 export const refresh: RequestHandler = async (req, res: Response<RefreshResponse>) => {
   const { refreshToken } = v.refresh.getValidatedValues(req).body;
 
-  const { accessToken, newRefreshToken } = await authServices.refreshAccessToken({
+  const { accessToken, newRefreshToken } = await authServices.refreshTokens({
     refreshToken,
   });
 
