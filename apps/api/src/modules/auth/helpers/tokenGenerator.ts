@@ -9,7 +9,10 @@ export const generateAccessToken = (userId: string) => {
   return accessToken;
 };
 
-export const generateRefreshToken = (userId: string, expiresIn: SignOptions["expiresIn"] = "7d") => {
+export const generateRefreshToken = (
+  userId: string,
+  expiresIn: SignOptions["expiresIn"] = "7d"
+) => {
   const refreshToken = jwt.sign({ userId }, ENV.JWT_REFRESH_SECRET, {
     expiresIn,
   });
