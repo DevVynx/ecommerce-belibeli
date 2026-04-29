@@ -16,7 +16,9 @@ Components are organized **by feature** (same pattern as Server Actions):
 components/
 ├── auth/               # Feature: LoginForm, RegisterForm, etc.
 ├── store/              # Feature: Header, ProductCard, CartDrawer, etc.
-├── checkout/           # Feature: CheckoutForm, AddressForm, etc.
+│   ├── Header/
+│   ├── ProductCard.tsx
+│   └── ...
 ├── shadcn-ui/          # Base UI components (installed via shadcn CLI)
 └── ComponentName.tsx   # Generic/shared components (e.g., BadgedIconButton)
 ```

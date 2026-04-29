@@ -246,6 +246,13 @@ Helpers are module-specific utilities not used outside the module. Examples:
 - Mappers: Transform to catalog summary
 - Helpers: Product enrichment logic
 
+### Wishlist Module
+
+- Controllers: getWishlist, addItem, removeItem
+- Services: Wishlist business logic
+- Repositories: Wishlist CRUD operations
+- Mappers: Transform to response DTOs
+
 ## Adding a New Module
 
 1. Create module structure:

@@ -23,8 +23,6 @@ schemas/
 ├── auth/
 │   ├── loginForm.ts
 │   └── registerForm.ts
-├── checkout/
-│   └── addressForm.ts
 └── cep.ts
 ```
 
@@ -210,11 +208,11 @@ Ensure Server Actions accept the same data shape as the Zod schema.
 
 ## Key Files
 
-| File                                        | Purpose                 |
-| ------------------------------------------- | ----------------------- |
-| `schemas/auth/loginForm.ts`                 | Login Zod schema        |
-| `schemas/auth/registerForm.ts`              | Register Zod schema     |
-| `components/auth/login/LoginForm.tsx`       | Login form component    |
+| File                                        | Purpose              |
+| ------------------------------------------- | -------------------- |
+| `schemas/auth/loginForm.ts`                 | Login Zod schema     |
+| `schemas/auth/registerForm.ts`              | Register Zod schema  |
+| `components/auth/login/LoginForm.tsx`       | Login form component |
 | `components/auth/register/RegisterForm.tsx` | Register form component |
 
 ## Related Guides

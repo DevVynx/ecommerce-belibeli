@@ -25,20 +25,31 @@ Stores are located in `apps/web/src/shared/states/`.
 ## Pattern
 
 ```typescript
-// apps/web/src/shared/states/useExample.ts
+// apps/web/src/shared/states/auth.ts
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
-type ExampleStore = {
-  data: string | null;
-  setData: (data: string) => void;
-  clearData: () => void;
+type AuthState = {
+  user: User | null;
+  isAuthenticated: boolean;
+  setUser: (user: User) => void;
+  clearUser: () => void;
 };
 
-export const useExampleStore = create<ExampleStore>((set) => ({
-  data: null,
-  setData: (data) => set({ data }),
-  clearData: () => set({ data: null }),
-}));
+export const useAuthState = create<AuthState>()(
+  persist(
+    (set) => ({
+      user: null,
+      isAuthenticated: false,
+      setUser: (user) => set({ user, isAuthenticated: true }),
+      clearUser: () => set({ user: null, isAuthenticated: false }),
+    }),
+    {
+      name: "auth-storage",
+      partialize: (state) => ({ user: state.user, isAuthenticated: state.isAuthenticated }),
+    }
+  )
+);
 ```
 
 ## When to Create a Store
@@ -53,10 +64,11 @@ For server-fetched data, use Server Actions or React Query instead.
 
 ## Key Files
 
-| File                | Purpose                      |
-| ------------------- | ---------------------------- |
-| `states/useUser.ts` | User data (see as reference) |
+| File            | Purpose                      |
+| --------------- | ---------------------------- |
+| `states/auth.ts` | Auth state with persistence |
+| `states/wishlist.ts` | Wishlist state with persistence |
 
 ## Reference
 
-See `apps/web/src/shared/states/useUser.ts` for a complete example with persistence.
+See `apps/web/src/shared/states/auth.ts` for a complete example with persistence.
