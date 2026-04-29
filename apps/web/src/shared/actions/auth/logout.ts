@@ -6,6 +6,7 @@ import { useAuthMutex } from "@/shared/states/auth";
 import { fetchClient } from "@/shared/utils/api/fetchClient";
 
 import { removeAuthCookies } from "./cookieActions";
+import { refreshTokens } from "./refreshTokens";
 
 export const logout = async () => {
   const existingPromise = useAuthMutex.getState().logoutPromise;
@@ -16,6 +17,8 @@ export const logout = async () => {
   }
 
   const logoutPromise = (async () => {
+    await refreshTokens();
+
     await fetchClient<LogoutResponse>("/auth/logout", {
       method: "POST",
       isPrivate: true,
