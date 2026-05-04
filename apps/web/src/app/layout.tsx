@@ -3,6 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Kotta_One } from "next/font/google";
 
+import { CartProvider } from "@/shared/providers/CartProvider";
 import { QueryProvider } from "@/shared/providers/QueryProvider";
 import { WishlistProvider } from "@/shared/providers/WishlistProvider";
 
@@ -40,6 +41,7 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${kottaOne.variable} antialiased`}
       >
         <QueryProvider>
+          <CartProvider />
           <WishlistProvider />
           {children}
         </QueryProvider>

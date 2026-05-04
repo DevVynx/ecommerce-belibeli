@@ -14,9 +14,7 @@ export async function getProducts() {
 
   const { data, error } = await fetchClient<GetProductsResponse>("/products");
 
-  if (error) {
-    return { data: null, error };
-  }
+  if (error) return { data: null, error };
 
   return { data, error: null };
 }

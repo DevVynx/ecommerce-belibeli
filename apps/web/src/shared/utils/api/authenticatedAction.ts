@@ -4,6 +4,7 @@ import { logout } from "@/shared/actions/auth/logout";
 import { refreshTokens } from "@/shared/actions/auth/refreshTokens";
 import { useAuthMutex } from "@/shared/states/auth";
 import type { ApiErrorResponse } from "@/shared/types/api/error";
+import { clearAllStorages } from "@/shared/utils/store/state/clearAllStorages";
 
 type ActionResult<T> = {
   data: T | null;
@@ -25,6 +26,7 @@ export async function authenticatedAction<TArgs extends unknown[], TResult>(
 
     if (result.error?.status === 401) {
       if (retries >= MAX_RETRIES) {
+        clearAllStorages();
         await logout();
         redirect("/login");
       }

@@ -6,14 +6,10 @@ import { fetchClient } from "@/shared/utils/api/fetchClient";
 
 import { setAuthCookies } from "./cookieActions";
 
-export const login = async ({
-  email,
-  password,
-  rememberMe,
-}: LoginRequest & { rememberMe: boolean }) => {
+export const login = async (params: LoginRequest) => {
   const { data, error } = await fetchClient<LoginResponse>("/auth/login", {
     method: "POST",
-    body: { email, password, rememberMe },
+    body: params,
   });
 
   if (error) {
@@ -26,7 +22,7 @@ export const login = async ({
         accessToken: data.accessToken,
         refreshToken: data.refreshToken,
       },
-      rememberMe
+      params.rememberMe
     );
   }
 

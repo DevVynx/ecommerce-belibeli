@@ -30,9 +30,16 @@ export type PublicProductDto = {
     salePrice: number;
     isOnSale: boolean;
     variantId: string;
+    isAvailable: boolean;
   };
 };
 
 export type GetProductsResponse = {
   products: PublicProductDto[];
+};
+
+export type GetProductDetailsResponse = {
+  product: PublicProductDto;
+  options: ProductOptionDto[];
+  variants: PublicVariantDto[];
 };

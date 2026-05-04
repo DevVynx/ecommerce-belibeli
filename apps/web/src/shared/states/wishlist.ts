@@ -2,7 +2,7 @@ import type { WishlistItemDto } from "@repo/types/contracts";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-type WishlistStore = {
+type WishlistState = {
   count: number;
   ids: string[];
   previousCount: number;
@@ -18,7 +18,7 @@ type WishlistStore = {
   rollback: () => void;
 };
 
-export const useWishlistState = create<WishlistStore>()(
+export const useWishlistState = create<WishlistState>()(
   persist(
     (set, get) => ({
       count: 0,

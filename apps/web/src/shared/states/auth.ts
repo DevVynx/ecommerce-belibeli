@@ -38,7 +38,6 @@ export const useAuthState = create<AuthState>()(
       setHasHydrated: (hydrated) => set({ hasHydrated: hydrated }),
       setUser: (user) => set({ user, isAuthenticated: true, authError: null }),
       clearUser: () => {
-        localStorage.removeItem("wishlist-storage");
         set({ user: null, isAuthenticated: false, authError: null });
       },
       setAuthError: (error) => set({ authError: error }),
