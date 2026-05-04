@@ -49,6 +49,45 @@
   - No breaking changes (!)
 - **Location**: `.opencode/skills/pragmatic-commit/SKILL.md`
 
+### [Task] Frontend Architecture Refactor - Remove React Query
+
+- **Date**: 2026-05-04
+- **Decision**: Remove React Query completely from the project
+- **Changes**:
+  - Deleted entire `hooks/data` folder
+  - All data operations now use Next.js Server Actions
+  - Project no longer uses React Query anywhere
+- **Impact**: Major architectural change in data fetching strategy
+
+### [Task] Zustand Over React Context Pattern
+
+- **Date**: 2026-05-04
+- **Decision**: Use Zustand for all state management, completely replace React Context
+- **Implementation**:
+  - Cart store follows Wishlist pattern (both use Zustand)
+  - No more React Context in the project
+  - Reactive counters in header for both Wishlist and Cart using Zustand stores
+- **Impact**: State management standardization across features
+
+### [Task] Optimistic Updates Pattern
+
+- **Date**: 2026-05-04
+- **Decision**: Implement Optimistic UI Updates in Zustand stores
+- **Pattern**:
+  - Update Zustand store before API responds
+  - Rollback on API error
+  - Used in Cart and Wishlist operations
+- **Benefit**: Better UX with immediate feedback
+
+### [Task] Backend Fixes - Variant Mapping & Seed
+
+- **Date**: 2026-05-04
+- **Decisions**:
+  - Fixed `toProductDetails.ts`: use `productOptionValue.id` instead of `productVariantOption.id`
+  - Seed generates all variant combinations automatically via `generateAllVariantCombinations()`
+  - `totalStock` calculated automatically as sum of variant stocks
+- **Impact**: Correct API responses and proper test data generation
+
 ---
 
 ## Expiration Rules
