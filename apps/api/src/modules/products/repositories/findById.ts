@@ -5,8 +5,32 @@ type findProductByIdProps = {
 };
 
 export const findProductById = async ({ productId }: findProductByIdProps) => {
+  const now = new Date();
+
   const product = await db.product.findUnique({
     where: { id: productId },
+    include: {
+      productOptions: { include: { values: true } },
+      productVariants: {
+        select: {
+          id: true,
+          sku: true,
+          price: true,
+          stock: true,
+          isActive: true,
+          productVariantOptions: { select: { productOptionValueId: true } },
+          promotions: {
+            where: { isActive: true, startsAt: { lte: now }, endsAt: { gte: now } },
+          },
+        },
+      },
+      category: {
+        select: {
+          promotions: { where: { isActive: true, startsAt: { lte: now }, endsAt: { gte: now } } },
+        },
+      },
+      promotions: { where: { isActive: true, startsAt: { lte: now }, endsAt: { gte: now } } },
+    },
   });
 
   return product;

@@ -1,5 +1,6 @@
 import { getAll } from "./getAll";
+import { getById } from "./getById";
 
-const validations = { getAll };
+const validations = { getAll, getById };
 
 export default validations;

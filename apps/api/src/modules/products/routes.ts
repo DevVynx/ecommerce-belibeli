@@ -1,11 +1,13 @@
 import { Router } from "express";
 
+import { getProductDetails } from "@/modules/products/controllers/getProductDetails";
 import v from "@/modules/products/helpers/validators";
 
-import { getAllProductsResponse } from "./controllers";
+import { getAllProducts } from "./controllers";
 
 const productRouter: Router = Router();
 
-productRouter.get("/products", v.getAll.middleware, getAllProductsResponse);
+productRouter.get("/products", v.getAll.middleware, getAllProducts);
+productRouter.get("/products/:productId", v.getById.middleware, getProductDetails);
 
 export { productRouter };

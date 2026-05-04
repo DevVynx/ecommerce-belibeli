@@ -6,7 +6,7 @@ import { ProductMapper } from "@/modules/products/mappers";
 
 import { productServices } from "../services";
 
-export const getAllProductsResponse: RequestHandler = async (
+export const getAllProducts: RequestHandler = async (
   req,
   res: Response<GetProductsResponse>
 ) => {
