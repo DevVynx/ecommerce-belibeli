@@ -207,4 +207,14 @@ apps/web/src/
     └── utils/               # Utility functions
 
 packages/types/src/Contracts/  # Shared API types
+
+---
+
+## Regras para Todoist
+
+- **Idioma**: Todas as tasks devem ser criadas em português.
+- **Seções**: O projeto possui 3 seções — "feat" (novas funcionalidades), "refactor" (refatorações e melhorias) e "fix" (correções de bugs). Adicione cada task na seção correspondente ao tipo de mudança.
+- **IDs Únicos**: Usar padrão `[vyn-XXX]` onde XXX é um número crescente e nunca repete.
+- **Contador**: O arquivo `.opencode/task-counter.json` armazena o último número usado.
+- **Fluxo ao criar**: Ler o JSON, incrementar `last`, criar task com prefixo `[vyn-XXX]`, atualizar o JSON.
 ```
