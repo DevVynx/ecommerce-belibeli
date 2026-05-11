@@ -1,8 +1,7 @@
 "use client";
 
-import { useDirection } from "@radix-ui/react-direction";
-import { Slot } from "@radix-ui/react-slot";
 import { Star } from "lucide-react";
+import { Direction as DirectionPrimitive, Slot as SlotPrimitive } from "radix-ui";
 import * as React from "react";
 
 import { VisuallyHiddenInput } from "@/shared/components/visually-hidden-input";
@@ -206,7 +205,7 @@ function Rating(props: RatingProps) {
     ...rootProps
   } = props;
 
-  const dir = useDirection(dirProp);
+  const dir = DirectionPrimitive.useDirection(dirProp);
   const instanceId = React.useId();
   const rootId = id ?? instanceId;
 
@@ -433,7 +432,7 @@ function Rating(props: RatingProps) {
     ]
   );
 
-  const RootPrimitive = asChild ? Slot : "div";
+  const RootPrimitive = asChild ? SlotPrimitive.Slot : "div";
 
   return (
     <StoreContext.Provider value={store}>
@@ -820,7 +819,7 @@ function RatingItem(props: RatingItemProps) {
 
   const dataState: DataState = isFilled ? "full" : isPartiallyFilled ? "partial" : "empty";
 
-  const ItemPrimitive = asChild ? Slot : "button";
+  const ItemPrimitive = asChild ? SlotPrimitive.Slot : "button";
 
   return (
     <ItemPrimitive
@@ -864,9 +863,4 @@ function RatingItem(props: RatingItemProps) {
   );
 }
 
-export {
-  Rating,
-  RatingItem,
-  //
-  useStore as useRating,
-};
+export { Rating, RatingItem, useStore as useRating };
