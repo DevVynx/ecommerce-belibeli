@@ -96,11 +96,11 @@ export const ProductCard = ({ product, grid }: ProductCardProps) => {
         <div className="flex items-center gap-1">
           <strong className="font-semibold">
             R$
-            {Number(product.display.salePrice)}
+            {(product.display.salePrice).toFixed(2)}
           </strong>
           {product.display.isOnSale && (
             <span className="text-sm text-red-500 line-through">
-              R${Number(product.display.price)}
+              R${(product.display.price).toFixed(2)}
             </span>
           )}
         </div>
