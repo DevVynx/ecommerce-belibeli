@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/shared/utils/lib/utils";
 import { motion, useAnimation } from "motion/react";
 import type { HTMLAttributes } from "react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";

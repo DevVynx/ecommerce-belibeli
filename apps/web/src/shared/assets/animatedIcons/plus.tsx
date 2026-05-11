@@ -4,6 +4,8 @@ import { motion, useAnimation } from "motion/react";
 import type { HTMLAttributes } from "react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
+import { cn } from "@/shared/utils/lib/utils";
+
 export interface PlusIconHandle {
   startAnimation: () => void;
   stopAnimation: () => void;
