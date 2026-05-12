@@ -22,7 +22,7 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 right-0 left-0 z-20 bg-background p-2 inset-shadow-2xs transition-transform duration-300 ease-in-out ${translateYClass} `}
+      className={`fixed top-0 right-0 left-0 z-5 bg-background p-2 inset-shadow-2xs transition-transform duration-300 ease-in-out ${translateYClass} `}
     >
       <div className="mx-auto lg:container">
         <NavBar />
