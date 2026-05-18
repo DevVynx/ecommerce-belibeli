@@ -22,7 +22,7 @@ export const ProductDetailsDialog = ({
   useEffect(() => {
     const getProductDetails = async () => {
       if (open && product) {
-        const result = await getProductById(product.id);
+        const result = await getProductById({ productId: product.id });
         if (result.data) {
           setProductDetail(result.data);
         }
