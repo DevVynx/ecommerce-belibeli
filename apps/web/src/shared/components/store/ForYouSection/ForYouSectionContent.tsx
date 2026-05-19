@@ -12,51 +12,73 @@ type ForYouSectionContentProps = {
 };
 
 export const ForYouSectionContent = ({ products }: ForYouSectionContentProps) => {
-  const sentinelRef = useRef<HTMLDivElement>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [offset, setOffset] = useState<number>(products.length);
-  const [hasMore, setHasMore] = useState<boolean>(true);
-  const [productsList, setProductsList] = useState<PublicProductDto[]>(products);
-
   const { isMobile } = useScreenSize();
 
-  const LIMIT = isMobile ? 9 : 16;
+  const sentinelRef = useRef<HTMLDivElement>(null);
+  const [productsList, setProductsList] = useState<PublicProductDto[]>(products);
 
-  const fetchMoreProducts = async () => {
-    setIsLoading(true);
+  const offsetRef = useRef(products.length);
+  const isLoadingRef = useRef(false);
+  const hasMoreRef = useRef(true);
+  const limitRef = useRef(isMobile ? 9 : 16);
 
-    const { data, error } = await getProducts({ limit: LIMIT, offset: offset });
-    if (!data || error) {
-      setIsLoading(false);
-      return;
-    }
-
-    setProductsList((prevProducts) => [...prevProducts, ...data.products]);
-    setOffset((prevOffset) => prevOffset + LIMIT);
-    if (data.products.length < LIMIT) setHasMore(false);
-    setIsLoading(false);
-  };
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    limitRef.current = isMobile ? 9 : 16;
+  }, [isMobile]);
+
+  useEffect(() => {
+    setProductsList(products);
+    offsetRef.current = products.length;
+    hasMoreRef.current = true;
+  }, [products]);
+
+  useEffect(() => {
+    let active = true;
+
+    const fetchMore = async () => {
+      isLoadingRef.current = true;
+      setIsLoading(true);
+
+      const { data, error } = await getProducts({
+        limit: limitRef.current,
+        offset: offsetRef.current,
+      });
+
+      if (!active) return;
+      if (!data || error) {
+        isLoadingRef.current = false;
+        setIsLoading(false);
+        return;
+      }
+
+      setProductsList((prev) => [...prev, ...data.products]);
+      offsetRef.current += limitRef.current;
+      if (data.products.length < limitRef.current) {
+        hasMoreRef.current = false;
+      }
+      isLoadingRef.current = false;
+      setIsLoading(false);
+    };
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (!entry) return;
-        if (entry.isIntersecting && hasMore && !isLoading) {
-          fetchMoreProducts();
+        if (entry?.isIntersecting && hasMoreRef.current && !isLoadingRef.current) {
+          fetchMore();
         }
       },
       { rootMargin: "600px" }
     );
 
-    if (!sentinelRef.current) return;
-    observer.observe(sentinelRef.current);
+    const sentinel = sentinelRef.current;
+    if (sentinel) observer.observe(sentinel);
 
     return () => {
-      if (sentinelRef.current) {
-        observer.unobserve(sentinelRef.current);
-      }
+      active = false;
+      observer.disconnect();
     };
-  }, [hasMore, isLoading]);
+  }, []);
 
   return (
     <section id="forYouSection" className="px-2 py-12">
@@ -71,7 +93,7 @@ export const ForYouSectionContent = ({ products }: ForYouSectionContentProps) =>
         <div ref={sentinelRef} />
         {isLoading && (
           <div className="grid grid-cols-2 gap-6 py-10 md:grid-cols-3 lg:grid-cols-4">
-            {Array.from({ length: LIMIT }).map((_, index) => (
+            {Array.from({ length: limitRef.current }).map((_, index) => (
               <ProductCardSkeleton key={index} grid />
             ))}
           </div>
