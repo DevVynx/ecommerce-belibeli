@@ -89,6 +89,8 @@ export const RegisterForm = ({ redirectTo = "/" }: RegisterFormProps) => {
 
     if (data) {
       setUser(data.user);
+      setStep("account");
+      form.reset();
       router.push(redirectTo);
     }
   };
