@@ -88,7 +88,7 @@ export const CartDropdown = () => {
     <div ref={triggerRef} onMouseEnter={handleOpen} onMouseLeave={handleClose}>
       {/* Trigger - Cart Icon */}
       <Button variant="ghost" className="relative p-1" asChild>
-        <Link href="/cart">
+        <Link href="/cart" onClick={() => setIsOpen(false)}>
           <ShoppingCart className="size-7 stroke-2" />
           {count > 0 && (
             <Badge
