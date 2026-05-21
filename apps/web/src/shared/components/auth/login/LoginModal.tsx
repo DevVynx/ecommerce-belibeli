@@ -20,7 +20,7 @@ type LoginModalProps = {
 export const LoginModal = ({ open, onOpenChange, redirectTo = "/checkout" }: LoginModalProps) => {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent>
         <DialogHeader>
           <DialogTitle className="text-center text-2xl font-bold">Login</DialogTitle>
           <p className="text-muted-foreground text-center text-sm">
