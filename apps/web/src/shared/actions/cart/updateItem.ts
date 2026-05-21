@@ -18,6 +18,6 @@ export async function updateCartItemQuantity(params: UpdateCartItemQuantityReque
   );
 
   if (error) return { data: null, error };
-  
+
   return { data, error: null };
 }
