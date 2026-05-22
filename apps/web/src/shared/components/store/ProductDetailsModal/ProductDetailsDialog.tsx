@@ -5,6 +5,7 @@ import { getProductById } from "@/shared/actions/products/getProductById";
 import { Dialog, DialogContent, DialogTitle } from "@/shared/components/shadcn-ui/dialog";
 
 import { ProductDetails } from "./ProductDetails";
+import { ProductDetailsSkeleton } from "./ProductDetailsSkeleton";
 
 type ProductDetailsDialogProps = {
   open: boolean;
@@ -50,9 +51,7 @@ export const ProductDetailsDialog = ({
             onClose={() => onOpenChange(false)}
           />
         ) : (
-          <div className="flex h-125 items-center justify-center">
-            <p>Carregando...</p>
-          </div>
+          <ProductDetailsSkeleton />
         )}
       </DialogContent>
     </Dialog>
