@@ -7,13 +7,37 @@
 
 ## Current Task
 
-**[vyn-010] Cart Page Refactor** - Frontend
+**[vyn-010] Cart Page Refactor** — Backend enrichment refactoring
+
+### Frontend (done)
+- Componentized cart page (CartItemCard, CartItemQuantity, CartSummary, etc.)
+- LoginModal, coupon input, free shipping progress bar, discount breakdown
+- Replaced all `toFixed(2)` with `formatPrice`/`formatDiscount`
+- Added `decimal.js` for monetary arithmetic, fixed `calculateSummary` semantics
+
+### Backend (current) — Product Enrichment Refactoring
+- **`offer` value object**: Sale price calculations now grouped under `variant.offer` instead of spreading fields. Adding new computed fields (installments, freeShipping, etc.) now only requires touching `PricingInfo` + 1 helper, not N services.
+- **Types by domain**: Each module now has a single type file per domain instead of split `Persistence.ts`/`Enriched.ts`:
+  - `products/types/ProductList.ts` — Raw + Enriched for catalog listing
+  - `products/types/ProductDetail.ts` — Raw + Enriched for product detail
+  - `cart/types/Cart.ts` — Raw + Enriched for cart
+  - `wishlist/types/Wishlist.ts` — Raw + Enriched for wishlist
+- **Consistent NonNullable**: All raw types use `NonNullable` wrapper, no more guessing nullability at import site
+- **PascalCase naming**: All type files use PascalCase convention
 
 ---
 
 ## Recent Important Decisions
 
 > Decisions older than 30 days are automatically expired and should be removed.
+
+### [Task] Product Enrichment Refactoring — Offer Value Object
+
+- **Date**: 2026-05-22
+- **Decision**: Replace spread enrichment pattern (`{ ...variant, salePrice, isOnSale, isAvailable }`) with an `offer` value object (`{ ...variant, offer: { salePrice, isOnSale, isAvailable } }`) across all API modules.
+- **Why**: Previously, adding a single enrichment field required editing 5 services + 5 type files + helpers. With `offer` namespaced under `variant`, the type is simply `RawVariant & { offer: ProductEnrichment }`, and new fields only touch `ProductEnrichment` + `calculateEnrichment`.
+- **Scope**: Products (list/detail), Cart, Wishlist — all enrichment flows updated.
+- **Types**: Replaced `Persistence.ts`/`Enriched.ts` split with single files per domain (`ProductList.ts`, `ProductDetail.ts`, `Cart.ts`, `Wishlist.ts`). All raw types use `NonNullable`. PascalCase filenames.
 
 ### [Task] Documentation Structure Setup
 
