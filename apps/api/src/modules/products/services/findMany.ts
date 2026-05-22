@@ -19,7 +19,7 @@ export const findManyProducts = async ({
   const enrichedProducts = rawProducts
     .map((product) => {
       const variantsWithEnrichment = product.productVariants.map((variant) => {
-        const enrichment = productLogic.calculateEnrichment(variant, {
+        const offer = productLogic.calculateEnrichment(variant, {
           variant: variant.promotions,
           product: product.promotions,
           category: product.category.promotions,
@@ -27,7 +27,7 @@ export const findManyProducts = async ({
 
         return {
           ...variant,
-          ...enrichment,
+          offer,
         };
       });
 
@@ -43,7 +43,7 @@ export const findManyProducts = async ({
     })
     .filter((p) => p !== null);
 
-  if (onSale) return { products: enrichedProducts.filter((p) => p.heroVariant.isOnSale) };
+  if (onSale) return { products: enrichedProducts.filter((p) => p.heroVariant.offer.isOnSale) };
 
   return { products: enrichedProducts };
 };

@@ -15,7 +15,7 @@ export const findCartByIdCart = async ({ userId }: FindCartByIdParams) => {
   const enrichedItems = rawCart.items.map((item) => {
     const { productVariant: variant } = item;
 
-    const { isAvailable, isOnSale, salePrice } = productLogic.calculateEnrichment(variant, {
+    const offer = productLogic.calculateEnrichment(variant, {
       variant: variant.promotions,
       product: variant.product.promotions,
       category: variant.product.category.promotions,
@@ -27,9 +27,7 @@ export const findCartByIdCart = async ({ userId }: FindCartByIdParams) => {
         ...variant.product,
         variant: {
           ...variant,
-          isOnSale,
-          salePrice,
-          isAvailable,
+          offer,
         },
       },
     };

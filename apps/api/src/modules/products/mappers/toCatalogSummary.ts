@@ -1,6 +1,6 @@
 import type { GetProductsResponse } from "@repo/types/contracts";
 
-import type { EnrichedProductList } from "@/modules/products/types/Enriched";
+import type { EnrichedProductList } from "@/modules/products/types/ProductList";
 
 export function ProductMapperToCatalogSummary(products: EnrichedProductList): GetProductsResponse {
   const formattedProducts = products.map((product) => {
@@ -14,9 +14,9 @@ export function ProductMapperToCatalogSummary(products: EnrichedProductList): Ge
         variantId: product.heroVariant.id,
         image: product.image,
         price: Number(product.heroVariant.price),
-        salePrice: Number(product.heroVariant.salePrice),
-        isOnSale: product.heroVariant.isOnSale,
-        isAvailable: product.heroVariant.isAvailable,
+        salePrice: Number(product.heroVariant.offer.salePrice),
+        isOnSale: product.heroVariant.offer.isOnSale,
+        isAvailable: product.heroVariant.offer.isAvailable,
       },
     };
   });

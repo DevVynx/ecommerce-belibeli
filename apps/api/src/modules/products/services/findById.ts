@@ -11,7 +11,7 @@ export const findProductById = async ({ productId }: FindProductByIdParams) => {
   }
 
   const variantsWithEnrichment = rawProduct.productVariants.map((variant) => {
-    const enrichment = productLogic.calculateEnrichment(variant, {
+    const offer = productLogic.calculateEnrichment(variant, {
       variant: variant.promotions,
       product: rawProduct.promotions,
       category: rawProduct.category.promotions,
@@ -19,7 +19,7 @@ export const findProductById = async ({ productId }: FindProductByIdParams) => {
 
     return {
       ...variant,
-      ...enrichment,
+      offer,
     };
   });
 

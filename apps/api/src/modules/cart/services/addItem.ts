@@ -9,7 +9,7 @@ export const addCartItem = async ({
   productVariantId,
   quantity,
 }: CreateCartItemParams) => {
-  const variant = await productServices.findVariantById(productVariantId);
+  const variant = await productServices.findVariantById({ variantId: productVariantId });
 
   if (!variant) {
     throw new NotFoundError("Variante do produto não encontrada.");

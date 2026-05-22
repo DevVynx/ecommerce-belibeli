@@ -1,9 +1,9 @@
 import type { GetProductDetailsResponse } from "@repo/types/contracts";
 
-import type { EnrichedProductDetails } from "@/modules/products/types/Enriched";
+import type { EnrichedProductDetail } from "@/modules/products/types/ProductDetail";
 
 export function ProductMapperToProductDetails(
-  enrichedProduct: EnrichedProductDetails
+  enrichedProduct: EnrichedProductDetail
 ): GetProductDetailsResponse {
   const formattedProduct = {
     id: enrichedProduct.id,
@@ -15,9 +15,9 @@ export function ProductMapperToProductDetails(
       variantId: enrichedProduct.heroVariant.id,
       image: enrichedProduct.image,
       price: Number(enrichedProduct.heroVariant.price),
-      salePrice: Number(enrichedProduct.heroVariant.salePrice),
-      isOnSale: enrichedProduct.heroVariant.isOnSale,
-      isAvailable: enrichedProduct.heroVariant.isAvailable,
+      salePrice: Number(enrichedProduct.heroVariant.offer.salePrice),
+      isOnSale: enrichedProduct.heroVariant.offer.isOnSale,
+      isAvailable: enrichedProduct.heroVariant.offer.isAvailable,
     },
   };
 
@@ -34,9 +34,9 @@ export function ProductMapperToProductDetails(
     id: variant.id,
     sku: variant.sku,
     price: Number(variant.price),
-    salePrice: Number(variant.salePrice),
-    isOnSale: variant.isOnSale,
-    isAvailable: variant.isAvailable,
+    salePrice: Number(variant.offer.salePrice),
+    isOnSale: variant.offer.isOnSale,
+    isAvailable: variant.offer.isAvailable,
     optionValueIds: variant.productVariantOptions.map((vOpt) => vOpt.productOptionValueId),
   }));
 

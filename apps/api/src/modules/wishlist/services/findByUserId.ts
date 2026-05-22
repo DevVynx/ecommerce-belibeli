@@ -10,7 +10,7 @@ export const findByUserId = async ({ userId }: FindWishlistByUserIdParams) => {
   const enrichedItems = rawWishlist.items
     .map((item) => {
       const enrichedVariants = item.product.productVariants.map((variant) => {
-        const { isAvailable, isOnSale, salePrice } = productLogic.calculateEnrichment(variant, {
+        const offer = productLogic.calculateEnrichment(variant, {
           variant: variant.promotions,
           product: item.product.promotions,
           category: item.product.category.promotions,
@@ -18,9 +18,7 @@ export const findByUserId = async ({ userId }: FindWishlistByUserIdParams) => {
 
         return {
           ...variant,
-          isOnSale,
-          salePrice,
-          isAvailable,
+          offer,
         };
       });
 

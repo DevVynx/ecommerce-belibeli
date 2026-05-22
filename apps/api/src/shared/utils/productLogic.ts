@@ -64,21 +64,18 @@ export const productLogic = {
     return result.lessThan(zero) ? zero : result.toDecimalPlaces(2);
   },
 
-  pickHeroVariant<T extends ProductEnrichment & { stock: number }>(variants: T[]): T | undefined {
-    const availableVariants = variants.filter((v) => v.isAvailable);
+  pickHeroVariant<T extends { offer: ProductEnrichment; stock: number }>(variants: T[]): T | undefined {
+    const availableVariants = variants.filter((v) => v.offer.isAvailable);
 
     if (availableVariants.length === 0) return undefined;
 
     return availableVariants.reduce((best, current) => {
-      // Prioridade 1: Promoção ganha de preço normal
-      if (current.isOnSale && !best.isOnSale) return current;
-      if (!current.isOnSale && best.isOnSale) return best;
+      if (current.offer.isOnSale && !best.offer.isOnSale) return current;
+      if (!current.offer.isOnSale && best.offer.isOnSale) return best;
 
-      // Prioridade 2: Menor preço final (salePrice) ganha
-      if (current.salePrice.lessThan(best.salePrice)) return current;
-      if (current.salePrice.greaterThan(best.salePrice)) return best;
+      if (current.offer.salePrice.lessThan(best.offer.salePrice)) return current;
+      if (current.offer.salePrice.greaterThan(best.offer.salePrice)) return best;
 
-      // Prioridade 3: Maior estoque como critério final de desempate
       return current.stock > best.stock ? current : best;
     });
   },

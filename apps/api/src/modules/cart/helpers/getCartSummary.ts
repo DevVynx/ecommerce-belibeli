@@ -5,7 +5,7 @@ export interface CartItemSummaryInput {
   product: {
     variant: {
       price: Decimal;
-      salePrice: Decimal;
+      offer: { salePrice: Decimal };
     };
   };
 }
@@ -27,7 +27,7 @@ export function getCartSummary(items: CartItemSummaryInput[]): CartSummary {
   }, zero);
 
   const total = items.reduce((acc, item) => {
-    return acc.plus(item.product.variant.salePrice.times(item.quantity));
+    return acc.plus(item.product.variant.offer.salePrice.times(item.quantity));
   }, zero);
 
   const discount = subtotal.minus(total);

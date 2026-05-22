@@ -1,6 +1,6 @@
 import { GetCartItemsResponse } from "@repo/types/contracts";
 
-import type { EnrichedCartItem } from "@/modules/cart/types/Enriched";
+import type { EnrichedCartItem } from "@/modules/cart/types/Cart";
 
 import { toCartItemDto } from "./toCartItemDto";
 

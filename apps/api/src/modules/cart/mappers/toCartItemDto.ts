@@ -1,6 +1,6 @@
 import { CartItemDto } from "@repo/types/contracts";
 
-import type { EnrichedCartItem } from "@/modules/cart/types/Enriched";
+import type { EnrichedCartItem } from "@/modules/cart/types/Cart";
 
 export function toCartItemDto(item: EnrichedCartItem): CartItemDto {
   const { product } = item;
@@ -16,9 +16,9 @@ export function toCartItemDto(item: EnrichedCartItem): CartItemDto {
         id: variant.id,
         image: product.image,
         price: Number(variant.price),
-        salePrice: Number(variant.salePrice),
-        isOnSale: variant.isOnSale,
-        isAvailable: variant.isAvailable,
+        salePrice: Number(variant.offer.salePrice),
+        isOnSale: variant.offer.isOnSale,
+        isAvailable: variant.offer.isAvailable,
       },
     },
     selectedOptions: variant.productVariantOptions.map((pvo) => ({
