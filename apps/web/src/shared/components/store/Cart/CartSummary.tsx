@@ -26,72 +26,70 @@ export const CartSummary = ({ summary }: CartSummaryProps) => {
   const finalTotal = total - couponDiscount;
 
   return (
-    <div className="hidden lg:block">
-      <div className="sticky top-24 rounded-xl border bg-white shadow-sm">
-        <div className="p-6">
-          <h2 className="mb-5 text-lg font-bold">Resumo do Pedido</h2>
+    <div className="sticky top-24 rounded-xl border bg-white shadow-sm">
+      <div className="p-6">
+        <h2 className="mb-5 text-lg font-bold">Resumo do Pedido</h2>
 
-          <FreeShippingBanner total={total} />
+        <FreeShippingBanner total={total} />
 
-          <div className="space-y-3 text-sm">
+        <div className="space-y-3 text-sm">
+          <div className="flex items-center justify-between">
+            <span className="text-muted-foreground">Preço de varejo</span>
+            <span className="text-muted-foreground">{formatPrice(subtotal)}</span>
+          </div>
+
+          {discount > 0 && (
             <div className="flex items-center justify-between">
-              <span className="text-muted-foreground">Preço de varejo</span>
-              <span className="text-muted-foreground">{formatPrice(subtotal)}</span>
+              <span className="text-muted-foreground">Desconto em promoção</span>
+              <span className="font-semibold text-red-500">{formatDiscount(discount)}</span>
             </div>
+          )}
 
-            {discount > 0 && (
-              <div className="flex items-center justify-between">
-                <span className="text-muted-foreground">Desconto em promoção</span>
-                <span className="font-semibold text-red-500">{formatDiscount(discount)}</span>
-              </div>
-            )}
+          {appliedCoupon && (
+            <div className="flex items-center justify-between">
+              <span className="text-muted-foreground">Cupom ({appliedCoupon.code})</span>
+              <span className="font-semibold text-red-500">
+                {formatDiscount(appliedCoupon.discount)}
+              </span>
+            </div>
+          )}
 
-            {appliedCoupon && (
-              <div className="flex items-center justify-between">
-                <span className="text-muted-foreground">Cupom ({appliedCoupon.code})</span>
-                <span className="font-semibold text-red-500">
-                  {formatDiscount(appliedCoupon.discount)}
-                </span>
-              </div>
-            )}
+          {total < FREE_SHIPPING_THRESHOLD && (
+            <div className="flex items-center justify-between">
+              <span className="text-muted-foreground">Frete</span>
+              <span className="text-muted-foreground text-xs">Calculado no checkout</span>
+            </div>
+          )}
+          {total >= FREE_SHIPPING_THRESHOLD && (
+            <div className="flex items-center justify-between">
+              <span className="text-muted-foreground">Frete</span>
+              <span className="font-semibold text-green-600">Grátis</span>
+            </div>
+          )}
+        </div>
 
-            {total < FREE_SHIPPING_THRESHOLD && (
-              <div className="flex items-center justify-between">
-                <span className="text-muted-foreground">Frete</span>
-                <span className="text-muted-foreground text-xs">Calculado no checkout</span>
-              </div>
-            )}
-            {total >= FREE_SHIPPING_THRESHOLD && (
-              <div className="flex items-center justify-between">
-                <span className="text-muted-foreground">Frete</span>
-                <span className="font-semibold text-green-600">Grátis</span>
-              </div>
-            )}
-          </div>
+        <Separator className="my-4" />
 
-          <Separator className="my-4" />
+        <div className="mb-4 flex items-center justify-between text-base">
+          <span className="font-bold">Total</span>
+          <span className="text-xl font-bold">{formatPrice(finalTotal)}</span>
+        </div>
 
-          <div className="mb-4 flex items-center justify-between text-base">
-            <span className="font-bold">Total</span>
-            <span className="text-xl font-bold">{formatPrice(finalTotal)}</span>
-          </div>
+        <CouponApplier
+          subtotal={total}
+          appliedCoupon={appliedCoupon}
+          onApply={setAppliedCoupon}
+          onClear={() => setAppliedCoupon(null)}
+        />
 
-          <CouponApplier
-            subtotal={total}
-            appliedCoupon={appliedCoupon}
-            onApply={setAppliedCoupon}
-            onClear={() => setAppliedCoupon(null)}
-          />
-
-          <div className="mt-6 space-y-3">
-            <CheckoutButton buttonClassname="w-full cursor-pointer" />
-            <Button variant="outline" className="w-full cursor-pointer" asChild>
-              <Link href="/#bestOffersSection">
-                <ShoppingBag className="size-4" />
-                Continuar Comprando
-              </Link>
-            </Button>
-          </div>
+        <div className="mt-6 space-y-3">
+          <CheckoutButton buttonClassname="w-full cursor-pointer" />
+          <Button variant="outline" className="w-full cursor-pointer" asChild>
+            <Link href="/#bestOffersSection">
+              <ShoppingBag className="size-4" />
+              Continuar Comprando
+            </Link>
+          </Button>
         </div>
       </div>
     </div>
