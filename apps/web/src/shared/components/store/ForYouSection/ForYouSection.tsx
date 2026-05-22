@@ -8,7 +8,7 @@ export const ForYouSection = async () => {
 
   if (error) {
     return (
-      <section id="forYouSection" className="px-2 py-12">
+      <section className="px-2 py-12">
         <div className="mx-auto lg:container">
           <SectionError
             title="Produtos indisponíveis"

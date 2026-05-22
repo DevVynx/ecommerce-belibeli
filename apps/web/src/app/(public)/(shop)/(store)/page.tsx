@@ -14,7 +14,7 @@ const Home = async () => {
     <div className="relative z-10 overflow-x-hidden">
       <Header />
       <HeroBanner />
-      <main className="max-w-9xl mx-auto flex flex-col bg-white pb-14 lg:pb-0">
+      <main className="bg-white">
         <CategoriesSection categories={HOME_CATEGORIES} />
 
         <Suspense fallback={<BestOffersSkeleton />}>

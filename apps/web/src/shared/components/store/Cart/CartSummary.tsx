@@ -86,7 +86,7 @@ export const CartSummary = ({ summary }: CartSummaryProps) => {
           <div className="mt-6 space-y-3">
             <CheckoutButton buttonClassname="w-full cursor-pointer" />
             <Button variant="outline" className="w-full cursor-pointer" asChild>
-              <Link href="/">
+              <Link href="/#bestOffersSection">
                 <ShoppingBag className="size-4" />
                 Continuar Comprando
               </Link>
