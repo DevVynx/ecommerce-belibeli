@@ -3,7 +3,7 @@ import { cartRepositories } from "@/modules/cart/repositories";
 import type { FindCartByIdParams } from "@/modules/cart/types/ServiceParams";
 import { productLogic } from "@/shared/utils/productLogic";
 
-export const findCartByIdCart = async ({ userId }: FindCartByIdParams) => {
+export const findCartByUserId = async ({ userId }: FindCartByIdParams) => {
   const rawCart = await cartRepositories.findByUserId({ userId });
 
   if (!rawCart) {

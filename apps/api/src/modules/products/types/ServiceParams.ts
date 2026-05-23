@@ -11,3 +11,7 @@ export type FindProductByIdParams = {
 export type FindVariantByIdParams = {
   variantId: string;
 };
+
+export type findVariantByIdWithProductParams = {
+  variantId: string;
+};

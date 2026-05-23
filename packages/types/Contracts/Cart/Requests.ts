@@ -3,6 +3,13 @@ export type AddItemToCartRequest = {
   quantity: number;
 };
 
+export type SyncCartRequest = {
+  items: {
+    productVariantId: string;
+    quantity: number;
+  }[];
+};
+
 export type UpdateCartItemQuantityRequest = {
   cartItemId: string;
   quantity: number;

@@ -5,6 +5,7 @@ import {
   findAllCartItems,
   findCart,
   removeItemFromCart,
+  syncCart,
   updateCartItemQuantity,
 } from "@/modules/cart/controllers";
 import v from "@/modules/cart/helpers/validators";
@@ -15,6 +16,7 @@ const cartRouter: Router = Router();
 cartRouter.get("/cart", authMiddleware, findCart);
 cartRouter.get("/cart/items", authMiddleware, findAllCartItems);
 cartRouter.post("/cart/items", authMiddleware, v.addItemToCart.middleware, addItemToCart);
+cartRouter.post("/cart/sync", authMiddleware, v.syncCart.middleware, syncCart);
 cartRouter.patch(
   "/cart/items/:cartItemId/quantity",
   authMiddleware,

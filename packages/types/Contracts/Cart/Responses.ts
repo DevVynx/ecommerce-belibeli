@@ -30,6 +30,18 @@ export type CartDto = {
   };
 };
 
+export type SyncCartSucceedItemDto = {
+  productVariantId: string;
+  productTitle: string;
+  cartItemId: string;
+};
+
+export type SyncCartFailedItemDto = {
+  productVariantId: string;
+  productTitle: string;
+  reason: string;
+};
+
 export type GetCartResponse = {
   cart: CartDto | null;
 };
@@ -45,6 +57,14 @@ export type AddItemToCartResponse = {
     quantity: number;
     cartId: string;
     productVariantId: string;
+  };
+};
+
+export type SyncCartResponse = {
+  cart: CartDto | null;
+  results: {
+    succeeded: SyncCartSucceedItemDto[];
+    failed: SyncCartFailedItemDto[];
   };
 };
 

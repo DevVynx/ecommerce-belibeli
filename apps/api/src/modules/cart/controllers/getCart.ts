@@ -7,7 +7,7 @@ import { cartServices } from "@/modules/cart/services";
 export const findCart: RequestHandler = async (_req, res: Response<GetCartResponse>) => {
   const { userId } = res.locals.user;
 
-  const { cart } = await cartServices.findById({ userId });
+  const { cart } = await cartServices.findCartByUserId({ userId });
 
   const { cart: formattedWishlist } = cartMappers.toUserCart(cart);
 
