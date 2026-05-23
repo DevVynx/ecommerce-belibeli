@@ -29,12 +29,6 @@ export const ForYouSectionContent = ({ products }: ForYouSectionContentProps) =>
   }, [isMobile]);
 
   useEffect(() => {
-    setProductsList(products);
-    offsetRef.current = products.length;
-    hasMoreRef.current = true;
-  }, [products]);
-
-  useEffect(() => {
     let active = true;
 
     const fetchMore = async () => {
