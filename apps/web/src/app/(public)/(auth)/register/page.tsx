@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
-import { LeftRegisterSide } from "@/shared/components/auth/register/LeftRegisterSide";
-import { RightRegisterSide } from "@/shared/components/auth/register/RightRegisterSide";
+import { LeftRegisterSide } from "@/shared/components/Auth/Register/LeftRegisterSide";
+import { RightRegisterSide } from "@/shared/components/Auth/Register/RightRegisterSide";
 
 export const metadata: Metadata = {
   title: "Criar Conta | BeliBeli Store",

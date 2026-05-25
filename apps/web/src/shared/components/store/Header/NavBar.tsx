@@ -2,7 +2,7 @@
 import { Heart } from "lucide-react";
 
 import { BadgedIconButton } from "@/shared/components/BadgedIconButton";
-import { UserMenu } from "@/shared/components/store/Header/UserMenu";
+import { UserMenu } from "@/shared/components/Store/Header/UserMenu";
 import { useWishlistState } from "@/shared/states/wishlist";
 
 import { CartDropdown } from "../../Cart/CartDropdown";

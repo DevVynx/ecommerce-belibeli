@@ -1,6 +1,6 @@
 import { getProducts } from "@/shared/actions/products/getProducts";
 import { SectionError } from "@/shared/components/SectionError";
-import { BestOffersCarousel } from "@/shared/components/store/BestOffersSection/BestOffersCarousel";
+import { BestOffersCarousel } from "@/shared/components/Store/BestOffersSection/BestOffersCarousel";
 
 export const BestOffersSection = async () => {
   const { data, error } = await getProducts({ onSale: true, limit: 15 });

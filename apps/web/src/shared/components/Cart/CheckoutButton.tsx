@@ -2,7 +2,7 @@ import { ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
-import { AuthModal } from "@/shared/components/auth/AuthModal";
+import { AuthModal } from "@/shared/components/Auth/AuthModal";
 import { Button } from "@/shared/components/shadcn-ui/button";
 import { useAuthState } from "@/shared/states/auth";
 

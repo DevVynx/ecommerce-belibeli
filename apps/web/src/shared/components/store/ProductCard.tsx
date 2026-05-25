@@ -5,7 +5,7 @@ import { useState } from "react";
 
 import { addToWishlist } from "@/shared/actions/wishlist/addToWishlist";
 import { removeFromWishlist } from "@/shared/actions/wishlist/removeFromWishlist";
-import { ProductDetailsDialog } from "@/shared/components/store/ProductDetailsModal/ProductDetailsDialog";
+import { ProductDetailsDialog } from "@/shared/components/Store/ProductDetailsModal/ProductDetailsDialog";
 import { useWishlistState } from "@/shared/states/wishlist";
 import { authenticatedAction } from "@/shared/utils/api/authenticatedAction";
 import { calculateDiscountPercent, formatPrice } from "@/shared/utils/store/price";

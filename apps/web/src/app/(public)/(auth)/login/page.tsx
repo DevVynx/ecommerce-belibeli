@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
-import { LeftLoginSide } from "@/shared/components/auth/login/LeftLoginSide";
-import { RightLoginSide } from "@/shared/components/auth/login/RightLoginSide";
+import { LeftLoginSide } from "@/shared/components/Auth/Login/LeftLoginSide";
+import { RightLoginSide } from "@/shared/components/Auth/Login/RightLoginSide";
 
 export const metadata: Metadata = {
   title: "Entrar | BeliBeli Store",

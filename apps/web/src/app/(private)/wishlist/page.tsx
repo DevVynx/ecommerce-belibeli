@@ -7,7 +7,7 @@ import { useState } from "react";
 
 import { removeFromWishlist } from "@/shared/actions/wishlist/removeFromWishlist";
 import { PlusIcon } from "@/shared/assets/animatedIcons/plus";
-import { ProductDetailsDialog } from "@/shared/components/store/ProductDetailsModal/ProductDetailsDialog";
+import { ProductDetailsDialog } from "@/shared/components/Store/ProductDetailsModal/ProductDetailsDialog";
 import { WishlistCard } from "@/shared/components/Wishlist/WishlistCard";
 import { WishlistEmpty } from "@/shared/components/Wishlist/WishlistEmpty";
 import { WishlistSkeleton } from "@/shared/components/Wishlist/WishlistSkeleton";

@@ -1,13 +1,13 @@
 import { Suspense } from "react";
 
-import { HeroBanner } from "@/shared/components/store/Banner";
-import { BestOffersSection } from "@/shared/components/store/BestOffersSection/BestOffersSection";
-import { BestOffersSkeleton } from "@/shared/components/store/BestOffersSection/BestOffersSkeleton";
-import { CategoriesSection } from "@/shared/components/store/CategoriesSection/CategoriesSection";
-import { HOME_CATEGORIES } from "@/shared/components/store/CategoriesSection/categoryConsts";
-import { ForYouSection } from "@/shared/components/store/ForYouSection/ForYouSection";
-import { ForYouSectionSkeleton } from "@/shared/components/store/ForYouSection/ForYouSectionSkeleton";
-import { Header } from "@/shared/components/store/Header/Header";
+import { HeroBanner } from "@/shared/components/Store/Banner";
+import { BestOffersSection } from "@/shared/components/Store/BestOffersSection/BestOffersSection";
+import { BestOffersSkeleton } from "@/shared/components/Store/BestOffersSection/BestOffersSkeleton";
+import { CategoriesSection } from "@/shared/components/Store/CategoriesSection/CategoriesSection";
+import { HOME_CATEGORIES } from "@/shared/components/Store/CategoriesSection/categoryConsts";
+import { ForYouSection } from "@/shared/components/Store/ForYouSection/ForYouSection";
+import { ForYouSectionSkeleton } from "@/shared/components/Store/ForYouSection/ForYouSectionSkeleton";
+import { Header } from "@/shared/components/Store/Header/Header";
 
 const Home = async () => {
   return (

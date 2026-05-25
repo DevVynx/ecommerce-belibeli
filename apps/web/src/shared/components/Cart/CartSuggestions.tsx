@@ -3,8 +3,8 @@ import type { PublicProductDto } from "@repo/types/contracts";
 import { useEffect, useState } from "react";
 
 import { getProducts } from "@/shared/actions/products/getProducts";
-import { ProductCard } from "@/shared/components/store/ProductCard";
-import { ProductCardSkeleton } from "@/shared/components/store/ProductCardSkeleton";
+import { ProductCard } from "@/shared/components/Store/ProductCard";
+import { ProductCardSkeleton } from "@/shared/components/Store/ProductCardSkeleton";
 import { useScreenSize } from "@/shared/hooks/ui/useScreenSize";
 import { useCartState } from "@/shared/states/cart";
 

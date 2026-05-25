@@ -8,7 +8,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/shared/components/shadcn-ui/carousel";
-import { ProductCard } from "@/shared/components/store/ProductCard";
+import { ProductCard } from "@/shared/components/Store/ProductCard";
 import { useScreenSize } from "@/shared/hooks/ui/useScreenSize";
 
 import { ProductsCarouselControls } from "./ProductsCarouselControls";

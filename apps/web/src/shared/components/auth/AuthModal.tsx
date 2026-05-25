@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
-import { GoogleSocialLoginButton } from "@/shared/components/auth/GoogleSocialLoginButton";
-import { LoginForm } from "@/shared/components/auth/login/LoginForm";
-import { OrDivider } from "@/shared/components/auth/OrDivider";
-import { RegisterForm } from "@/shared/components/auth/register/RegisterForm";
+import { GoogleSocialLoginButton } from "@/shared/components/Auth/GoogleSocialLoginButton";
+import { LoginForm } from "@/shared/components/Auth/Login/LoginForm";
+import { OrDivider } from "@/shared/components/Auth/OrDivider";
+import { RegisterForm } from "@/shared/components/Auth/Register/RegisterForm";
 import { Button } from "@/shared/components/shadcn-ui/button";
 import {
   Dialog,

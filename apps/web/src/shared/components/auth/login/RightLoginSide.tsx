@@ -2,8 +2,8 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-import { GoogleSocialLoginButton } from "@/shared/components/auth/GoogleSocialLoginButton";
-import { OrDivider } from "@/shared/components/auth/OrDivider";
+import { GoogleSocialLoginButton } from "@/shared/components/Auth/GoogleSocialLoginButton";
+import { OrDivider } from "@/shared/components/Auth/OrDivider";
 
 import { LoginForm } from "./LoginForm";
 
