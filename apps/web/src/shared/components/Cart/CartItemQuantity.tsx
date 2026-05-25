@@ -3,15 +3,15 @@ import { Minus, Plus } from "lucide-react";
 import { Button } from "@/shared/components/shadcn-ui/button";
 
 type CartItemQuantityProps = {
-  value: number;
+  quantity: number;
   min?: number;
   max?: number;
   disabled?: boolean;
-  onChange: (value: number) => void;
+  onChange: (quantity: number) => void;
 };
 
 export const CartItemQuantity = ({
-  value,
+  quantity,
   min = 1,
   max = 99,
   disabled = false,
@@ -23,19 +23,19 @@ export const CartItemQuantity = ({
         variant="outline"
         size="icon"
         className="h-7 w-7"
-        onClick={() => onChange(value - 1)}
-        disabled={value <= min || disabled}
+        onClick={() => onChange(quantity - 1)}
+        disabled={quantity <= min || disabled}
         aria-label="Diminuir quantidade"
       >
         <Minus className="size-3" />
       </Button>
-      <span className="w-8 text-center text-sm tabular-nums">{value}</span>
+      <span className="w-8 text-center text-sm tabular-nums">{quantity}</span>
       <Button
         variant="outline"
         size="icon"
         className="h-7 w-7"
-        onClick={() => onChange(value + 1)}
-        disabled={value >= max || disabled}
+        onClick={() => onChange(quantity + 1)}
+        disabled={quantity >= max || disabled}
         aria-label="Aumentar quantidade"
       >
         <Plus className="size-3" />

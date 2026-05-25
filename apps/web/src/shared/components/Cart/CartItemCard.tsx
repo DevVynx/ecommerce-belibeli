@@ -3,8 +3,8 @@ import { Heart, Trash2 } from "lucide-react";
 import Link from "next/link";
 
 import { addToWishlist } from "@/shared/actions/wishlist/addToWishlist";
-import { Button } from "@/shared/components/shadcn-ui/button";
 import { CartItemQuantity } from "@/shared/components/Cart/CartItemQuantity";
+import { Button } from "@/shared/components/shadcn-ui/button";
 import { useCartMutations } from "@/shared/hooks/data/useCartMutations";
 import { useWishlistState } from "@/shared/states/wishlist";
 import { authenticatedAction } from "@/shared/utils/api/authenticatedAction";
@@ -19,7 +19,7 @@ export const CartItemCard = ({ item }: CartItemCardProps) => {
   const { addItem, rollback } = useWishlistState();
 
   const handleQuantityChange = (newQuantity: number) => {
-    if (newQuantity < 1) return;
+    if (newQuantity < 1 || newQuantity > (item.product.variant.stock ?? 99)) return;
     updateCartItemQuantity(item.id, newQuantity);
   };
 
@@ -133,7 +133,8 @@ export const CartItemCard = ({ item }: CartItemCardProps) => {
 
           <div className="flex items-center justify-between gap-3 sm:justify-end">
             <CartItemQuantity
-              value={item.quantity}
+              quantity={item.quantity}
+              max={item.product.variant.stock}
               onChange={handleQuantityChange}
               disabled={isLoading}
             />

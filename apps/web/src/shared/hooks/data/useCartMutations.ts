@@ -17,6 +17,7 @@ export type AddItemParams = {
   variantId: string;
   image: string;
   price: number;
+  stock: number;
   salePrice: number;
   isOnSale: boolean;
   isAvailable: boolean;
@@ -25,7 +26,8 @@ export type AddItemParams = {
 
 export function useCartMutations() {
   const { isAuthenticated } = useAuthState();
-  const { addItem, removeItem, updateQuantity, updateItemId, rollback } = useCartState();
+  const { addItem, removeItem, updateQuantity, updateItemId, updateItemStock, rollback } =
+    useCartState();
   const [loadingCount, setLoadingCount] = useState(0);
   const isLoading = loadingCount > 0;
 
@@ -35,9 +37,22 @@ export function useCartMutations() {
       try {
         const tempId = `temp-${Date.now()}`;
 
+        const existingItem = useCartState
+          .getState()
+          .cart.items.find((item) => item.product.variant.id === params.variantId);
+        const currentQty = existingItem?.quantity ?? 0;
+        const maxAddableQty = params.stock - currentQty;
+        const adjustedQty = Math.min(params.quantity, maxAddableQty);
+
+        if (adjustedQty <= 0) {
+          return {
+            error: { error: "", message: "Quantidade máxima disponível já atingida no carrinho." },
+          };
+        }
+
         const optimisticItem: CartItemDto = {
           id: tempId,
-          quantity: params.quantity,
+          quantity: adjustedQty,
           product: {
             id: params.productId,
             title: params.productTitle,
@@ -46,6 +61,7 @@ export function useCartMutations() {
               image: params.image,
               price: params.price,
               salePrice: params.salePrice,
+              stock: params.stock,
               isOnSale: params.isOnSale,
               isAvailable: params.isAvailable,
             },
@@ -59,7 +75,7 @@ export function useCartMutations() {
 
         const { data, error } = await authenticatedAction(addItemToCart, {
           productVariantId: params.productVariantId,
-          quantity: params.quantity,
+          quantity: adjustedQty,
         });
 
         if (error) {
@@ -68,7 +84,14 @@ export function useCartMutations() {
         }
 
         if (data?.cartItem) {
-          updateItemId(tempId, data.cartItem.id);
+          const { cartItem } = data;
+          updateItemId(tempId, cartItem.id);
+
+          if (cartItem.quantity !== adjustedQty) {
+            updateQuantity(cartItem.id, cartItem.quantity); 
+          }
+
+          updateItemStock(cartItem.id, cartItem.stock);
         }
 
         return { error: null };
@@ -76,7 +99,7 @@ export function useCartMutations() {
         setLoadingCount((c) => c - 1);
       }
     },
-    [isAuthenticated, addItem, rollback, updateItemId]
+    [isAuthenticated, addItem, rollback, updateItemId, updateItemStock]
   );
 
   const updateQuantityMutation = useCallback(
@@ -87,17 +110,29 @@ export function useCartMutations() {
 
         if (!isAuthenticated) return { error: null };
 
-        const { error } = await authenticatedAction(updateCartItemQuantity, {
+        const { data, error } = await authenticatedAction(updateCartItemQuantity, {
           cartItemId,
           quantity,
         });
 
-        if (error) rollback();
+        if (error) {
+          rollback();
+          return { error };
+        }
+
+        if (data) {
+          const { cartItem } = data;
+          if (cartItem.quantity !== quantity) {
+            updateQuantity(cartItem.id, cartItem.quantity);
+          }
+
+          updateItemStock(cartItem.id, cartItem.stock);
+        }
       } finally {
         setLoadingCount((c) => c - 1);
       }
     },
-    [isAuthenticated, updateQuantity, rollback]
+    [isAuthenticated, updateQuantity, rollback, updateItemStock]
   );
 
   const removeItemMutation = useCallback(
@@ -108,7 +143,7 @@ export function useCartMutations() {
 
         if (!isAuthenticated) return { error: null };
 
-        const { error } = await removeItemFromCart({ cartItemId });
+        const { error } = await authenticatedAction(removeItemFromCart, { cartItemId });
         if (error) rollback();
       } finally {
         setLoadingCount((c) => c - 1);

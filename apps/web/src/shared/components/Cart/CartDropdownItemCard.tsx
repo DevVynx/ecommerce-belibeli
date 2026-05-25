@@ -16,13 +16,9 @@ export const CartDropdownItemCard = ({ item }: CartDropdownItemCardProps) => {
   const displayPrice = isOnSale ? salePrice : price;
   const percentDiscount = isOnSale ? calculateDiscountPercent(price, salePrice) : 0;
 
-  const handleDecrement = () => {
-    if (item.quantity <= 1) return;
-    updateCartItemQuantity(item.id, item.quantity - 1);
-  };
-
-  const handleIncrement = () => {
-    updateCartItemQuantity(item.id, item.quantity + 1);
+  const handleQuantityChange = (newQuantity: number) => {
+    if (newQuantity < 1 || newQuantity > (item.product.variant.stock ?? 99)) return;
+    updateCartItemQuantity(item.id, newQuantity);
   };
 
   const handleRemove = () => {
@@ -85,7 +81,7 @@ export const CartDropdownItemCard = ({ item }: CartDropdownItemCardProps) => {
               variant="outline"
               size="icon"
               className="h-6 w-6"
-              onClick={handleDecrement}
+              onClick={() => handleQuantityChange(item.quantity - 1)}
               disabled={item.quantity <= 1 || isLoading}
               aria-label="Diminuir quantidade"
             >
@@ -96,8 +92,8 @@ export const CartDropdownItemCard = ({ item }: CartDropdownItemCardProps) => {
               variant="outline"
               size="icon"
               className="h-6 w-6"
-              onClick={handleIncrement}
-              disabled={isLoading}
+              onClick={() => handleQuantityChange(item.quantity + 1)}
+              disabled={item.quantity >= item.product.variant.stock || isLoading}
               aria-label="Aumentar quantidade"
             >
               <Plus className="size-3" />

@@ -15,6 +15,7 @@ type CartState = {
   removeItem: (cartItemId: string) => void;
   updateQuantity: (cartItemId: string, quantity: number) => void;
   updateItemId: (oldId: string, newId: string) => void;
+  updateItemStock: (cartItemId: string, stock: number) => void;
   clear: () => void;
   rollback: () => void;
 };
@@ -104,6 +105,22 @@ export const useCartState = create<CartState>()(
           return {
             cart: { items: updatedItems, summary: calculateSummary(updatedItems) },
           };
+        }),
+
+      updateItemStock: (cartItemId, stock) =>
+        set((state) => {
+          const updatedItems = state.cart.items.map((item) =>
+            item.id === cartItemId
+              ? {
+                  ...item,
+                  product: {
+                    ...item.product,
+                    variant: { ...item.product.variant, stock },
+                  },
+                }
+              : item
+          );
+          return { cart: { ...state.cart, items: updatedItems } };
         }),
 
       rollback: () =>

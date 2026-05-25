@@ -4,12 +4,12 @@ import { ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import { useCallback, useRef, useState } from "react";
 
-import { Badge } from "@/shared/components/shadcn-ui/badge";
-import { Button } from "@/shared/components/shadcn-ui/button";
-import { Separator } from "@/shared/components/shadcn-ui/separator";
 import { CartDropdownEmpty } from "@/shared/components/Cart/CartDropdownEmpty";
 import { CartDropdownItemCard } from "@/shared/components/Cart/CartDropdownItemCard";
 import { CartDropdownSummary } from "@/shared/components/Cart/CartDropdownSummary";
+import { Badge } from "@/shared/components/shadcn-ui/badge";
+import { Button } from "@/shared/components/shadcn-ui/button";
+import { Separator } from "@/shared/components/shadcn-ui/separator";
 import { useCartState } from "@/shared/states/cart";
 
 export const CartDropdown = () => {
