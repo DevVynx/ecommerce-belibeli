@@ -8,6 +8,10 @@ export type FindProductByIdParams = {
   productId: string;
 };
 
+export type FindProductBySlugParams = {
+  slug: string;
+};
+
 export type FindVariantByIdParams = {
   variantId: string;
 };

@@ -13,6 +13,7 @@
 import { PrismaPg } from "@prisma/adapter-pg";
 import { Pool } from "pg";
 
+import { generateSlug } from "@/modules/products/helpers/generateSlug";
 import { ENV } from "@/shared/utils/env";
 
 import { PrismaClient } from "./generated/client/client";
@@ -1212,6 +1213,7 @@ async function main() {
     // Criar produto (SEM campo price!)
     const product = await prisma.product.create({
       data: {
+        slug: generateSlug(data.title),
         title: data.title,
         description: data.description,
         image: data.image,

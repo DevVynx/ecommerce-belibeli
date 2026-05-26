@@ -54,6 +54,7 @@ model Category {
 
 model Product {
   id          String   @id @default(uuid()) @db.Uuid
+  slug        String   @unique
   title       String
   description String   @db.Text
   image       String

@@ -7,6 +7,7 @@ export function ProductMapperToProductDetails(
 ): GetProductDetailsResponse {
   const formattedProduct = {
     id: enrichedProduct.id,
+    slug: enrichedProduct.slug,
     title: enrichedProduct.title,
     description: enrichedProduct.description,
     ratingRate: Number(enrichedProduct.ratingRate),

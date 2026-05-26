@@ -22,6 +22,7 @@ export type PublicVariantDto = {
 
 export type PublicProductDto = {
   id: string;
+  slug: string;
   title: string;
   description: string;
   ratingRate: number;

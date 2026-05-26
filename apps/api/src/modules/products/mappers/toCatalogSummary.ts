@@ -6,6 +6,7 @@ export function ProductMapperToCatalogSummary(products: EnrichedProductList): Ge
   const formattedProducts = products.map((product) => {
     return {
       id: product.id,
+      slug: product.slug,
       title: product.title,
       description: product.description,
       ratingRate: Number(product.ratingRate),

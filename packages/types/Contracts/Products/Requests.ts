@@ -8,3 +8,7 @@ export type GetProductsRequest = {
 export type GetProductDetailsRequest = {
   productId: string;
 };
+
+export type GetProductBySlugRequest = {
+  slug: string;
+};
