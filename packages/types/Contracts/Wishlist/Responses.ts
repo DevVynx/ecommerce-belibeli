@@ -2,6 +2,7 @@ export type WishlistItemDto = {
   id: string;
   product: {
     id: string;
+    slug: string;
     title: string;
     ratingRate: number;
     ratingCount: number;

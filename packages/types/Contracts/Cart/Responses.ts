@@ -3,6 +3,7 @@ export type CartItemDto = {
   quantity: number;
   product: {
     id: string;
+    slug: string;
     title: string;
     variant: {
       id: string;

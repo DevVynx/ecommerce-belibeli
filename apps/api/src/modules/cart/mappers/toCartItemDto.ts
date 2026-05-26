@@ -11,6 +11,7 @@ export function toCartItemDto(item: EnrichedCartItem): CartItemDto {
     quantity: item.quantity,
     product: {
       id: product.id,
+      slug: product.slug,
       title: product.title,
       variant: {
         id: variant.id,
