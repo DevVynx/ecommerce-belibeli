@@ -1,11 +1,11 @@
 "use client";
-
 import { AlertTriangle, RefreshCw } from "lucide-react";
+import { useEffect } from "react";
 
 import { Button } from "@/shared/components/shadcn-ui/button";
 import { cn } from "@/shared/utils/lib/utils";
 
-import { ErrorNotification } from "./ErrorNotification";
+import { showNotification } from "./showNotification";
 
 type SectionErrorProps = {
   title?: string;
@@ -22,11 +22,14 @@ export const SectionError = ({
   toastDuration = 4000,
   className,
 }: SectionErrorProps) => {
+  useEffect(() => {
+    if (showToast) {
+      showNotification({ type: "error", title, message: description, duration: toastDuration });
+    }
+  }, [showToast, title, description, toastDuration]);
+
   return (
     <>
-      {showToast && (
-        <ErrorNotification title={title} message={description} duration={toastDuration} />
-      )}
       <div className={cn("flex flex-col items-center justify-center px-4 py-12", className)}>
         <div className="bg-muted mb-4 rounded-full p-3">
           <AlertTriangle className="text-muted-foreground h-8 w-8" />

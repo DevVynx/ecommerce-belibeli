@@ -1,21 +1,19 @@
 "use client";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { LoginRequest } from "@repo/types/contracts";
 import { EyeIcon, EyeOffIcon, LockIcon, MailIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
-import * as React from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
 import { login } from "@/shared/actions/auth/login";
-import { ErrorNotification } from "@/shared/components/ErrorNotification";
 import { Button } from "@/shared/components/shadcn-ui/button";
 import { Checkbox } from "@/shared/components/shadcn-ui/checkbox";
 import { Field, FieldError, FieldGroup, FieldLabel } from "@/shared/components/shadcn-ui/field";
 import { Input } from "@/shared/components/shadcn-ui/input";
 import { Label } from "@/shared/components/shadcn-ui/label";
 import { Spinner } from "@/shared/components/shadcn-ui/spinner";
+import { showNotification } from "@/shared/components/showNotification";
 import { type LoginFormData, loginSchema } from "@/shared/schemas/auth/loginForm";
 import { useAuthState } from "@/shared/states/auth";
 
@@ -28,6 +26,17 @@ export const LoginForm = ({ redirectTo = "/" }: LoginFormProps) => {
   const [checked, setChecked] = useState(false);
   const { setUser, authError, setAuthError } = useAuthState();
   const router = useRouter();
+
+  useEffect(() => {
+    if (authError) {
+      showNotification({
+        type: "error",
+        title: "Erro ao tentar fazer login",
+        message: authError,
+        onClose: () => setAuthError(null),
+      });
+    }
+  }, [authError]);
 
   const form = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
@@ -153,15 +162,6 @@ export const LoginForm = ({ redirectTo = "/" }: LoginFormProps) => {
       >
         {form.formState.isSubmitting ? <Spinner className="size-5" /> : "Entrar"}
       </Button>
-
-      {authError && (
-        <ErrorNotification
-          key={"error"}
-          title="Erro ao tentar fazer login"
-          message={authError}
-          onCloseAction={() => setAuthError(null)}
-        />
-      )}
     </>
   );
 };
