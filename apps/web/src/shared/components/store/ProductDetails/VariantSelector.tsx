@@ -16,8 +16,6 @@ export const VariantSelector = () => {
         const currentSelectedValueName =
           option.values.find((v) => v.id === currentSelectedId)?.value || "Selecione";
         const hasSelection = currentSelectedId !== undefined;
-        const isSizeType = option.name.toLowerCase() === "tamanho";
-        const sizeClass = isSizeType && option.values.length > 6 ? "size-10" : "px-4 py-1.5";
 
         return (
           <div key={option.id}>
@@ -41,9 +39,8 @@ export const VariantSelector = () => {
                   <Button
                     key={value.id}
                     variant={isSelected ? "default" : "outline"}
-                    size="sm"
                     onClick={() => handleSelectOption(option.id, value.id)}
-                    className={`font-mono text-xs tracking-widest uppercase ${sizeClass} ${
+                    className={`px-5 py-2.5 font-mono text-xs tracking-widest uppercase lg:px-4 lg:py-2 ${
                       isSelected ? "" : "text-foreground hover:border-primary"
                     }`}
                   >

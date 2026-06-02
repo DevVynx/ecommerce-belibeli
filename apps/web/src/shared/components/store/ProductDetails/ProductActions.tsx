@@ -13,14 +13,8 @@ import { authenticatedAction } from "@/shared/utils/api/authenticatedAction";
 import { buildSelectedOptionsForCart } from "@/shared/utils/store/buildSelectedOptions";
 
 export const ProductActions = () => {
-  const {
-    product,
-    variants,
-    options,
-    selectedOptions,
-    selectedVariant,
-    isOutOfStock,
-  } = useProductVariantContext();
+  const { product, variants, options, selectedOptions, selectedVariant, isOutOfStock } =
+    useProductVariantContext();
 
   const { addItemToCart, isLoading: isAddingToCart } = useCartMutations();
   const {
@@ -111,7 +105,7 @@ export const ProductActions = () => {
   return (
     <div className="space-y-3">
       {selectedVariant && (
-        <div className="flex items-center gap-3 my-8">
+        <div className="my-8 flex items-center gap-3">
           <span className="text-muted-foreground text-sm font-medium">Quantidade:</span>
           <div className="border-border flex items-center rounded-md border">
             <Button
@@ -119,7 +113,7 @@ export const ProductActions = () => {
               size="icon"
               onClick={() => handleQuantityChange(quantity - 1)}
               disabled={quantity <= 1 || isAddingToCart}
-              className="text-muted-foreground size-8"
+              className="text-muted-foreground px-5 py-2.5 lg:px-4 lg:py-2"
               aria-label="Diminuir quantidade"
             >
               <Minus size={16} />
@@ -132,7 +126,7 @@ export const ProductActions = () => {
               size="icon"
               onClick={() => handleQuantityChange(quantity + 1)}
               disabled={quantity >= (selectedVariant?.stock ?? 99) || isAddingToCart}
-              className="text-muted-foreground size-8"
+              className="text-muted-foreground px-5 py-2.5 lg:px-4 lg:py-2"
               aria-label="Aumentar quantidade"
             >
               <Plus size={16} />
@@ -164,9 +158,7 @@ export const ProductActions = () => {
         </Button>
       </div>
 
-      {stockFeedback && (
-        <p className="text-destructive text-sm">{stockFeedback}</p>
-      )}
+      {stockFeedback && <p className="text-destructive text-sm">{stockFeedback}</p>}
     </div>
   );
 };

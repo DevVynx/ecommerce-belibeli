@@ -20,7 +20,7 @@ export const ProductInteractionBar = ({ productTitle }: ProductInteractionBarPro
     const msg = encodeURIComponent(
       `Olá! Vi esse produto "${productTitle}" na BeliBeli Store. Gostaria de saber mais detalhes sobre ele.\n\n${window.location.href}`
     );
-    window.open(`https://wa.me/send?text=${msg}`)
+    window.open(`https://wa.me/send?text=${msg}`);
   };
 
   const handleShare = async () => {
@@ -57,18 +57,18 @@ export const ProductInteractionBar = ({ productTitle }: ProductInteractionBarPro
     <div className="border-border mt-6 flex items-center justify-around gap-8 border-t pt-6">
       <button
         onClick={handleChat}
-        className="hover:text-secondary-foreground text-muted-foreground flex items-center gap-2 transition-colors"
+        className="hover:text-secondary-foreground text-muted-foreground flex cursor-pointer items-center gap-2 transition-colors"
       >
         <MessagesSquare size={16} />
-        <span className="cursor-pointer text-xs font-semibold tracking-widest uppercase">Chat</span>
+        <span className="text-xs font-semibold tracking-widest uppercase">Chat</span>
       </button>
 
       <button
         onClick={handleShare}
-        className="hover:text-secondary-foreground text-muted-foreground flex items-center gap-2 transition-colors"
+        className="hover:text-secondary-foreground text-muted-foreground flex cursor-pointer items-center gap-2 transition-colors"
       >
         {canShare ? <Share2 size={16} /> : <Copy size={16} />}
-        <span className="cursor-pointer text-xs font-semibold tracking-widest uppercase">
+        <span className="text-xs font-semibold tracking-widest uppercase">
           {canShare ? "Compartilhe" : isCopied ? "Link Copiado!" : "Copiar Link"}
         </span>
       </button>

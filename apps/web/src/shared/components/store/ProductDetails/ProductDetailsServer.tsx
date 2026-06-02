@@ -60,11 +60,7 @@ export const ProductDetailsServer = async ({ params }: ProductDetailsServerProps
 
             <h1 className="mt-1 text-xl leading-tight font-bold lg:text-2xl">{product.title}</h1>
 
-            <p className="line-clamp-3 text-sm leading-6">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur neque ut iure
-              asperiores exercitationem nisi magni. Quibusdam non porro amet error placeat soluta
-              mollitia ratione, eos fugit repellat eligendi nesciunt?
-            </p>
+            <p className="line-clamp-4 text-sm leading-6">{product.description}</p>
 
             <div className="mb-2 flex items-center gap-2">
               <span className="text-sm font-semibold">
