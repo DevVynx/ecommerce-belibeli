@@ -5,9 +5,9 @@ import { CartItemSkeleton } from "@/shared/components/Cart/CartItemSkeleton";
 import { CartMobileSummaryDrawer } from "@/shared/components/Cart/CartMobileSummaryDrawer";
 import { CartShippingCalculator } from "@/shared/components/Cart/CartShippingCalculator";
 import { CartShippingSkeleton } from "@/shared/components/Cart/CartShippingSkeleton";
-import { CartSuggestions } from "@/shared/components/Cart/CartSuggestions";
 import { CartSummary } from "@/shared/components/Cart/CartSummary";
 import { CartSummarySkeleton } from "@/shared/components/Cart/CartSummarySkeleton";
+import { ProductRecommendations } from "@/shared/components/ProductRecommendations";
 import { useCartState } from "@/shared/states/cart";
 
 const CartPage = () => {
@@ -59,7 +59,7 @@ const CartPage = () => {
           </div>
         </div>
 
-        <CartSuggestions />
+        <ProductRecommendations />
       </div>
 
       {hasHydrated && <CartMobileSummaryDrawer summary={cart.summary} />}

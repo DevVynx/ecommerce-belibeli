@@ -8,7 +8,7 @@ import { ProductCardSkeleton } from "@/shared/components/Store/ProductCardSkelet
 import { useScreenSize } from "@/shared/hooks/ui/useScreenSize";
 import { useCartState } from "@/shared/states/cart";
 
-export const CartSuggestions = () => {
+export const ProductRecommendations = () => {
   const { cart } = useCartState();
   const { isMobile } = useScreenSize();
 
