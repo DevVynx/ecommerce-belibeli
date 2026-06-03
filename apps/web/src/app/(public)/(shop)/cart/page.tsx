@@ -7,7 +7,6 @@ import { CartShippingCalculator } from "@/shared/components/Cart/CartShippingCal
 import { CartShippingSkeleton } from "@/shared/components/Cart/CartShippingSkeleton";
 import { CartSummary } from "@/shared/components/Cart/CartSummary";
 import { CartSummarySkeleton } from "@/shared/components/Cart/CartSummarySkeleton";
-import { ProductRecommendations } from "@/shared/components/ProductRecommendations";
 import { useCartState } from "@/shared/states/cart";
 
 const CartPage = () => {
@@ -58,8 +57,6 @@ const CartPage = () => {
             )}
           </div>
         </div>
-
-        <ProductRecommendations />
       </div>
 
       {hasHydrated && <CartMobileSummaryDrawer summary={cart.summary} />}

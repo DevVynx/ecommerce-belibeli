@@ -1,8 +1,8 @@
 import { Star } from "lucide-react";
 
 import { getProductBySlug } from "@/shared/actions/products/getProductBySlug";
-import { ProductRecommendations } from "@/shared/components/ProductRecommendations";
 import { SectionError } from "@/shared/components/SectionError";
+import { ProductRecommendations } from "@/shared/components/Store/ProductDetails/ProductRecommendations";
 import { ProductVariantProvider } from "@/shared/context/ProductVariantContext";
 
 import { LiveStockBadge } from "./LiveStockBadge";
@@ -94,7 +94,7 @@ export const ProductDetailsServer = async ({ params }: ProductDetailsServerProps
 
       <ProductTabsSection data={data} />
 
-      <ProductRecommendations />
+      <ProductRecommendations categoryId={product.category.id} />
     </div>
   );
 };
