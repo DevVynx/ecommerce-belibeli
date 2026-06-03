@@ -63,16 +63,18 @@ export const ProductGallery = ({ images, title }: ProductGalleryProps) => {
         </div>
       )}
 
-      <div className="bg-muted relative flex flex-1 items-center overflow-hidden rounded-lg">
-        <Carousel setApi={setApi}>
-          <CarouselContent>
+      <div className="bg-muted relative flex flex-1 rounded-lg">
+        <Carousel setApi={setApi} className="w-full">
+          <CarouselContent className="h-full">
             {images.map((img, i) => (
-              <CarouselItem key={i}>
-                <img
-                  src={img}
-                  alt={`${title} - ${i + 1}`}
-                  className="aspect-square w-full object-contain"
-                />
+              <CarouselItem key={i} className="basis-full">
+                <div className="flex h-full min-h-90 items-center justify-center">
+                  <img
+                    src={img}
+                    alt={`${title} - ${i + 1}`}
+                    className="block max-h-full max-w-full object-contain object-center"
+                  />
+                </div>
               </CarouselItem>
             ))}
           </CarouselContent>
