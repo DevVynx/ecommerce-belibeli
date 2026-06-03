@@ -1,16 +1,17 @@
 import { Star } from "lucide-react";
 
 import { getProductBySlug } from "@/shared/actions/products/getProductBySlug";
+import { ProductRecommendations } from "@/shared/components/ProductRecommendations";
 import { SectionError } from "@/shared/components/SectionError";
 import { ProductVariantProvider } from "@/shared/context/ProductVariantContext";
 
+import { LiveStockBadge } from "./LiveStockBadge";
 import { PriceDisplay } from "./PriceDisplay";
 import { ProductActions } from "./ProductActions";
 import { ProductGallery } from "./ProductGallery";
 import { ProductInteractionBar } from "./ProductInteractionBar";
 import { ProductTabsSection } from "./ProductTabsSection";
 import { SkuDisplay } from "./SkuDisplay";
-import { StockWarning } from "./StockWarning";
 import { VariantSelector } from "./VariantSelector";
 
 type ProductDetailsServerProps = {
@@ -63,24 +64,26 @@ export const ProductDetailsServer = async ({ params }: ProductDetailsServerProps
             <p className="line-clamp-4 text-sm leading-6">{product.description}</p>
 
             <div className="mb-2 flex items-center gap-2">
-              <span className="text-sm font-semibold">
-                5K+ <span className="text-muted-foreground font-normal">Sold</span>
-              </span>
-              •
-              <div className="flex items-center gap-1">
-                <Star className="size-4 fill-yellow-500 text-yellow-500" />
-                <span className="text-sm font-semibold">{product.ratingRate.toFixed(1)}</span>
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-semibold">
+                  5K+ <span className="text-muted-foreground font-normal">Sold</span>
+                </span>
+                •
+                <div className="flex items-center gap-1">
+                  <Star className="size-4 fill-yellow-500 text-yellow-500" />
+                  <span className="text-sm font-semibold">{product.ratingRate.toFixed(1)}</span>
+                </div>
+                <span className="text-muted-foreground text-sm">
+                  ({product.ratingCount} avaliações)
+                </span>
               </div>
-              <span className="text-muted-foreground text-sm">
-                ({product.ratingCount} avaliações)
-              </span>
+
+              <LiveStockBadge />
             </div>
 
             <PriceDisplay />
 
             {options.length > 0 && <VariantSelector />}
-
-            <StockWarning />
 
             <ProductActions />
 
@@ -90,6 +93,8 @@ export const ProductDetailsServer = async ({ params }: ProductDetailsServerProps
       </section>
 
       <ProductTabsSection data={data} />
+
+      <ProductRecommendations />
     </div>
   );
 };
