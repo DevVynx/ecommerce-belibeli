@@ -30,9 +30,15 @@ export const ProductOptions = ({
         return (
           <div key={option.id}>
             {/* Título e Valor Selecionado */}
-            <div className="mb-2 flex items-center gap-2">
-              <h1 className="font-bold text-gray-900">{option.name}:</h1>
-              <span className={`font-semibold ${hasSelection ? "text-gray-900" : "text-gray-400"}`}>
+            <div className="mb-3 flex items-center gap-2">
+              <span className="text-foreground text-sm font-semibold tracking-widest">
+                {option.name}:
+              </span>
+              <span
+                className={`text-sm tracking-widest ${
+                  hasSelection ? "text-muted-foreground" : "text-foreground"
+                }`}
+              >
                 {currentSelectedValueName}
               </span>
             </div>

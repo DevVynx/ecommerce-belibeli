@@ -139,7 +139,7 @@ export const ProductActions = () => {
         <Button
           onClick={handleAddToCart}
           disabled={isAddingToCart || !selectedVariant || isOutOfStock}
-          className="flex-1 rounded-lg py-4 font-mono text-xs font-bold tracking-[0.2em] uppercase shadow-lg shadow-black/10 sm:text-sm"
+          className="h-15 flex-1 rounded-lg font-mono text-xs font-bold tracking-[0.2em] uppercase sm:text-sm"
         >
           {isAddingToCart
             ? "Adicionando..."
@@ -151,10 +151,12 @@ export const ProductActions = () => {
         <Button
           variant="outline"
           onClick={handleToggleWishlist}
-          className="rounded-lg px-8 py-4"
+          className="h-15 rounded-lg"
           aria-label={isWishlisted ? "Remover dos favoritos" : "Adicionar aos favoritos"}
         >
-          <Heart className={`size-5 ${isWishlisted ? "fill-destructive text-destructive" : ""}`} />
+          <Heart
+            className={`size-8 ${isWishlisted ? "fill-red-500 text-red-500" : "fill-gray-400 text-gray-400"}`}
+          />
         </Button>
       </div>
 

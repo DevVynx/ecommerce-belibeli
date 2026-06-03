@@ -9,8 +9,10 @@ import { useEffect, useState } from "react";
 
 import { addToWishlist } from "@/shared/actions/wishlist/addToWishlist";
 import { removeFromWishlist } from "@/shared/actions/wishlist/removeFromWishlist";
+import { Button } from "@/shared/components/shadcn-ui/button";
 import { Rating, RatingItem } from "@/shared/components/shadcn-ui/rating";
 import { showNotification } from "@/shared/components/showNotification";
+import { StockBadge } from "@/shared/components/Store/StockBadge";
 import { useCartMutations } from "@/shared/hooks/data/useCartMutations";
 import { useProductVariantSelection } from "@/shared/hooks/data/useProductVariantSelection";
 import { useWishlistState } from "@/shared/states/wishlist";
@@ -20,7 +22,6 @@ import { calculateDiscountPercent, formatPrice } from "@/shared/utils/store/pric
 
 import { ProductOptions } from "./ProductOptions";
 import { QuantitySelector } from "./QuantitySelector";
-import { StockBadge } from "./StockBadge";
 
 type ProductDetailsProps = {
   onClose: () => void;
@@ -194,7 +195,7 @@ export const ProductDetails = ({
             {displayIsOnSale && (
               <span className="text-sm text-red-500 line-through">{formatPrice(displayPrice)}</span>
             )}
-            {selectedVariant && <StockBadge isAvailable={selectedVariant.isAvailable} />}
+            {selectedVariant && <StockBadge stock={selectedVariant.stock} />}
           </div>
         </div>
 
@@ -220,38 +221,34 @@ export const ProductDetails = ({
             onChange={handleQuantityChange}
           />
 
-          {stockFeedback && (
-            <p className="mt-3 text-sm text-red-500">{stockFeedback}</p>
-          )}
+          {stockFeedback && <p className="mt-3 text-sm text-red-500">{stockFeedback}</p>}
         </div>
 
         {/* ========== SEÇÃO INFERIOR ========== */}
         <div className="shrink-0 border-t border-zinc-200 pt-4">
-          <div className="flex items-center justify-center gap-4">
-            <button
+          <div className="flex items-center gap-3">
+            <Button
               onClick={handleAddToCart}
               disabled={isAddingToCart || !selectedVariant || isOutOfStock}
-              className={`flex-1 cursor-pointer px-8 py-4 font-bold text-white uppercase transition-colors disabled:cursor-not-allowed ${
-                isOutOfStock ? "bg-gray-400" : "bg-black hover:bg-black/80 disabled:opacity-50"
-              }`}
+              className="h-15 flex-1 rounded-lg font-mono text-xs font-bold tracking-[0.2em] uppercase sm:text-sm"
             >
               {isAddingToCart
                 ? "Adicionando..."
                 : isOutOfStock
                   ? "Indisponível"
                   : "Adicionar ao Carrinho"}
-            </button>
+            </Button>
 
-            <button
+            <Button
+              variant="outline"
               onClick={handleToggleWishlist}
-              className="group cursor-pointer rounded-full border border-black/10 p-3 transition-transform hover:scale-110 active:scale-130"
+              className="h-15 rounded-lg"
+              aria-label={isWishlisted ? "Remover dos favoritos" : "Adicionar aos favoritos"}
             >
               <Heart
-                className={`size-9 ${
-                  isWishlisted ? "fill-red-500 text-red-500" : "fill-gray-400 text-gray-400"
-                }`}
+                className={`size-8 ${isWishlisted ? "fill-red-500 text-red-500" : "fill-gray-400 text-gray-400"}`}
               />
-            </button>
+            </Button>
           </div>
         </div>
       </div>
