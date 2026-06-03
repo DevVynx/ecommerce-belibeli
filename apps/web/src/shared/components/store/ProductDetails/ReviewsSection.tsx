@@ -1,5 +1,9 @@
+"use client";
+import type { ReviewDto } from "@repo/types/contracts";
 import { BadgeCheck, CheckCircle2, MessageSquare } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
 
+import { getReviews } from "@/shared/actions/reviews/getReviews";
 import { Button } from "@/shared/components/shadcn-ui/button";
 import {
   Select,
@@ -10,27 +14,47 @@ import {
   SelectValue,
 } from "@/shared/components/shadcn-ui/select";
 import { ReviewCard } from "@/shared/components/Store/ProductDetails/ReviewCard";
+import { ReviewsModal } from "@/shared/components/Store/ProductDetails/ReviewsModal";
 import { ReviewsSummary } from "@/shared/components/Store/ProductDetails/ReviewsSummary";
 
-export type Review = {
-  id: string;
-  author: string;
-  location: string;
-  rating: number;
-  comment: string;
-};
-
 type ReviewsSectionProps = {
+  productId: string;
   ratingRate: number;
-  ratingCount: number;
-  reviews: Review[];
 };
 
-export const ReviewsSection = ({ ratingRate, ratingCount, reviews }: ReviewsSectionProps) => {
+const PAGE_SIZE = 10;
+
+export const ReviewsSection = ({ productId, ratingRate }: ReviewsSectionProps) => {
+  const [ratingFilter, setRatingFilter] = useState<number | undefined>(undefined);
+  const [sort, setSort] = useState<"newest" | "relevant">("newest");
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const [preview, setPreview] = useState<ReviewDto[]>([]);
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    getReviews({ productId, offset: 0, limit: PAGE_SIZE, rating: ratingFilter, sort }).then(
+      (data) => {
+        setPreview(data.reviews);
+        setTotal(data.total);
+      }
+    );
+  }, [productId, ratingFilter, sort]);
+
+  const handleRatingChange = useCallback((value: string) => {
+    const newRating = value === "todas" ? undefined : Number(value);
+    setRatingFilter(newRating);
+  }, []);
+
+  const handleSortChange = useCallback((value: string) => {
+    setSort(value as "newest" | "relevant");
+  }, []);
+
+  const visibleCount = Math.min(preview.length, total);
+
   return (
     <section className="mb-32">
       <div className="mb-10 flex flex-col justify-between gap-4 border-b py-6 lg:flex-row">
-        {/* Coluna da Esquerda: Informações */}
         <div className="flex-1">
           <div className="flex h-full max-w-xl flex-col justify-between gap-4 lg:gap-6">
             <div className="space-y-2">
@@ -62,25 +86,24 @@ export const ReviewsSection = ({ ratingRate, ratingCount, reviews }: ReviewsSect
           </div>
         </div>
 
-        {/* Coluna da Direita: Sumário das Avaliações */}
         <div className="w-full flex-1">
           <ReviewsSummary ratingRate={ratingRate} />
         </div>
       </div>
 
-      {/* Área das Avaliações */}
       <div className="space-y-6">
         <div className="flex justify-between">
           <div>
             <h1 className="text-2xl font-semibold">Avaliações</h1>
             <span className="text-muted-foreground text-sm">
-              Mostrando 10 avaliações de {ratingCount}
+              Mostrando {visibleCount} avaliações de {total}
             </span>
           </div>
-          {/* Área dos Selects (Filtro de Notas e Ordenação) */}
           <div className="flex items-center gap-4">
-            {/* Select de Notas */}
-            <Select defaultValue="todas">
+            <Select
+              value={ratingFilter ? String(ratingFilter) : "todas"}
+              onValueChange={handleRatingChange}
+            >
               <SelectTrigger className="h-8 w-35 py-5">
                 <SelectValue placeholder="Filtrar por nota" />
               </SelectTrigger>
@@ -96,15 +119,14 @@ export const ReviewsSection = ({ ratingRate, ratingCount, reviews }: ReviewsSect
               </SelectContent>
             </Select>
 
-            {/* Select de Ordenação */}
-            <Select defaultValue="recentes">
+            <Select value={sort} onValueChange={handleSortChange}>
               <SelectTrigger className="h-8 w-37 py-5">
                 <SelectValue placeholder="Ordenar por" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectItem value="recentes">Mais recentes</SelectItem>
-                  <SelectItem value="uteis">Mais relevantes</SelectItem>
+                  <SelectItem value="newest">Mais recentes</SelectItem>
+                  <SelectItem value="relevant">Mais relevantes</SelectItem>
                 </SelectGroup>
               </SelectContent>
             </Select>
@@ -113,21 +135,34 @@ export const ReviewsSection = ({ ratingRate, ratingCount, reviews }: ReviewsSect
 
         <div>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {reviews.map((review) => (
+            {preview.map((review) => (
               <ReviewCard key={review.id} review={review} />
             ))}
           </div>
 
-          <div className="mt-8 text-center">
-            <Button
-              variant="outline"
-              className="rounded-lg px-6 py-3 font-mono text-sm font-bold tracking-widest uppercase"
-            >
-              Ver mais avaliações
-            </Button>
-          </div>
+          {total > PAGE_SIZE && (
+            <div className="mt-8 text-center">
+              <Button
+                variant="outline"
+                className="rounded-lg px-6 py-3 font-mono text-sm font-bold tracking-widest uppercase"
+                onClick={() => setModalOpen(true)}
+              >
+                Ver mais avaliações
+              </Button>
+            </div>
+          )}
         </div>
       </div>
+
+      <ReviewsModal
+        productId={productId}
+        ratingFilter={ratingFilter}
+        sort={sort}
+        onRatingChange={handleRatingChange}
+        onSortChange={handleSortChange}
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+      />
     </section>
   );
 };

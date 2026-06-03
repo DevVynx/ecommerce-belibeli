@@ -1,0 +1,142 @@
+import type { ReviewDto } from "@repo/types/contracts";
+import { useCallback, useEffect, useState } from "react";
+
+import { getReviews } from "@/shared/actions/reviews/getReviews";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/shared/components/shadcn-ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/shared/components/shadcn-ui/select";
+import { ReviewCard } from "@/shared/components/Store/ProductDetails/ReviewCard";
+import { useInfiniteScroll } from "@/shared/hooks/ui/useInfiniteScroll";
+
+type ReviewsModalProps = {
+  productId: string;
+  ratingFilter: number | undefined;
+  sort: "newest" | "relevant";
+  onRatingChange: (value: string) => void;
+  onSortChange: (value: string) => void;
+  isOpen: boolean;
+  onClose: () => void;
+};
+
+const PAGE_SIZE = 10;
+
+export const ReviewsModal = ({
+  productId,
+  ratingFilter,
+  sort,
+  onRatingChange,
+  onSortChange,
+  isOpen,
+  onClose,
+}: ReviewsModalProps) => {
+  const [reviews, setReviews] = useState<ReviewDto[]>([]);
+  const [offset, setOffset] = useState(0);
+  const [total, setTotal] = useState(0);
+  const [hasMore, setHasMore] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const loadReviews = useCallback(
+    async (currentOffset: number, append: boolean) => {
+      setIsLoading(true);
+      const data = await getReviews({
+        productId,
+        offset: currentOffset,
+        limit: PAGE_SIZE,
+        rating: ratingFilter,
+        sort,
+      });
+      setReviews((prev) => (append ? [...prev, ...data.reviews] : data.reviews));
+      setTotal(data.total);
+      setHasMore(data.hasMore);
+      setOffset(currentOffset + PAGE_SIZE);
+      setIsLoading(false);
+    },
+    [productId, ratingFilter, sort]
+  );
+
+  useEffect(() => {
+    if (isOpen) {
+      loadReviews(0, false);
+    }
+  }, [isOpen, loadReviews]);
+
+  const loadMore = useCallback(async () => {
+    await loadReviews(offset, true);
+  }, [loadReviews, offset]);
+
+  const [sentinelRef, { rootRef }] = useInfiniteScroll({
+    loading: isLoading,
+    hasNextPage: hasMore,
+    onLoadMore: loadMore,
+  });
+
+  return (
+    <Dialog open={isOpen} onOpenChange={onClose}>
+      <DialogContent
+        ref={rootRef}
+        className="flex h-[90vh] max-w-7xl flex-col gap-6 overflow-y-auto rounded-lg lg:gap-4"
+      >
+        <DialogHeader className="mr-5">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <DialogTitle className="text-xl">Todas as Avaliações ({total})</DialogTitle>
+            <div className="flex items-center justify-center gap-4">
+              <Select
+                value={ratingFilter ? String(ratingFilter) : "todas"}
+                onValueChange={onRatingChange}
+              >
+                <SelectTrigger className="h-8 w-35 py-5">
+                  <SelectValue placeholder="Filtrar por nota" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem value="todas">Todas as notas</SelectItem>
+                    <SelectItem value="5">5 estrelas</SelectItem>
+                    <SelectItem value="4">4 estrelas</SelectItem>
+                    <SelectItem value="3">3 estrelas</SelectItem>
+                    <SelectItem value="2">2 estrelas</SelectItem>
+                    <SelectItem value="1">1 estrela</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+
+              <Select value={sort} onValueChange={onSortChange}>
+                <SelectTrigger className="h-8 w-37 py-5">
+                  <SelectValue placeholder="Ordenar por" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem value="newest">Mais recentes</SelectItem>
+                    <SelectItem value="relevant">Mais relevantes</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+        </DialogHeader>
+
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          {reviews.map((review) => (
+            <ReviewCard key={review.id} review={review} />
+          ))}
+        </div>
+
+        {isLoading && (
+          <p className="text-muted-foreground py-4 text-center text-sm">Carregando...</p>
+        )}
+
+        {hasMore && <div ref={sentinelRef} />}
+      </DialogContent>
+    </Dialog>
+  );
+};

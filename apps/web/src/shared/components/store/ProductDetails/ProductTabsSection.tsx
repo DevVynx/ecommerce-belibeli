@@ -1,7 +1,6 @@
 import type { GetProductDetailsResponse } from "@repo/types/contracts";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/components/shadcn-ui/tabs";
-import { mockReviews } from "@/shared/components/Store/ProductDetails/mockedReviews";
 import { ReviewsSection } from "@/shared/components/Store/ProductDetails/ReviewsSection";
 
 type ProductTabsSectionProps = {
@@ -32,9 +31,8 @@ export const ProductTabsSection = async ({ data }: ProductTabsSectionProps) => {
       </TabsContent>
       <TabsContent value="reviews">
         <ReviewsSection
+          productId={data.product.id}
           ratingRate={data.product.ratingRate}
-          ratingCount={data.product.ratingCount}
-          reviews={mockReviews}
         />
       </TabsContent>
     </Tabs>
