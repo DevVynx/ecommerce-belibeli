@@ -4,6 +4,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Kotta_One } from "next/font/google";
 
+import { Footer } from "@/shared/components/Footer";
 import { Toaster } from "@/shared/components/shadcn-ui/sonner";
 import { CartProvider } from "@/shared/providers/CartProvider";
 import { QueryProvider } from "@/shared/providers/QueryProvider";
@@ -48,6 +49,7 @@ export default async function RootLayout({
             <CartProvider />
             <WishlistProvider />
             {children}
+              <Footer />
             <Toaster />
           </GoogleOAuthProvider>
         </QueryProvider>
