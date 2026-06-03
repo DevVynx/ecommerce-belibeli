@@ -65,7 +65,7 @@ export const ProductCard = ({ product, grid }: ProductCardProps) => {
       {/* Image + Percent + Wish Button */}
       <div className="relative bg-black/10 p-4">
         {/* Image */}
-        <Link href={`product/${product.slug}`}>
+        <Link href={`/product/${product.slug}`}>
           <img
             src={product.display.image}
             alt={product.title}
@@ -96,7 +96,7 @@ export const ProductCard = ({ product, grid }: ProductCardProps) => {
 
       {/* Product Info */}
       <div className="relative p-2">
-        <Link href={`product/${product.slug}`}>
+        <Link href={`/product/${product.slug}`}>
           <h1 className="mb-1 line-clamp-2 h-8.75 text-sm leading-tight font-semibold">
             {product.title}
           </h1>
