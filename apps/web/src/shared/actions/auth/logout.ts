@@ -1,4 +1,5 @@
 "use server";
+
 import type { LogoutResponse } from "@repo/types/contracts";
 
 import { useAuthMutex } from "@/shared/states/auth";

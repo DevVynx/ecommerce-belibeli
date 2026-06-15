@@ -1,3 +1,5 @@
+"use server";
+
 import type { RegisterRequest, RegisterResponse } from "@repo/types/contracts";
 
 import { login } from "@/shared/actions/auth/login";

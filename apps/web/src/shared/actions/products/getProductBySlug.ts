@@ -7,9 +7,7 @@ import { fetchClient } from "@/shared/utils/api/fetchClient";
 
 export async function getProductBySlug(params: GetProductBySlugRequest) {
   "use cache";
-
   cacheLife("seconds");
-
   cacheTag("product");
 
   const { data, error } = await fetchClient<GetProductDetailsResponse>(

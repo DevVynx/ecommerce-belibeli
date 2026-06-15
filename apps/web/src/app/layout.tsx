@@ -48,8 +48,8 @@ export default async function RootLayout({
           <GoogleOAuthProvider clientId={ENV.GOOGLE_CLIENT_ID}>
             <CartProvider />
             <WishlistProvider />
-            {children}
-              <Footer />
+            <div className="min-h-screen">{children}</div>
+            <Footer />
             <Toaster />
           </GoogleOAuthProvider>
         </QueryProvider>
