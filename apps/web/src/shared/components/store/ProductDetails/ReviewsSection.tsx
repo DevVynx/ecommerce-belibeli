@@ -22,8 +22,6 @@ type ReviewsSectionProps = {
   ratingRate: number;
 };
 
-const PAGE_SIZE = 10;
-
 export const ReviewsSection = ({ productId, ratingRate }: ReviewsSectionProps) => {
   const [ratingFilter, setRatingFilter] = useState<number | undefined>(undefined);
   const [sort, setSort] = useState<"newest" | "relevant">("newest");
@@ -32,11 +30,14 @@ export const ReviewsSection = ({ productId, ratingRate }: ReviewsSectionProps) =
   const [preview, setPreview] = useState<ReviewDto[]>([]);
   const [total, setTotal] = useState(0);
 
+  const LIMIT = 10;
+
   useEffect(() => {
-    getReviews({ productId, offset: 0, limit: PAGE_SIZE, rating: ratingFilter, sort }).then(
-      (data) => {
-        setPreview(data.reviews);
-        setTotal(data.total);
+    getReviews({ productId, offset: 0, limit: LIMIT, rating: ratingFilter, sort }).then(
+      (result) => {
+        if (!result.data) return;
+        setPreview(result.data.reviews);
+        setTotal(result.data.pagination.total);
       }
     );
   }, [productId, ratingFilter, sort]);
@@ -140,7 +141,7 @@ export const ReviewsSection = ({ productId, ratingRate }: ReviewsSectionProps) =
             ))}
           </div>
 
-          {total > PAGE_SIZE && (
+          {total > LIMIT && (
             <div className="mt-8 text-center">
               <Button
                 variant="outline"

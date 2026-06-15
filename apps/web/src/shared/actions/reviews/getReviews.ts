@@ -1,32 +1,28 @@
 "use server";
-import type { GetReviewsRequest } from "@repo/types/contracts";
-import { cacheTag } from "next/cache";
-import { cacheLife } from "next/cache";
 
-import { mockReviews } from "@/shared/components/Store/ProductDetails/mockedReviews";
+import type { GetReviewsRequest, GetReviewsResponse } from "@repo/types/contracts";
+import { cacheLife, cacheTag } from "next/cache";
+
+import { fetchClient } from "@/shared/utils/api/fetchClient";
 
 export async function getReviews(params: GetReviewsRequest) {
   "use cache";
   cacheLife("hours");
   cacheTag("reviews");
 
-  const offset = params.offset ?? 0;
-  const limit = params.limit ?? 10;
-  const sort = params.sort ?? "newest";
+  const queryParams: Record<string, string | number> = {};
 
-  let filtered = [...mockReviews];
+  if (params.offset !== undefined) queryParams.offset = params.offset;
+  if (params.limit !== undefined) queryParams.limit = params.limit;
+  if (params.rating !== undefined) queryParams.rating = params.rating;
+  if (params.sort) queryParams.sort = params.sort;
 
-  if (params.rating) {
-    filtered = filtered.filter((r) => r.rating === params.rating);
-  }
+  const { data, error } = await fetchClient<GetReviewsResponse>(
+    `/products/${params.productId}/reviews`,
+    { params: queryParams }
+  );
 
-  if (sort === "relevant") {
-    filtered.sort(() => Math.random() - 0.5);
-  }
+  if (error) return { data: null, error };
 
-  const total = filtered.length;
-  const paginated = filtered.slice(offset, offset + limit);
-  const hasMore = offset + limit < total;
-
-  return { reviews: paginated, total, hasMore };
+  return { data, error: null };
 }

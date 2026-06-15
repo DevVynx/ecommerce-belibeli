@@ -1,5 +1,5 @@
 import type { ReviewDto } from "@repo/types/contracts";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import { getReviews } from "@/shared/actions/reviews/getReviews";
 import {
@@ -17,7 +17,10 @@ import {
   SelectValue,
 } from "@/shared/components/shadcn-ui/select";
 import { ReviewCard } from "@/shared/components/Store/ProductDetails/ReviewCard";
-import { useInfiniteScroll } from "@/shared/hooks/ui/useInfiniteScroll";
+import {
+  type PaginatePayload,
+  useInfScrollPagination,
+} from "@/shared/hooks/data/useInfScrollPagination";
 
 type ReviewsModalProps = {
   productId: string;
@@ -29,8 +32,6 @@ type ReviewsModalProps = {
   onClose: () => void;
 };
 
-const PAGE_SIZE = 10;
-
 export const ReviewsModal = ({
   productId,
   ratingFilter,
@@ -40,46 +41,37 @@ export const ReviewsModal = ({
   isOpen,
   onClose,
 }: ReviewsModalProps) => {
-  const [reviews, setReviews] = useState<ReviewDto[]>([]);
-  const [offset, setOffset] = useState(0);
-  const [total, setTotal] = useState(0);
-  const [hasMore, setHasMore] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const filterKey = `${productId}-${ratingFilter ?? "all"}-${sort}`;
 
-  const loadReviews = useCallback(
-    async (currentOffset: number, append: boolean) => {
-      setIsLoading(true);
-      const data = await getReviews({
-        productId,
-        offset: currentOffset,
-        limit: PAGE_SIZE,
-        rating: ratingFilter,
-        sort,
-      });
-      setReviews((prev) => (append ? [...prev, ...data.reviews] : data.reviews));
-      setTotal(data.total);
-      setHasMore(data.hasMore);
-      setOffset(currentOffset + PAGE_SIZE);
-      setIsLoading(false);
-    },
-    [productId, ratingFilter, sort]
-  );
+  const loadReviews = async (offset: number, limit: number): PaginatePayload<ReviewDto> => {
+    const { data, error } = await getReviews({
+      productId,
+      offset,
+      limit,
+      rating: ratingFilter,
+      sort,
+    });
+    if (!data || error) return { items: [], hasMore: false };
+    return { items: data.reviews, hasMore: data.pagination.hasMore, total: data.pagination.total };
+  };
+
+  const {
+    items: reviews,
+    isLoading,
+    hasMore,
+    total,
+    sentinelRef,
+    rootRef,
+    loadMore,
+  } = useInfScrollPagination<ReviewDto>({
+    action: loadReviews,
+    limit: 10,
+    resetKey: filterKey,
+  });
 
   useEffect(() => {
-    if (isOpen) {
-      loadReviews(0, false);
-    }
-  }, [isOpen, loadReviews]);
-
-  const loadMore = useCallback(async () => {
-    await loadReviews(offset, true);
-  }, [loadReviews, offset]);
-
-  const [sentinelRef, { rootRef }] = useInfiniteScroll({
-    loading: isLoading,
-    hasNextPage: hasMore,
-    onLoadMore: loadMore,
-  });
+    if (isOpen) loadMore();
+  }, [isOpen, filterKey, loadMore]);
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>

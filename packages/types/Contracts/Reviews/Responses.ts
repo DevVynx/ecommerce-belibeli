@@ -8,6 +8,5 @@ export type ReviewDto = {
 
 export type GetReviewsResponse = {
   reviews: ReviewDto[];
-  total: number;
-  hasMore: boolean;
+  pagination: { total: number; offset: number; limit: number; hasMore: boolean };
 };

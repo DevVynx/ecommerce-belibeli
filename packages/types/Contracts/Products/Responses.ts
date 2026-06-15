@@ -58,12 +58,36 @@ export type DetailedProductDto = {
   };
 };
 
+export type SearchFiltersDto = {
+  categories: { id: string; name: string; count: number }[];
+  priceRange: {
+    min: number;
+    max: number;
+    absoluteMin: number;
+    absoluteMax: number;
+  };
+  ratingOptions: { value: number; count: number }[];
+  onSaleCount: number;
+  options: {
+    id: string;
+    name: string;
+    values: { id: string; value: string }[];
+  }[];
+};
+
 export type GetProductsResponse = {
   products: CatalogProductDto[];
+  pagination: { total: number; offset: number; limit: number; hasMore: boolean };
 };
 
 export type GetProductDetailsResponse = {
   product: DetailedProductDto;
   options: ProductOptionDto[];
   variants: VariantDto[];
+};
+
+export type SearchProductsResponse = {
+  products: CatalogProductDto[];
+  filters: SearchFiltersDto;
+  pagination: { total: number; offset: number; limit: number; hasMore: boolean };
 };
