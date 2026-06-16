@@ -77,7 +77,7 @@ export type SearchFiltersDto = {
 
 export type GetProductsResponse = {
   products: CatalogProductDto[];
-  pagination: { total: number; offset: number; limit: number; hasMore: boolean };
+  pagination: { total: number; hasMore: boolean };
 };
 
 export type GetProductDetailsResponse = {
@@ -89,5 +89,5 @@ export type GetProductDetailsResponse = {
 export type SearchProductsResponse = {
   products: CatalogProductDto[];
   filters: SearchFiltersDto;
-  pagination: { total: number; offset: number; limit: number; hasMore: boolean };
+  pagination: { total: number; hasMore: boolean };
 };

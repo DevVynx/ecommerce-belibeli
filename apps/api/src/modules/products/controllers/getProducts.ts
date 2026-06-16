@@ -10,7 +10,7 @@ export const getAllProducts: RequestHandler = async (req, res: Response<GetProdu
   const { query } = v.getAll.getValidatedValues(req);
   const { categoryId, limit, offset, onSale } = query;
 
-  const { enrichedProducts } = await productServices.findMany({
+  const { enrichedProducts, pagination } = await productServices.findMany({
     categoryId,
     offset,
     limit,
@@ -19,5 +19,5 @@ export const getAllProducts: RequestHandler = async (req, res: Response<GetProdu
 
   const { products } = ProductMapper.toCatalogSummary(enrichedProducts);
 
-  return res.json({ products });
+  return res.json({ products, pagination });
 };

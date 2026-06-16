@@ -8,12 +8,13 @@
     "dev": "tsx watch --env-file=.env src/server.ts",
     "build": "tsup",
     "start": "dotenv -e .env -- node dist/server.js",
-    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "check-types": "tsc --noEmit",
     "prisma:migrate": "dotenv -e .env -- prisma migrate dev",
     "prisma:studio": "dotenv -e .env -- prisma studio",
     "db:seed": "dotenv -e .env -- tsx prisma/seed.ts",
-    "db:reset": "dotenv -e .env -- prisma migrate reset --force && pnpm db:seed"
+    "db:reset": "dotenv -e .env -- prisma migrate reset --force && pnpm db:seed",
+    "db:sync-search": "dotenv -e .env -- tsx prisma/sync-search.ts"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.3.0",
@@ -26,6 +27,7 @@
     "google-auth-library": "^10.6.1",
     "helmet": "^8.1.0",
     "jsonwebtoken": "^9.0.3",
+    "meilisearch": "^0.58.0",
     "node-cron": "^4.2.1",
     "pg": "^8.17.2",
     "prisma": "^7.3.0",

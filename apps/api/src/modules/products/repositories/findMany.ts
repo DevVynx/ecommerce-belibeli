@@ -11,9 +11,9 @@ type findManyProductsProps = {
 
 export const findManyProducts = async ({
   categoryId,
-  limit = 16,
-  offset = 0,
-  onlyAvailable = false,
+  limit,
+  offset,
+  onlyAvailable = true,
 }: findManyProductsProps) => {
   const availabilityCriteria = {
     isActive: true,
@@ -29,40 +29,43 @@ export const findManyProducts = async ({
 
   const now = new Date();
 
-  const rawProducts = await db.product.findMany({
-    where: whereClause,
-    include: {
-      category: {
-        select: {
-          promotions: {
-            where: {
-              isActive: true,
-              startsAt: { lte: now },
-              endsAt: { gte: now },
+  const [rawProducts, total] = await db.$transaction([
+    db.product.findMany({
+      where: whereClause,
+      include: {
+        category: {
+          select: {
+            promotions: {
+              where: {
+                isActive: true,
+                startsAt: { lte: now },
+                endsAt: { gte: now },
+              },
+            },
+          },
+        },
+        promotions: {
+          where: { isActive: true, startsAt: { lte: now }, endsAt: { gte: now } },
+        },
+        productVariants: {
+          where: onlyAvailable ? availabilityCriteria : undefined,
+          select: {
+            id: true,
+            price: true,
+            stock: true,
+            isActive: true,
+            promotions: {
+              where: { isActive: true, startsAt: { lte: now }, endsAt: { gte: now } },
             },
           },
         },
       },
-      promotions: {
-        where: { isActive: true, startsAt: { lte: now }, endsAt: { gte: now } },
-      },
-      productVariants: {
-        where: onlyAvailable ? availabilityCriteria : undefined,
-        select: {
-          id: true,
-          price: true,
-          stock: true,
-          isActive: true,
-          promotions: {
-            where: { isActive: true, startsAt: { lte: now }, endsAt: { gte: now } },
-          },
-        },
-      },
-    },
-    skip: offset,
-    take: limit,
-    orderBy: { createdAt: "desc" },
-  });
+      skip: offset,
+      take: limit,
+      orderBy: { createdAt: "desc" },
+    }),
+    db.product.count({ where: whereClause }),
+  ]);
 
-  return rawProducts;
+  return { rawProducts, total };
 };

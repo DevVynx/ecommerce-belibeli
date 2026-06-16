@@ -1,33 +1,65 @@
 # Project State
 
-**Last Updated**: 2026-06-01
+**Last Updated**: 2026-06-16
 **State Expiration**: N/A
 
 ---
 
 ## Current Task
 
-**[vyn-011] Product Details Refactor — Server/Client Split** — Completed
+**[vyn-012] Full-Text Search with Meilisearch** — Completed
 
 ### Changes
-- **`ProductInfoSection.tsx` deleted** — Monolithic client component (261 lines) split into focused modules
-- **`shared/context/ProductVariantContext.tsx` created** — Page-level React Context (thin provider + hook) for variant selection state
-- **New client components**: `SkuDisplay`, `PriceDisplay`, `StockWarning` — each consumes context independently
-- **`VariantSelector.tsx`** — Now reads from context instead of receiving props
-- **`ProductActions.tsx`** — Self-contained: consumes context, manages own state (quantity, errors, feedback), handles cart/wishlist logic
-- **`ProductDetailsServer.tsx`** — Owns the full layout: inline RSC content (h1, description, rating) + `ProductVariantProvider` wrapping interactive parts
-- **`ProductInteractionBar.tsx`** — Became true RSC (was client by proxy before)
+- **Docker Compose**: Meilisearch service (`getmeili/meilisearch:v1.37`) added to `compose.yaml`
+- **`.env.example` / `env.ts`**: Added `MEILI_HOST` and `MEILI_MASTER_KEY` configuration
+- **`prisma/sync-search.ts`**: Idempotent sync script — deletes all then re-adds products to Meili index with enrichment
+- **`infra/search/`**: Created `SearchEngine` interface + `MeilisearchAdapter` implementation + singleton export — abstraction layer for swappable search engines
+- **`repositories/findByIds.ts`**: Fetches products by ID array, reorders to match Meili relevance using `Map`
+- **`repositories/findMany.ts`**: Uses `$transaction` for atomic `findMany` + `count`
+- **`services/searchProducts.ts`**: Orchestrates Meili → Prisma → enrichment → pagination (`total`, `hasMore`)
+- **`services/findMany.ts`**: Now returns `{ enrichedProducts, pagination: { total, hasMore } }` (calculation moved from controller)
+- **`controllers/searchProducts.ts`**: Returns `{ products, filters: [], pagination }`
+- **`controllers/getProducts.ts`**: Consumes `pagination` from service directly
+- **`routes.ts`**: `GET /products/search` registered before `:productId` to avoid route conflict
+- **`helpers/validators/searchProducts.ts`**: Zod schema for search query params
+- **`helpers/validators/getAll.ts`**: Fixed `offset` from `.positive()` to `.nonnegative()`
+- **`mappers/toCatalogSummary.ts`**: Decoupled from `GetProductsResponse` — returns `{ products }` only
+- **`types/ProductList.ts`**: `RawProductList` updated for new return shape
+- **`packages/types/Contracts/Products/Responses.ts`**: Pagination simplified to `{ total, hasMore }`
+- **`packages/types/Contracts/Reviews/Responses.ts`**: Same pagination simplification
+- **`meilisearch` SDK (`^0.58.0`)** installed
+- **`pnpm --filter api db:sync-search`** script registered
 
 ### Motivation
-- Reduce client bundle: static content (h1, description, rating) no longer needs JS hydration
-- Separate concerns: interactive state (variant selection, cart, wishlist) isolated from display
-- Better maintainability: 261-line monolith → 6 focused files under 85 lines each
+- Add full-text search with typo tolerance, filtering, and relevance ranking
+- Abstract search engine behind interface (`SearchEngine`) — swap Meilisearch without changing module code
+- Hybrid approach: Meili returns IDs → Prisma fetches full data with runtime enrichment (promotions, stock)
+- Only index fields needed for search + filtering (`id`, `title`, `description`, `price`, `salePrice`, `categoryId`, `categoryName`, `skus`, `ratingRate`, `ratingCount`, `createdAt`)
 
 ---
 
 ## Recent Important Decisions
 
 > Decisions older than 30 days are automatically expired and should be removed.
+
+### [Task] Meilisearch Full-Text Search
+
+- **Date**: 2026-06-16
+- **Decision**: Implemented full-text search using Meilisearch with an abstraction layer (`SearchEngine` interface in `infra/search/`) so the engine can be swapped without changing module code.
+- **Architecture**:
+  - Hybrid approach: Meili returns IDs → Prisma fetches full data with runtime enrichment (promotions, stock)
+  - Only index fields needed for search + filtering — no `image`/`slug`/`totalStock` in index
+  - Search endpoint lives inside `modules/products/` (returns `CatalogProductDto`), not a separate module
+  - `searchableAttributes`: title, description, categoryName, skus
+  - `filterableAttributes`: categoryId, price, salePrice, categoryName
+  - `sortableAttributes`: salePrice, ratingRate, createdAt
+- **Pagination**: Response simplified to `{ total, hasMore }` (offset-based, frontend manages offset state)
+  - `hasMore` calculated in service layer, not controller
+  - `$transaction` in repository ensures atomic `findMany` + `count`
+  - Prisma `findMany` with `in: ids` does NOT preserve order — `findByIds` reorders via `Map` to match Meili relevance
+- **`onSale` filter**: Uses `salePrice < price` (both fields indexed)
+- **Sync**: `prisma/sync-search.ts` — manual script (idempotent: deletes all then re-adds), `pnpm --filter api db:sync-search`
+- **Key difference**: `MEILI_HOST` differs by context — API (Docker) uses `http://meilisearch:7700`, sync script (local) uses `http://localhost:7700`
 
 ### [Task] Product Enrichment Refactoring — Offer Value Object
 
@@ -36,78 +68,6 @@
 - **Why**: Previously, adding a single enrichment field required editing 5 services + 5 type files + helpers. With `offer` namespaced under `variant`, the type is simply `RawVariant & { offer: ProductEnrichment }`, and new fields only touch `ProductEnrichment` + `calculateEnrichment`.
 - **Scope**: Products (list/detail), Cart, Wishlist — all enrichment flows updated.
 - **Types**: Replaced `Persistence.ts`/`Enriched.ts` split with single files per domain (`ProductList.ts`, `ProductDetail.ts`, `Cart.ts`, `Wishlist.ts`). All raw types use `NonNullable`. PascalCase filenames.
-
-### [Task] Documentation Structure Setup
-
-- **Date**: 2026-04-07 to 2026-04-08
-- **Decision**: Created comprehensive AGENTS.md and guide documentation for the codebase
-- **Result**: All guides created (API-OVERVIEW, API-MODULES, API-SHARED, API-VALIDATION, DATABASE, SHARED-TYPES, WEB-OVERVIEW, WEB-COMPONENTS, WEB-STATE, WEB-DATA-LAYER)
-
-### [Task] Pragmatic Code Review Skill
-
-- **Date**: 2026-04-09
-- **Decision**: Created `pragmatic-code-review` skill for Opencode
-- **Features**:
-  - Read-only analysis (no code modification)
-  - Hierarchical review framework (7 categories)
-  - Triage categories: Critical, Improvement, Nit
-  - Based on engineering principles (SOLID, DRY, KISS)
-- **Location**: `.opencode/skills/pragmatic-code-review/SKILL.md`
-
-### [Task] Pragmatic Commit Skill
-
-- **Date**: 2026-04-09
-- **Decision**: Created `pragmatic-commit` skill for Opencode
-- **Features**:
-  - Stages files before showing plan
-  - Scope convention: `api/`, `web/`, or none (both)
-  - Body with `-` prefix bullets
-  - No footer
-  - No breaking changes (!)
-- **Location**: `.opencode/skills/pragmatic-commit/SKILL.md`
-
-### [Task] Frontend Architecture Refactor - Remove React Query
-
-- **Date**: 2026-05-04
-- **Decision**: Remove React Query completely from the project
-- **Changes**:
-  - Deleted entire `hooks/data` folder
-  - All data operations now use Next.js Server Actions
-  - Project no longer uses React Query anywhere
-- **Impact**: Major architectural change in data fetching strategy
-
-### [Task] Zustand Over React Context Pattern (with exception)
-
-- **Date**: 2026-05-04
-- **Decision**: Use Zustand for all state management, replaced React Context with Zustand
-- **Implementation**:
-  - Cart store follows Wishlist pattern (both use Zustand)
-  - No more React Context in the project
-  - Reactive counters in header for both Wishlist and Cart using Zustand stores
-- **Exception (2026-06-01)**: Product variant selection uses React Context (`ProductVariantContext`) instead of Zustand, because:
-  - Variant selection is **page-level ephemeral state**, not global — naturally scoped to the product detail page
-  - Using Zustand would require manual cleanup on unmount, violating YAGNI
-  - Context is the idiomatic React solution for component-scoped state passing
-- **Impact**: Zustand remains the global state standard; Context is reserved for page-level scope where lifecycle matches the component tree
-
-### [Task] Optimistic Updates Pattern
-
-- **Date**: 2026-05-04
-- **Decision**: Implement Optimistic UI Updates in Zustand stores
-- **Pattern**:
-  - Update Zustand store before API responds
-  - Rollback on API error
-  - Used in Cart and Wishlist operations
-- **Benefit**: Better UX with immediate feedback
-
-### [Task] Backend Fixes - Variant Mapping & Seed
-
-- **Date**: 2026-05-04
-- **Decisions**:
-  - Fixed `toProductDetails.ts`: use `productOptionValue.id` instead of `productVariantOption.id`
-  - Seed generates all variant combinations automatically via `generateAllVariantCombinations()`
-  - `totalStock` calculated automatically as sum of variant stocks
-- **Impact**: Correct API responses and proper test data generation
 
 ### [Task] Decimal.js for Monetary Arithmetic
 

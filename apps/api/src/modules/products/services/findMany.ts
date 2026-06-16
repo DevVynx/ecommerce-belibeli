@@ -9,7 +9,7 @@ export const findManyProducts = async ({
   onlyAvailable,
   onSale,
 }: FindAllProductsParams) => {
-  const rawProducts = await productRepositories.findMany({
+  const { rawProducts, total } = await productRepositories.findMany({
     categoryId,
     limit,
     offset,
@@ -43,7 +43,15 @@ export const findManyProducts = async ({
     })
     .filter((p) => p !== null);
 
-  if (onSale) return { enrichedProducts: enrichedProducts.filter((p) => p.heroVariant.offer.isOnSale) };
+  const filtered = onSale
+    ? enrichedProducts.filter((p) => p.heroVariant.offer.isOnSale)
+    : enrichedProducts;
 
-  return { enrichedProducts };
+  return {
+    enrichedProducts: filtered,
+    pagination: {
+      total,
+      hasMore: offset + limit < total,
+    },
+  };
 };
