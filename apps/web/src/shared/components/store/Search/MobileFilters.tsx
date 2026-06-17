@@ -8,11 +8,11 @@ import { FilterPanel } from "./FilterPanel";
 
 type MobileFiltersProps = {
   filters: SearchFiltersDto;
-  selectedOptionValueIds: Set<string>;
+  selectedOptionValues: Set<string>;
   params: Record<string, string | string[] | undefined>;
 };
 
-export const MobileFilters = ({ filters, selectedOptionValueIds, params }: MobileFiltersProps) => {
+export const MobileFilters = ({ filters, selectedOptionValues, params }: MobileFiltersProps) => {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   return (
@@ -26,7 +26,7 @@ export const MobileFilters = ({ filters, selectedOptionValueIds, params }: Mobil
         <SheetTitle className="sr-only">Filtros</SheetTitle>
         <FilterPanel
           filters={filters}
-          selectedOptionValueIds={selectedOptionValueIds}
+          selectedOptionValues={selectedOptionValues}
           params={params}
         />
       </SheetContent>

@@ -1,4 +1,5 @@
 "use client";
+import { Check } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 
 import { copyParams, normalizeParam } from "@/shared/utils/store/search";
@@ -14,14 +15,14 @@ export const FilterOnSale = ({ onSaleCount, params }: FilterOnSaleProps) => {
 
   const isOnSale = normalizeParam(params.onSale) === "true";
 
-  const handleChange = (checked: boolean) => {
+  const handleClick = () => {
     const sp = new URLSearchParams();
     copyParams(sp, params);
 
-    if (checked) {
-      sp.set("onSale", "true");
-    } else {
+    if (isOnSale) {
       sp.delete("onSale");
+    } else {
+      sp.set("onSale", "true");
     }
 
     const qs = sp.toString();
@@ -31,15 +32,24 @@ export const FilterOnSale = ({ onSaleCount, params }: FilterOnSaleProps) => {
   return (
     <div className="space-y-2">
       <span className="text-sm font-medium">Ofertas</span>
-      <label className="flex cursor-pointer items-center gap-2 text-sm">
-        <input
-          type="checkbox"
-          checked={isOnSale}
-          onChange={(e) => handleChange(e.target.checked)}
-          className="size-4 accent-black"
-        />
-        Apenas em oferta ({onSaleCount})
-      </label>
+      <button
+        onClick={handleClick}
+        className={`group flex w-full cursor-pointer items-center justify-between rounded-md px-2 py-1 text-left text-sm transition-all duration-200 ${
+          isOnSale
+            ? "text-foreground bg-black/4"
+            : "text-muted-foreground hover:text-foreground hover:bg-black/3"
+        }`}
+      >
+        <span className={isOnSale ? "font-medium" : ""}>Apenas em oferta</span>
+        <span className="text-muted-foreground flex items-center gap-2 text-xs">
+          <span>({onSaleCount})</span>
+          <Check
+            className={`h-4 w-4 transition-all duration-200 ${
+              isOnSale ? "block scale-100 opacity-100" : "hidden scale-75"
+            }`}
+          />
+        </span>
+      </button>
     </div>
   );
 };

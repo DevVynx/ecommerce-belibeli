@@ -7,7 +7,7 @@ import { FilterPanel } from "./FilterPanel";
 
 type DesktopFiltersProps = {
   filters: SearchFiltersDto;
-  selectedOptionValueIds: Set<string>;
+  selectedOptionValues: Set<string>;
   params: Record<string, string | string[] | undefined>;
 };
 
@@ -15,7 +15,7 @@ const HEADER_HEIGHT = 64;
 
 export const DesktopFilters = ({
   filters,
-  selectedOptionValueIds,
+  selectedOptionValues,
   params,
 }: DesktopFiltersProps) => {
   const scrollDir = useScrollDirection();
@@ -30,7 +30,7 @@ export const DesktopFilters = ({
       >
         <FilterPanel
           filters={filters}
-          selectedOptionValueIds={selectedOptionValueIds}
+          selectedOptionValues={selectedOptionValues}
           params={params}
         />
       </div>

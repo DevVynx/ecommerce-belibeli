@@ -1,16 +1,20 @@
 "use client";
-import { StarIcon } from "lucide-react";
+import { Check, StarIcon } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 
 import { copyParams, normalizeParam } from "@/shared/utils/store/search";
 
-const RATINGS = [4, 3, 2, 1];
+type RatingOption = {
+  value: number;
+  count: number;
+};
 
 type FilterRatingProps = {
+  ratingOptions: RatingOption[];
   params: Record<string, string | string[] | undefined>;
 };
 
-export const FilterRating = ({ params }: FilterRatingProps) => {
+export const FilterRating = ({ ratingOptions, params }: FilterRatingProps) => {
   const router = useRouter();
   const pathname = usePathname();
 
@@ -33,30 +37,30 @@ export const FilterRating = ({ params }: FilterRatingProps) => {
   return (
     <div className="space-y-0">
       <span className="text-sm font-medium">Avaliação Mínima</span>
-      <div className="flex flex-col gap-2">
-        {RATINGS.map((rating) => {
-          const isSelected = selected === rating;
+      <div className="flex flex-col gap-1">
+        {ratingOptions.map(({ value, count }) => {
+          const isSelected = selected === value;
+          const hasResults = count > 0;
 
           return (
             <button
-              key={rating}
-              onClick={() => navigateWithRating(isSelected ? undefined : rating)}
-              className={`flex cursor-pointer items-center gap-1 rounded-md px-2 py-1 text-sm transition-all duration-200 ${
+              key={value}
+              disabled={!hasResults}
+              onClick={() => navigateWithRating(isSelected ? undefined : value)}
+              className={`group flex cursor-pointer items-center justify-between rounded-md px-2 py-1 text-left text-sm transition-all duration-200 ${
                 isSelected
                   ? "bg-yellow-50 font-medium text-yellow-700"
-                  : "text-muted-foreground hover:bg-black/5"
-              } `}
+                  : hasResults
+                    ? "text-muted-foreground hover:text-foreground hover:bg-black/3"
+                    : "text-muted-foreground cursor-not-allowed opacity-40"
+              }`}
             >
-              <div
-                className={`flex transition-transform duration-200 ${
-                  isSelected ? "scale-105" : ""
-                }`}
-              >
+              <span className="flex items-center gap-1">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <StarIcon
                     key={i}
                     className={`h-4 w-4 transition-colors ${
-                      i < rating
+                      i < value
                         ? isSelected
                           ? "fill-yellow-500 stroke-yellow-500"
                           : "fill-yellow-400 stroke-yellow-400"
@@ -66,14 +70,23 @@ export const FilterRating = ({ params }: FilterRatingProps) => {
                     }`}
                   />
                 ))}
-              </div>
 
-              <span
-                className={`ml-1 text-xs transition-colors ${
-                  isSelected ? "text-yellow-700" : "text-gray-400"
-                }`}
-              >
-                {rating === 5 ? "5★" : `${rating}★ ou mais`}
+                <span
+                  className={`ml-1 text-xs transition-colors ${
+                    isSelected ? "text-yellow-700" : "text-gray-400"
+                  }`}
+                >
+                  {value === 5 ? "5★" : `${value}★ ou mais`}
+                </span>
+              </span>
+
+              <span className="text-muted-foreground flex items-center gap-2 text-xs">
+                <span>({count})</span>
+                <Check
+                  className={`h-4 w-4 transition-all duration-200 ${
+                    isSelected ? "block scale-100 opacity-100" : "hidden scale-75"
+                  }`}
+                />
               </span>
             </button>
           );

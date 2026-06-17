@@ -63,7 +63,7 @@ export const ProductCard = ({ product, grid }: ProductCardProps) => {
       }`}
     >
       {/* Image + Percent + Wish Button */}
-      <div className="relative bg-black/10 p-4">
+      <div className="relative bg-black/10">
         {/* Image */}
         <Link href={`/product/${product.slug}`}>
           <img

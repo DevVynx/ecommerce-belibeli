@@ -3,46 +3,35 @@ import { XIcon } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 
 import { Badge } from "@/shared/components/shadcn-ui/badge";
-import { formatPrice } from "@/shared/utils/store/price";
 import { buildKeepUrl, buildRemoveUrl, normalizeParam } from "@/shared/utils/store/search";
 
 const REMOVE_MAP: Record<string, string[]> = {
   categoryId: ["categoryId"],
-  price: ["minPrice", "maxPrice"],
   onSale: ["onSale"],
   minRating: ["minRating"],
-  optionValueIds: ["optionValueIds"],
+  optionValues: ["optionValues"],
 };
 
 type ActiveFiltersProps = {
   params: Record<string, string | string[] | undefined>;
-  priceRangeMax: number;
   categories: { id: string; name: string }[];
 };
 
-export const ActiveFilters = ({ params, priceRangeMax, categories }: ActiveFiltersProps) => {
+export const ActiveFilters = ({ params, categories }: ActiveFiltersProps) => {
   const router = useRouter();
   const pathname = usePathname();
 
   const categoryId = normalizeParam(params.categoryId);
   const categoryName = categories.find((c) => c.id === categoryId)?.name;
-  const minPrice = normalizeParam(params.minPrice);
-  const maxPrice = normalizeParam(params.maxPrice);
   const onSale = normalizeParam(params.onSale);
   const minRating = normalizeParam(params.minRating);
-  const optionValueIds = normalizeParam(params.optionValueIds);
+  const optionValues = normalizeParam(params.optionValues);
   const items: { label: string; removeKey: string }[] = [];
 
   if (categoryId && categoryName) items.push({ label: categoryName, removeKey: "categoryId" });
-  if (minPrice ?? maxPrice) {
-    items.push({
-      label: `${formatPrice(Number(minPrice ?? 0))} — ${formatPrice(Number(maxPrice ?? priceRangeMax))}`,
-      removeKey: "price",
-    });
-  }
   if (onSale === "true") items.push({ label: "Em oferta", removeKey: "onSale" });
   if (minRating) items.push({ label: `${minRating}★ ou mais`, removeKey: "minRating" });
-  if (optionValueIds) items.push({ label: "Opções", removeKey: "optionValueIds" });
+  if (optionValues) items.push({ label: "Opções", removeKey: "optionValues" });
 
   if (items.length === 0) return null;
 

@@ -33,13 +33,7 @@ export const SearchResults = ({ initialProducts, total, params }: SearchResultsP
     };
   };
 
-  const {
-    items,
-    isLoading,
-    hasMore,
-    sentinelRef,
-    total: totalItems,
-  } = useInfScrollPagination({
+  const { items, isLoading, hasMore, sentinelRef } = useInfScrollPagination({
     action: loadProducts,
     limit: 12,
     initialItems: initialProducts,
@@ -50,11 +44,6 @@ export const SearchResults = ({ initialProducts, total, params }: SearchResultsP
 
   return (
     <div>
-      <p className="mb-4 text-sm text-gray-500">
-        {totalItems} produto{totalItems !== 1 ? "s" : ""} encontrado
-        {totalItems !== 1 ? "s" : ""}
-      </p>
-
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-3">
         {items.map((product) => (
           <ProductCard key={product.id} product={product} grid />
