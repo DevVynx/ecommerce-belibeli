@@ -99,13 +99,15 @@ export const Footer = () => {
             <h2 className="text-foreground mb-3 text-sm font-semibold tracking-widest uppercase">
               Sobre Nós
             </h2>
-            <ul className="space-y-2">
+            <div className="space-y-2">
               {sobreLinks.map((link) => (
-                <li key={link.label}>
-                  <span className="text-muted-foreground text-sm">{link.label}</span>
-                </li>
+                <div key={link.label}>
+                  <Link href="#" className="text-muted-foreground hover:text-foreground text-sm">
+                    {link.label}
+                  </Link>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
 
           {/* Ajuda */}
@@ -113,13 +115,15 @@ export const Footer = () => {
             <h2 className="text-foreground mb-3 text-sm font-semibold tracking-widest uppercase">
               Ajuda
             </h2>
-            <ul className="space-y-2">
+            <div className="space-y-2">
               {ajudaLinks.map((link) => (
-                <li key={link.label}>
-                  <span className="text-muted-foreground text-sm">{link.label}</span>
-                </li>
+                <div key={link.label}>
+                  <Link href="#" className="text-muted-foreground hover:text-foreground text-sm">
+                    {link.label}
+                  </Link>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
 
           {/* Social Media */}
@@ -127,12 +131,12 @@ export const Footer = () => {
             <h2 className="text-foreground mb-3 text-sm font-semibold tracking-widest uppercase">
               Redes Sociais
             </h2>
-            <div className="flex flex-col gap-3">
+            <div className="space-y-4">
               {socialLinks.map((social) => (
                 <button
                   type="button"
                   key={social.label}
-                  className="text-muted-foreground flex items-center gap-2 text-sm"
+                  className="text-muted-foreground hover:text-foreground flex cursor-pointer items-center gap-2 text-sm"
                 >
                   {social.icon}
                   {social.label}
@@ -147,7 +151,15 @@ export const Footer = () => {
         {/* Bottom bar */}
         <div className="flex flex-col items-center justify-between gap-2 sm:flex-row">
           <p className="text-muted-foreground text-xs">
-            © 2026 BeliBeli. Todos os direitos reservados.
+            © 2026 BeliBeli. Desenvolvido por{" "}
+            <a
+              href="https://github.com/DevVynx"
+              target="_blank"
+              className="cursor-pointer font-semibold hover:underline"
+            >
+              Vynx
+            </a>
+            .
           </p>
           <div className="flex items-center gap-2">
             <span className="text-muted-foreground text-xs">Política de Privacidade</span>
