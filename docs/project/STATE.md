@@ -1,40 +1,16 @@
 # Project State
 
-**Last Updated**: 2026-06-16
+**Last Updated**: 2026-06-17
 **State Expiration**: N/A
 
 ---
 
 ## Current Task
 
-**[vyn-012] Full-Text Search with Meilisearch** — Completed
+**[vyn-050] Corrigir ratings: API retorna valores individuais em vez de únicos** — Completed
 
 ### Changes
-- **Docker Compose**: Meilisearch service (`getmeili/meilisearch:v1.37`) added to `compose.yaml`
-- **`.env.example` / `env.ts`**: Added `MEILI_HOST` and `MEILI_MASTER_KEY` configuration
-- **`prisma/sync-search.ts`**: Idempotent sync script — deletes all then re-adds products to Meili index with enrichment
-- **`infra/search/`**: Created `SearchEngine` interface + `MeilisearchAdapter` implementation + singleton export — abstraction layer for swappable search engines
-- **`repositories/findByIds.ts`**: Fetches products by ID array, reorders to match Meili relevance using `Map`
-- **`repositories/findMany.ts`**: Uses `$transaction` for atomic `findMany` + `count`
-- **`services/searchProducts.ts`**: Orchestrates Meili → Prisma → enrichment → pagination (`total`, `hasMore`)
-- **`services/findMany.ts`**: Now returns `{ enrichedProducts, pagination: { total, hasMore } }` (calculation moved from controller)
-- **`controllers/searchProducts.ts`**: Returns `{ products, filters: [], pagination }`
-- **`controllers/getProducts.ts`**: Consumes `pagination` from service directly
-- **`routes.ts`**: `GET /products/search` registered before `:productId` to avoid route conflict
-- **`helpers/validators/searchProducts.ts`**: Zod schema for search query params
-- **`helpers/validators/getAll.ts`**: Fixed `offset` from `.positive()` to `.nonnegative()`
-- **`mappers/toCatalogSummary.ts`**: Decoupled from `GetProductsResponse` — returns `{ products }` only
-- **`types/ProductList.ts`**: `RawProductList` updated for new return shape
-- **`packages/types/Contracts/Products/Responses.ts`**: Pagination simplified to `{ total, hasMore }`
-- **`packages/types/Contracts/Reviews/Responses.ts`**: Same pagination simplification
-- **`meilisearch` SDK (`^0.58.0`)** installed
-- **`pnpm --filter api db:sync-search`** script registered
-
-### Motivation
-- Add full-text search with typo tolerance, filtering, and relevance ranking
-- Abstract search engine behind interface (`SearchEngine`) — swap Meilisearch without changing module code
-- Hybrid approach: Meili returns IDs → Prisma fetches full data with runtime enrichment (promotions, stock)
-- Only index fields needed for search + filtering (`id`, `title`, `description`, `price`, `salePrice`, `categoryId`, `categoryName`, `skus`, `ratingRate`, `ratingCount`, `createdAt`)
+- **`facetProcessor.ts`**: RatingOptions agora agrupa por `Math.floor(value)` antes de cumular. Ex: valores 1.9, 2.1, 2.2, 2.6 viram {1, 2, 2, 2} e são somados por grupo.
 
 ---
 
