@@ -34,7 +34,7 @@ export const BestOffersCarousel = ({ products }: BestOffersCarouselProps) => {
         }}
         setApi={setApi}
       >
-        <CarouselContent>
+        <CarouselContent className="p-2">
           {products.map((product) => (
             <CarouselItem key={product.id} className="basis-68">
               <ProductCard product={product} />
