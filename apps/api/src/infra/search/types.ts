@@ -18,4 +18,5 @@ export type SearchResult = {
 
 export interface SearchEngine {
   search(index: string, params: SearchParams): Promise<SearchResult>;
+  addDocuments(index: string, documents: Record<string, unknown>[]): Promise<void>;
 }

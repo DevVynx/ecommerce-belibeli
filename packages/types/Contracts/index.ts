@@ -10,3 +10,5 @@ export * from "./Shipping/Responses";
 export * from "./Shipping/Requests";
 export * from "./Reviews/Requests";
 export * from "./Reviews/Responses";
+export * from "./Search/Requests";
+export * from "./Search/Responses";

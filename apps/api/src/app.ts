@@ -12,6 +12,7 @@ import { notFoundHandler } from "@/shared/middlewares/notFoundHandler";
 import { ENV } from "@/shared/utils/env";
 
 import { productRouter } from "./modules/products/routes";
+import { searchRouter } from "./modules/search/routes";
 
 export const app: Express = express();
 
@@ -38,6 +39,7 @@ app.use("/api", productRouter);
 app.use("/api", cartRouter);
 app.use("/api", wishlistRouter);
 app.use("/api", shippingRouter);
+app.use("/api", searchRouter);
 
 app.use(notFoundHandler);
 app.use(handleGlobalError);

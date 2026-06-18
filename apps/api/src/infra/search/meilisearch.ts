@@ -9,6 +9,10 @@ export class MeilisearchAdapter implements SearchEngine {
     this.client = new Meilisearch(config);
   }
 
+  async addDocuments(index: string, documents: Record<string, unknown>[]): Promise<void> {
+    await this.client.index(index).addDocuments(documents);
+  }
+
   async search(index: string, params: SearchParams): Promise<SearchResult> {
     const filters = params.filters?.length ? params.filters.join(" AND ") : undefined;
 
@@ -27,4 +31,5 @@ export class MeilisearchAdapter implements SearchEngine {
       facetStats: response.facetStats,
     };
   }
+
 }

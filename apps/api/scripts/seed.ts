@@ -16,7 +16,7 @@ import { Pool } from "pg";
 import { generateSlug } from "@/modules/products/helpers/generateSlug";
 import { ENV } from "@/shared/utils/env";
 
-import { PrismaClient } from "./generated/client/client";
+import { PrismaClient } from "../prisma/generated/client/client";
 
 const connectionString = ENV.DATABASE_URL;
 const pool = new Pool({ connectionString });

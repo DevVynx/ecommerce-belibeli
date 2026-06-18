@@ -6,7 +6,7 @@ import { Pool } from "pg";
 
 import { productLogic } from "@/shared/utils/productLogic";
 
-import { PrismaClient } from "./generated/client/client";
+import { PrismaClient } from "../prisma/generated/client/client";
 
 const MEILI_HOST = process.env.MEILI_HOST ?? "http://localhost:7700";
 

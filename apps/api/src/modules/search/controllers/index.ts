@@ -1,0 +1,1 @@
+export { registerAnalytics } from "./registerAnalytics";
