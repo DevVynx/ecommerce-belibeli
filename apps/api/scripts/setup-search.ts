@@ -17,10 +17,12 @@ async function main() {
     await client.createIndex("suggestions", { primaryKey: "id" });
   }
 
+  await client.index("suggestions").updateSortableAttributes(["searchCount"]);
+
   await client.index("suggestions").updateRankingRules([
     "words",
     "typo",
-    "searchCount:desc",
+    "sort",
     "proximity",
     "attribute",
     "exactness",
