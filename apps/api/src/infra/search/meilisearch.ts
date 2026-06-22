@@ -31,5 +31,4 @@ export class MeilisearchAdapter implements SearchEngine {
       facetStats: response.facetStats,
     };
   }
-
 }

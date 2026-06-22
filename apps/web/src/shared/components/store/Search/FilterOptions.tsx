@@ -36,11 +36,9 @@ export const FilterOptions = ({ options, selectedValues, params }: FilterOptions
   const renderOptionValues = (option: SearchOption) => {
     const hasMore = option.values.length > MAX_VISIBLE;
     const hasSelectedHidden =
-      hasMore &&
-      option.values.slice(MAX_VISIBLE).some((v) => selectedValues.has(v.value));
+      hasMore && option.values.slice(MAX_VISIBLE).some((v) => selectedValues.has(v.value));
     const expanded = showAllGroups[option.name] ?? hasSelectedHidden;
-    const displayed =
-      hasMore && !expanded ? option.values.slice(0, MAX_VISIBLE) : option.values;
+    const displayed = hasMore && !expanded ? option.values.slice(0, MAX_VISIBLE) : option.values;
 
     return (
       <>
@@ -73,14 +71,10 @@ export const FilterOptions = ({ options, selectedValues, params }: FilterOptions
 
         {hasMore && (
           <button
-            onClick={() =>
-              setShowAllGroups((prev) => ({ ...prev, [option.name]: !expanded }))
-            }
+            onClick={() => setShowAllGroups((prev) => ({ ...prev, [option.name]: !expanded }))}
             className="flex w-full cursor-pointer px-2 text-left text-xs hover:text-black/80"
           >
-            {expanded
-              ? "Ver menos"
-              : `Ver mais (${option.values.length - MAX_VISIBLE})`}
+            {expanded ? "Ver menos" : `Ver mais (${option.values.length - MAX_VISIBLE})`}
 
             {expanded ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
           </button>
@@ -129,9 +123,7 @@ export const FilterOptions = ({ options, selectedValues, params }: FilterOptions
           </CollapsibleTrigger>
 
           <CollapsibleContent>
-            <div className="flex flex-col gap-1 pt-1">
-              {renderOptionValues(option)}
-            </div>
+            <div className="flex flex-col gap-1 pt-1">{renderOptionValues(option)}</div>
           </CollapsibleContent>
         </Collapsible>
       ))}

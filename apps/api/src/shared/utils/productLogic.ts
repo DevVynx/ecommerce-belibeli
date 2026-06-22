@@ -64,7 +64,9 @@ export const productLogic = {
     return result.lessThan(zero) ? zero : result.toDecimalPlaces(2);
   },
 
-  pickHeroVariant<T extends { offer: ProductEnrichment; stock: number }>(variants: T[]): T | undefined {
+  pickHeroVariant<T extends { offer: ProductEnrichment; stock: number }>(
+    variants: T[]
+  ): T | undefined {
     const availableVariants = variants.filter((v) => v.offer.isAvailable);
 
     if (availableVariants.length === 0) return undefined;

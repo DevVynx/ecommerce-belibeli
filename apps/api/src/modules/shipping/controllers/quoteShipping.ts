@@ -1,8 +1,8 @@
 import { QuoteShippingResponse } from "@repo/types/contracts";
 import { RequestHandler, Response } from "express";
 
-import v from "@/modules/shipping/validators";
 import { shippingServices } from "@/modules/shipping/services";
+import v from "@/modules/shipping/validators";
 
 export const quoteShipping: RequestHandler = async (req, res: Response<QuoteShippingResponse>) => {
   const { userId } = res.locals.user;

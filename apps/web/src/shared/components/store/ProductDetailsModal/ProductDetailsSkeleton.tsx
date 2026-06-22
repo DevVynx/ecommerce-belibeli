@@ -39,10 +39,7 @@ export const ProductDetailsSkeleton = () => {
                 </div>
                 <div className="flex flex-wrap gap-3">
                   {Array.from({ length: 4 }).map((_, valIdx) => (
-                    <Skeleton
-                      key={valIdx}
-                      className="h-9 w-20 rounded-md"
-                    />
+                    <Skeleton key={valIdx} className="h-9 w-20 rounded-md" />
                   ))}
                 </div>
               </div>

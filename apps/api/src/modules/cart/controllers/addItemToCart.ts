@@ -1,8 +1,8 @@
 import { AddItemToCartResponse } from "@repo/types/contracts";
 import { RequestHandler, Response } from "express";
 
-import v from "@/modules/cart/validators";
 import { cartServices } from "@/modules/cart/services";
+import v from "@/modules/cart/validators";
 
 export const addItemToCart: RequestHandler = async (req, res: Response<AddItemToCartResponse>) => {
   const { userId } = res.locals.user;

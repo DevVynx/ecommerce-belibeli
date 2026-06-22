@@ -19,14 +19,9 @@ async function main() {
 
   await client.index("suggestions").updateSortableAttributes(["searchCount"]);
 
-  await client.index("suggestions").updateRankingRules([
-    "words",
-    "typo",
-    "sort",
-    "proximity",
-    "attribute",
-    "exactness",
-  ]);
+  await client
+    .index("suggestions")
+    .updateRankingRules(["words", "typo", "sort", "proximity", "attribute", "exactness"]);
 
   console.log("Index 'suggestions' configurado com sucesso!");
 }

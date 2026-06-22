@@ -6,7 +6,9 @@ export type RawWishlistItem = RawWishlist["items"][0];
 
 export type EnrichedWishlistItem = Omit<RawWishlistItem, "product"> & {
   product: RawWishlistItem["product"] & {
-    heroVariant: NonNullable<RawWishlistItem["product"]>["productVariants"][0] & { offer: ProductEnrichment };
+    heroVariant: NonNullable<RawWishlistItem["product"]>["productVariants"][0] & {
+      offer: ProductEnrichment;
+    };
   };
 };
 

@@ -107,8 +107,14 @@ export const searchProducts = async ({
     } as EnrichedProductListItem);
   }
 
-  const optionValuesFacets = (searchResult.facetDistribution?.optionValues ?? {}) as Record<string, number>;
-  const optionMap = new Map<string, { id: string; name: string; values: { value: string; count: number }[] }>();
+  const optionValuesFacets = (searchResult.facetDistribution?.optionValues ?? {}) as Record<
+    string,
+    number
+  >;
+  const optionMap = new Map<
+    string,
+    { id: string; name: string; values: { value: string; count: number }[] }
+  >();
 
   for (const [key, count] of Object.entries(optionValuesFacets)) {
     const separatorIndex = key.indexOf("::");

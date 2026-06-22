@@ -8,6 +8,6 @@ export const deleteExpiredRefreshTokens = async () => {
       },
     },
   });
-  
+
   return result;
 };

@@ -1,9 +1,9 @@
 import { SyncCartResponse } from "@repo/types/contracts";
 import { RequestHandler, Response } from "express";
 
-import v from "@/modules/cart/validators";
 import { cartMappers } from "@/modules/cart/mappers";
 import { cartServices } from "@/modules/cart/services";
+import v from "@/modules/cart/validators";
 
 export const syncCart: RequestHandler = async (req, res: Response<SyncCartResponse>) => {
   const { userId } = res.locals.user;

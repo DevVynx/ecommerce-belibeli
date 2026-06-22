@@ -21,9 +21,8 @@ export const ProductOptions = ({
     <div className="space-y-5">
       {productOptions.map((option) => {
         const currentSelectedId = selectedOptions[option.id];
-        const currentSelectedValueName = option.values.find(
-          (value) => value.id === currentSelectedId
-        )?.value || "Selecione";
+        const currentSelectedValueName =
+          option.values.find((value) => value.id === currentSelectedId)?.value || "Selecione";
 
         const hasSelection = currentSelectedId !== undefined;
 

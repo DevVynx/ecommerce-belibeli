@@ -11,6 +11,6 @@ export async function removeItemFromCart(params: RemoveItemFromCartRequest) {
   });
 
   if (error) return { data: null, error };
-  
+
   return { data: null, error: null };
 }

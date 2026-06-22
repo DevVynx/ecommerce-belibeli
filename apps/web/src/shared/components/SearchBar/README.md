@@ -17,40 +17,32 @@ import { SearchBar } from "@/shared/components/SearchBar";
     { id: "2", term: "iphone" },
   ]}
   onSelect={(term) => router.push(`/search?q=${encodeURIComponent(term)}`)}
-/>
+/>;
 ```
 
 ## Props
 
 ### Comportamento
 
-| Prop | Tipo | Obrigatório | Descrição |
-|---|---|---|---|
-| `fetchSuggestions` | `(q: string) => Promise<SearchSuggestion[]>` | ✅ | Chamado com debounce (300ms) enquanto o usuário digita. |
-| `fetchTrending` | `() => Promise<SearchSuggestion[]>` | ❌ | Chamado ao abrir o dropdown. Retorna os termos mais buscados. |
-| `onSelect` | `(term: string) => void` | ✅ | Chamado ao selecionar um item ou pressionar Enter. |
-| `mobileTrigger` | `"input" \| "icon"` | ❌ | `"input"`: input visível em mobile; `"icon"`: só ícone de lupa. Default: `"input"`. |
+- **`fetchSuggestions`** `(q: string) => Promise<SearchSuggestion[]>` (obrigatório) — Chamado com debounce (300ms) enquanto o usuário digita.
+- **`fetchTrending`** `() => Promise<SearchSuggestion[]>` (opcional) — Chamado ao abrir o dropdown. Retorna os termos mais buscados.
+- **`onSelect`** `(term: string) => void` (obrigatório) — Chamado ao selecionar um item ou pressionar Enter.
+- **`mobileTrigger`** `"input" | "icon"` (opcional, default: `"input"`) — `"input"`: input visível em mobile; `"icon"`: só ícone de lupa.
 
 ### Aparência
 
-| Prop | Tipo | Obrigatório | Descrição |
-|---|---|---|---|
-| `classNames` | `SearchBarClassNames` | ❌ | Objeto com classes Tailwind para customizar partes do componente. |
-| `placeholder` | `string` | ❌ | Placeholder do input. Default: `"Busque os seus produtos."`. |
+- **`classNames`** `SearchBarClassNames` (opcional) — Objeto com classes Tailwind para customizar partes do componente.
+- **`placeholder`** `string` (opcional, default: `"Busque os seus produtos."`) — Placeholder do input.
 
 ### Dados
 
-| Prop | Tipo | Obrigatório | Descrição |
-|---|---|---|---|
-| `queryFromUrl` | `string` | ❌ | Sincroniza o input com o valor da URL quando o dropdown está fechado. O pai extrai via `useSearchParams()`. |
+- **`queryFromUrl`** `string` (opcional) — Sincroniza o input com o valor da URL quando o dropdown está fechado. O pai extrai via `useSearchParams()`.
 
 ### Limites
 
-| Prop | Default | Descrição |
-|---|---|---|
-| `maxRecentSearches` | `5` | Máximo de termos salvos no `localStorage`. |
-| `maxSuggestions` | `10` | Máximo de sugestões por `fetchSuggestions`. |
-| `maxTrending` | `5` | Máximo de itens de tendências exibidos. |
+- **`maxRecentSearches`** (default: `5`) — Máximo de termos salvos no `localStorage`.
+- **`maxSuggestions`** (default: `10`) — Máximo de sugestões por `fetchSuggestions`.
+- **`maxTrending`** (default: `5`) — Máximo de itens de tendências exibidos.
 
 ### SearchSuggestion
 
@@ -82,65 +74,53 @@ type SearchSuggestion = {
 
 ### SearchBarClassNames
 
-| Chave | Aplicação |
-|---|---|
-| `root` | Container externo |
-| `trigger` | Botão de lupa no mobile (modo `icon`) |
-| `input` | Campo de input |
-| `section` | Seção do dropdown (Últimas buscas, Tendências, Sugestões) |
-| `sectionTitle` | Título da seção |
-| `item` | Item clicável da lista |
-| `itemIcon` | Ícone do item |
-| `itemText` | Texto do termo |
-| `closeButton` | Botão "Cancelar" no mobile |
-| `searchButton` | Botão de busca ao lado do input |
+- **`root`** — Container externo
+- **`trigger`** — Botão de lupa no mobile (modo `icon`)
+- **`input`** — Campo de input
+- **`section`** — Seção do dropdown (Últimas buscas, Tendências, Sugestões)
+- **`sectionTitle`** — Título da seção
+- **`item`** — Item clicável da lista
+- **`itemIcon`** — Ícone do item
+- **`itemText`** — Texto do termo
+- **`closeButton`** — Botão "Cancelar" no mobile
+- **`searchButton`** — Botão de busca ao lado do input
 
 ## Comportamento
 
 ### Estados
 
-| Estado | Desktop | Mobile |
-|---|---|---|
-| **Fechado** | Input visível | Input ou ícone (depende de `mobileTrigger`) |
-| **Aberto sem query** | Dropdown abaixo do input + overlay | Tela cheia com input focado + lista |
-| **Digitando** | Dropdown com sugestões | Tela cheia com sugestões |
-| **Item selecionado** | Fecha e chama `onSelect(term)` | Fecha e chama `onSelect(term)` |
+- **Fechado** — Desktop: Input visível. Mobile: Input ou ícone (depende de `mobileTrigger`).
+- **Aberto sem query** — Desktop: Dropdown abaixo do input + overlay. Mobile: Tela cheia com input focado + lista.
+- **Digitando** — Desktop: Dropdown com sugestões. Mobile: Tela cheia com sugestões.
+- **Item selecionado** — Desktop: Fecha e chama `onSelect(term)`. Mobile: Fecha e chama `onSelect(term)`.
 
 ### Seções do dropdown
 
-| Seção | Quando aparece | Origem |
-|---|---|---|
-| Últimas buscas | Dropdown aberto + input vazio | `localStorage` (chave `recent_searches`) |
-| Tendências | Dropdown aberto + input vazio | `fetchTrending()` |
-| Sugestões | Digitando + fetch concluído | `fetchSuggestions(query)` |
+- **Últimas buscas** — Dropdown aberto + input vazio. Origem: `localStorage` (chave `recent_searches`).
+- **Tendências** — Dropdown aberto + input vazio. Origem: `fetchTrending()`.
+- **Sugestões** — Digitando + fetch concluído. Origem: `fetchSuggestions(query)`.
 
 ### Atalhos de teclado
 
-| Tecla | Ação |
-|---|---|
-| `ArrowDown` | Próximo item |
-| `ArrowUp` | Item anterior |
-| `Enter` | Seleciona o item destacado; se nenhum, usa o valor digitado |
-| `Escape` | Fecha o dropdown |
+- **`ArrowDown`** — Próximo item
+- **`ArrowUp`** — Item anterior
+- **`Enter`** — Seleciona o item destacado; se nenhum, usa o valor digitado
+- **`Escape`** — Fecha o dropdown
 
 ## Componentes internos
 
 O SearchBar é composto por submódulos que podem ser usados independentemente:
 
-| Componente | Descrição |
-|---|---|
-| `SearchBarInput` | Input com botão de busca lateral. Aceita `ref` via `forwardRef`. |
-| `SearchBarItem` | Item da lista com ícone, texto (com `highlightQuery` para destacar), clique e botão de remover. |
-| `SearchBarSection` | Container para agrupar itens com título opcional. |
-| `SearchResults` | Renderiza a lista completa (sugestões / recentes + tendências / vazio) baseada no estado. |
-| `HighlightedText` | Destaca o trecho digitado (cinza claro) do resto (negrito preto). |
+- **`SearchBarInput`** — Input com botão de busca lateral. Aceita `ref` via `forwardRef`.
+- **`SearchBarItem`** — Item da lista com ícone, texto (com `highlightQuery` para destacar), clique e botão de remover.
+- **`SearchBarSection`** — Container para agrupar itens com título opcional.
+- **`SearchResults`** — Renderiza a lista completa (sugestões / recentes + tendências / vazio) baseada no estado.
+- **`HighlightedText`** — Destaca o trecho digitado (cinza claro) do resto (negrito preto).
 
 ### hooks
 
-| Hook | Descrição |
-|---|---|
-| `useSearchBar` | Hook principal: estado, fetching, teclado, overlay. |
-| `useSearchStorage` | Gerencia `localStorage` para últimas buscas (`loadRecentFromStorage`, `addToRecent`, `removeRecentSearch`). |
+- **`useSearchBar`** — Hook principal: estado, fetching, teclado, overlay.
+- **`useSearchStorage`** — Gerencia `localStorage` para últimas buscas (`loadRecentFromStorage`, `addToRecent`, `removeRecentSearch`).
 
 ## Exemplos de Implementação
 
@@ -167,7 +147,7 @@ const meili = new Meilisearch({
     return hits.map((hit) => ({ id: String(hit.id), term: String(hit.term) }));
   }}
   onSelect={(term) => router.push(`/search?q=${encodeURIComponent(term)}`)}
-/>
+/>;
 ```
 
 ### Com API própria

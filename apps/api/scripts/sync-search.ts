@@ -128,7 +128,16 @@ async function main() {
 
   const settings = {
     searchableAttributes: ["title", "description", "categoryName", "skus"],
-    filterableAttributes: ["categoryId", "price", "salePrice", "categoryName", "onSale", "ratingRate", "id", "optionValues"],
+    filterableAttributes: [
+      "categoryId",
+      "price",
+      "salePrice",
+      "categoryName",
+      "onSale",
+      "ratingRate",
+      "id",
+      "optionValues",
+    ],
     sortableAttributes: ["salePrice", "ratingRate", "createdAt"],
   };
 

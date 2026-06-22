@@ -1,8 +1,8 @@
 import { RegisterAnalyticsResponse } from "@repo/types/contracts";
 import { RequestHandler, Response } from "express";
 
-import v from "@/modules/search/validators";
 import { searchServices } from "@/modules/search/services";
+import v from "@/modules/search/validators";
 
 export const registerAnalytics: RequestHandler = async (
   req,

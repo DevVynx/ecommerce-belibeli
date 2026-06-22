@@ -30,10 +30,7 @@ export const ProductTabsSection = async ({ data }: ProductTabsSectionProps) => {
         </div>
       </TabsContent>
       <TabsContent value="reviews">
-        <ReviewsSection
-          productId={data.product.id}
-          ratingRate={data.product.ratingRate}
-        />
+        <ReviewsSection productId={data.product.id} ratingRate={data.product.ratingRate} />
       </TabsContent>
     </Tabs>
   );

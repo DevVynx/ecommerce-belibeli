@@ -11,6 +11,6 @@ export const findVariantByIdWithProduct = async ({
     where: { id: variantId },
     include: { product: true },
   });
-  
+
   return variant;
 };

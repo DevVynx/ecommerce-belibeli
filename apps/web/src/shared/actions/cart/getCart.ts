@@ -10,6 +10,6 @@ export async function getCart() {
   });
 
   if (error) return { data: null, error };
-  
+
   return { data, error: null };
 }

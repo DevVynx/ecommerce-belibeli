@@ -15,11 +15,6 @@ couponRouter.post(
   createCoupon
 );
 
-couponRouter.post(
-  "/coupons/validate",
-  authMiddleware,
-  v.validateCoupon.middleware,
-  validateCoupon
-);
+couponRouter.post("/coupons/validate", authMiddleware, v.validateCoupon.middleware, validateCoupon);
 
 export { couponRouter };

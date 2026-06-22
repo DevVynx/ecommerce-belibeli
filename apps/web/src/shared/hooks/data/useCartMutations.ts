@@ -90,7 +90,7 @@ export function useCartMutations() {
           updateItemId(tempId, cartItem.id);
 
           if (cartItem.quantity !== adjustedQty) {
-            updateQuantity(cartItem.id, cartItem.quantity); 
+            updateQuantity(cartItem.id, cartItem.quantity);
           }
 
           updateItemStock(cartItem.id, cartItem.stock);

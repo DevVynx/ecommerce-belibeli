@@ -13,11 +13,7 @@ type DesktopFiltersProps = {
 
 const HEADER_HEIGHT = 64;
 
-export const DesktopFilters = ({
-  filters,
-  selectedOptionValues,
-  params,
-}: DesktopFiltersProps) => {
+export const DesktopFilters = ({ filters, selectedOptionValues, params }: DesktopFiltersProps) => {
   const scrollDir = useScrollDirection();
   const isHeaderHidden = scrollDir === "down";
   const topOffset = isHeaderHidden ? 4 : HEADER_HEIGHT + 4;

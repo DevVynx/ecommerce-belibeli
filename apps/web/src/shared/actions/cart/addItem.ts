@@ -12,6 +12,6 @@ export async function addItemToCart(params: AddItemToCartRequest) {
   });
 
   if (error) return { data: null, error };
-  
+
   return { data, error: null };
 }

@@ -37,18 +37,29 @@ type CategoryTemplate = {
 
 const templates: Record<CategoryName, CategoryTemplate> = {
   Eletrônicos: {
-    brands: ["Samsung", "Apple", "Sony", "Dell", "LG", "ASUS", "Logitech", "Acer", "Lenovo", "Microsoft"],
+    brands: [
+      "Samsung",
+      "Apple",
+      "Sony",
+      "Dell",
+      "LG",
+      "ASUS",
+      "Logitech",
+      "Acer",
+      "Lenovo",
+      "Microsoft",
+    ],
     lines: [
       { name: "Galaxy Book 4", weight: 1.8, priceMin: 4500, priceMax: 8500 },
       { name: "MacBook Air M4", weight: 1.2, priceMin: 8000, priceMax: 12000 },
-      { name: "Monitor UltraFine 32\" 4K", weight: 5.0, priceMin: 3500, priceMax: 6000 },
+      { name: 'Monitor UltraFine 32" 4K', weight: 5.0, priceMin: 3500, priceMax: 6000 },
       { name: "Fone Wireless WH-1000XM", weight: 0.25, priceMin: 1200, priceMax: 2100 },
       { name: "Mouse Wireless MX Master 3S", weight: 0.14, priceMin: 250, priceMax: 400 },
       { name: "Magic Keyboard Touch ID", weight: 0.3, priceMin: 600, priceMax: 1200 },
       { name: "iPad Air M3", weight: 0.46, priceMin: 5000, priceMax: 9500 },
       { name: "Galaxy Watch 7 Bluetooth", weight: 0.06, priceMin: 1200, priceMax: 2800 },
       { name: "XPS 16 Intel Ultra 9", weight: 1.9, priceMin: 8000, priceMax: 15000 },
-      { name: "Monitor UltraGear 27\" 240Hz", weight: 4.5, priceMin: 1500, priceMax: 3500 },
+      { name: 'Monitor UltraGear 27" 240Hz', weight: 4.5, priceMin: 1500, priceMax: 3500 },
       { name: "ThinkPad X1 Carbon", weight: 1.1, priceMin: 6000, priceMax: 12000 },
       { name: "Surface Pro 11", weight: 0.9, priceMin: 7000, priceMax: 11000 },
     ],
@@ -62,7 +73,16 @@ const templates: Record<CategoryName, CategoryTemplate> = {
     maxVariants: 6,
   },
   Masculino: {
-    brands: ["Nike", "Adidas", "Levi's", "Calvin Klein", "Puma", "Under Armour", "Tommy Hilfiger", "Lacoste"],
+    brands: [
+      "Nike",
+      "Adidas",
+      "Levi's",
+      "Calvin Klein",
+      "Puma",
+      "Under Armour",
+      "Tommy Hilfiger",
+      "Lacoste",
+    ],
     lines: [
       { name: "Camiseta Running Dri-FIT", weight: 0.15, priceMin: 80, priceMax: 180 },
       { name: "Jeans 501 Original Fit", weight: 0.5, priceMin: 200, priceMax: 450 },
@@ -122,9 +142,7 @@ const templates: Record<CategoryName, CategoryTemplate> = {
       { name: "Pulseira de Charms", weight: 0.025, priceMin: 400, priceMax: 1800 },
     ],
     colorsInTitle: ["Prata", "Ouro", "Ouro Rosa"],
-    optionGroups: [
-      { name: "Material", values: ["Prata 925", "Ouro 18k", "Ouro Rosa 18k"] },
-    ],
+    optionGroups: [{ name: "Material", values: ["Prata 925", "Ouro 18k", "Ouro Rosa 18k"] }],
     hasOptionChance: 0.5,
     maxVariants: 3,
   },
