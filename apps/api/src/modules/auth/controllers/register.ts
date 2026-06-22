@@ -1,8 +1,8 @@
 import { RegisterResponse } from "@repo/types/contracts";
 import { RequestHandler, Response } from "express";
 
-import v from "@/modules/auth/helpers/validators";
 import { authServices } from "@/modules/auth/services";
+import v from "@/modules/auth/validators";
 import { ENV } from "@/shared/utils/env";
 
 export const register: RequestHandler = async (req, res: Response<RegisterResponse>) => {

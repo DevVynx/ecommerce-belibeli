@@ -15,8 +15,8 @@ export const authMiddleware: RequestHandler = async (req, res, next) => {
   const accessToken = authHeader.split(" ")[1];
 
   try {
-    const { userId } = await verifyToken(accessToken, "access");
-    res.locals.user = { userId };
+    const { userId, role } = await verifyToken(accessToken, "access");
+    res.locals.user = { userId, role };
     next();
   } catch {
     return res.status(401).json({

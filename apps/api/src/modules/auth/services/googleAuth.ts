@@ -41,7 +41,6 @@ export const googleAuth = async ({ code }: GoogleAuthParams) => {
           googleId: sub,
           isEmailVerified: true,
         },
-        select: { id: true, name: true, email: true },
       });
     } else if (!user.googleId) {
       if (!user.isEmailVerified) {
@@ -53,7 +52,6 @@ export const googleAuth = async ({ code }: GoogleAuthParams) => {
             password: null,
             isEmailVerified: true,
           },
-          select: { id: true, name: true, email: true },
         });
       } else {
         user = await authRepositories.updateUserById({
@@ -62,12 +60,11 @@ export const googleAuth = async ({ code }: GoogleAuthParams) => {
             name: name || user.name,
             googleId: sub,
           },
-          select: { id: true, name: true, email: true },
         });
       }
     }
 
-    const accessToken = generateAccessToken(user.id);
+    const accessToken = generateAccessToken(user.id, user.role);
     const refreshToken = generateRefreshToken(user.id);
 
     await authRepositories.createRefreshToken({
@@ -75,7 +72,9 @@ export const googleAuth = async ({ code }: GoogleAuthParams) => {
       userId: user.id,
     });
 
-    return { user, accessToken, refreshToken };
+    const { googleId: _, ...userWithoutGoogleId } = user;
+
+    return { user: userWithoutGoogleId, accessToken, refreshToken };
   } catch (error) {
     if (error instanceof HttpError) throw error;
     throw handleGoogleAuthError(error);

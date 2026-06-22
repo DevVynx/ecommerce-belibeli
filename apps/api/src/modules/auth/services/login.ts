@@ -7,15 +7,7 @@ import { LoginParams } from "@/modules/auth/types/ServicesParams";
 import { BadRequestError } from "@/shared/utils/HttpErrors";
 
 export const login = async ({ email, password, rememberMe }: LoginParams) => {
-  const user = await authRepositories.findUserByEmail({
-    email,
-    select: {
-      id: true,
-      name: true,
-      email: true,
-      password: true,
-    },
-  });
+  const user = await authRepositories.findUserByEmailWithPassword({ email });
 
   if (!user || !user.password) {
     throw new BadRequestError("E-mail ou senha incorretos.");
@@ -27,9 +19,10 @@ export const login = async ({ email, password, rememberMe }: LoginParams) => {
     throw new BadRequestError("E-mail ou senha incorretos.");
   }
 
-  const { password: _pw, ...userWithoutPassword } = user;
+  const { password: _, ...userWithoutPassword } = user;
 
-  const accessToken = generateAccessToken(user.id);
+  const accessToken = generateAccessToken(user.id, user.role);
+
   const refreshToken = generateRefreshToken(user.id, rememberMe ? "7d" : "6h");
 
   await authRepositories.createRefreshToken({

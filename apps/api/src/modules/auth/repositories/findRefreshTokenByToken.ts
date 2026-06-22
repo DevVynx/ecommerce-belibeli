@@ -1,16 +1,17 @@
 import { db } from "@/shared/lib/db";
 
-import type { Prisma } from "../../../../prisma/generated/client/client";
-
-type findRefreshTokenByTokenProps = {
+type FindRefreshTokenByTokenProps = {
   token: string;
-  select?: Prisma.RefreshTokenSelect;
 };
 
-export const findRefreshTokenByToken = async ({ token, select }: findRefreshTokenByTokenProps) => {
+export const findRefreshTokenByToken = async ({ token }: FindRefreshTokenByTokenProps) => {
   const refreshToken = db.refreshToken.findUnique({
     where: { token },
-    select,
+    select: {
+      userId: true,
+      isUsed: true,
+      expiresAt: true,
+    },
   });
 
   return refreshToken;

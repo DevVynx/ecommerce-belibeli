@@ -2,15 +2,21 @@ import { db } from "@/shared/lib/db";
 
 import type { Prisma } from "../../../../prisma/generated/client/client";
 
-type createUserProps = {
+type CreateUserProps = {
   data: Prisma.UserCreateInput;
-  select?: Prisma.UserSelect;
 };
 
-export const createUser = async ({ data, select }: createUserProps) => {
+export const createUser = async ({ data }: CreateUserProps) => {
   const user = await db.user.create({
     data,
-    select,
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      googleId: true,
+      isEmailVerified: true,
+      role: true,
+    },
   });
 
   return user;

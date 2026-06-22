@@ -15,11 +15,12 @@ export const register = async ({ name, email, password }: RegisterParams) => {
 
   const user = await authRepositories.createUser({
     data: { name, email, password: hashedPassword },
-    select: { id: true, name: true, email: true },
   });
 
-  const accessToken = generateAccessToken(user.id);
+  const { googleId: _, ...userWithoutGoogleId } = user;
+
+  const accessToken = generateAccessToken(user.id, user.role);
   const refreshToken = generateRefreshToken(user.id);
 
-  return { user, accessToken, refreshToken };
+  return { user: userWithoutGoogleId, accessToken, refreshToken };
 };

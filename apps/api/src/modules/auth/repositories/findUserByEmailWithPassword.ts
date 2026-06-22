@@ -1,17 +1,17 @@
 import { db } from "@/shared/lib/db";
 
-type FindUserByEmailProps = {
+type FindUserByEmailWithPasswordProps = {
   email: string;
 };
 
-export const findUserByEmail = async ({ email }: FindUserByEmailProps) => {
+export const findUserByEmailWithPassword = async ({ email }: FindUserByEmailWithPasswordProps) => {
   const user = await db.user.findUnique({
     where: { email },
     select: {
       id: true,
       name: true,
       email: true,
-      googleId: true,
+      password: true,
       isEmailVerified: true,
       role: true,
     },

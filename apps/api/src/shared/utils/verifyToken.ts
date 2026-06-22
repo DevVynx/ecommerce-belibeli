@@ -10,9 +10,10 @@ export async function verifyToken(token: string = "", type: "access" | "refresh"
     token,
     type === "access" ? ENV.JWT_ACCESS_SECRET : ENV.JWT_REFRESH_SECRET
   );
-  const { userId } = decoded as {
+  const { userId, role } = decoded as {
     userId: string;
+    role: string;
   };
 
-  return { userId };
+  return { userId, role };
 }

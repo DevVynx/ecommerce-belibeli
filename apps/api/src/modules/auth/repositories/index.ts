@@ -4,12 +4,14 @@ import { deleteManyRefreshTokensByUserId } from "@/modules/auth/repositories/del
 import { deleteRefreshTokenByToken } from "@/modules/auth/repositories/deleteRefreshTokenByToken";
 import { findRefreshTokenByToken } from "@/modules/auth/repositories/findRefreshTokenByToken";
 import { findUserByEmail } from "@/modules/auth/repositories/findUserByEmail";
+import { findUserByEmailWithPassword } from "@/modules/auth/repositories/findUserByEmailWithPassword";
 import { findUserById } from "@/modules/auth/repositories/findUserById";
 import { markRefreshTokenAsUsed } from "@/modules/auth/repositories/markRefreshTokenAsUsed";
 import { updateUserById } from "@/modules/auth/repositories/updateUserById";
 
 export const authRepositories = {
   findUserByEmail,
+  findUserByEmailWithPassword,
   findUserById,
   findRefreshTokenByToken,
   createUser,
