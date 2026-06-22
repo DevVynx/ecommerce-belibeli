@@ -17,9 +17,15 @@ type AuthModalProps = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   redirectTo?: string;
+  onLoginSuccess?: () => void;
 };
 
-export const AuthModal = ({ open, onOpenChange, redirectTo = "/checkout" }: AuthModalProps) => {
+export const AuthModal = ({
+  open,
+  onOpenChange,
+  redirectTo = "/checkout",
+  onLoginSuccess,
+}: AuthModalProps) => {
   const [mode, setMode] = useState<"login" | "register">("login");
   const { setAuthError } = useAuthState();
 
@@ -53,9 +59,9 @@ export const AuthModal = ({ open, onOpenChange, redirectTo = "/checkout" }: Auth
 
         <div className="flex flex-col items-center gap-4">
           {isLogin ? (
-            <LoginForm redirectTo={redirectTo} />
+            <LoginForm redirectTo={redirectTo} onSuccess={onLoginSuccess} />
           ) : (
-            <RegisterForm redirectTo={redirectTo} />
+            <RegisterForm redirectTo={redirectTo} onSuccess={onLoginSuccess} />
           )}
 
           <p className="text-center text-sm text-black/60">
@@ -86,7 +92,7 @@ export const AuthModal = ({ open, onOpenChange, redirectTo = "/checkout" }: Auth
 
           <div className="w-full">
             <OrDivider />
-            <GoogleSocialLoginButton redirectTo={redirectTo} />
+            <GoogleSocialLoginButton redirectTo={redirectTo} onSuccess={onLoginSuccess} />
           </div>
         </div>
       </DialogContent>

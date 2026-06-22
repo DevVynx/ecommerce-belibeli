@@ -1,72 +1,74 @@
-import Decimal from "decimal.js";
 import { Check, Tag, X } from "lucide-react";
 import { useState } from "react";
 
+import { validateCoupon } from "@/shared/actions/coupons/validateCoupon";
+import { AuthModal } from "@/shared/components/Auth/AuthModal";
 import { Button } from "@/shared/components/shadcn-ui/button";
 import { Input } from "@/shared/components/shadcn-ui/input";
 import { Spinner } from "@/shared/components/shadcn-ui/spinner";
-import { asDecimal, formatDiscount } from "@/shared/utils/store/price";
-
-type MockCoupon = {
-  type: "percentage" | "fixed";
-  value: number;
-  description: string;
-};
-
-const MOCK_COUPONS: Record<string, MockCoupon> = {
-  BEMVINDO: { type: "fixed", value: 15, description: "R$ 15 de desconto" },
-  FRETE10: { type: "percentage", value: 10, description: "10% de desconto" },
-  VIP30: { type: "percentage", value: 30, description: "30% de desconto" },
-};
-
-export type AppliedCoupon = {
-  code: string;
-  discount: number;
-  description: string;
-};
+import { showNotification } from "@/shared/components/showNotification";
+import { useAuthState } from "@/shared/states/auth";
+import { useCartState } from "@/shared/states/cart";
+import { authenticatedAction } from "@/shared/utils/api/authenticatedAction";
+import { formatDiscount } from "@/shared/utils/store/price";
 
 type CouponApplierProps = {
   subtotal: number;
-  appliedCoupon: AppliedCoupon | null;
-  onApply: (coupon: AppliedCoupon) => void;
-  onClear: () => void;
 };
 
-export const CouponApplier = ({
-  subtotal,
-  appliedCoupon,
-  onApply,
-  onClear,
-}: CouponApplierProps) => {
+export const CouponApplier = ({ subtotal: _subtotal }: CouponApplierProps) => {
   const [inputValue, setInputValue] = useState("");
   const [isApplying, setIsApplying] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [authModalOpen, setAuthModalOpen] = useState(false);
 
-  const handleApply = () => {
+  const { appliedCoupon, setCoupon, clearCoupon } = useCartState();
+  const { isAuthenticated } = useAuthState();
+
+  const handleApply = async () => {
     const code = inputValue.toUpperCase().trim();
     if (!code) return;
 
-    const coupon = MOCK_COUPONS[code];
-    if (!coupon) {
-      setError("Cupom inválido");
+    if (!isAuthenticated) {
+      setAuthModalOpen(true);
       return;
     }
 
     setIsApplying(true);
+
+    const { data, error } = await authenticatedAction(validateCoupon, { code });
+
+    const errorMessage =
+      error && typeof error.message === "string"
+        ? error.message
+        : "Erro inesperado ao validar cupom.";
+
+    if (error || !data) {
+      setError(errorMessage);
+      showNotification({
+        type: "error",
+        title: "Cupom inválido",
+        message: errorMessage,
+      });
+      setIsApplying(false);
+      return;
+    }
+
     setError(null);
 
-    setTimeout(() => {
-      const subtotalDecimal = asDecimal(subtotal);
-      const discount =
-        coupon.type === "percentage"
-          ? subtotalDecimal.times(coupon.value).div(100)
-          : Decimal.min(subtotalDecimal, coupon.value);
-      const discountRounded = discount.toDecimalPlaces(2, Decimal.ROUND_HALF_UP);
+    showNotification({
+      type: "success",
+      title: "Cupom aplicado!",
+      message: `${data.coupon.code} — ${data.coupon.description}`,
+    });
 
-      onApply({ code, discount: discountRounded.toNumber(), description: coupon.description });
-      setInputValue("");
-      setIsApplying(false);
-    }, 1000);
+    setCoupon({
+      code: data.coupon.code,
+      discount: data.discountValue,
+      description: data.coupon.description,
+    });
+    setInputValue("");
+    setIsApplying(false);
   };
 
   if (appliedCoupon) {
@@ -87,7 +89,7 @@ export const CouponApplier = ({
             variant="ghost"
             size="icon"
             className="h-6 w-6 cursor-pointer"
-            onClick={onClear}
+            onClick={clearCoupon}
             aria-label="Remover cupom"
           >
             <X className="size-3" />
@@ -98,33 +100,41 @@ export const CouponApplier = ({
   }
 
   return (
-    <div>
-      <div className="flex items-center gap-2">
-        <div className="relative flex-1">
-          <Tag className="text-muted-foreground pointer-events-none absolute top-1/2 left-2.5 size-4 -translate-y-1/2" />
-          <Input
-            placeholder="Cupom de desconto"
-            value={inputValue}
-            onChange={(e) => {
-              setInputValue(e.target.value.toUpperCase());
-              setError(null);
-            }}
-            className="h-9 pl-8 text-sm"
-            maxLength={15}
-            onKeyDown={(e) => e.key === "Enter" && handleApply()}
-          />
+    <>
+      <div>
+        <div className="flex items-center gap-2">
+          <div className="relative flex-1">
+            <Tag className="text-muted-foreground pointer-events-none absolute top-1/2 left-2.5 size-4 -translate-y-1/2" />
+            <Input
+              placeholder="Cupom de desconto"
+              value={inputValue}
+              onChange={(e) => {
+                setInputValue(e.target.value.toUpperCase());
+                setError(null);
+              }}
+              className="h-9 pl-8 text-sm"
+              maxLength={15}
+              onKeyDown={(e) => e.key === "Enter" && handleApply()}
+            />
+          </div>
+          <Button
+            variant="outline"
+            size="sm"
+            className="h-9 shrink-0 cursor-pointer font-semibold"
+            onClick={handleApply}
+            disabled={!inputValue.trim() || isApplying}
+          >
+            {isApplying ? <Spinner className="size-4" /> : "Aplicar"}
+          </Button>
         </div>
-        <Button
-          variant="outline"
-          size="sm"
-          className="h-9 shrink-0 cursor-pointer font-semibold"
-          onClick={handleApply}
-          disabled={!inputValue.trim() || isApplying}
-        >
-          {isApplying ? <Spinner className="size-4" /> : "Aplicar"}
-        </Button>
+        {error && <p className="mt-1 text-xs text-red-500">{error}</p>}
       </div>
-      {error && <p className="mt-1 text-xs text-red-500">{error}</p>}
-    </div>
+
+      <AuthModal
+        open={authModalOpen}
+        onOpenChange={setAuthModalOpen}
+        onLoginSuccess={() => setAuthModalOpen(false)}
+      />
+    </>
   );
 };

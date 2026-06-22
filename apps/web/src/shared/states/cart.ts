@@ -4,10 +4,17 @@ import { persist } from "zustand/middleware";
 
 import { calculateSummary } from "@/shared/utils/store/calculateSummary";
 
+type AppliedCouponData = {
+  code: string;
+  discount: number;
+  description: string;
+};
+
 type CartState = {
   cart: Omit<CartDto, "id">;
   previousCart: Omit<CartDto, "id">;
   hasHydrated: boolean;
+  appliedCoupon: AppliedCouponData | null;
 
   hydrate: (cart: { items: CartItemDto[]; summary: CartDto["summary"] }) => void;
   setHasHydrated: (hydrated: boolean) => void;
@@ -18,6 +25,8 @@ type CartState = {
   updateItemStock: (cartItemId: string, stock: number) => void;
   clear: () => void;
   rollback: () => void;
+  setCoupon: (coupon: AppliedCouponData | null) => void;
+  clearCoupon: () => void;
 };
 
 const emptyCart = {
@@ -31,6 +40,7 @@ export const useCartState = create<CartState>()(
       cart: emptyCart,
       previousCart: emptyCart,
       hasHydrated: false,
+      appliedCoupon: null,
 
       hydrate: (freshCart) =>
         set({
@@ -127,6 +137,10 @@ export const useCartState = create<CartState>()(
         set((state) => ({
           cart: state.previousCart,
         })),
+
+      setCoupon: (coupon) => set({ appliedCoupon: coupon }),
+
+      clearCoupon: () => set({ appliedCoupon: null }),
     }),
     {
       name: "cart-storage",

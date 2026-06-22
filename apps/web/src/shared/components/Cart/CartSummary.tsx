@@ -1,14 +1,13 @@
 import type { CartDto } from "@repo/types/contracts";
 import { ShoppingBag } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
 
 import { Button } from "@/shared/components/shadcn-ui/button";
 import { Separator } from "@/shared/components/shadcn-ui/separator";
+import { useCartState } from "@/shared/states/cart";
 import { formatDiscount, formatPrice } from "@/shared/utils/store/price";
 
 import { CheckoutButton } from "./CheckoutButton";
-import type { AppliedCoupon } from "./CouponApplier";
 import { CouponApplier } from "./CouponApplier";
 import { FreeShippingBanner } from "./FreeShippingBanner";
 
@@ -20,7 +19,7 @@ type CartSummaryProps = {
 
 export const CartSummary = ({ summary }: CartSummaryProps) => {
   const { subtotal, total, discount } = summary;
-  const [appliedCoupon, setAppliedCoupon] = useState<AppliedCoupon | null>(null);
+  const { appliedCoupon } = useCartState();
 
   const couponDiscount = appliedCoupon?.discount ?? 0;
   const finalTotal = total - couponDiscount;
@@ -75,12 +74,7 @@ export const CartSummary = ({ summary }: CartSummaryProps) => {
           <span className="text-xl font-bold">{formatPrice(finalTotal)}</span>
         </div>
 
-        <CouponApplier
-          subtotal={total}
-          appliedCoupon={appliedCoupon}
-          onApply={setAppliedCoupon}
-          onClear={() => setAppliedCoupon(null)}
-        />
+        <CouponApplier subtotal={total} />
 
         <div className="mt-6 space-y-3">
           <CheckoutButton buttonClassname="w-full cursor-pointer" />

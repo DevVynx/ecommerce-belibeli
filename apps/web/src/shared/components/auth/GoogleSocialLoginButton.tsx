@@ -9,9 +9,13 @@ import { useAuthState } from "@/shared/states/auth";
 
 type GoogleSocialLoginButtonProps = {
   redirectTo?: string;
+  onSuccess?: () => void;
 };
 
-export const GoogleSocialLoginButton = ({ redirectTo = "/" }: GoogleSocialLoginButtonProps) => {
+export const GoogleSocialLoginButton = ({
+  redirectTo = "/",
+  onSuccess,
+}: GoogleSocialLoginButtonProps) => {
   const { setUser, setAuthError } = useAuthState();
   const router = useRouter();
 
@@ -25,6 +29,7 @@ export const GoogleSocialLoginButton = ({ redirectTo = "/" }: GoogleSocialLoginB
 
       if (data) {
         setUser(data.user);
+        onSuccess?.();
         router.push(redirectTo);
       }
     },

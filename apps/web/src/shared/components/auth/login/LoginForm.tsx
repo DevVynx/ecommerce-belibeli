@@ -19,9 +19,10 @@ import { useAuthState } from "@/shared/states/auth";
 
 type LoginFormProps = {
   redirectTo?: string;
+  onSuccess?: () => void;
 };
 
-export const LoginForm = ({ redirectTo = "/" }: LoginFormProps) => {
+export const LoginForm = ({ redirectTo = "/", onSuccess }: LoginFormProps) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [checked, setChecked] = useState(false);
   const { setUser, authError, setAuthError } = useAuthState();
@@ -59,6 +60,7 @@ export const LoginForm = ({ redirectTo = "/" }: LoginFormProps) => {
 
     if (data) {
       setUser(data.user);
+      onSuccess?.();
       router.push(redirectTo);
     }
   };

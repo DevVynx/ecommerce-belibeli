@@ -34,9 +34,10 @@ import { Step2Security } from "./Steps/Step2Security";
 
 type RegisterFormProps = {
   redirectTo?: string;
+  onSuccess?: () => void;
 };
 
-export const RegisterForm = ({ redirectTo = "/" }: RegisterFormProps) => {
+export const RegisterForm = ({ redirectTo = "/", onSuccess }: RegisterFormProps) => {
   const [step, setStep] = useState("account");
   const { setUser, authError, setAuthError } = useAuthState();
   const router = useRouter();
@@ -103,6 +104,7 @@ export const RegisterForm = ({ redirectTo = "/" }: RegisterFormProps) => {
       setUser(data.user);
       setStep("account");
       form.reset();
+      onSuccess?.();
       router.push(redirectTo);
     }
   };

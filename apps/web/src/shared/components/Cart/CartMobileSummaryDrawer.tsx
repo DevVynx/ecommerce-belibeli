@@ -1,6 +1,5 @@
 import type { CartDto } from "@repo/types/contracts";
 import { ChevronUp, Truck } from "lucide-react";
-import { useState } from "react";
 
 import { Button } from "@/shared/components/shadcn-ui/button";
 import {
@@ -11,10 +10,10 @@ import {
   DrawerTrigger,
 } from "@/shared/components/shadcn-ui/drawer";
 import { Separator } from "@/shared/components/shadcn-ui/separator";
+import { useCartState } from "@/shared/states/cart";
 import { formatDiscount, formatPrice } from "@/shared/utils/store/price";
 
 import { CheckoutButton } from "./CheckoutButton";
-import type { AppliedCoupon } from "./CouponApplier";
 import { CouponApplier } from "./CouponApplier";
 
 const FREE_SHIPPING_THRESHOLD = 200;
@@ -25,7 +24,7 @@ type CartMobileSummaryDrawerProps = {
 
 export const CartMobileSummaryDrawer = ({ summary }: CartMobileSummaryDrawerProps) => {
   const { count, subtotal, total, discount } = summary;
-  const [appliedCoupon, setAppliedCoupon] = useState<AppliedCoupon | null>(null);
+  const { appliedCoupon } = useCartState();
 
   const couponDiscount = appliedCoupon?.discount ?? 0;
   const finalTotal = total - couponDiscount;
@@ -119,12 +118,7 @@ export const CartMobileSummaryDrawer = ({ summary }: CartMobileSummaryDrawerProp
             )}
           </div>
 
-          <CouponApplier
-            subtotal={total}
-            appliedCoupon={appliedCoupon}
-            onApply={setAppliedCoupon}
-            onClear={() => setAppliedCoupon(null)}
-          />
+          <CouponApplier subtotal={total} />
 
           <Separator />
 
