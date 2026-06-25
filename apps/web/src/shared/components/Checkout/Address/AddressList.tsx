@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { listAddresses } from "@/shared/actions/user/listAddresses";
-import { AddressCard } from "@/shared/components/Checkout/AddressCard";
+import { AddressCard } from "@/shared/components/Checkout/Address/AddressCard";
 import { Button } from "@/shared/components/shadcn-ui/button";
 import { Skeleton } from "@/shared/components/shadcn-ui/skeleton";
 import { authenticatedAction } from "@/shared/utils/api/authenticatedAction";
@@ -85,11 +85,11 @@ export const AddressList = ({
   }
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex max-h-[calc(100dvh-14.5rem)] flex-col gap-3 overflow-hidden">
       {addresses.length === 0 ? (
         <p className="text-muted-foreground text-sm">Nenhum endereço salvo.</p>
       ) : (
-        <div className="flex flex-col gap-2">
+        <div className="flex min-h-0 flex-1 flex-col gap-5 overflow-y-auto px-2 pt-1">
           {addresses.map((address) => (
             <AddressCard
               key={address.id}
@@ -104,12 +104,12 @@ export const AddressList = ({
         </div>
       )}
 
-      <Button variant="outline" className="w-full cursor-pointer" onClick={onNewAddress}>
+      <Button variant="outline" className="w-full shrink-0 cursor-pointer" onClick={onNewAddress}>
         <Plus className="mr-2 size-4" />
         Novo endereço
       </Button>
 
-      <div className="flex flex-1 flex-col-reverse items-center justify-between gap-5 pt-2 sm:flex-row">
+      <div className="flex flex-col-reverse justify-between gap-5 pt-2 sm:flex-row">
         <Button
           variant="outline"
           className="border-primary/30 w-full cursor-pointer px-6 py-3 sm:w-auto"
@@ -121,10 +121,7 @@ export const AddressList = ({
           </Link>
         </Button>
 
-        <Button
-          className="w-full cursor-pointer py-3 sm:w-60"
-          onClick={onContinue}
-        >
+        <Button className="w-full cursor-pointer py-3 sm:w-60" onClick={onContinue}>
           Continuar
           <ArrowRight className="size-4" />
         </Button>

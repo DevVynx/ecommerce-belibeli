@@ -3,10 +3,11 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { createAddress } from "@/shared/actions/user/createAddress";
-import { AddressForm } from "@/shared/components/Checkout/AddressForm";
-import { AddressList } from "@/shared/components/Checkout/AddressList";
+import { AddressForm } from "@/shared/components/Checkout/Address/AddressForm";
+import { AddressList } from "@/shared/components/Checkout/Address/AddressList";
 import { CheckoutStepper } from "@/shared/components/Checkout/CheckoutStepper";
 import { OrderSummary } from "@/shared/components/Checkout/OrderSummary";
+import { ShippingSelector } from "@/shared/components/Checkout/Shipping/ShippingSelector";
 import { showNotification } from "@/shared/components/showNotification";
 import type { AddressFormValues } from "@/shared/schemas/checkout/address";
 import { useCheckoutState } from "@/shared/states/checkout";
@@ -14,7 +15,16 @@ import { authenticatedAction } from "@/shared/utils/api/authenticatedAction";
 
 const CheckoutPage = () => {
   const router = useRouter();
-  const { step, setStep, stepIndex, setSelectedAddress, selectedAddressId } = useCheckoutState();
+  const {
+    step,
+    setStep,
+    stepIndex,
+    selectedAddress,
+    selectedAddressId,
+    selectedShipping,
+    setSelectedAddress,
+    setSelectedShipping,
+  } = useCheckoutState();
 
   const [showForm, setShowForm] = useState(false);
   const [hadAddresses, setHadAddresses] = useState(false);
@@ -46,6 +56,20 @@ const CheckoutPage = () => {
       }
     }
 
+    setSelectedAddress("local", {
+      id: "local",
+      receiverName: data.receiverName,
+      label: data.label || null,
+      cep: data.cep.replace(/\D/g, ""),
+      street: data.street,
+      number: data.number,
+      complement: data.complement ?? null,
+      neighborhood: data.neighborhood,
+      city: data.city,
+      state: data.state,
+      isDefault: false,
+    });
+
     setIsSubmitting(false);
     setStep("shipping");
   };
@@ -71,6 +95,7 @@ const CheckoutPage = () => {
               setShowForm(true);
             }}
             onEmpty={() => setShowForm(true)}
+            onContinue={() => setStep("shipping")}
           />
         )}
 
@@ -80,6 +105,16 @@ const CheckoutPage = () => {
             onPrevious={hadAddresses ? () => setShowForm(false) : () => router.push("/cart")}
             isSubmitting={isSubmitting}
             submitLabel="Continuar com este endereço"
+          />
+        )}
+
+        {step === "shipping" && selectedAddress && (
+          <ShippingSelector
+            destinyCep={selectedAddress.cep.replace(/\D/g, "")}
+            selectedShipping={selectedShipping}
+            onSelect={(option) => setSelectedShipping(option)}
+            onPrevious={() => setStep("address")}
+            onContinue={() => setStep("payment")}
           />
         )}
       </div>
