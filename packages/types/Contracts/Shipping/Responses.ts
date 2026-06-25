@@ -13,4 +13,5 @@ export type QuoteShippingResponse = {
     weight: number;
   };
   shippingOptions: ShippingOptionDto[];
+  freeShippingMinValue: number;
 };

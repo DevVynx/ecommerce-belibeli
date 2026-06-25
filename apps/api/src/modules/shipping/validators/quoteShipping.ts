@@ -3,8 +3,7 @@ import z from "zod";
 import { validation } from "@/shared/middlewares/validation";
 
 const body = z.object({
-  cartId: z.uuid("Valor inválido."),
-  destinyCep: z.string().max(8, "Valor inválido."),
+  destinyCep: z.string("CEP inválido.").regex(/^\d{8}$/, "CEP deve conter exatamente 8 dígitos."),
 });
 
 export const quoteShipping = validation({ body });
