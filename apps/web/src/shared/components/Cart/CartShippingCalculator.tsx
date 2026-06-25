@@ -1,11 +1,13 @@
 import { Package, Search } from "lucide-react";
 import { useState } from "react";
 
+import { quoteShipping } from "@/shared/actions/shipping/quoteShipping";
 import { Button } from "@/shared/components/shadcn-ui/button";
 import { Input } from "@/shared/components/shadcn-ui/input";
 import { Separator } from "@/shared/components/shadcn-ui/separator";
 import { Spinner } from "@/shared/components/shadcn-ui/spinner";
 import { cepSchema } from "@/shared/schemas/cep";
+import { authenticatedAction } from "@/shared/utils/api/authenticatedAction";
 import { formatCep } from "@/shared/utils/store/checkout/formatCep";
 import { formatPrice } from "@/shared/utils/store/price";
 
@@ -22,7 +24,7 @@ export const CartShippingCalculator = () => {
     if (cepError) setCepError(null);
   };
 
-  const handleCalculate = () => {
+  const handleCalculate = async () => {
     const parsed = cepSchema.safeParse({ cep });
     if (!parsed.success) {
       setCepError(parsed.error.issues[0]?.message ?? "Insira um CEP válido");
@@ -33,13 +35,21 @@ export const CartShippingCalculator = () => {
     setIsCalculating(true);
     setResult(null);
 
-    setTimeout(() => {
-      setResult([
-        { method: "PAC", price: 19.9, days: 12 },
-        { method: "Sedex", price: 39.9, days: 4 },
-      ]);
-      setIsCalculating(false);
-    }, 1200);
+    const { data, error } = await authenticatedAction(quoteShipping, cep.replace(/\D/g, ""));
+
+    if (error) {
+      setCepError("Erro ao calcular frete. Tente novamente.");
+    } else if (data) {
+      setResult(
+        data.shippingOptions.map((opt) => ({
+          method: opt.service,
+          price: opt.price,
+          days: opt.deadline.max,
+        }))
+      );
+    }
+
+    setIsCalculating(false);
   };
 
   return (

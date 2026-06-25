@@ -1,5 +1,6 @@
 import type { CartItemDto } from "@repo/types/contracts";
 import { Minus, Plus, Trash2 } from "lucide-react";
+import Link from "next/link";
 
 import { Button } from "@/shared/components/shadcn-ui/button";
 import { useCartMutations } from "@/shared/hooks/data/useCartMutations";
@@ -26,23 +27,31 @@ export const CartDropdownItemCard = ({ item }: CartDropdownItemCardProps) => {
   };
 
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex w-full gap-4">
       {/* Image */}
-      <div className="bg-muted h-24 w-24 shrink-0 rounded-md p-1">
+      <Link
+        href={`/product/${item.product.slug}`}
+        className="bg-muted h-24 w-24 shrink-0 overflow-hidden rounded-md"
+      >
         {item.product.variant.image ? (
           <img
             src={item.product.variant.image}
             alt={item.product.title}
-            className="aspect-square w-full object-contain"
+            className="h-full w-full object-contain"
           />
         ) : null}
-      </div>
+      </Link>
 
-      <div className="flex min-w-0 flex-1 flex-col justify-between gap-1">
+      <div className="flex w-full min-w-0 flex-col justify-between">
         {/* Top block: Title + Remove + Options */}
-        <div className="space-y-1">
-          <div className="flex items-start justify-between gap-1">
-            <div className="min-w-0 truncate text-sm font-medium">{item.product.title}</div>
+        <div className="w-full space-y-1">
+          <div className="flex w-full items-start justify-between gap-1">
+            <Link
+              href={`/product/${item.product.slug}`}
+              className="truncate text-sm leading-tight font-medium hover:underline"
+            >
+              {item.product.title}
+            </Link>
             <Button
               variant="ghost"
               onClick={handleRemove}

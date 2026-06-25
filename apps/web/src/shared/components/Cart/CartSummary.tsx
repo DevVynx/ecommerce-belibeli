@@ -11,7 +11,7 @@ import { CheckoutButton } from "./CheckoutButton";
 import { CouponApplier } from "./CouponApplier";
 import { FreeShippingBanner } from "./FreeShippingBanner";
 
-const FREE_SHIPPING_THRESHOLD = 200;
+const FREE_SHIPPING_THRESHOLD = Number(process.env.NEXT_PUBLIC_FREE_SHIPPING_MIN_VALUE) || 200;
 
 type CartSummaryProps = {
   summary: CartDto["summary"];

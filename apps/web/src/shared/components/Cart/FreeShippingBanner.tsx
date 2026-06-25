@@ -6,7 +6,7 @@ import { TruckIcon } from "@/shared/assets/animatedIcons/truck";
 import { useAnimatedIcon } from "@/shared/hooks/ui/useAnimatedIcon";
 import { formatPrice } from "@/shared/utils/store/price";
 
-const FREE_SHIPPING_THRESHOLD = 200;
+const FREE_SHIPPING_THRESHOLD = Number(process.env.NEXT_PUBLIC_FREE_SHIPPING_MIN_VALUE) || 200;
 
 type FreeShippingBannerProps = {
   total: number;
