@@ -1,26 +1,44 @@
 # Project State
 
-**Last Updated**: 2026-06-18
+**Last Updated**: 2026-06-27
 **State Expiration**: N/A
 
 ---
 
 ## Current Task
 
-**[vyn-051] Criar módulo de sugestões de busca populares** — Completed
+**[vyn-052] Implementar fluxo de checkout com pagamento Stripe** — Completed
 
 ### Changes
-- **`prisma/schema.prisma`**: Modelo `SearchSuggestion` com `term` (unique) e `searchCount`, mapeado pra `search_suggestions`
-- **Novo módulo `modules/search/`**: Rota `POST /api/search/analytics` com validação, service, repository
-- **`infra/search/`**: Método `addDocuments()` adicionado à interface `SearchEngine` e implementado no `MeilisearchAdapter`
-- **`scripts/`**: Todos os scripts operacionais (seed, sync-search, setup-search) centralizados na pasta `scripts/` (movidos de `prisma/`)
-- **Contracts**: Types `RegisterAnalyticsRequest` e `RegisterAnalyticsResponse` em `Contracts/Search/`
+- **`modules/orders/`**: Novo módulo completo (controllers, services, repositories, validators, types, routes)
+- **`modules/webhook/`**: Novo módulo para webhook Stripe com verificação de assinatura
+- **`infra/payment/stripe.ts`**: Instância Stripe singleton
+- **`prisma/schema.prisma`**: Order model ganhou campos `discount`, `contribution`, `paymentMethod`
+- **`cart/services/clearCart.ts`** + **`cart/repositories/clearCart.ts`**: Limpa carrinho por userId (ownership check)
+- **`env.ts`**: Adicionado `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `FRONTEND_URL`
+- **`app.ts`**: Webhook route movido pra antes do `express.json()` com `express.raw()`
+- **User module**: Refatorado barrel exports (`addressServices` → `userServices`, `addressRepositories` → `userRepositories`)
+- **Profile**: `getProfile` service + `findUserProfile` repo movidos de `auth` para `user`
+- **Auth response types**: Unificados com `UserProfile` (inclui `role`, `isEmailVerified`, `createdAt`)
+- **Order contracts**: `CreateOrderRequest`, `CreateOrderResponse`, `OrderDto` em `Contracts/Order/`
+- **Checkout frontend**: PaymentSelector + ReviewOrder components, `paymentMethod` no state, success page
+- **Search scripts**: Usam `ENV` object em vez de `process.env` direto
 
 ---
 
 ## Recent Important Decisions
 
-> Decisions older than 30 days are automatically expired and should be removed.
+### [Task] Checkout Flow with Stripe Payment
+
+- **Date**: 2026-06-27
+- **Decision**: Stripe Checkout Session (redirect), sem SDK no frontend, valor fixo em R$ 3 (demo).
+- **Architecture**:
+  - `POST /api/orders` cria pedido + Stripe session, retorna `paymentUrl` para redirect
+  - `POST /api/orders/webhook` com `express.raw()` antes do `express.json()` para verificação de assinatura
+  - Webhook escuta `checkout.session.completed` e atualiza status para `PAID`
+  - `createOrder` aceita `addressId` (endereço salvo) OU `shippingAddress` (não salvo) via Zod `.refine()`
+  - Cart é limpo imediatamente após criação da Stripe session (antes da confirmação)
+  - `clearCart` recebe só `userId`, faz ownership check internamente
 
 ### [Task] Popular Search Suggestions Module
 
@@ -31,38 +49,18 @@
   - Prisma tracks the canonical `searchCount`, Meili uses `searchCount:desc` ranking rule for trending
   - `addDocuments()` added to `SearchEngine` interface — adapter is the single point for writing to Meili
   - Setup script `scripts/setup-search.ts` configures the `suggestions` index (ranking rules), run via `pnpm --filter api search:setup`
-- **Scripts**: All operational scripts moved from `prisma/` to `scripts/` for better organization:
-  - `scripts/seed.ts`, `scripts/seed-many.ts`, `scripts/sync-search.ts`, `scripts/setup-search.ts`
-
-### [Task] Meilisearch Full-Text Search
-
-### [Task] Product Enrichment Refactoring — Offer Value Object
-
-- **Date**: 2026-05-22
-- **Decision**: Replace spread enrichment pattern (`{ ...variant, salePrice, isOnSale, isAvailable }`) with an `offer` value object (`{ ...variant, offer: { salePrice, isOnSale, isAvailable } }`) across all API modules.
-- **Why**: Previously, adding a single enrichment field required editing 5 services + 5 type files + helpers. With `offer` namespaced under `variant`, the type is simply `RawVariant & { offer: ProductEnrichment }`, and new fields only touch `ProductEnrichment` + `calculateEnrichment`.
-- **Scope**: Products (list/detail), Cart, Wishlist — all enrichment flows updated.
-- **Types**: Replaced `Persistence.ts`/`Enriched.ts` split with single files per domain (`ProductList.ts`, `ProductDetail.ts`, `Cart.ts`, `Wishlist.ts`). All raw types use `NonNullable`. PascalCase filenames.
-
-### [Task] Decimal.js for Monetary Arithmetic
-
-- **Date**: 2026-05-20
-- **Decision**: Added `decimal.js` for all monetary calculations on the frontend
-- **Why**: JavaScript `number` (IEEE 754) causes precision errors (e.g., `19.99 * 3 = 59.970000000000006`). Money must never be calculated with floats.
-- **Created utility**: `@/shared/utils/store/price.ts` with `asDecimal()`, `formatPrice()`, `formatDiscount()`, `calculateDiscountPercent()`
-- **Impact**: All price displays now use `formatPrice()`, all arithmetic uses `Decimal` internally via `calculateSummary()` and `CouponApplier`
-
-### [Task] Fixed Cart Summary Semantics
-
-- **Date**: 2026-05-20
-- **Decision**: Fixed `calculateSummary` in Zustand cart store to match API behavior
-- **Semantics** (before → after):
-  - `subtotal`: was `Σ(salePrice)` (discounted) → now `Σ(price)` (base, matches API)
-  - `total`: was `subtotal` (copy) → now `Σ(salePrice)` (effective, matches API)
-  - `discount`: `retailPrice - effectivePrice` (same as before, now computed via `Decimal`)
-- **Impact**: `CartSummary.tsx`, `CartDropdown.tsx`, `CartMobileSummaryDrawer.tsx` all now show correct values. Free shipping threshold uses `total` (effective price).
 
 ---
+
+## Known Issues / Next Steps
+
+- **Pedidos PENDING nunca expiram**: Se usuário cancelar no Stripe, order fica `PENDING` pra sempre. Tratar `checkout.session.expired` no webhook.
+- **Cart limpo antes da confirmação**: Se pagamento falhar, carrinho já foi. Mover `clearCart` pro webhook `completed`.
+- **Stripe charge fixo (R$3)**: Não reflete o total real do pedido. Corrigir `line_items` pra usar valor dinâmico.
+- **Stock validation ausente**: `createOrder` não verifica estoque antes de criar o pedido.
+- **Sem transação no banco**: `createOrder` não usa `$transaction` — risco de orphan record.
+- **`shippingPrice` do cliente**: Sem verificação server-side do valor do frete.
+- **Async error handling**: Controllers `async` sem try/catch — Express 4 não capta rejected promises.
 
 ## Expiration Rules
 
