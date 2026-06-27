@@ -4,11 +4,12 @@ import { PrismaPg } from "@prisma/adapter-pg";
 import { Meilisearch } from "meilisearch";
 import { Pool } from "pg";
 
+import { ENV } from "@/shared/utils/env";
 import { productLogic } from "@/shared/utils/productLogic";
 
 import { PrismaClient } from "../prisma/generated/client/client";
 
-const MEILI_HOST = process.env.MEILI_HOST ?? "http://localhost:7700";
+const MEILI_HOST = ENV.MEILI_HOST;
 
 const MEILI_MASTER_KEY = process.env.MEILI_MASTER_KEY ?? "";
 
