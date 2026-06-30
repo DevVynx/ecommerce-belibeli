@@ -8,12 +8,12 @@ Each API module follows a layered architecture pattern. The standard structure i
 modules/{feature}/
 ├── controllers/      # HTTP layer (request/response)
 ├── services/         # Business logic
-├── repositories/     # Database operations
+├── repositories/     # Database operations (REQUIRED)
 ├── routes.ts        # Express router
 ├── types/          # Module-specific types
 ├── helpers/        # Module-specific utilities
 │   └── validators/  # Zod validation schemas
-└── mappers/        # Data transformation (optional)
+└── mappers/        # Data transformation (OPTIONAL)
 ```
 
 ## Request Lifecycle
@@ -94,6 +94,7 @@ Services contain business logic:
 - Orchestrate repositories and other services
 - Throw HttpErrors on failure (see @docs/guides/API-SHARED.md)
 - Cross-module calls are expected and encouraged
+- Services must never call repositories from other modules directly — always go through the other module's services
 
 ```typescript
 export const addCartItem = async ({
