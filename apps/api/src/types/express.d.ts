@@ -6,6 +6,7 @@ declare global {
   namespace Express {
     interface Request {
       validated: Partial<Record<Property, unknown>>;
+      rawBody?: Buffer;
     }
   }
 }

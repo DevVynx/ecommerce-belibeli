@@ -9,7 +9,6 @@ import { couponRouter } from "@/modules/coupons/routes";
 import { orderRouter } from "@/modules/orders/routes";
 import { shippingRouter } from "@/modules/shipping/routes";
 import { addressRouter } from "@/modules/user/routes";
-import { stripeWebhook } from "@/modules/webhook/controllers/stripeWebhook";
 import { wishlistRouter } from "@/modules/wishlist/routes";
 import { handleGlobalError } from "@/shared/middlewares/handleGlobalError";
 import { notFoundHandler } from "@/shared/middlewares/notFoundHandler";
@@ -20,11 +19,14 @@ import { searchRouter } from "./modules/search/routes";
 
 export const app: Express = express();
 
-// Webhook route BEFORE json middleware (needs raw body for signature verification)
-app.post("/api/webhook/stripe", express.raw({ type: "application/json" }), stripeWebhook);
-
 // Configs -----------------------------------------------------------
-app.use(express.json());
+app.use(
+  express.json({
+    verify: (req, _res, buf, _encoding) => {
+      (req as express.Request).rawBody = buf;
+    },
+  })
+);
 app.use(cookieParser());
 app.use(
   cors({
