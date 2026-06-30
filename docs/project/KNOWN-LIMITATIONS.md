@@ -1,0 +1,104 @@
+# Melhorias Conhecidas Não Implementadas
+
+Este documento regista funcionalidades e melhorias que seriam importantes em um ecommerce real, mas que não foram implementadas por decisão consciente — seja por escopo reduzido (projeto de estudo/demonstração), uso de ambientes de teste, ou trade-offs de tempo.
+
+---
+
+## Checkout & Pagamentos
+
+### Estratégia de Estoque (Stock)
+
+- **O que seria**: Validar estoque disponível antes de criar o pedido e decrementar ao confirmar pagamento (ou reservar no `createOrder` e liberar se expirar).
+- **Por que não foi**: O projeto usa Stripe em modo de teste — não há risco real de oversell. A decisão de reservar vs validar no `confirmPayment` foi adiada e exigiria análise de concorrência e deadlock.
+
+### PIX (e outros métodos de pagamento brasileiros)
+
+- **O que seria**: Oferecer PIX e boleto como opções de pagamento, com webhooks de confirmação assíncrona.
+- **Por que não foi**: O Stripe está configurado em test mode. PIX exigiria ativação na conta Stripe e lidar com fluxo de pagamento async (vencimento, estorno). O seletor de pagamento foi simplificado para exibir apenas cartão.
+
+### Webhook do Stripe sem Retry
+
+- **O que seria**: Mecanismo de retry com fila (bull/bullmq) para reprocessar webhooks falhos, idempotência, e logging de eventos rejeitados.
+- **Por que não foi**: Em test mode o volume de eventos é baixo e não há risco financeiro. Um sistema real precisaria de fila + dashboard de monitoramento.
+
+### Confirmação por E-mail
+
+- **O que seria**: Enviar e-mail de confirmação ao usuário após pagamento aprovado (com detalhes do pedido, frete, etc.).
+- **Por que não foi**: Não há serviço de e-mail integrado (nem nodemailer, resend, sendgrid, etc.). A mensagem "você receberá um e-mail" na página de sucesso é ilustrativa.
+
+---
+
+## Admin & Gestão
+
+### Painel Administrativo
+
+- **O que seria**: Dashboard para gerenciar produtos, pedidos, usuários, cupons — com gráficos, filtros, actions de CRUD.
+- **Por que não foi**: Fora do escopo do projeto. Não há rota, controller ou frontend admin.
+
+### Histórico de Pedidos do Usuário
+
+- **O que seria**: Página `/account/orders` (ou similar) listando todos os pedidos do usuário com status, detalhes, opção de cancelamento.
+- **Por que não foi**: Não há página de conta/account implementada. O link "Ver meus pedidos" na página de sucesso é ilustrativo.
+
+---
+
+## Produto & Catálogo
+
+### Avaliações e Reviews
+
+- **O que seria**: Usuários poderem avaliar produtos com nota e comentário, exibidos na página de detalhe.
+- **Por que não foi**: O schema do Prisma já tem campos `ratingRate` e `ratingCount` (populados por seed), mas não há API ou rota para submissão de reviews por usuários.
+
+### Upload de Imagens
+
+- **O que seria**: Upload de imagens de produtos com redimensionamento, compressão e CDN.
+- **Por que não foi**: Não há infraestrutura de upload (multer/sharp) nem storage (S3/Cloudflare R2). As imagens vêm de URLs externas no seed.
+
+---
+
+## Infraestrutura & Operação
+
+### Cache
+
+- **O que seria**: Cache de produtos, categorias e consultas frequentes com Redis ou similar para reduzir carga no banco.
+- **Por que não foi**: Sem necessidade para volume de teste. Um ecommerce real precisaria de cache distribuído e invalidação por evento.
+
+### Rate Limiting
+
+- **O que seria**: Limitar requisições por IP/usuário em endpoints críticos (login, register, checkout) para mitigar abuso.
+- **Por que não foi**: Não há `express-rate-limit` configurado. O helmet está presente apenas para headers de segurança.
+
+### Logging Estruturado
+
+- **O que seria**: Logger estruturado (pino/winston) com níveis, correlação de requisições e transporte para agregador (Datadog/Grafana).
+- **Por que não foi**: Apenas `console.log` é usado. Suficiente para desenvolvimento, mas inviável em produção.
+
+### Testes Automatizados
+
+- **O que seria**: Testes unitários (services, helpers), integração (repositories, controllers) e e2e (fluxo completo de checkout).
+- **Por que não foi**: Zero testes no repositório. Não havia requisito de cobertura para este projeto.
+
+### CI/CD
+
+- **O que seria**: Pipeline de lint, typecheck, testes e deploy automático.
+- **Por que não foi**: Não há configuração de CI (GitHub Actions, GitLab CI, etc.).
+
+---
+
+## Integrações
+
+### Frete com Transportadora Real
+
+- **O que seria**: Integração com APIs reais (Correios, Jadlog, etc.) para cotação e geração de etiqueta.
+- **Por que não foi**: O cálculo de frete é simulado localmente (PAC/SEDEX) a partir do CEP. Não há chamada a APIs externas de transportadora.
+
+### Wishlist com Notificações
+
+- **O que seria**: Notificar usuário quando um item da wishlist entrar em promoção ou baixar de estoque.
+- **Por que não foi**: A wishlist implementa CRUD básico sem notificações ou tracking de preço.
+
+---
+
+## Nota
+
+Esta lista não é exaustiva. Cada item foi avaliado e deixado de lado intencionalmente para manter o escopo do projeto compatível com seu propósito de estudo e demonstração. Em um cenário real de produção, todos os itens acima seriam priorizados conforme o impacto no negócio.

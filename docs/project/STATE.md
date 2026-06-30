@@ -1,6 +1,6 @@
 # Project State
 
-**Last Updated**: 2026-06-27
+**Last Updated**: 2026-06-30
 **State Expiration**: N/A
 
 ---
@@ -52,15 +52,9 @@
 
 ---
 
-## Known Issues / Next Steps
+## Melhorias Não Implementadas
 
-- **Pedidos PENDING nunca expiram**: Se usuário cancelar no Stripe, order fica `PENDING` pra sempre. Tratar `checkout.session.expired` no webhook.
-- **Cart limpo antes da confirmação**: Se pagamento falhar, carrinho já foi. Mover `clearCart` pro webhook `completed`.
-- **Stripe charge fixo (R$3)**: Não reflete o total real do pedido. Corrigir `line_items` pra usar valor dinâmico.
-- **Stock validation ausente**: `createOrder` não verifica estoque antes de criar o pedido.
-- **Sem transação no banco**: `createOrder` não usa `$transaction` — risco de orphan record.
-- **`shippingPrice` do cliente**: Sem verificação server-side do valor do frete.
-- **Async error handling**: Controllers `async` sem try/catch — Express 4 não capta rejected promises.
+Ver `docs/project/KNOWN-LIMITATIONS.md` para a lista completa de funcionalidades conscientemente deixadas de fora (stock, PIX, e-mail, admin, reviews, cache, testes, CI/CD, etc.).
 
 ## Expiration Rules
 
