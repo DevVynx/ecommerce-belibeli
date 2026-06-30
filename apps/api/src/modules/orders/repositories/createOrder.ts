@@ -8,7 +8,6 @@ type CreateOrderData = {
   subtotal: Prisma.Decimal;
   shipping: Prisma.Decimal;
   discount: Prisma.Decimal;
-  contribution: Prisma.Decimal;
   paymentMethod: PaymentMethod;
   shippingAddress: Prisma.JsonObject;
 };
@@ -27,7 +26,6 @@ export const createOrder = async (orderData: CreateOrderData, itemsData: CreateO
       subtotal: orderData.subtotal,
       shipping: orderData.shipping,
       discount: orderData.discount,
-      contribution: orderData.contribution,
       paymentMethod: orderData.paymentMethod,
       shippingAddress: orderData.shippingAddress,
       orderItems: {

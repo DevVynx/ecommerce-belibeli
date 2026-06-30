@@ -214,7 +214,6 @@ model Order {
   subtotal        Decimal       @db.Decimal(10, 2)
   shipping        Decimal       @db.Decimal(10, 2)
   discount        Decimal       @default(0) @db.Decimal(10, 2)
-  contribution    Decimal       @default(0) @db.Decimal(10, 2)
   status          OrderStatus   @default(PENDING)
   paymentMethod   PaymentMethod
   shippingAddress Json          @db.Json

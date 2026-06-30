@@ -4,7 +4,6 @@ export type OrderDto = {
   subtotal: number;
   shipping: number;
   discount: number;
-  contribution: number;
   status: string;
   paymentMethod: string | null;
   createdAt: string;

@@ -58,8 +58,8 @@ export const createOrder = async ({
   const subtotal = new Prisma.Decimal(cart.summary.subtotal);
   const shipping = new Prisma.Decimal(selectedShipping.price);
   const discount = new Prisma.Decimal(cart.summary.discount);
-  const contribution = new Prisma.Decimal(5);
   const total = Prisma.Decimal.sub(Prisma.Decimal.add(subtotal, shipping), discount);
+  const totalCents = Math.round(Number(total) * 100);
 
   const addressJson = {
     receiverName: addressData.receiverName,
@@ -79,7 +79,6 @@ export const createOrder = async ({
       subtotal,
       shipping,
       discount,
-      contribution,
       paymentMethod,
       shippingAddress: addressJson,
     },
@@ -98,12 +97,11 @@ export const createOrder = async ({
         {
           price_data: {
             product_data: {
-              name: "Contribuição BeliBeli",
-              description:
-                "Ambiente de demonstração. O valor de R$ 3,00 é simbólico e serve apenas para validar o fluxo de pagamento com Stripe. Para testar o pagamento, utilize o cartão simulado do Stripe: 4242 4242 4242 4242 com qualquer validade futura.",
+              name: "Pedido Teste",
+              description: `Ambiente de demonstração. O valor de R$ ${total} é simbólico e serve apenas para validar o fluxo de pagamento com Stripe. Para testar o pagamento, utilize o cartão simulado do Stripe: 4242 4242 4242 4242 com qualquer validade futura.`,
             },
             currency: "BRL",
-            unit_amount: 300,
+            unit_amount: totalCents,
           },
           quantity: 1,
         },
@@ -120,7 +118,6 @@ export const createOrder = async ({
       subtotal: Number(subtotal),
       shipping: Number(shipping),
       discount: Number(discount),
-      contribution: Number(contribution),
       status: "PENDING",
       paymentMethod,
       createdAt: order.createdAt.toISOString(),
