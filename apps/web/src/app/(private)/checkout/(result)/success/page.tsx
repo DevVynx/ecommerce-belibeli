@@ -1,15 +1,12 @@
 import { Check } from "lucide-react";
 import Link from "next/link";
+import { Suspense } from "react";
 
 import { Button } from "@/shared/components/shadcn-ui/button";
 
-type Props = {
-  searchParams: Promise<{ order?: string }>;
-};
+import { OrderNumber } from "./order-number";
 
-export default async function CheckoutSuccessPage({ searchParams }: Props) {
-  const { order } = await searchParams;
-
+export default function CheckoutSuccessPage() {
   return (
     <div className="container mx-auto flex flex-col items-center px-4 py-16 text-center">
       <div className="mb-6 rounded-full bg-green-500 p-4">
@@ -26,7 +23,9 @@ export default async function CheckoutSuccessPage({ searchParams }: Props) {
       <div className="border-border mb-8 w-full max-w-sm rounded-lg border p-6">
         <p className="text-muted-foreground mb-1 text-sm">Nº do pedido</p>
         <p className="font-mono text-lg font-semibold">
-          BEL-{order?.padStart(6, "0").toUpperCase()}
+          <Suspense fallback={<span>---</span>}>
+            <OrderNumber />
+          </Suspense>
         </p>
       </div>
 
