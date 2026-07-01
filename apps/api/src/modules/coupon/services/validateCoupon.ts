@@ -52,7 +52,9 @@ export const validateCoupon = async ({ userId, code }: ValidateCouponParams) => 
   const subtotal = cart.summary.subtotal;
 
   if (subtotal.lessThan(coupon.minOrderValue)) {
-    throw new UnprocessableEntityError(`Valor mínimo do pedido é R$ ${coupon.minOrderValue}.`);
+    throw new UnprocessableEntityError(
+      `O seu carrinho não possui o valor mínimo para utilizar este cupom.`
+    );
   }
 
   let discountValue: Prisma.Decimal = new Prisma.Decimal(0);
@@ -75,12 +77,5 @@ export const validateCoupon = async ({ userId, code }: ValidateCouponParams) => 
 
   discountValue = discountValue.toDecimalPlaces(2);
 
-  return {
-    coupon: {
-      code: coupon.code,
-      description: coupon.description,
-      type: coupon.type,
-    },
-    discountValue,
-  };
+  return { coupon, discountValue };
 };

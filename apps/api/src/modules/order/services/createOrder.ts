@@ -1,5 +1,3 @@
-import type { OrderDto } from "@repo/types/contracts";
-
 import { stripe } from "@/infra/payment/stripe";
 import { cartServices } from "@/modules/cart/services";
 import { orderRepositories } from "@/modules/order/repositories";
@@ -112,6 +110,7 @@ export const createOrder = async ({
       },
     });
 
+<<<<<<< HEAD
     const orderDto: OrderDto = {
       id: order.id,
       orderNumber: order.orderNumber,
@@ -125,6 +124,9 @@ export const createOrder = async ({
     };
 
     return { order: orderDto, paymentUrl: paymentSession.url! };
+=======
+    return { order, paymentUrl: paymentSession.url! };
+>>>>>>> 1ec5953 (refactor(api): extract DTO mappers from services)
   } catch (error) {
     await orderRepositories.updateOrderStatus({ orderId: order.id, status: "CANCELED" });
 
