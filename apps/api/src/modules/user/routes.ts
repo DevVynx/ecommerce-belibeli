@@ -3,18 +3,24 @@ import { Router } from "express";
 import { authMiddleware } from "@/shared/middlewares/auth";
 
 import {
+  changePassword,
   createAddress,
+  deleteAccount,
   deleteAddress,
   listAddresses,
   profile,
   setDefault,
   updateAddress,
+  updateProfile,
 } from "./controllers";
 import v from "./validators";
 
 const userRouter: Router = Router();
 
 userRouter.get("/users/profile", authMiddleware, profile);
+userRouter.put("/users/profile", authMiddleware, v.updateProfile.middleware, updateProfile);
+userRouter.put("/users/password", authMiddleware, v.changePassword.middleware, changePassword);
+userRouter.delete("/users/account", authMiddleware, deleteAccount);
 userRouter.get("/users/addresses", authMiddleware, listAddresses);
 userRouter.post("/users/addresses", authMiddleware, v.createAddress.middleware, createAddress);
 userRouter.put(

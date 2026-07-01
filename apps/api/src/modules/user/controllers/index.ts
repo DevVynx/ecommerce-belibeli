@@ -1,6 +1,9 @@
+export { changePassword } from "./changePassword";
 export { createAddress } from "./createAddress";
+export { deleteAccount } from "./deleteAccount";
 export { deleteAddress } from "./deleteAddress";
 export { listAddresses } from "./listAddresses";
 export { profile } from "./profile";
 export { setDefault } from "./setDefault";
 export { updateAddress } from "./updateAddress";
+export { updateProfile } from "./updateProfile";

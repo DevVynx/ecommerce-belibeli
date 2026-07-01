@@ -17,3 +17,13 @@ export type UpdateAddressRequest = Partial<AddressInput> & {
 };
 
 export type SetDefaultAddressRequest = { addressId: string };
+
+export type UpdateProfileRequest = {
+  name: string;
+  email: string;
+};
+
+export type ChangePasswordRequest = {
+  currentPassword: string;
+  newPassword: string;
+};

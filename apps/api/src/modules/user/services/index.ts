@@ -1,5 +1,7 @@
+import { changePassword } from "./changePassword";
 import { createAddress } from "./createAddress";
 import { createUser } from "./createUser";
+import { deleteAccount } from "./deleteAccount";
 import { deleteAddress } from "./deleteAddress";
 import { findAddressById } from "./findAddressById";
 import { findAddresses } from "./findAddresses";
@@ -9,6 +11,7 @@ import { findUserById } from "./findUserById";
 import { getProfile } from "./getProfile";
 import { setDefault } from "./setDefault";
 import { updateAddress } from "./updateAddress";
+import { updateProfile } from "./updateProfile";
 import { updateUserById } from "./updateUserById";
 
 export const userServices = {
@@ -24,4 +27,7 @@ export const userServices = {
   findUserByEmail,
   findUserByEmailWithPassword,
   findUserById,
+  changePassword,
+  deleteAccount,
+  updateProfile,
 };

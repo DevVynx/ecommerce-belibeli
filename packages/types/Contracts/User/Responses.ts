@@ -21,3 +21,13 @@ export type UpdateAddressResponse = { address: AddressDto };
 export type DeleteAddressResponse = void;
 
 export type SetDefaultAddressResponse = { address: AddressDto };
+
+export type UpdateProfileResponse = {
+  user: {
+    id: string;
+    name: string;
+    email: string;
+    role: "USER" | "ADMIN";
+    isEmailVerified: boolean;
+  };
+};
