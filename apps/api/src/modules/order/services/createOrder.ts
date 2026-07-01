@@ -110,23 +110,7 @@ export const createOrder = async ({
       },
     });
 
-<<<<<<< HEAD
-    const orderDto: OrderDto = {
-      id: order.id,
-      orderNumber: order.orderNumber,
-      total: Number(total),
-      subtotal: Number(subtotal),
-      shipping: Number(shipping),
-      discount: Number(discount),
-      status: "PENDING",
-      paymentMethod,
-      createdAt: order.createdAt.toISOString(),
-    };
-
-    return { order: orderDto, paymentUrl: paymentSession.url! };
-=======
     return { order, paymentUrl: paymentSession.url! };
->>>>>>> 1ec5953 (refactor(api): extract DTO mappers from services)
   } catch (error) {
     await orderRepositories.updateOrderStatus({ orderId: order.id, status: "CANCELED" });
 
