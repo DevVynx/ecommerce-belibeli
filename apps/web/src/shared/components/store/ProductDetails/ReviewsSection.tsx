@@ -20,9 +20,16 @@ import { ReviewsSummary } from "@/shared/components/Store/ProductDetails/Reviews
 type ReviewsSectionProps = {
   productId: string;
   ratingRate: number;
+  ratingDistribution: Record<number, number>;
+  ratingCount: number;
 };
 
-export const ReviewsSection = ({ productId, ratingRate }: ReviewsSectionProps) => {
+export const ReviewsSection = ({
+  productId,
+  ratingRate,
+  ratingDistribution,
+  ratingCount,
+}: ReviewsSectionProps) => {
   const [ratingFilter, setRatingFilter] = useState<number | undefined>(undefined);
   const [sort, setSort] = useState<"newest" | "relevant">("newest");
   const [modalOpen, setModalOpen] = useState(false);
@@ -88,7 +95,7 @@ export const ReviewsSection = ({ productId, ratingRate }: ReviewsSectionProps) =
         </div>
 
         <div className="w-full flex-1">
-          <ReviewsSummary ratingRate={ratingRate} />
+          <ReviewsSummary ratingRate={ratingRate} distribution={ratingDistribution} total={ratingCount} />
         </div>
       </div>
 

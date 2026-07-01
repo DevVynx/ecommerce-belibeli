@@ -8,7 +8,7 @@ import { fetchClient } from "@/shared/utils/api/fetchClient";
 export async function getReviews(params: GetReviewsRequest) {
   "use cache";
   cacheLife("hours");
-  cacheTag("reviews");
+  cacheTag(`reviews-${params.productId}`);
 
   const queryParams: Record<string, string | number> = {};
 

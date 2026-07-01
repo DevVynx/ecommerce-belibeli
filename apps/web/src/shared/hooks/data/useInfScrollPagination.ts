@@ -54,7 +54,7 @@ export function useInfScrollPagination<T>({
     setTotal(initialTotal);
     setError(null);
     setIsLoading(false);
-  }, [resetKey, initialItems, initialHasMore, initialTotal]);
+  }, [resetKey]);
 
   const loadMore = useCallback(async () => {
     setError(null);
@@ -64,11 +64,7 @@ export function useInfScrollPagination<T>({
       setItems((prev) => [...prev, ...data.items]);
       offsetRef.current += data.items.length;
 
-      if (data.items.length === 0) {
-        setHasMore(false);
-      } else {
-        setHasMore(data.hasMore);
-      }
+      setHasMore(data.hasMore);
 
       if (data.total !== undefined) setTotal(data.total);
     } catch (err) {

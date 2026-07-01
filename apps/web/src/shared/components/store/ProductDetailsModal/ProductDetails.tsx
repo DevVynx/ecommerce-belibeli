@@ -229,7 +229,7 @@ export const ProductDetails = ({
             <Button
               onClick={handleAddToCart}
               disabled={isAddingToCart || !selectedVariant || isOutOfStock}
-              className="h-15 flex-1 rounded-lg font-mono text-xs font-bold tracking-[0.2em] uppercase sm:text-sm"
+              className="flex-1 w-75 shrink-0 py-5 rounded-lg font-mono text-xs font-bold tracking-[0.2em] uppercase sm:text-sm"
             >
               {isAddingToCart
                 ? "Adicionando..."
