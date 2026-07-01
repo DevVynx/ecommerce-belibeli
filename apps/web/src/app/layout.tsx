@@ -3,9 +3,11 @@ import "./globals.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Kotta_One } from "next/font/google";
+import { Suspense } from "react";
 
 import { Footer } from "@/shared/components/Footer";
 import { Toaster } from "@/shared/components/shadcn-ui/sonner";
+import { Header } from "@/shared/components/Store/Header/Header";
 import { CartProvider } from "@/shared/providers/CartProvider";
 import { QueryProvider } from "@/shared/providers/QueryProvider";
 import { WishlistProvider } from "@/shared/providers/WishlistProvider";
@@ -48,6 +50,9 @@ export default async function RootLayout({
           <GoogleOAuthProvider clientId={ENV.GOOGLE_CLIENT_ID}>
             <CartProvider />
             <WishlistProvider />
+            <Suspense fallback={null}>
+              <Header />
+            </Suspense>
             <div className="min-h-screen">{children}</div>
             <Footer />
             <Toaster />

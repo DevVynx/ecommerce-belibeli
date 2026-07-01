@@ -10,7 +10,7 @@ export function Header() {
   const pathname = usePathname();
   const scrollDir = useScrollDirection();
 
-  const hideHeaderRoutes = ["/checkout"];
+  const hideHeaderRoutes = ["/checkout", "/login", "/register"];
   const shouldHideHeader = hideHeaderRoutes.some((route) => pathname.startsWith(route));
 
   if (shouldHideHeader) {

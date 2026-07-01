@@ -11,7 +11,7 @@ import { PaymentSelector } from "@/shared/components/Checkout/Payment/PaymentSel
 import { ReviewOrder } from "@/shared/components/Checkout/Review/ReviewOrder";
 import { ShippingSelector } from "@/shared/components/Checkout/Shipping/ShippingSelector";
 import { showNotification } from "@/shared/components/showNotification";
-import type { AddressFormValues } from "@/shared/schemas/checkout/address";
+import type { AddressFormValues } from "@/shared/schemas/address";
 import { useCheckoutState } from "@/shared/states/checkout";
 import { authenticatedAction } from "@/shared/utils/api/authenticatedAction";
 
@@ -54,6 +54,7 @@ const CheckoutPage = () => {
         showNotification({
           type: "error",
           title: "Não foi possível salvar o endereço para as próximas compras",
+          message: "O endereço foi usado apenas nesta compra.",
         });
       } else if (result) {
         setSelectedAddress(result.address.id, result.address);

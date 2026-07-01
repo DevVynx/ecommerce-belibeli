@@ -8,9 +8,11 @@ import { Checkbox } from "@/shared/components/shadcn-ui/checkbox";
 import { Field, FieldContent, FieldError, FieldLabel } from "@/shared/components/shadcn-ui/field";
 import { Input } from "@/shared/components/shadcn-ui/input";
 import { Spinner } from "@/shared/components/shadcn-ui/spinner";
-import { addressFormSchema, type AddressFormValues } from "@/shared/schemas/checkout/address";
+import { addressFormSchema, type AddressFormValues } from "@/shared/schemas/address";
 import { fetchAddressByCep } from "@/shared/utils/api/viacep";
 import { formatCep } from "@/shared/utils/store/checkout/formatCep";
+
+import { showNotification } from "../../showNotification";
 
 type AddressFormProps = {
   onSubmit: (data: AddressFormValues, saveAddress: boolean) => Promise<void>;
@@ -61,6 +63,8 @@ export const AddressForm = ({
       setValue("neighborhood", result.neighborhood, { shouldValidate: true });
       setValue("city", result.city, { shouldValidate: true });
       setValue("state", result.state, { shouldValidate: true });
+    } else {
+      showNotification({ type: "error", title: "CEP não encontrado." });
     }
   };
 
