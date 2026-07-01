@@ -1,5 +1,6 @@
 export type OrderDto = {
   id: string;
+  orderNumber: number;
   total: number;
   subtotal: number;
   shipping: number;

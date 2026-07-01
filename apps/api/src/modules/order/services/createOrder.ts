@@ -114,6 +114,7 @@ export const createOrder = async ({
 
     const orderDto: OrderDto = {
       id: order.id,
+      orderNumber: order.orderNumber,
       total: Number(total),
       subtotal: Number(subtotal),
       shipping: Number(shipping),
