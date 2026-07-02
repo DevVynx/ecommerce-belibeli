@@ -64,17 +64,22 @@ export const ProductDetailsServer = async ({ params }: ProductDetailsServerProps
             <p className="line-clamp-4 text-sm leading-6">{product.description}</p>
 
             <div className="mb-2 flex items-center gap-2">
-              <div className="flex items-center gap-2">
-                <span className="text-sm font-semibold">
-                  5K+ <span className="text-muted-foreground font-normal">Sold</span>
+              <div className="flex items-center gap-1">
+                <span className="text-xs font-semibold lg:text-sm">
+                  5K+ <span className="text-muted-foreground">Vendidos</span>
                 </span>
                 •
                 <div className="flex items-center gap-1">
                   <Star className="size-4 fill-yellow-500 text-yellow-500" />
-                  <span className="text-sm font-semibold">{product.ratingRate.toFixed(1)}</span>
+                  <span className="text-xs font-semibold lg:text-sm">
+                    {product.ratingRate.toFixed(1)}
+                  </span>
                 </div>
-                <span className="text-muted-foreground text-sm">
-                  ({product.ratingCount} avaliações)
+                <span className="text-muted-foreground text-sm lg:hidden">
+                  ({product.ratingCount > 9999 ? "9999+" : product.ratingCount})
+                </span>
+                <span className="text-muted-foreground hidden text-sm lg:flex">
+                  ({product.ratingCount > 9999 ? "9999+" : product.ratingCount} avaliações)
                 </span>
               </div>
 

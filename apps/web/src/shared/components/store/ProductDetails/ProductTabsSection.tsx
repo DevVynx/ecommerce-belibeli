@@ -10,16 +10,16 @@ type ProductTabsSectionProps = {
 export const ProductTabsSection = async ({ data }: ProductTabsSectionProps) => {
   return (
     <Tabs defaultValue="details">
-      <TabsList className="border-border flex justify-start gap-8 border-b bg-transparent shadow-none">
+      <TabsList className="border-border flex justify-around lg:justify-start gap-8 border-b bg-transparent shadow-none">
         <TabsTrigger
           value="details"
-          className="cursor-pointer rounded-none border-black p-0 text-lg font-semibold transition-none data-[state=active]:border-b-3"
+          className="cursor-pointer rounded-none border-black p-0 font-semibold transition-none data-[state=active]:border-b-3 lg:text-lg"
         >
           Detalhes do Produto
         </TabsTrigger>
         <TabsTrigger
           value="reviews"
-          className="cursor-pointer rounded-none border-black p-0 text-lg font-semibold transition-none data-[state=active]:border-b-3"
+          className="cursor-pointer rounded-none border-black p-0 font-semibold transition-none data-[state=active]:border-b-3 lg:text-lg"
         >
           Avaliações ({data.product.ratingCount})
         </TabsTrigger>

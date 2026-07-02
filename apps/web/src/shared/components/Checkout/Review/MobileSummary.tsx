@@ -39,15 +39,14 @@ export const MobileSummary = ({ shippingPrice }: MobileSummaryProps) => {
               <div className="min-w-0">
                 <p className="truncate text-sm">{item.product.title}</p>
                 <p className="text-muted-foreground text-xs">Qtd: {item.quantity}</p>
+                <span className="shrink-0 text-sm">
+                  {formatPrice(
+                    (item.product.variant.isOnSale
+                      ? item.product.variant.salePrice
+                      : item.product.variant.price) * item.quantity
+                  )}
+                </span>
               </div>
-
-              <span className="shrink-0 text-sm">
-                {formatPrice(
-                  (item.product.variant.isOnSale
-                    ? item.product.variant.salePrice
-                    : item.product.variant.price) * item.quantity
-                )}
-              </span>
             </div>
           </div>
         ))}
