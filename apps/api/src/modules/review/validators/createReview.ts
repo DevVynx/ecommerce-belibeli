@@ -8,7 +8,10 @@ const body = z.object({
     .int()
     .min(1, "A avaliação deve ser entre 1 e 5")
     .max(5, "A avaliação deve ser entre 1 e 5"),
-  comment: z.string().min(1, "Comentário é obrigatório"),
+  comment: z
+    .string()
+    .min(1, "Comentário é obrigatório")
+    .max(500, "Comentário deve ter no máximo 500 caracteres"),
 });
 
 const params = z.object({

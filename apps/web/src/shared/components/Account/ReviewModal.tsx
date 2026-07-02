@@ -1,5 +1,5 @@
 import type { OrderItemDto } from "@repo/types/contracts";
-import { Star } from "lucide-react";
+import { ImageIcon, Pencil, Star, Trash2 } from "lucide-react";
 import { useCallback, useState } from "react";
 
 import { createReview } from "@/shared/actions/reviews/createReview";
@@ -9,7 +9,6 @@ import { Button } from "@/shared/components/shadcn-ui/button";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
 } from "@/shared/components/shadcn-ui/dialog";
@@ -18,6 +17,8 @@ import { Textarea } from "@/shared/components/shadcn-ui/textarea";
 import { showNotification } from "@/shared/components/showNotification";
 import type { ApiErrorResponse } from "@/shared/types/api/error";
 import { authenticatedAction } from "@/shared/utils/api/authenticatedAction";
+
+const MAX_CHARS = 500;
 
 function getErrorMessage(error: ApiErrorResponse): string {
   if (typeof error.message === "string") return error.message;
@@ -38,6 +39,7 @@ export const ReviewModal = ({ item, open, onClose, onReviewChanged }: ReviewModa
   const [rating, setRating] = useState(item.userReview?.rating ?? 5);
   const [comment, setComment] = useState(item.userReview?.comment ?? "");
   const [submitting, setSubmitting] = useState(false);
+  const [imgError, setImgError] = useState(false);
 
   const resetToView = useCallback(() => {
     if (item.userReview) {
@@ -117,14 +119,13 @@ export const ReviewModal = ({ item, open, onClose, onReviewChanged }: ReviewModa
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md">
-        <DialogHeader>
+      <DialogContent className="gap-0 p-0 sm:max-w-lg">
+        <DialogHeader className="border-b px-6 py-4">
           <DialogTitle>{dialogTitle}</DialogTitle>
-          <DialogDescription className="line-clamp-1">{item.productName}</DialogDescription>
         </DialogHeader>
 
         {mode === "delete-confirm" ? (
-          <div className="space-y-4">
+          <div className="space-y-4 p-6">
             <p className="text-muted-foreground text-sm">
               Tem certeza que deseja excluir sua avaliação? Esta ação não pode ser desfeita.
             </p>
@@ -133,51 +134,75 @@ export const ReviewModal = ({ item, open, onClose, onReviewChanged }: ReviewModa
                 Cancelar
               </Button>
               <Button variant="destructive" onClick={handleDelete}>
+                <Trash2 className="size-4" />
                 Sim, excluir
               </Button>
             </div>
           </div>
         ) : (
-          <div className="space-y-4">
-            <div className="ml-2 flex items-center justify-start">
-              <Rating
-                value={rating}
-                onValueChange={setRating}
-                max={5}
-                step={1}
-                readOnly={mode === "view"}
-                className="gap-4 text-yellow-400"
-              >
-                {Array.from({ length: 5 }, (_, i) => (
-                  <RatingItem key={i}>
-                    <Star className="size-8" />
-                  </RatingItem>
-                ))}
-              </Rating>
+          <div className="space-y-5 p-6 pb-0">
+            {/* Product Card */}
+            <div className="rounded-lg border p-3">
+              <div className="flex gap-3">
+                <div className="bg-muted flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-md">
+                  {!imgError ? (
+                    <img
+                      src={item.productImage}
+                      alt={item.productName}
+                      className="size-full object-cover"
+                      onError={() => setImgError(true)}
+                    />
+                  ) : (
+                    <ImageIcon className="text-muted-foreground size-5" />
+                  )}
+                </div>
+                <div className="flex min-w-0 flex-col items-start justify-start">
+                  <p className="text-sm leading-tight font-medium">{item.productName}</p>
+                  {item.variantLabel && (
+                    <p className="text-muted-foreground text-xs">{item.variantLabel}</p>
+                  )}
+                </div>
+              </div>
             </div>
 
+            {/* Rating */}
+            <div>
+              <label className="mb-2 block text-sm font-medium">Sua nota:</label>
+              <div className="flex items-center gap-2">
+                <Rating
+                  value={rating}
+                  onValueChange={setRating}
+                  max={5}
+                  step={1}
+                  readOnly={mode === "view"}
+                  className="gap-1 text-yellow-400"
+                >
+                  {Array.from({ length: 5 }, (_, i) => (
+                    <RatingItem key={i}>
+                      <Star className="size-6" />
+                    </RatingItem>
+                  ))}
+                </Rating>
+                <span className="text-sm font-medium">{rating}/5</span>
+              </div>
+            </div>
+
+            {/* Comment */}
             {mode === "view" ? (
-              <>
-                <p className="text-muted-foreground min-h-15 text-sm leading-relaxed">
-                  {item.userReview?.comment ?? "Sem comentário."}
+              <div className="space-y-2">
+                <label className="block text-sm font-medium">Seu comentário</label>
+                <p className="text-muted-foreground bg-muted/30 min-h-10 rounded-lg border p-3 text-sm leading-relaxed">
+                  {item.userReview?.comment || "Sem comentário."}
                 </p>
                 {item.userReview && (
                   <p className="text-muted-foreground text-right text-xs">
                     {new Date(item.userReview.createdAt).toLocaleDateString("pt-BR")}
                   </p>
                 )}
-
-                <div className="flex justify-end gap-2 border-t pt-4">
-                  <Button variant="outline" onClick={() => setMode("edit")}>
-                    Editar
-                  </Button>
-                  <Button variant="destructive" onClick={() => setMode("delete-confirm")}>
-                    Excluir
-                  </Button>
-                </div>
-              </>
+              </div>
             ) : (
-              <>
+              <div className="space-y-2">
+                <label className="block text-sm font-medium">Seu comentário</label>
                 <Textarea
                   placeholder={
                     mode === "edit"
@@ -185,22 +210,52 @@ export const ReviewModal = ({ item, open, onClose, onReviewChanged }: ReviewModa
                       : "Conte sua experiência com o produto..."
                   }
                   value={comment}
-                  onChange={(e) => setComment(e.target.value)}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    if (value.length <= MAX_CHARS) setComment(value);
+                  }}
                   rows={4}
+                  maxLength={MAX_CHARS}
                   disabled={submitting}
                 />
+                <p className="text-muted-foreground text-right text-xs tabular-nums">
+                  {comment.length}/{MAX_CHARS}
+                </p>
+              </div>
+            )}
+          </div>
+        )}
 
-                <div className="flex justify-end gap-2">
-                  <Button variant="outline" onClick={resetToView} disabled={submitting}>
-                    Cancelar
-                  </Button>
-                  <Button
-                    onClick={mode === "edit" ? handleSaveEdit : handleSubmitReview}
-                    disabled={rating < 1 || submitting}
-                  >
-                    {submitting ? "Enviando..." : mode === "edit" ? "Salvar" : "Enviar Avaliação"}
-                  </Button>
-                </div>
+        {/* Footer Buttons */}
+        {mode !== "delete-confirm" && (
+          <div className="bg-muted/50 mt-5 flex items-center justify-end gap-2 px-6 py-4">
+            {mode === "view" ? (
+              <>
+                <Button variant="destructive" onClick={() => setMode("delete-confirm")}>
+                  <Trash2 className="size-4" />
+                  Excluir
+                </Button>
+                <Button variant="outline" onClick={() => setMode("edit")}>
+                  <Pencil className="size-4" />
+                  Editar
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button variant="outline" onClick={resetToView} disabled={submitting}>
+                  Cancelar
+                </Button>
+
+                <Button
+                  onClick={mode === "edit" ? handleSaveEdit : handleSubmitReview}
+                  disabled={rating < 1 || submitting}
+                >
+                  {submitting
+                    ? "Enviando..."
+                    : mode === "edit"
+                      ? "Salvar Alterações"
+                      : "Enviar Avaliação"}
+                </Button>
               </>
             )}
           </div>
