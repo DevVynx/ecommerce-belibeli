@@ -42,7 +42,7 @@ export class ConflictError extends HttpError {
 
 export class UnprocessableEntityError extends HttpError {
   constructor(message: any, code?: string) {
-    super(422, "UnprocessableEntity", message, code);
+    super(422, "UnprocessableEntityError", message, code);
   }
 }
 
@@ -54,6 +54,6 @@ export class InternalServerError extends HttpError {
 
 export class BadGatewayError extends HttpError {
   constructor(message: any, code?: string) {
-    super(502, "BadGatewayErrorError", message, code);
+    super(502, "BadGatewayError", message, code);
   }
 }
