@@ -1,6 +1,6 @@
 # Melhorias Conhecidas Não Implementadas
 
-Este documento regista funcionalidades e melhorias que seriam importantes em um ecommerce real, mas que não foram implementadas por decisão consciente — seja por escopo reduzido (projeto de estudo/demonstração), uso de ambientes de teste, ou trade-offs de tempo.
+Este documento registra funcionalidades e melhorias que seriam importantes em um ecommerce real, mas que não foram implementadas por decisão consciente — seja por escopo reduzido (projeto de estudo/demonstração), uso de ambientes de teste, ou trade-offs de tempo.
 
 ---
 
@@ -11,10 +11,10 @@ Este documento regista funcionalidades e melhorias que seriam importantes em um 
 - **O que seria**: Validar estoque disponível antes de criar o pedido e decrementar ao confirmar pagamento (ou reservar no `createOrder` e liberar se expirar).
 - **Por que não foi**: O projeto usa Stripe em modo de teste — não há risco real de oversell. A decisão de reservar vs validar no `confirmPayment` foi adiada e exigiria análise de concorrência e deadlock.
 
-### PIX (e outros métodos de pagamento brasileiros)
+### PIX e Boleto
 
 - **O que seria**: Oferecer PIX e boleto como opções de pagamento, com webhooks de confirmação assíncrona.
-- **Por que não foi**: O Stripe está configurado em test mode. PIX exigiria ativação na conta Stripe e lidar com fluxo de pagamento async (vencimento, estorno). O seletor de pagamento foi simplificado para exibir apenas cartão.
+- **Por que não foi**: O Stripe está configurado em test mode. PIX exigiria ativação na conta Stripe e envolveria dinheiro real em um projeto de portfolio. O seletor de pagamento foi simplificado para exibir apenas cartão.
 
 ### Webhook do Stripe sem Retry
 
@@ -33,21 +33,11 @@ Este documento regista funcionalidades e melhorias que seriam importantes em um 
 ### Painel Administrativo
 
 - **O que seria**: Dashboard para gerenciar produtos, pedidos, usuários, cupons — com gráficos, filtros, actions de CRUD.
-- **Por que não foi**: Fora do escopo do projeto. Não há rota, controller ou frontend admin.
-
-### Histórico de Pedidos do Usuário
-
-- **O que seria**: Página `/account/orders` (ou similar) listando todos os pedidos do usuário com status, detalhes, opção de cancelamento.
-- **Por que não foi**: Não há página de conta/account implementada. O link "Ver meus pedidos" na página de sucesso é ilustrativo.
+- **Por que não foi**: Trade-off de tempo — já foi gasto muito tempo neste projeto, então optou-se por não implementar o painel administrativo. Existem rotas protegidas apenas para ADMIN que servem para gerenciar a parte importante do projeto (produtos, cupons, etc.). Ficará marcado para uma futura adição de maneira simples.
 
 ---
 
 ## Produto & Catálogo
-
-### Avaliações e Reviews
-
-- **O que seria**: Usuários poderem avaliar produtos com nota e comentário, exibidos na página de detalhe.
-- **Por que não foi**: O schema do Prisma já tem campos `ratingRate` e `ratingCount` (populados por seed), mas não há API ou rota para submissão de reviews por usuários.
 
 ### Upload de Imagens
 
@@ -63,11 +53,6 @@ Este documento regista funcionalidades e melhorias que seriam importantes em um 
 - **O que seria**: Cache de produtos, categorias e consultas frequentes com Redis ou similar para reduzir carga no banco.
 - **Por que não foi**: Sem necessidade para volume de teste. Um ecommerce real precisaria de cache distribuído e invalidação por evento.
 
-### Rate Limiting
-
-- **O que seria**: Limitar requisições por IP/usuário em endpoints críticos (login, register, checkout) para mitigar abuso.
-- **Por que não foi**: Não há `express-rate-limit` configurado. O helmet está presente apenas para headers de segurança.
-
 ### Logging Estruturado
 
 - **O que seria**: Logger estruturado (pino/winston) com níveis, correlação de requisições e transporte para agregador (Datadog/Grafana).
@@ -77,11 +62,6 @@ Este documento regista funcionalidades e melhorias que seriam importantes em um 
 
 - **O que seria**: Testes unitários (services, helpers), integração (repositories, controllers) e e2e (fluxo completo de checkout).
 - **Por que não foi**: Zero testes no repositório. Não havia requisito de cobertura para este projeto.
-
-### CI/CD
-
-- **O que seria**: Pipeline de lint, typecheck, testes e deploy automático.
-- **Por que não foi**: Não há configuração de CI (GitHub Actions, GitLab CI, etc.).
 
 ---
 

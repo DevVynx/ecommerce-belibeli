@@ -29,15 +29,17 @@ BeliBeli is a **modern e-commerce platform** designed to simulate a full-feature
 | **Wishlist**       | Save products for later                                              |
 | **Shipping**       | CEP-based shipping quotes                                            |
 | **Responsive UI**  | Mobile-first, works on all devices                                   |
+| **Checkout**       | Multi-step checkout flow with Stripe payment integration             |
+| **Orders**         | Order history, detail view, and status tracking                      |
+| **Coupons**        | Discount coupon system (percentage, fixed, free shipping)            |
+| **Payment**        | Stripe integration (credit card, PIX), webhook handling              |
+| **Profile**        | User profile, address management, and security settings              |
 
 ### Planned
 
-- Checkout flow
-- Order management
-- Coupon system
-- Payment integration
-- User profile/settings
 - Admin panel
+- Rate Limmiting
+- CI/CD
 
 ---
 
@@ -80,27 +82,6 @@ BeliBeli is a **modern e-commerce platform** designed to simulate a full-feature
 - **Data Fetching**: Mix of Server Actions + React Query
 - **State**: Zustand (UI state), React Query (server state)
 - **Forms**: React Hook Form + Zod
-
----
-
-## Data Models
-
-```
-User
-  ├── RefreshToken
-  ├── Cart ─── CartItem ─── ProductVariant
-  ├── Wishlist ─── WishlistItem ─── Product
-  └── Order ─── OrderItem ─── ProductVariant
-        └── CouponUsage ─── Coupon
-
-Product
-  ├── Category
-  ├── ProductOption (size, color, etc)
-  │     └── ProductOptionValue
-  ├── ProductVariant (SKU, price, stock)
-  │     └── ProductVariantOption
-  └── Promotion
-```
 
 ---
 
