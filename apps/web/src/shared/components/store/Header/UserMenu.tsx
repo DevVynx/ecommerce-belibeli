@@ -25,7 +25,7 @@ export const UserMenu = () => {
         <NavigationMenuList>
           <NavigationMenuItem>
             <NavigationMenuTrigger asChild className="p-0 hover:bg-transparent">
-              <Link href="/account">
+              <Link href="/account?tab=profile">
                 <Button variant="ghost" className="p-1">
                   <User className="size-7" />
                   <div className="flex max-w-22 flex-col truncate text-left text-xs">

@@ -25,7 +25,7 @@ export const sideMenuPersonalActionIcons = [
   {
     icon: <UserIcon className="size-7" />,
     label: "Meu Perfil",
-    link: "/account",
+    link: "/account?tab=profile",
   },
   {
     icon: <HandbagIcon className="size-7" />,

@@ -1,5 +1,5 @@
 "use client";
-import { Handbag, LogOut, Tickets, User } from "lucide-react";
+import { Handbag, LogOut, Settings, User } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -37,7 +37,7 @@ export const UserMenuContentAuthenticated = () => {
       {/* Links da conta */}
       <div className="flex flex-col py-2">
         <Link
-          href="/profile"
+          href="/account?tab=profile"
           className="hover:bg-muted flex cursor-pointer items-center gap-2 px-4 py-2.5 text-sm transition-colors"
         >
           <User className="size-5" />
@@ -45,7 +45,7 @@ export const UserMenuContentAuthenticated = () => {
         </Link>
 
         <Link
-          href="/orders"
+          href="/account?tab=orders"
           className="hover:bg-muted flex cursor-pointer items-center gap-2 px-4 py-2.5 text-sm transition-colors"
         >
           <Handbag className="size-5" />
@@ -53,11 +53,11 @@ export const UserMenuContentAuthenticated = () => {
         </Link>
 
         <Link
-          href="/coupons"
+          href="/account?tab=settings"
           className="hover:bg-muted flex cursor-pointer items-center gap-2 px-4 py-2.5 text-sm transition-colors"
         >
-          <Tickets className="size-5" />
-          Meus Cupons
+          <Settings className="size-5" />
+          Configurações
         </Link>
       </div>
 
