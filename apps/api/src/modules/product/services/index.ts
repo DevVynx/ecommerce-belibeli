@@ -1,3 +1,4 @@
+import { countLowStockVariants } from "@/modules/product/services/countLowStockVariants";
 import { findProductById } from "@/modules/product/services/findById";
 import { findProductBySlug } from "@/modules/product/services/findBySlug";
 import { findManyProducts } from "@/modules/product/services/findMany";
@@ -14,4 +15,5 @@ export const productServices = {
   findVariantByIdWithProduct: findVariantByIdWithProduct,
   search: searchProducts,
   updateRatingAggregates,
+  countLowStockVariants,
 };

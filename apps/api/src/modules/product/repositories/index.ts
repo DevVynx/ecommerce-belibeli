@@ -7,6 +7,7 @@ import { findProductIdsByOptionValues } from "@/modules/product/repositories/fin
 import { findVariantById } from "@/modules/product/repositories/findVariantById";
 import { findVariantByIdWithProduct } from "@/modules/product/repositories/findVariantByIdWithProduct";
 import { getRatingDistribution } from "@/modules/product/repositories/getRatingDistribution";
+import { countLowStockVariants } from "@/modules/product/repositories/countLowStockVariants";
 import { updateRatingAggregates } from "@/modules/product/repositories/updateRatingAggregates";
 
 export const productRepositories = {
@@ -20,4 +21,5 @@ export const productRepositories = {
   findCategoryNamesByIds,
   getRatingDistribution,
   updateRatingAggregates,
+  countLowStockVariants,
 };
