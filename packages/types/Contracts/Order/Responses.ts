@@ -50,6 +50,30 @@ export type CreateOrderResponse = {
   paymentUrl: string;
 };
 
+export type AdminOrderDto = {
+  order: {
+    id: string;
+    orderNumber: number;
+    total: number;
+    status: string;
+    createdAt: string;
+    user: {
+      id: string;
+      name: string;
+      email: string;
+    };
+  };
+};
+
+export type AdminListOrdersResponse = {
+  orders: AdminOrderDto[];
+  pagination: {
+    total: number;
+    page: number;
+    totalPages: number;
+  };
+};
+
 export type GetOrderByIdResponse = {
   order: OrderDetailDto;
 };

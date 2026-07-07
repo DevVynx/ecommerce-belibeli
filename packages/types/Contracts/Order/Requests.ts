@@ -13,3 +13,9 @@ export type CreateOrderRequest = {
   shippingService: string;
   paymentMethod: "card" | "pix";
 };
+
+export type AdminGetOrdersRequest = {
+  page?: number;
+  limit?: number;
+  sort?: "asc" | "desc";
+};

@@ -18,3 +18,5 @@ export * from "./User/Requests";
 export * from "./User/Responses";
 export * from "./Order/Requests";
 export * from "./Order/Responses";
+export * from "./Dashboard/Requests";
+export * from "./Dashboard/Responses";
