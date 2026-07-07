@@ -1,0 +1,38 @@
+"use client";
+import { Menu } from "lucide-react";
+import { useState } from "react";
+
+import { Button } from "@/shared/components/shadcn-ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/shared/components/shadcn-ui/sheet";
+
+import { AdminSidebar } from "./AdminSidebar";
+
+export function AdminLayout({ children }: { children: React.ReactNode }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="flex min-h-screen">
+      <aside className="border-border bg-card sticky top-0 hidden h-screen w-full max-w-xs flex-col border-r lg:flex">
+        <AdminSidebar />
+      </aside>
+
+      <header className="border-border bg-card left-0 z-30 flex h-14 items-center justify-between border-b px-4 lg:hidden">
+        <span className="text-lg font-bold">BELIBELI</span>
+        <Sheet open={open} onOpenChange={setOpen}>
+          <SheetTrigger asChild>
+            <Button variant="ghost" size="icon">
+              <Menu className="size-5" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="right" className="w-72 p-0">
+            <AdminSidebar onNavClick={() => setOpen(false)} />
+          </SheetContent>
+        </Sheet>
+      </header>
+
+      <main className="container mx-auto min-h-screen flex-1 px-4 pt-20 lg:px-0 lg:py-8">
+        {children}
+      </main>
+    </div>
+  );
+}
