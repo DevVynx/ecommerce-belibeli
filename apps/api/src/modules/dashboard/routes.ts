@@ -11,6 +11,7 @@ dashboardRouter.get(
   "/admin/dashboard/stats",
   authMiddleware,
   adminOnlyMiddleware,
+  v.stats.middleware,
   stats
 );
 
