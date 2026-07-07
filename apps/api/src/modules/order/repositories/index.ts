@@ -1,3 +1,4 @@
+import { countActiveOrders } from "./countActiveOrders";
 import { countAll } from "./countAll";
 import { createOrder } from "./createOrder";
 import { findAll } from "./findAll";
@@ -7,6 +8,7 @@ import { findOrdersByUserId } from "./findOrdersByUserId";
 import { updateOrderStatus } from "./updateOrderStatus";
 
 export const orderRepositories = {
+  countActiveOrders,
   countAll,
   createOrder,
   findAll,
