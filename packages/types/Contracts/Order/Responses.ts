@@ -65,6 +65,10 @@ export type AdminOrderDto = {
   };
 };
 
+export type GetOrderByIdResponse = {
+  order: OrderDetailDto;
+};
+
 export type AdminListOrdersResponse = {
   orders: AdminOrderDto[];
   pagination: {
@@ -74,6 +78,8 @@ export type AdminListOrdersResponse = {
   };
 };
 
-export type GetOrderByIdResponse = {
-  order: OrderDetailDto;
+export type AdminActiveOrdersResponse = {
+  activeOrders: number;
+  percentageDelta: number;
 };
+

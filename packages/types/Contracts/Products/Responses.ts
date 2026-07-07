@@ -81,6 +81,10 @@ export type GetProductDetailsResponse = {
   variants: VariantDto[];
 };
 
+export type AdminCountLowStockVariantsResponse = {
+  lowStockCount: number;
+};
+
 export type SearchProductsResponse = {
   products: CatalogProductDto[];
   filters: SearchFiltersDto;

@@ -14,6 +14,10 @@ export type CreateOrderRequest = {
   paymentMethod: "card" | "pix";
 };
 
+export type AdminActiveOrdersRequest = {
+  range: "1W" | "1M" | "3M" | "6M" | "1Y" | "ALL";
+};
+
 export type AdminGetOrdersRequest = {
   page?: number;
   limit?: number;
