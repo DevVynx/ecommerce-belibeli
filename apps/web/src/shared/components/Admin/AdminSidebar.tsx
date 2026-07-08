@@ -76,7 +76,7 @@ export function AdminSidebar({ onNavClick }: AdminSidebarProps) {
           })}
         </div>
 
-        <Link {...getHandlers("corner-up-left")} href="/" className="w-full">
+        <Link {...getHandlers("corner-up-left")} href="/" className="mb-1 w-full">
           <Button className="w-full gap-3 rounded-lg px-4 py-3 text-sm">
             <CornerUpLeftIcon ref={getIconRef("corner-up-left")} size={20} />
             Voltar para a loja

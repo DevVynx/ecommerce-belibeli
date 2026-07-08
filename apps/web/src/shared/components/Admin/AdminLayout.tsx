@@ -31,7 +31,9 @@ export function AdminLayout({ children }: { children: React.ReactNode }) {
         </Sheet>
       </header>
 
-      <main className="container mx-auto min-h-screen flex-1 px-2 py-8 lg:px-0">{children}</main>
+      <main className="container mx-auto min-h-screen flex-1 px-2 py-8 lg:pr-6 lg:pl-0">
+        {children}
+      </main>
     </div>
   );
 }
