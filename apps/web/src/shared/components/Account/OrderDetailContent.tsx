@@ -220,8 +220,11 @@ export const OrderDetailContent = ({ orderId }: OrderDetailContentProps) => {
           }
 
           return (
-            <div key={item.id} className="flex flex-col gap-2 p-3 sm:flex-row sm:items-center sm:gap-4">
-              <div className="flex items-center gap-3 sm:gap-4 sm:min-w-0 sm:flex-1">
+            <div
+              key={item.id}
+              className="flex flex-col gap-2 p-3 sm:flex-row sm:items-center sm:gap-4"
+            >
+              <div className="flex items-center gap-3 sm:min-w-0 sm:flex-1 sm:gap-4">
                 <div className="bg-muted flex size-14 shrink-0 items-center justify-center overflow-hidden rounded-md sm:size-16">
                   <img
                     src={item.productImage}
@@ -252,7 +255,7 @@ export const OrderDetailContent = ({ orderId }: OrderDetailContentProps) => {
                 {reviewButton}
               </div>
 
-              <p className="text-muted-foreground hidden whitespace-nowrap text-xs sm:block">
+              <p className="text-muted-foreground hidden text-xs whitespace-nowrap sm:block">
                 Qtd: {item.quantity} x{" "}
                 {new Intl.NumberFormat("pt-BR", {
                   style: "currency",

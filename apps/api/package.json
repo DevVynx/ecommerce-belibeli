@@ -15,6 +15,7 @@
     "db:seed": "dotenv -e .env -- tsx scripts/seed.ts",
     "db:seed-many": "dotenv -e .env -- tsx scripts/seed-many.ts",
     "db:reset": "dotenv -e .env -- prisma migrate reset --force && pnpm db:seed",
+    "db:sync-admin-search": "dotenv -e .env -- tsx scripts/sync-admin-search.ts",
     "db:sync-search": "dotenv -e .env -- tsx scripts/sync-search.ts",
     "search:setup": "dotenv -e .env -- tsx scripts/setup-search.ts"
   },

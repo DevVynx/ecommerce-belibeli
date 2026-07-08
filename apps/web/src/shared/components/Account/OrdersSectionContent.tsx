@@ -43,7 +43,7 @@ export const OrdersSectionContent = ({ orders }: OrdersSectionContentProps) => {
   return (
     <div className="rounded-lg border p-6">
       <h2 className="mb-4 text-lg font-semibold">Meus Pedidos</h2>
-      <div className="hidden lg:block overflow-x-auto">
+      <div className="hidden overflow-x-auto lg:block">
         <Table>
           <TableHeader>
             <TableRow>
@@ -57,10 +57,7 @@ export const OrdersSectionContent = ({ orders }: OrdersSectionContentProps) => {
           <TableBody>
             {orders.map((order) => (
               <Fragment key={order.id}>
-                <TableRow
-                  className="cursor-pointer"
-                  onClick={() => toggleOrder(order.id)}
-                >
+                <TableRow className="cursor-pointer" onClick={() => toggleOrder(order.id)}>
                   <TableCell className="font-mono text-xs">
                     BEL-{String(order.orderNumber).padStart(6, "0")}
                   </TableCell>
@@ -153,7 +150,7 @@ export const OrdersSectionContent = ({ orders }: OrdersSectionContentProps) => {
             </div>
 
             {expandedOrderId === order.id && (
-              <div className="-mt-2 rounded-lg border bg-muted/20 p-4">
+              <div className="bg-muted/20 -mt-2 rounded-lg border p-4">
                 <OrderDetailContent orderId={order.id} />
               </div>
             )}

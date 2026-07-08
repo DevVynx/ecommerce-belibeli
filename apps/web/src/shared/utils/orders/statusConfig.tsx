@@ -1,12 +1,5 @@
+import { CheckCircle2, Clock, Loader, RotateCcw, Truck, XCircle } from "lucide-react";
 import type { ReactNode } from "react";
-import {
-  CheckCircle2,
-  Clock,
-  Loader,
-  RotateCcw,
-  Truck,
-  XCircle,
-} from "lucide-react";
 
 export type StatusConfigEntry = {
   label: string;

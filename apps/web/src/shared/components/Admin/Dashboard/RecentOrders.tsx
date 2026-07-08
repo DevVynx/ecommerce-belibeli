@@ -1,15 +1,12 @@
 "use client";
 
-import Link from "next/link";
+import type { AdminOrderDto } from "@repo/types/contracts";
 import { ArrowRight, Package } from "lucide-react";
+import Link from "next/link";
 
-import type {
-  AdminListOrdersResponse,
-  AdminOrderDto,
-} from "@repo/types/contracts";
 import { useAdminOrders } from "@/shared/hooks/data/adminQueries/useOrder";
-import { formatPrice } from "@/shared/utils/store/price";
 import { STATUS_CONFIG } from "@/shared/utils/orders/statusConfig";
+import { formatPrice } from "@/shared/utils/store/price";
 
 export function RecentOrders() {
   const { data, isLoading } = useAdminOrders({ limit: 5, page: 1, sort: "desc" });
@@ -59,11 +56,11 @@ export function RecentOrders() {
       <div className="mt-4 overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
-            <tr className="border-b text-left text-muted-foreground text-xs uppercase tracking-wider">
-              <th className="pb-3 pr-4 font-medium">Pedido</th>
-              <th className="pb-3 pr-4 font-medium">Cliente</th>
-              <th className="pb-3 pr-4 font-medium">Total</th>
-              <th className="pb-3 pr-4 font-medium">Status</th>
+            <tr className="text-muted-foreground border-b text-left text-xs tracking-wider uppercase">
+              <th className="pr-4 pb-3 font-medium">Pedido</th>
+              <th className="pr-4 pb-3 font-medium">Cliente</th>
+              <th className="pr-4 pb-3 font-medium">Total</th>
+              <th className="pr-4 pb-3 font-medium">Status</th>
             </tr>
           </thead>
           <tbody>

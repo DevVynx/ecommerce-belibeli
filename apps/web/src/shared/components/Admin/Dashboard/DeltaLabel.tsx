@@ -5,7 +5,11 @@ export function DeltaLabel({ value }: { value: number }) {
   const color = value >= 0 ? "text-emerald-500" : "text-red-500";
   return (
     <>
-      <span className={color}>{sign}{value}%</span> vs período anterior
+      <span className={color}>
+        {sign}
+        {value}%
+      </span>{" "}
+      vs período anterior
     </>
   );
 }
