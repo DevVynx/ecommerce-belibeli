@@ -1,5 +1,8 @@
 "use client";
-import type { AdminActiveOrdersRequest, AdminDashboardStatsRequest } from "@repo/types/contracts";
+import type {
+  AdminDashboardStatsRequest,
+  AdminDashboardTimelineRequest,
+} from "@repo/types/contracts";
 import { useState } from "react";
 
 import { BadgeAlertIcon } from "@/shared/assets/animatedIcons/badge-alert";
@@ -9,31 +12,34 @@ import { DeltaLabel } from "@/shared/components/Admin/Dashboard/DeltaLabel";
 import { RecentOrders } from "@/shared/components/Admin/Dashboard/RecentOrders";
 import { ReportChart } from "@/shared/components/Admin/Dashboard/ReportChart";
 import { StatsCard } from "@/shared/components/Admin/Dashboard/StatsCard";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/shared/components/shadcn-ui/select";
 import { useAdminDashboardStats } from "@/shared/hooks/data/adminQueries/useDashboardStats";
 import { useAdminDashboardTimeline } from "@/shared/hooks/data/adminQueries/useDashboardTimeline";
 import { useAdminCountActiveOrders } from "@/shared/hooks/data/adminQueries/useOrder";
 import { useAdminLowStockProducts } from "@/shared/hooks/data/adminQueries/useProduct";
 import { formatPrice } from "@/shared/utils/store/price";
 
-type Period = "1D" | "1W" | "1M" | "3M" | "6M";
-
 export default function AdminDashboardPage() {
-  const [period, setPeriod] = useState<Period>("1W");
+  const [timelinePeriod, setTimelinePeriod] =
+    useState<AdminDashboardTimelineRequest["range"]>("1W");
+  const [statsPeriod, setStatsPeriod] = useState<AdminDashboardStatsRequest["range"]>("1M");
 
-  const { data, isLoading } = useAdminDashboardTimeline({ range: period });
-
-  const statsRange: AdminDashboardStatsRequest["range"] = period === "1D" ? "1W" : period;
-  const { data: statsData } = useAdminDashboardStats({ range: statsRange });
-  const { data: activeOrdersData } = useAdminCountActiveOrders({
-    range: statsRange as AdminActiveOrdersRequest["range"],
-  });
+  const { data: timelineData, isLoading } = useAdminDashboardTimeline({ range: timelinePeriod });
+  const { data: statsData } = useAdminDashboardStats({ range: statsPeriod });
+  const { data: activeOrdersData } = useAdminCountActiveOrders({ range: statsPeriod });
   const { data: lowStockData } = useAdminLowStockProducts();
 
   if (isLoading) {
     return <p>Carregando</p>;
   }
 
-  if (!data) {
+  if (!timelineData) {
     return <p>Nenhum dado encontrado.</p>;
   }
 
@@ -41,7 +47,25 @@ export default function AdminDashboardPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold">Painel Administrativo</h1>
+      <div className="flex items-center justify-between">
+        <h1 className="text-3xl font-bold">Dashboard</h1>
+        <Select
+          value={statsPeriod}
+          onValueChange={(v) => setStatsPeriod(v as AdminDashboardStatsRequest["range"])}
+        >
+          <SelectTrigger className="w-44">
+            <SelectValue placeholder="Período" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="1W">Última semana</SelectItem>
+            <SelectItem value="1M">Último mês</SelectItem>
+            <SelectItem value="3M">Últimos 3 meses</SelectItem>
+            <SelectItem value="6M">Últimos 6 meses</SelectItem>
+            <SelectItem value="1Y">Último ano</SelectItem>
+            <SelectItem value="ALL">Todas</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         <StatsCard
@@ -82,9 +106,13 @@ export default function AdminDashboardPage() {
         />
       </div>
 
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         <div className="lg:col-span-2">
-          <ReportChart data={data.timeline} activePeriod={period} onPeriodChange={setPeriod} />
+          <ReportChart
+            data={timelineData.timeline}
+            activePeriod={timelinePeriod}
+            onPeriodChange={setTimelinePeriod}
+          />
         </div>
         <div className="bg-card rounded-xl border p-6">
           <h3 className="mb-4 text-lg font-semibold">Resumo do Dia</h3>

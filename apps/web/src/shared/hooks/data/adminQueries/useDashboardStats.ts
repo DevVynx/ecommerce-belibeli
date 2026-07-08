@@ -8,7 +8,7 @@ import { fetchClient } from "@/shared/utils/api/fetchClient";
 
 export function useAdminDashboardStats(params: AdminDashboardStatsRequest) {
   return useQuery({
-    queryKey: ["admin", "dashboard", "stats"],
+    queryKey: ["admin", "dashboard", "stats", params],
     queryFn: async () => {
       const queryParams: Record<string, string | number> = {};
 
