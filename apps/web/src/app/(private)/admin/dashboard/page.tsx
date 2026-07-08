@@ -95,13 +95,13 @@ export default function AdminDashboardPage() {
           value={lowStockCount}
           description={
             lowStockCount > 0
-              ? `${lowStockCount} produto${lowStockCount !== 1 ? "s" : ""} com estoque baixo`
+              ? `${lowStockCount} variante${lowStockCount !== 1 ? "s" : ""} com estoque baixo`
               : "Estoque normal"
           }
           icon={BadgeAlertIcon}
           iconId="stock-alert"
           variant={lowStockCount > 0 ? "destructive" : "default"}
-          href="/admin/products"
+          href="/admin/products?status=active&stock=low&sort=stock_asc"
           hrefLabel="Revisar inventário"
         />
       </div>

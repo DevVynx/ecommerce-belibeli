@@ -3,6 +3,7 @@ import "./globals.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Kotta_One } from "next/font/google";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { Suspense } from "react";
 
 import { Footer } from "@/shared/components/Footer";
@@ -55,7 +56,9 @@ export default async function RootLayout({
               <Suspense fallback={null}>
                 <Header />
               </Suspense>
-              <div className="min-h-screen">{children}</div>
+              <NuqsAdapter>
+                <div className="min-h-screen">{children}</div>
+              </NuqsAdapter>
               <Footer />
               <Toaster />
             </TooltipProvider>
