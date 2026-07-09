@@ -4,19 +4,31 @@ import type { AdminOrderDto } from "@repo/types/contracts";
 import { ArrowRight, Package } from "lucide-react";
 import Link from "next/link";
 
+import { SectionError } from "@/shared/components/SectionError";
 import { useAdminOrders } from "@/shared/hooks/data/adminQueries/useOrder";
 import { STATUS_CONFIG } from "@/shared/utils/orders/statusConfig";
 import { formatPrice } from "@/shared/utils/store/price";
 
+import { RecentOrdersSkeleton } from "./RecentOrdersSkeleton";
+
 export function RecentOrders() {
-  const { data, isLoading } = useAdminOrders({ limit: 5, page: 1, sort: "desc" });
+  const { data, isLoading, isError, error } = useAdminOrders({
+    limit: 5,
+    page: 1,
+    sort: "desc",
+  });
+
+  if (isError) {
+    return (
+      <SectionError
+        title="Pedidos indisponíveis"
+        description={error ? error.message : "Não foi possível carregar os pedidos recentes."}
+      />
+    );
+  }
 
   if (isLoading) {
-    return (
-      <div className="bg-card rounded-xl border p-6">
-        <p className="text-muted-foreground text-sm">Carregando...</p>
-      </div>
-    );
+    return <RecentOrdersSkeleton />;
   }
 
   if (!data || data.orders.length === 0) {
