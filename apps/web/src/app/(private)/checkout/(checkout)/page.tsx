@@ -13,7 +13,7 @@ import { ShippingSelector } from "@/shared/components/Checkout/Shipping/Shipping
 import { showNotification } from "@/shared/components/showNotification";
 import type { AddressFormValues } from "@/shared/schemas/address";
 import { useCheckoutState } from "@/shared/states/checkout";
-import { authenticatedAction } from "@/shared/utils/api/authenticatedAction";
+
 
 const CheckoutPage = () => {
   const router = useRouter();
@@ -38,7 +38,7 @@ const CheckoutPage = () => {
     setIsSubmitting(true);
 
     if (saveAddress) {
-      const { data: result, error } = await authenticatedAction(createAddress, {
+      const { data: result, error } = await createAddress({
         receiverName: data.receiverName,
         label: data.label || undefined,
         cep: data.cep.replace(/\D/g, ""),

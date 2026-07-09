@@ -6,7 +6,7 @@ import { getOrderById } from "@/shared/actions/orders/getOrderById";
 import { Button } from "@/shared/components/shadcn-ui/button";
 import { Skeleton } from "@/shared/components/shadcn-ui/skeleton";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/shared/components/shadcn-ui/tooltip";
-import { authenticatedAction } from "@/shared/utils/api/authenticatedAction";
+
 
 import { ReviewModal } from "./ReviewModal";
 
@@ -24,7 +24,7 @@ export const OrderDetailContent = ({ orderId }: OrderDetailContentProps) => {
     setIsLoading(true);
     setError(false);
 
-    const { data, error: fetchError } = await authenticatedAction(getOrderById, orderId);
+    const { data, error: fetchError } = await getOrderById(orderId);
 
     setIsLoading(false);
 

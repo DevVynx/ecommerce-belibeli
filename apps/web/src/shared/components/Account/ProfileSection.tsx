@@ -1,11 +1,11 @@
 import { getProfile } from "@/shared/actions/user/getProfile";
 import { SectionError } from "@/shared/components/SectionError";
-import { authenticatedAction } from "@/shared/utils/api/authenticatedAction";
+
 
 import { ProfileSectionContent } from "./ProfileSectionContent";
 
 export const ProfileSection = async () => {
-  const { data, error } = await authenticatedAction(getProfile);
+  const { data, error } = await getProfile();
   console.log(error);
 
   if (error || !data) {

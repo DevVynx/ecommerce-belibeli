@@ -7,6 +7,7 @@ import type {
 import { useQuery } from "@tanstack/react-query";
 
 import { fetchClient } from "@/shared/utils/api/fetchClient";
+import { withAuthRefresh } from "@/shared/utils/api/withAuthRefresh";
 
 export function useAdminOrders(params: AdminGetOrdersRequest) {
   return useQuery({
@@ -20,10 +21,12 @@ export function useAdminOrders(params: AdminGetOrdersRequest) {
         if (params.sort !== undefined) queryParams.sort = params.sort;
       }
 
-      const { data, error } = await fetchClient<AdminListOrdersResponse>(`/admin/orders`, {
-        isPrivate: true,
-        params: queryParams,
-      });
+      const { data, error } = await withAuthRefresh(() =>
+        fetchClient<AdminListOrdersResponse>(`/admin/orders`, {
+          isPrivate: true,
+          params: queryParams,
+        })
+      );
 
       if (error) {
         throw new Error((error.message as string) || "Erro ao buscar pedidos");
@@ -45,10 +48,12 @@ export function useAdminCountActiveOrders(params: AdminActiveOrdersRequest) {
         if (params.range) queryParams.range = params.range;
       }
 
-      const { data, error } = await fetchClient<AdminActiveOrdersResponse>(`/admin/orders/active`, {
-        isPrivate: true,
-        params: queryParams,
-      });
+      const { data, error } = await withAuthRefresh(() =>
+        fetchClient<AdminActiveOrdersResponse>(`/admin/orders/active`, {
+          isPrivate: true,
+          params: queryParams,
+        })
+      );
 
       if (error) {
         throw new Error((error.message as string) || "Erro ao contar pedidos");

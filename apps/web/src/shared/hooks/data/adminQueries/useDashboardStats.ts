@@ -5,6 +5,7 @@ import type {
 import { useQuery } from "@tanstack/react-query";
 
 import { fetchClient } from "@/shared/utils/api/fetchClient";
+import { withAuthRefresh } from "@/shared/utils/api/withAuthRefresh";
 
 export function useAdminDashboardStats(params: AdminDashboardStatsRequest) {
   return useQuery({
@@ -16,12 +17,14 @@ export function useAdminDashboardStats(params: AdminDashboardStatsRequest) {
         if (params.range) queryParams.range = params.range;
       }
 
-      const { data, error } = await fetchClient<AdminDashboardStatsResponse>(
-        `/admin/dashboard/stats`,
-        {
-          isPrivate: true,
-          params,
-        }
+      const { data, error } = await withAuthRefresh(() =>
+        fetchClient<AdminDashboardStatsResponse>(
+          `/admin/dashboard/stats`,
+          {
+            isPrivate: true,
+            params,
+          }
+        )
       );
 
       if (error) {

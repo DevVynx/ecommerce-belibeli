@@ -5,7 +5,7 @@ import { getCart } from "@/shared/actions/cart/getCart";
 import { syncCart } from "@/shared/actions/cart/syncCart";
 import { useAuthState } from "@/shared/states/auth";
 import { useCartState } from "@/shared/states/cart";
-import { authenticatedAction } from "@/shared/utils/api/authenticatedAction";
+
 
 export const CartProvider = () => {
   const { hydrate } = useCartState();
@@ -26,7 +26,7 @@ export const CartProvider = () => {
             quantity: item.quantity,
           }));
 
-        const { data } = await authenticatedAction(syncCart, { items: unsyncedItems });
+        const { data } = await syncCart({ items: unsyncedItems });
         if (!data?.cart) {
           hydrate({ items: [], summary: { count: 0, discount: 0, subtotal: 0, total: 0 } });
           return;
@@ -35,7 +35,7 @@ export const CartProvider = () => {
         hydrate({ items: data.cart.items, summary: data.cart.summary });
       }
 
-      const { data } = await authenticatedAction(getCart);
+      const { data } = await getCart();
       if (!data?.cart) {
         hydrate({ items: [], summary: { count: 0, discount: 0, subtotal: 0, total: 0 } });
         return;

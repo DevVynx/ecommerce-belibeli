@@ -9,7 +9,7 @@ import { Spinner } from "@/shared/components/shadcn-ui/spinner";
 import { showNotification } from "@/shared/components/showNotification";
 import { useAuthState } from "@/shared/states/auth";
 import { useCartState } from "@/shared/states/cart";
-import { authenticatedAction } from "@/shared/utils/api/authenticatedAction";
+
 import { formatDiscount } from "@/shared/utils/store/price";
 
 type CouponApplierProps = {
@@ -36,7 +36,7 @@ export const CouponApplier = ({ subtotal: _subtotal }: CouponApplierProps) => {
 
     setIsApplying(true);
 
-    const { data, error } = await authenticatedAction(validateCoupon, { code });
+    const { data, error } = await validateCoupon({ code });
 
     if (error || !data) {
       setError(error?.message as string);

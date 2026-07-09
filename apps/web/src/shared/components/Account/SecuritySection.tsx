@@ -24,7 +24,7 @@ import {
   type ChangePasswordFormValues,
   changePasswordSchema,
 } from "@/shared/schemas/changePassword";
-import { authenticatedAction } from "@/shared/utils/api/authenticatedAction";
+
 import { clearAllStorages } from "@/shared/utils/store/state/clearAllStorages";
 
 import { showNotification } from "../showNotification";
@@ -46,7 +46,7 @@ export const SecuritySection = () => {
 
   const handleChangePassword = async (data: ChangePasswordFormValues) => {
     setIsSavingPassword(true);
-    const { error } = await authenticatedAction(changePassword, {
+    const { error } = await changePassword({
       currentPassword: data.currentPassword,
       newPassword: data.newPassword,
     });
@@ -72,7 +72,7 @@ export const SecuritySection = () => {
 
   const handleDeleteAccount = async () => {
     setIsDeleting(true);
-    const { error } = await authenticatedAction(deleteAccount);
+    const { error } = await deleteAccount();
     setIsDeleting(false);
     if (error) {
       showNotification({

@@ -5,6 +5,7 @@ import type {
 import { useQuery } from "@tanstack/react-query";
 
 import { fetchClient } from "@/shared/utils/api/fetchClient";
+import { withAuthRefresh } from "@/shared/utils/api/withAuthRefresh";
 
 export function useAdminDashboardTimeline(params: AdminDashboardTimelineRequest) {
   return useQuery({
@@ -16,12 +17,14 @@ export function useAdminDashboardTimeline(params: AdminDashboardTimelineRequest)
         if (params.range) queryParams.range = params.range;
       }
 
-      const { data, error } = await fetchClient<AdminDashboardTimelineResponse>(
-        `/admin/dashboard/timeline`,
-        {
-          isPrivate: true,
-          params: queryParams,
-        }
+      const { data, error } = await withAuthRefresh(() =>
+        fetchClient<AdminDashboardTimelineResponse>(
+          `/admin/dashboard/timeline`,
+          {
+            isPrivate: true,
+            params: queryParams,
+          }
+        )
       );
 
       if (error) {

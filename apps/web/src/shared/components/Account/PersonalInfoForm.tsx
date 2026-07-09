@@ -9,7 +9,7 @@ import { Button } from "@/shared/components/shadcn-ui/button";
 import { Field, FieldContent, FieldLabel } from "@/shared/components/shadcn-ui/field";
 import { Input } from "@/shared/components/shadcn-ui/input";
 import { useAuthState } from "@/shared/states/auth";
-import { authenticatedAction } from "@/shared/utils/api/authenticatedAction";
+
 
 import { updateProfile } from "../../actions/user/updateProfile";
 import { showNotification } from "../showNotification";
@@ -38,7 +38,7 @@ export const PersonalInfoForm = ({ user }: PersonalInfoFormProps) => {
     e.preventDefault();
     setIsSaving(true);
     const values = form.getValues();
-    const { data, error } = await authenticatedAction(updateProfile, values);
+    const { data, error } = await updateProfile(values);
     if (data) {
       setUser(data.user);
       showNotification({

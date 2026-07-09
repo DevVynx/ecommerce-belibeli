@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import { quoteShipping } from "@/shared/actions/shipping/quoteShipping";
 import { Skeleton } from "@/shared/components/shadcn-ui/skeleton";
-import { authenticatedAction } from "@/shared/utils/api/authenticatedAction";
+
 
 import { ShippingError } from "./ShippingError";
 import { ShippingOptions } from "./ShippingOptions";
@@ -34,7 +34,7 @@ export const ShippingSelector = ({
       setIsLoading(true);
       setError(null);
 
-      const { data, error } = await authenticatedAction(quoteShipping, destinyCep);
+      const { data, error } = await quoteShipping(destinyCep);
 
       if (error) {
         setError(typeof error.message === "string" ? error.message : "Erro ao calcular frete.");

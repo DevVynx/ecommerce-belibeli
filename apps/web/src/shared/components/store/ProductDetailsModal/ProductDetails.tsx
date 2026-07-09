@@ -17,7 +17,7 @@ import { StockBadge } from "@/shared/components/Store/StockBadge";
 import { useCartMutations } from "@/shared/hooks/data/useCartMutations";
 import { useProductVariantSelection } from "@/shared/hooks/data/useProductVariantSelection";
 import { useWishlistState } from "@/shared/states/wishlist";
-import { authenticatedAction } from "@/shared/utils/api/authenticatedAction";
+
 import { buildSelectedOptionsForCart } from "@/shared/utils/store/buildSelectedOptions";
 import { formatPrice } from "@/shared/utils/store/price";
 
@@ -116,7 +116,7 @@ export const ProductDetails = ({
   const handleToggleWishlist = async () => {
     if (isWishlisted) {
       optimisticRemoveFromWishlist(id);
-      const { error } = await authenticatedAction(removeFromWishlist, { productId: id });
+      const { error } = await removeFromWishlist({ productId: id });
       if (error) optimisticRollbackWishlist();
     } else {
       const wishlistItem: WishlistItemDto = {
@@ -132,7 +132,7 @@ export const ProductDetails = ({
       };
 
       optimisticAddToWishlist(wishlistItem);
-      const { error } = await authenticatedAction(addToWishlist, { productId: id });
+      const { error } = await addToWishlist({ productId: id });
       if (error) optimisticRollbackWishlist();
     }
 

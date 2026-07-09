@@ -6,6 +6,7 @@ import type {
 import { useQuery } from "@tanstack/react-query";
 
 import { fetchClient } from "@/shared/utils/api/fetchClient";
+import { withAuthRefresh } from "@/shared/utils/api/withAuthRefresh";
 
 export function useAdminSearchProducts(params: AdminSearchProductsRequest) {
   return useQuery({
@@ -24,9 +25,11 @@ export function useAdminSearchProducts(params: AdminSearchProductsRequest) {
         if (params.limit) queryParams.limit = params.limit;
       }
 
-      const { data, error } = await fetchClient<AdminSearchProductsResponse>(
-        "/admin/products/search",
-        { isPrivate: true, params: queryParams }
+      const { data, error } = await withAuthRefresh(() =>
+        fetchClient<AdminSearchProductsResponse>(
+          "/admin/products/search",
+          { isPrivate: true, params: queryParams }
+        )
       );
 
       if (error) {
@@ -43,11 +46,10 @@ export function useAdminLowStockProducts() {
   return useQuery({
     queryKey: ["admin", "dashboard", "products"],
     queryFn: async () => {
-      const { data, error } = await fetchClient<AdminCountLowStockVariantsResponse>(
-        `/admin/products/lowStock`,
-        {
+      const { data, error } = await withAuthRefresh(() =>
+        fetchClient<AdminCountLowStockVariantsResponse>(`/admin/products/lowStock`, {
           isPrivate: true,
-        }
+        })
       );
 
       if (error) {

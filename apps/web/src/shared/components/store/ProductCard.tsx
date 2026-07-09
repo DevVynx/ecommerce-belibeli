@@ -8,7 +8,7 @@ import { addToWishlist } from "@/shared/actions/wishlist/addToWishlist";
 import { removeFromWishlist } from "@/shared/actions/wishlist/removeFromWishlist";
 import { ProductDetailsDialog } from "@/shared/components/Store/ProductDetailsModal/ProductDetailsDialog";
 import { useWishlistState } from "@/shared/states/wishlist";
-import { authenticatedAction } from "@/shared/utils/api/authenticatedAction";
+
 import { calculateDiscountPercent, formatPrice } from "@/shared/utils/store/price";
 
 type ProductCardProps = {
@@ -30,7 +30,7 @@ export const ProductCard = ({ product, grid }: ProductCardProps) => {
   const handleToggleWishlist = async () => {
     if (isWishlisted) {
       remove(product.id);
-      const { error } = await authenticatedAction(removeFromWishlist, { productId: product.id });
+      const { error } = await removeFromWishlist({ productId: product.id });
       if (error) {
         rollback();
       }
@@ -50,7 +50,7 @@ export const ProductCard = ({ product, grid }: ProductCardProps) => {
     };
 
     addItem(wishlistItem);
-    const { error } = await authenticatedAction(addToWishlist, { productId: product.id });
+    const { error } = await addToWishlist({ productId: product.id });
     if (error) {
       rollback();
     }

@@ -7,7 +7,7 @@ import { removeItemFromCart } from "@/shared/actions/cart/removeItem";
 import { updateCartItemQuantity } from "@/shared/actions/cart/updateItem";
 import { useAuthState } from "@/shared/states/auth";
 import { useCartState } from "@/shared/states/cart";
-import { authenticatedAction } from "@/shared/utils/api/authenticatedAction";
+
 
 export type AddItemParams = {
   productVariantId: string;
@@ -75,7 +75,7 @@ export function useCartMutations() {
 
         if (!isAuthenticated) return { error: null };
 
-        const { data, error } = await authenticatedAction(addItemToCart, {
+        const { data, error } = await addItemToCart({
           productVariantId: params.productVariantId,
           quantity: adjustedQty,
         });
@@ -112,7 +112,7 @@ export function useCartMutations() {
 
         if (!isAuthenticated) return { error: null };
 
-        const { data, error } = await authenticatedAction(updateCartItemQuantity, {
+        const { data, error } = await updateCartItemQuantity({
           cartItemId,
           quantity,
         });
@@ -145,7 +145,7 @@ export function useCartMutations() {
 
         if (!isAuthenticated) return { error: null };
 
-        const { error } = await authenticatedAction(removeItemFromCart, { cartItemId });
+        const { error } = await removeItemFromCart({ cartItemId });
         if (error) rollback();
       } finally {
         setLoadingCount((c) => c - 1);

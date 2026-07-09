@@ -9,7 +9,7 @@ import { showNotification } from "@/shared/components/showNotification";
 import { useProductVariantContext } from "@/shared/context/ProductVariantContext";
 import { useCartMutations } from "@/shared/hooks/data/useCartMutations";
 import { useWishlistState } from "@/shared/states/wishlist";
-import { authenticatedAction } from "@/shared/utils/api/authenticatedAction";
+
 import { buildSelectedOptionsForCart } from "@/shared/utils/store/buildSelectedOptions";
 
 export const ProductActions = () => {
@@ -79,7 +79,7 @@ export const ProductActions = () => {
   const handleToggleWishlist = async () => {
     if (isWishlisted) {
       optimisticRemoveFromWishlist(product.id);
-      const { error } = await authenticatedAction(removeFromWishlist, {
+      const { error } = await removeFromWishlist({
         productId: product.id,
       });
       if (error) optimisticRollbackWishlist();
@@ -95,7 +95,7 @@ export const ProductActions = () => {
           display: { ...product.display },
         },
       });
-      const { error } = await authenticatedAction(addToWishlist, {
+      const { error } = await addToWishlist({
         productId: product.id,
       });
       if (error) optimisticRollbackWishlist();

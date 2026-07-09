@@ -10,7 +10,7 @@ import { WishlistEmpty } from "@/shared/components/Wishlist/WishlistEmpty";
 import { WishlistSkeleton } from "@/shared/components/Wishlist/WishlistSkeleton";
 import { useAnimatedIcon } from "@/shared/hooks/ui/useAnimatedIcon";
 import { useWishlistState } from "@/shared/states/wishlist";
-import { authenticatedAction } from "@/shared/utils/api/authenticatedAction";
+
 
 const WishlistPage = () => {
   const { items, hasHydrated, remove, rollback } = useWishlistState();
@@ -19,7 +19,7 @@ const WishlistPage = () => {
   const handleRemove = async (productId: string) => {
     remove(productId);
 
-    const { error } = await authenticatedAction(removeFromWishlist, { productId });
+    const { error } = await removeFromWishlist({ productId });
     if (error) rollback();
   };
 

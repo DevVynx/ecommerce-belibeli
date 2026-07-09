@@ -7,7 +7,7 @@ import { CartItemQuantity } from "@/shared/components/Cart/CartItemQuantity";
 import { Button } from "@/shared/components/shadcn-ui/button";
 import { useCartMutations } from "@/shared/hooks/data/useCartMutations";
 import { useWishlistState } from "@/shared/states/wishlist";
-import { authenticatedAction } from "@/shared/utils/api/authenticatedAction";
+
 import { calculateDiscountPercent, formatPrice } from "@/shared/utils/store/price";
 
 type CartItemCardProps = {
@@ -49,7 +49,7 @@ export const CartItemCard = ({ item }: CartItemCardProps) => {
 
     addItem(wishlistItem);
 
-    const { error } = await authenticatedAction(addToWishlist, { productId: item.product.id });
+    const { error } = await addToWishlist({ productId: item.product.id });
     if (error) {
       rollback();
       return;

@@ -7,7 +7,7 @@ import { Input } from "@/shared/components/shadcn-ui/input";
 import { Separator } from "@/shared/components/shadcn-ui/separator";
 import { Spinner } from "@/shared/components/shadcn-ui/spinner";
 import { cepSchema } from "@/shared/schemas/cep";
-import { authenticatedAction } from "@/shared/utils/api/authenticatedAction";
+
 import { formatCep } from "@/shared/utils/store/checkout/formatCep";
 import { formatPrice } from "@/shared/utils/store/price";
 
@@ -35,7 +35,7 @@ export const CartShippingCalculator = () => {
     setIsCalculating(true);
     setResult(null);
 
-    const { data, error } = await authenticatedAction(quoteShipping, cep.replace(/\D/g, ""));
+    const { data, error } = await quoteShipping(cep.replace(/\D/g, ""));
 
     if (error) {
       setCepError("Erro ao calcular frete. Tente novamente.");

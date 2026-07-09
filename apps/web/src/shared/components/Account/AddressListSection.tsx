@@ -17,7 +17,7 @@ import {
 } from "@/shared/components/shadcn-ui/dialog";
 import { Skeleton } from "@/shared/components/shadcn-ui/skeleton";
 import type { AddressFormValues } from "@/shared/schemas/address";
-import { authenticatedAction } from "@/shared/utils/api/authenticatedAction";
+
 import { formatCep } from "@/shared/utils/store/checkout/formatCep";
 
 import { showNotification } from "../showNotification";
@@ -33,7 +33,7 @@ export const AddressListSection = () => {
   useEffect(() => {
     const fetch = async () => {
       setIsLoading(true);
-      const { data } = await authenticatedAction(listAddresses);
+      const { data } = await listAddresses();
       if (data) setAddresses(data.addresses);
       setIsLoading(false);
     };
@@ -41,7 +41,7 @@ export const AddressListSection = () => {
   }, []);
 
   const handleDelete = async (id: string) => {
-    const { error } = await authenticatedAction(deleteAddress, id);
+    const { error } = await deleteAddress(id);
     if (!error) {
       setAddresses((prev) => prev.filter((a) => a.id !== id));
       showNotification({
@@ -59,7 +59,7 @@ export const AddressListSection = () => {
   };
 
   const handleAdd = async (data: AddressFormValues) => {
-    const { data: result, error } = await authenticatedAction(createAddress, {
+    const { data: result, error } = await createAddress({
       receiverName: data.receiverName,
       label: data.label || undefined,
       cep: data.cep.replace(/\D/g, ""),
@@ -91,7 +91,7 @@ export const AddressListSection = () => {
   };
 
   const handleEdit = async (id: string, data: AddressFormValues) => {
-    const { data: result, error } = await authenticatedAction(updateAddress, id, {
+    const { data: result, error } = await updateAddress(id, {
       receiverName: data.receiverName,
       label: data.label || undefined,
       cep: data.cep.replace(/\D/g, ""),
@@ -120,7 +120,7 @@ export const AddressListSection = () => {
   };
 
   const handleSetDefault = async (id: string) => {
-    const { data: result, error } = await authenticatedAction(setDefault, id);
+    const { data: result, error } = await setDefault(id);
     if (result) {
       setAddresses((prev) =>
         prev.map((a) => ({

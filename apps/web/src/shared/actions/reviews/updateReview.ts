@@ -3,6 +3,7 @@
 import type { UpdateReviewResponse } from "@repo/types/contracts";
 
 import { fetchClient } from "@/shared/utils/api/fetchClient";
+import { withAuthRefresh } from "@/shared/utils/api/withAuthRefresh";
 
 type UpdateReviewParams = {
   rating?: number;
@@ -10,13 +11,15 @@ type UpdateReviewParams = {
 };
 
 export async function updateReview(productId: string, params: UpdateReviewParams) {
-  const { data, error } = await fetchClient<UpdateReviewResponse>(
-    `/products/${productId}/reviews`,
-    {
-      isPrivate: true,
-      method: "PATCH",
-      body: params,
-    }
+  const { data, error } = await withAuthRefresh(() =>
+    fetchClient<UpdateReviewResponse>(
+      `/products/${productId}/reviews`,
+      {
+        isPrivate: true,
+        method: "PATCH",
+        body: params,
+      }
+    )
   );
 
   if (error) return { data: null, error };

@@ -7,7 +7,7 @@ import { listAddresses } from "@/shared/actions/user/listAddresses";
 import { AddressCard } from "@/shared/components/Checkout/Address/AddressCard";
 import { Button } from "@/shared/components/shadcn-ui/button";
 import { Skeleton } from "@/shared/components/shadcn-ui/skeleton";
-import { authenticatedAction } from "@/shared/utils/api/authenticatedAction";
+
 
 type AddressListProps = {
   selectedAddressId: string | null;
@@ -32,7 +32,7 @@ export const AddressList = ({
   useEffect(() => {
     const fetchAddresses = async () => {
       setIsLoading(true);
-      const { data, error } = await authenticatedAction(listAddresses);
+      const { data, error } = await listAddresses();
 
       if (error) {
         setError(typeof error.message === "string" ? error.message : "Erro ao carregar endereços.");

@@ -6,15 +6,18 @@ import type {
 } from "@repo/types/contracts";
 
 import { fetchClient } from "@/shared/utils/api/fetchClient";
+import { withAuthRefresh } from "@/shared/utils/api/withAuthRefresh";
 
 export async function updateCartItemQuantity(params: UpdateCartItemQuantityRequest) {
-  const { data, error } = await fetchClient<UpdateCartItemQuantityResponse>(
-    `/cart/items/${params.cartItemId}/quantity`,
-    {
-      isPrivate: true,
-      method: "PATCH",
-      body: params,
-    }
+  const { data, error } = await withAuthRefresh(() =>
+    fetchClient<UpdateCartItemQuantityResponse>(
+      `/cart/items/${params.cartItemId}/quantity`,
+      {
+        isPrivate: true,
+        method: "PATCH",
+        body: params,
+      }
+    )
   );
 
   if (error) return { data: null, error };

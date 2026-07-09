@@ -6,14 +6,17 @@ import type {
 } from "@repo/types/contracts";
 
 import { fetchClient } from "@/shared/utils/api/fetchClient";
+import { withAuthRefresh } from "@/shared/utils/api/withAuthRefresh";
 
 export async function removeFromWishlist(params: RemoveItemFromWishlistRequest) {
-  const { data, error } = await fetchClient<RemoveWishlistItemResponse>(
-    `/wishlist/items/${params.productId}`,
-    {
-      isPrivate: true,
-      method: "DELETE",
-    }
+  const { data, error } = await withAuthRefresh(() =>
+    fetchClient<RemoveWishlistItemResponse>(
+      `/wishlist/items/${params.productId}`,
+      {
+        isPrivate: true,
+        method: "DELETE",
+      }
+    )
   );
 
   if (error) return { data: null, error };

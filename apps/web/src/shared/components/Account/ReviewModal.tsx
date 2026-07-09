@@ -16,7 +16,7 @@ import { Rating, RatingItem } from "@/shared/components/shadcn-ui/rating";
 import { Textarea } from "@/shared/components/shadcn-ui/textarea";
 import { showNotification } from "@/shared/components/showNotification";
 import type { ApiErrorResponse } from "@/shared/types/api/error";
-import { authenticatedAction } from "@/shared/utils/api/authenticatedAction";
+
 
 const MAX_CHARS = 500;
 
@@ -55,7 +55,7 @@ export const ReviewModal = ({ item, open, onClose, onReviewChanged }: ReviewModa
     if (rating < 1) return;
     setSubmitting(true);
 
-    const { error } = await authenticatedAction(createReview, item.productId, { rating, comment });
+    const { error } = await createReview(item.productId, { rating, comment });
 
     setSubmitting(false);
 
@@ -77,7 +77,7 @@ export const ReviewModal = ({ item, open, onClose, onReviewChanged }: ReviewModa
     if (rating < 1) return;
     setSubmitting(true);
 
-    const { error } = await authenticatedAction(updateReview, item.productId, { rating, comment });
+    const { error } = await updateReview(item.productId, { rating, comment });
 
     setSubmitting(false);
 
@@ -94,7 +94,7 @@ export const ReviewModal = ({ item, open, onClose, onReviewChanged }: ReviewModa
   const handleDelete = useCallback(async () => {
     setSubmitting(true);
 
-    const { error } = await authenticatedAction(deleteReview, item.productId);
+    const { error } = await deleteReview(item.productId);
 
     setSubmitting(false);
 
