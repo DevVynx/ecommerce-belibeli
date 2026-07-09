@@ -10,14 +10,11 @@ import { withAuthRefresh } from "@/shared/utils/api/withAuthRefresh";
 
 export async function updateCartItemQuantity(params: UpdateCartItemQuantityRequest) {
   const { data, error } = await withAuthRefresh(() =>
-    fetchClient<UpdateCartItemQuantityResponse>(
-      `/cart/items/${params.cartItemId}/quantity`,
-      {
-        isPrivate: true,
-        method: "PATCH",
-        body: params,
-      }
-    )
+    fetchClient<UpdateCartItemQuantityResponse>(`/cart/items/${params.cartItemId}/quantity`, {
+      isPrivate: true,
+      method: "PATCH",
+      body: params,
+    })
   );
 
   if (error) return { data: null, error };

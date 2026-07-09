@@ -12,14 +12,11 @@ type CreateReviewParams = {
 
 export async function createReview(productId: string, params: CreateReviewParams) {
   const { data, error } = await withAuthRefresh(() =>
-    fetchClient<CreateReviewResponse>(
-      `/products/${productId}/reviews`,
-      {
-        isPrivate: true,
-        method: "POST",
-        body: params,
-      }
-    )
+    fetchClient<CreateReviewResponse>(`/products/${productId}/reviews`, {
+      isPrivate: true,
+      method: "POST",
+      body: params,
+    })
   );
 
   if (error) return { data: null, error };

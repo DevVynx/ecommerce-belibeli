@@ -10,13 +10,10 @@ import { withAuthRefresh } from "@/shared/utils/api/withAuthRefresh";
 
 export async function removeFromWishlist(params: RemoveItemFromWishlistRequest) {
   const { data, error } = await withAuthRefresh(() =>
-    fetchClient<RemoveWishlistItemResponse>(
-      `/wishlist/items/${params.productId}`,
-      {
-        isPrivate: true,
-        method: "DELETE",
-      }
-    )
+    fetchClient<RemoveWishlistItemResponse>(`/wishlist/items/${params.productId}`, {
+      isPrivate: true,
+      method: "DELETE",
+    })
   );
 
   if (error) return { data: null, error };

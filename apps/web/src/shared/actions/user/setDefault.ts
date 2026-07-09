@@ -7,13 +7,10 @@ import { withAuthRefresh } from "@/shared/utils/api/withAuthRefresh";
 
 export async function setDefault(addressId: string) {
   const { data, error } = await withAuthRefresh(() =>
-    fetchClient<SetDefaultAddressResponse>(
-      `/users/addresses/${addressId}/default`,
-      {
-        isPrivate: true,
-        method: "PUT",
-      }
-    )
+    fetchClient<SetDefaultAddressResponse>(`/users/addresses/${addressId}/default`, {
+      isPrivate: true,
+      method: "PUT",
+    })
   );
 
   if (error) return { data: null, error };

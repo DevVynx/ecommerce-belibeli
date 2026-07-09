@@ -7,14 +7,11 @@ import { withAuthRefresh } from "@/shared/utils/api/withAuthRefresh";
 
 export async function updateAddress(addressId: string, input: Partial<AddressInput>) {
   const { data, error } = await withAuthRefresh(() =>
-    fetchClient<UpdateAddressResponse>(
-      `/users/addresses/${addressId}`,
-      {
-        isPrivate: true,
-        method: "PUT",
-        body: input,
-      }
-    )
+    fetchClient<UpdateAddressResponse>(`/users/addresses/${addressId}`, {
+      isPrivate: true,
+      method: "PUT",
+      body: input,
+    })
   );
 
   if (error) return { data: null, error };

@@ -12,14 +12,11 @@ type UpdateReviewParams = {
 
 export async function updateReview(productId: string, params: UpdateReviewParams) {
   const { data, error } = await withAuthRefresh(() =>
-    fetchClient<UpdateReviewResponse>(
-      `/products/${productId}/reviews`,
-      {
-        isPrivate: true,
-        method: "PATCH",
-        body: params,
-      }
-    )
+    fetchClient<UpdateReviewResponse>(`/products/${productId}/reviews`, {
+      isPrivate: true,
+      method: "PATCH",
+      body: params,
+    })
   );
 
   if (error) return { data: null, error };
