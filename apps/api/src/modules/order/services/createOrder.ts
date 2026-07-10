@@ -1,5 +1,7 @@
 import { stripe } from "@/infra/payment/stripe";
 import { cartServices } from "@/modules/cart/services";
+import { couponServices } from "@/modules/coupon/services";
+import { db } from "@/shared/lib/db";
 import { orderRepositories } from "@/modules/order/repositories";
 import type { CreateOrderParams } from "@/modules/order/types/ServiceParams";
 import { shippingServices } from "@/modules/shipping/services";
@@ -15,6 +17,7 @@ export const createOrder = async ({
   shippingAddress,
   paymentMethod,
   shippingService,
+  couponCode,
 }: CreateOrderParams) => {
   const { cart } = await cartServices.findCartByUserId({ userId });
 
@@ -55,8 +58,25 @@ export const createOrder = async ({
 
   const subtotal = new Prisma.Decimal(cart.summary.subtotal);
   const shipping = new Prisma.Decimal(selectedShipping.price);
-  const discount = new Prisma.Decimal(cart.summary.discount);
-  const total = Prisma.Decimal.sub(Prisma.Decimal.add(subtotal, shipping), discount);
+  const productDiscount = new Prisma.Decimal(cart.summary.discount);
+
+  let couponDiscount = new Prisma.Decimal(0);
+  let couponId: string | undefined;
+
+  if (couponCode) {
+    const validated = await couponServices.validateCoupon({ userId, code: couponCode });
+
+    couponId = validated.coupon.id;
+
+    if (validated.coupon.type === "FREE_SHIPPING") {
+      couponDiscount = shipping;
+    } else {
+      couponDiscount = validated.discountValue;
+    }
+  }
+
+  const totalDiscount = productDiscount.plus(couponDiscount);
+  const total = Prisma.Decimal.sub(Prisma.Decimal.add(subtotal, shipping), totalDiscount);
   const totalCents = Math.round(Number(total) * 100);
 
   const addressJson = {
@@ -76,11 +96,18 @@ export const createOrder = async ({
       total,
       subtotal,
       shipping,
-      discount,
+      discount: totalDiscount,
       paymentMethod,
       shippingAddress: addressJson,
     },
-    items
+    items,
+    couponId
+      ? {
+          userId,
+          couponId,
+          discountValue: couponDiscount,
+        }
+      : undefined
   );
 
   const { user } = await userServices.getProfile({ userId });
@@ -112,7 +139,13 @@ export const createOrder = async ({
 
     return { order, paymentUrl: paymentSession.url! };
   } catch (error) {
-    await orderRepositories.updateOrderStatus({ orderId: order.id, status: "CANCELED" });
+    await db.$transaction(async (tx) => {
+      await tx.couponUsage.deleteMany({ where: { orderId: order.id } });
+      await tx.order.update({
+        where: { id: order.id },
+        data: { status: "CANCELED" },
+      });
+    });
 
     throw error;
   }

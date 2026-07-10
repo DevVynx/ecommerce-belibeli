@@ -12,6 +12,7 @@ export type CreateOrderRequest = {
   };
   shippingService: string;
   paymentMethod: "card" | "pix";
+  couponCode?: string;
 };
 
 export type AdminActiveOrdersRequest = {

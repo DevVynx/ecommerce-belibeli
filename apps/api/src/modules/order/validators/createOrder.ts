@@ -35,6 +35,7 @@ const body = z
           .max(2, "Estado inválido."),
       })
       .optional(),
+    couponCode: z.string().max(15).optional(),
     shippingService: z.string().min(1, "Selecione o frete."),
     paymentMethod: z.enum(["card", "pix"]),
   })
