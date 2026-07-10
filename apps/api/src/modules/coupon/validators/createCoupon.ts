@@ -1,6 +1,7 @@
 import z from "zod";
 
 import { validation } from "@/shared/middlewares/validation";
+import { dateString } from "@/shared/utils/validators";
 
 const body = z.object({
   code: z
@@ -9,12 +10,12 @@ const body = z.object({
     .max(15, "Código muito longo.")
     .transform((s) => s.toUpperCase()),
   type: z.enum(["PERCENTAGE", "FIXED", "FREE_SHIPPING"], { message: "Tipo de cupom inválido." }),
-  description: z.string().optional(),
+  description: z.string().max(50, "Descrição deve ter menos de 50 caracteres.").optional(),
   value: z.number().int().min(0, "Valor não pode ser negativo.").optional().default(0),
   maxDiscount: z.number().positive("Valor máximo deve ser positivo.").optional(),
   minOrderValue: z.number().positive("Valor mínimo deve ser positivo.").optional().default(1),
-  startsAt: z.iso.datetime("Data de início inválida."),
-  endsAt: z.iso.datetime("Data de fim inválida."),
+  startsAt: dateString(),
+  endsAt: dateString(),
   usageLimit: z.number().int().positive("Limite deve ser positivo."),
   usageLimitPerUser: z
     .number()

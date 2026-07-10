@@ -25,3 +25,28 @@ export type CreateCouponResponse = {
     isActive: boolean;
   };
 };
+
+export type AdminCouponDto = {
+  id: string;
+  code: string;
+  description: string;
+  type: CouponType;
+  value: number;
+  maxDiscount: number | null;
+  minOrderValue: number;
+  startsAt: string;
+  endsAt: string;
+  usageLimit: number;
+  usageCount: number;
+  usageLimitPerUser: number;
+  isActive: boolean;
+};
+
+export type AdminSearchCouponsResponse = {
+  coupons: AdminCouponDto[];
+  pagination: { total: number; page: number; totalPages: number };
+};
+
+export type UpdateCouponResponse = CreateCouponResponse;
+
+export type DeleteCouponResponse = Record<string, never>;
