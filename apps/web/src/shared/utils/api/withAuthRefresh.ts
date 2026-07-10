@@ -1,3 +1,5 @@
+import { redirect } from "next/navigation";
+
 import { getRefreshToken, setAuthCookies } from "@/shared/actions/auth/cookieActions";
 import { useAuthMutex } from "@/shared/states/auth";
 import { ENV } from "@/shared/utils/env";
@@ -11,7 +13,6 @@ async function refreshAndLogout() {
   if (typeof window !== "undefined") {
     window.location.href = "/login";
   } else {
-    const { redirect } = await import("next/navigation");
     redirect("/login");
   }
 }
