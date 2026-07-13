@@ -5,6 +5,7 @@ import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { useCallback, useState } from "react";
 
+import { Pagination } from "@/shared/components/Pagination";
 import { Badge } from "@/shared/components/shadcn-ui/badge";
 import {
   Table,
@@ -178,17 +179,14 @@ function ProductRow({
   );
 }
 
-export function ProductTable({
-  data,
-  page,
-  onPageChange,
-}: {
+type ProductTableProps = {
   data: AdminSearchProductsResponse;
   page: number;
   onPageChange: (page: number) => void;
-}) {
+};
+
+export function ProductTable({ data, page, onPageChange }: ProductTableProps) {
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
-  const [editingEllipsis, setEditingEllipsis] = useState<string | null>(null);
   const totalPages = data.pagination.totalPages;
 
   const toggleExpanded = useCallback((id: string) => {
@@ -240,81 +238,7 @@ export function ProductTable({
         </Table>
       </div>
 
-      {totalPages > 1 && (
-        <div className="mt-4 flex items-center justify-center gap-2">
-          <button
-            onClick={() => onPageChange(page - 1)}
-            disabled={page <= 1}
-            className="border-input bg-background hover:bg-accent hover:text-accent-foreground inline-flex h-9 cursor-pointer items-center justify-center rounded-lg border px-3 text-sm font-medium disabled:pointer-events-none disabled:opacity-50"
-          >
-            Anterior
-          </button>
-
-          {Array.from({ length: totalPages }, (_, i) => i + 1)
-            .filter((p) => p === 1 || p === totalPages || Math.abs(p - page) <= 2)
-            .map((p, idx, arr) => {
-              const items: React.ReactNode[] = [];
-              if (idx > 0 && p - arr[idx - 1]! > 1) {
-                const ellipsisKey = `ellipsis-${p}`;
-                const isEditing = editingEllipsis === ellipsisKey;
-                items.push(
-                  isEditing ? (
-                    <input
-                      key={ellipsisKey}
-                      type="number"
-                      placeholder="..."
-                      min={1}
-                      max={totalPages}
-                      autoFocus
-                      className="border-input bg-background inline-flex h-9 w-12 [appearance:textfield] items-center justify-center rounded-lg border text-center text-sm [&::-webkit-inner-spin-button]:appearance-none"
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                          const val = Number((e.target as HTMLInputElement).value);
-                          if (val >= 1 && val <= totalPages) onPageChange(val);
-                          setEditingEllipsis(null);
-                        }
-                        if (e.key === "Escape") {
-                          setEditingEllipsis(null);
-                        }
-                      }}
-                      onBlur={() => setEditingEllipsis(null)}
-                    />
-                  ) : (
-                    <button
-                      key={ellipsisKey}
-                      onClick={() => setEditingEllipsis(ellipsisKey)}
-                      className="text-muted-foreground hover:text-foreground inline-flex h-9 w-9 items-center justify-center rounded-lg text-sm transition-colors"
-                    >
-                      ...
-                    </button>
-                  )
-                );
-              }
-              items.push(
-                <button
-                  key={p}
-                  onClick={() => onPageChange(p)}
-                  className={`inline-flex h-9 w-9 items-center justify-center rounded-lg text-sm font-medium ${
-                    p === page
-                      ? "bg-primary text-primary-foreground"
-                      : "hover:bg-accent hover:text-accent-foreground"
-                  }`}
-                >
-                  {p}
-                </button>
-              );
-              return items;
-            })}
-
-          <button
-            onClick={() => onPageChange(page + 1)}
-            disabled={page >= totalPages}
-            className="border-input bg-background hover:bg-accent hover:text-accent-foreground inline-flex h-9 cursor-pointer items-center justify-center rounded-lg border px-3 text-sm font-medium disabled:pointer-events-none disabled:opacity-50"
-          >
-            Próximo
-          </button>
-        </div>
-      )}
+      <Pagination page={page} totalPages={totalPages} onPageChange={onPageChange} />
     </div>
   );
 }

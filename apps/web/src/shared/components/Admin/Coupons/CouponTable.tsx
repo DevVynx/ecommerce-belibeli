@@ -1,10 +1,20 @@
 "use client";
 
 import type { AdminCouponDto, AdminSearchCouponsResponse } from "@repo/types/contracts";
-import { Loader2, MoreHorizontal, Trash2 } from "lucide-react";
+import {
+  CalendarCheck,
+  CalendarX,
+  CheckCircle2,
+  EyeOff,
+  Loader2,
+  MoreHorizontal,
+  Pencil,
+  Trash2,
+} from "lucide-react";
 import { useState } from "react";
 
 import { deleteCoupon } from "@/shared/actions/coupons/deleteCoupon";
+import { Pagination } from "@/shared/components/Pagination";
 import { Button } from "@/shared/components/shadcn-ui/button";
 import {
   Dialog,
@@ -33,40 +43,65 @@ import { formatPrice } from "@/shared/utils/store/price";
 
 function formatDateTime(dateStr: string) {
   const d = new Date(dateStr);
-  const date = `${String(d.getDate()).padStart(2, "0")}/${String(d.getMonth() + 1).padStart(2, "0")}/${d.getFullYear()}`;
-  const time = `${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`;
+  const date = d.toLocaleDateString("pt-BR");
+  const time = d.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
   return { date, time };
 }
+
+const STATUS: Record<string, { label: string; icon: React.ReactNode; className: string }> = {
+  expired: {
+    label: "Expirado",
+    icon: <CalendarX className="size-3.5" />,
+    className: "border-red-200 bg-red-50 text-red-700",
+  },
+  scheduled: {
+    label: "Agendado",
+    icon: <CalendarCheck className="size-3.5" />,
+    className: "border-blue-200 bg-blue-50 text-blue-700",
+  },
+  active: {
+    label: "Ativo",
+    icon: <CheckCircle2 className="size-3.5" />,
+    className: "border-emerald-200 bg-emerald-50 text-emerald-700",
+  },
+  inactive: {
+    label: "Inativo",
+    icon: <EyeOff className="size-3.5" />,
+    className: "border-muted bg-muted text-muted-foreground",
+  },
+};
 
 function DiscountCell({ coupon: c }: { coupon: AdminCouponDto }) {
   if (c.type === "FREE_SHIPPING") {
     return (
       <div>
-        <span className="font-medium">Frete Grátis</span>
+        <p className="text-sm">Frete Grátis</p>
       </div>
     );
   }
 
-  const discountLabel = c.type === "PERCENTAGE" ? `${c.value}%` : formatPrice(c.value);
+  const value = c.type === "PERCENTAGE" ? `${c.value}%` : c.value ? formatPrice(c.value) : "—";
 
   return (
     <div>
-      <span className="font-medium">{discountLabel}</span>
-      <div className="text-muted-foreground mt-0.5 space-x-2 text-xs">
-        {c.minOrderValue > 0 && <span>Mín. pedido: {formatPrice(c.minOrderValue)}</span>}
-        {c.maxDiscount !== null && c.maxDiscount > 0 && c.type === "PERCENTAGE" && (
-          <span>Máx. desconto: {formatPrice(c.maxDiscount)}</span>
-        )}
-      </div>
+      <p className="text-sm">{value}</p>
+      {c.type === "PERCENTAGE" && c.maxDiscount && (
+        <p className="text-muted-foreground mt-0.5 text-xs">Máx: {formatPrice(c.maxDiscount)}</p>
+      )}
     </div>
   );
 }
 
 function UsageCell({ coupon: c }: { coupon: AdminCouponDto }) {
-  const pct = c.usageLimit > 0 ? Math.min(100, (c.usageCount / c.usageLimit) * 100) : 0;
+  if (!c.usageLimit) return <p className="text-muted-foreground text-sm">—</p>;
+
+  const pct = Math.round((c.usageCount / c.usageLimit) * 100);
 
   return (
-    <div className="min-w-35">
+    <div className="min-w-[120px]">
+      <p className="text-sm font-medium">
+        {c.usageCount}/{c.usageLimit}
+      </p>
       <div className="bg-muted h-2 w-full overflow-hidden rounded-full">
         <div
           className={`h-full rounded-full transition-all ${
@@ -75,44 +110,48 @@ function UsageCell({ coupon: c }: { coupon: AdminCouponDto }) {
           style={{ width: `${pct}%` }}
         />
       </div>
-      <p className="text-muted-foreground mt-1 text-xs tabular-nums">
-        {c.usageCount}/{c.usageLimit}
-      </p>
     </div>
   );
 }
 
 function StatusCell({ coupon: c }: { coupon: AdminCouponDto }) {
   const now = new Date();
+  const startsAtDate = new Date(c.startsAt);
   const endsAtDate = new Date(c.endsAt);
-  const isExpired = endsAtDate < now;
-  const { date, time } = formatDateTime(c.endsAt);
 
-  if (isExpired) {
-    return (
-      <div>
-        <div className="flex items-center gap-1.5">
-          <span className="inline-block size-2 rounded-full bg-red-500" />
-          <span className="text-sm text-red-500">Expirado</span>
-        </div>
-        <p className="mt-0.5 text-xs text-red-500/70">
-          Expirou em {date} {time}
-        </p>
-      </div>
-    );
+  type StatusKey = keyof typeof STATUS;
+  let key: StatusKey;
+  let subtitle: string;
+
+  if (endsAtDate < now) {
+    key = "expired";
+    const d = formatDateTime(c.endsAt);
+    subtitle = `Expirou em ${d.date} ${d.time}`;
+  } else if (startsAtDate > now) {
+    key = "scheduled";
+    const d = formatDateTime(c.startsAt);
+    subtitle = `Inicia em ${d.date} ${d.time}`;
+  } else if (c.isActive) {
+    key = "active";
+    const d = formatDateTime(c.endsAt);
+    subtitle = `Expira em ${d.date} ${d.time}`;
+  } else {
+    key = "inactive";
+    const d = formatDateTime(c.endsAt);
+    subtitle = `Expira em ${d.date} ${d.time}`;
   }
+
+  const config = STATUS[key]!;
 
   return (
     <div>
-      <div className="flex items-center gap-1.5">
-        <span
-          className={`inline-block size-2 rounded-full ${c.isActive ? "bg-green-500" : "bg-muted-foreground"}`}
-        />
-        <span className="text-sm">{c.isActive ? "Ativo" : "Inativo"}</span>
-      </div>
-      <p className="text-muted-foreground mt-0.5 text-xs">
-        Expira em {date} {time}
-      </p>
+      <span
+        className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-semibold ${config.className}`}
+      >
+        {config.icon}
+        {config.label}
+      </span>
+      <p className="text-muted-foreground mt-1 text-xs">{subtitle}</p>
     </div>
   );
 }
@@ -134,14 +173,16 @@ function ActionsCell({
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem className="cursor-pointer" onClick={() => onEdit(coupon)}>
+        <DropdownMenuItem className="cursor-pointer gap-2" onClick={() => onEdit(coupon)}>
+          <Pencil className="size-4" />
           Editar
         </DropdownMenuItem>
         {coupon.usageCount === 0 && (
           <DropdownMenuItem
-            className="cursor-pointer text-red-500 focus:text-red-600"
+            className="cursor-pointer gap-2 text-red-500 focus:text-red-600"
             onClick={() => onDelete(coupon)}
           >
+            <Trash2 className="size-4" />
             Excluir
           </DropdownMenuItem>
         )}
@@ -150,18 +191,14 @@ function ActionsCell({
   );
 }
 
-export function CouponTable({
-  data,
-  page,
-  onPageChange,
-  onEdit,
-}: {
+type CouponTableProps = {
   data: AdminSearchCouponsResponse;
   page: number;
   onPageChange: (page: number) => void;
   onEdit: (coupon: AdminCouponDto) => void;
-}) {
-  const [editingEllipsis, setEditingEllipsis] = useState<string | null>(null);
+};
+
+export function CouponTable({ data, page, onPageChange, onEdit }: CouponTableProps) {
   const [deletingCoupon, setDeletingCoupon] = useState<AdminCouponDto | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
   const invalidate = useInvalidate();
@@ -192,14 +229,15 @@ export function CouponTable({
         Mostrando {data.coupons.length} itens de {data.pagination.total}
       </p>
 
-      <div className="border-border overflow-hidden rounded-lg border">
+      <div className="rounded-md border">
         <Table>
           <TableHeader>
             <TableRow>
               <TableHead>Código</TableHead>
               <TableHead>Desconto</TableHead>
-              <TableHead>Uso</TableHead>
+              <TableHead>Usos</TableHead>
               <TableHead>Status</TableHead>
+              <TableHead>Valor Mín.</TableHead>
               <TableHead className="w-12" />
             </TableRow>
           </TableHeader>
@@ -207,9 +245,9 @@ export function CouponTable({
             {data.coupons.map((coupon) => (
               <TableRow key={coupon.id}>
                 <TableCell>
-                  <p className="font-mono text-sm font-medium">{coupon.code}</p>
+                  <span className="font-mono text-sm font-medium uppercase">{coupon.code}</span>
                   {coupon.description && (
-                    <p className="text-muted-foreground max-w-48 truncate text-xs">
+                    <p className="text-muted-foreground mt-0.5 max-w-[200px] truncate text-xs">
                       {coupon.description}
                     </p>
                   )}
@@ -224,7 +262,18 @@ export function CouponTable({
                   <StatusCell coupon={coupon} />
                 </TableCell>
                 <TableCell>
-                  <ActionsCell coupon={coupon} onEdit={onEdit} onDelete={setDeletingCoupon} />
+                  <p className="text-sm">
+                    {coupon.minOrderValue && coupon.minOrderValue > 1
+                      ? formatPrice(coupon.minOrderValue)
+                      : "—"}
+                  </p>
+                </TableCell>
+                <TableCell>
+                  <ActionsCell
+                    coupon={coupon}
+                    onEdit={onEdit}
+                    onDelete={() => setDeletingCoupon(coupon)}
+                  />
                 </TableCell>
               </TableRow>
             ))}
@@ -232,81 +281,7 @@ export function CouponTable({
         </Table>
       </div>
 
-      {totalPages > 1 && (
-        <div className="mt-4 flex items-center justify-center gap-2">
-          <button
-            onClick={() => onPageChange(page - 1)}
-            disabled={page <= 1}
-            className="border-input bg-background hover:bg-accent hover:text-accent-foreground inline-flex h-9 cursor-pointer items-center justify-center rounded-lg border px-3 text-sm font-medium disabled:pointer-events-none disabled:opacity-50"
-          >
-            Anterior
-          </button>
-
-          {Array.from({ length: totalPages }, (_, i) => i + 1)
-            .filter((p) => p === 1 || p === totalPages || Math.abs(p - page) <= 2)
-            .map((p, idx, arr) => {
-              const items: React.ReactNode[] = [];
-              if (idx > 0 && p - arr[idx - 1]! > 1) {
-                const ellipsisKey = `ellipsis-${p}`;
-                const isEditing = editingEllipsis === ellipsisKey;
-                items.push(
-                  isEditing ? (
-                    <input
-                      key={ellipsisKey}
-                      type="number"
-                      placeholder="..."
-                      min={1}
-                      max={totalPages}
-                      autoFocus
-                      className="border-input bg-background inline-flex h-9 w-12 [appearance:textfield] items-center justify-center rounded-lg border text-center text-sm [&::-webkit-inner-spin-button]:appearance-none"
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                          const val = Number((e.target as HTMLInputElement).value);
-                          if (val >= 1 && val <= totalPages) onPageChange(val);
-                          setEditingEllipsis(null);
-                        }
-                        if (e.key === "Escape") {
-                          setEditingEllipsis(null);
-                        }
-                      }}
-                      onBlur={() => setEditingEllipsis(null)}
-                    />
-                  ) : (
-                    <button
-                      key={ellipsisKey}
-                      onClick={() => setEditingEllipsis(ellipsisKey)}
-                      className="text-muted-foreground hover:text-foreground inline-flex h-9 w-9 items-center justify-center rounded-lg text-sm transition-colors"
-                    >
-                      ...
-                    </button>
-                  )
-                );
-              }
-              items.push(
-                <button
-                  key={p}
-                  onClick={() => onPageChange(p)}
-                  className={`inline-flex h-9 w-9 items-center justify-center rounded-lg text-sm font-medium ${
-                    p === page
-                      ? "bg-primary text-primary-foreground"
-                      : "hover:bg-accent hover:text-accent-foreground"
-                  }`}
-                >
-                  {p}
-                </button>
-              );
-              return items;
-            })}
-
-          <button
-            onClick={() => onPageChange(page + 1)}
-            disabled={page >= totalPages}
-            className="border-input bg-background hover:bg-accent hover:text-accent-foreground inline-flex h-9 cursor-pointer items-center justify-center rounded-lg border px-3 text-sm font-medium disabled:pointer-events-none disabled:opacity-50"
-          >
-            Próximo
-          </button>
-        </div>
-      )}
+      <Pagination page={page} totalPages={totalPages} onPageChange={onPageChange} />
 
       <Dialog open={!!deletingCoupon} onOpenChange={(open) => !open && setDeletingCoupon(null)}>
         <DialogContent>
@@ -314,26 +289,22 @@ export function CouponTable({
             <DialogTitle>Excluir cupom</DialogTitle>
             <DialogDescription>
               Tem certeza que deseja excluir o cupom{" "}
-              <span className="font-medium">{deletingCoupon?.code}</span>? Esta ação não pode ser
-              desfeita.
+              <span className="font-mono font-medium uppercase">{deletingCoupon?.code}</span>? Esta
+              ação não pode ser desfeita.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
-            <Button variant="outline" onClick={() => setDeletingCoupon(null)} disabled={isDeleting}>
+            <Button variant="outline" onClick={() => setDeletingCoupon(null)}>
               Cancelar
             </Button>
-            <Button variant="destructive" onClick={handleDelete} disabled={isDeleting}>
-              {isDeleting ? (
-                <>
-                  <Loader2 className="mr-1 inline size-4 animate-spin" />
-                  Excluindo...
-                </>
-              ) : (
-                <>
-                  <Trash2 className="mr-1 inline size-4" />
-                  Excluir
-                </>
-              )}
+            <Button
+              variant="destructive"
+              disabled={isDeleting}
+              onClick={handleDelete}
+              className="gap-2"
+            >
+              {isDeleting && <Loader2 className="size-4 animate-spin" />}
+              Excluir
             </Button>
           </DialogFooter>
         </DialogContent>
