@@ -143,18 +143,18 @@ export function DateTimePicker({
     !hideAgora && disabledBeforeDate && isSameDay(new Date(disabledBeforeDate), new Date());
 
   return (
-      <Popover open={open && !disabled} onOpenChange={setOpen}>
-        <PopoverTrigger asChild>
-          <Button
-            type="button"
-            id={id}
-            variant="outline"
-            disabled={disabled}
-            className={cn(
-              "group/pick-date w-full justify-between font-normal",
-              !parsed && "text-muted-foreground"
-            )}
-          >
+    <Popover open={open && !disabled} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <Button
+          type="button"
+          id={id}
+          variant="outline"
+          disabled={disabled}
+          className={cn(
+            "group/pick-date w-full justify-between font-normal",
+            !parsed && "text-muted-foreground"
+          )}
+        >
           <span className="truncate">
             {parsed ? `${format(parsed.date, "dd/MM/yyyy")} ${parsed.time}` : placeholder}
           </span>

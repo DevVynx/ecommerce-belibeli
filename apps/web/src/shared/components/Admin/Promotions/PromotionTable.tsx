@@ -35,9 +35,7 @@ function DiscountCell({ promotion: p }: { promotion: AdminPromotionDto }) {
     <Badge
       variant="outline"
       className={
-        p.type === "PERCENTAGE"
-          ? "bg-blue-50 text-blue-700"
-          : "bg-purple-50 text-purple-700"
+        p.type === "PERCENTAGE" ? "bg-blue-50 text-blue-700" : "bg-purple-50 text-purple-700"
       }
     >
       {label}
@@ -59,7 +57,7 @@ function TargetCell({ promotion: p }: { promotion: AdminPromotionDto }) {
       <Badge variant="outline" className={`shrink-0 ${t.color}`}>
         {t.label}
       </Badge>
-      <span className="text-sm truncate max-w-40">{p.targetName}</span>
+      <span className="max-w-40 truncate text-sm">{p.targetName}</span>
     </div>
   );
 }
@@ -90,7 +88,9 @@ function ActionsCell() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem disabled>Editar</DropdownMenuItem>
-        <DropdownMenuItem disabled className="text-red-500">Excluir</DropdownMenuItem>
+        <DropdownMenuItem disabled className="text-red-500">
+          Excluir
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

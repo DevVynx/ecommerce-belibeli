@@ -10,7 +10,11 @@ import { Switch } from "@/shared/components/shadcn-ui/switch";
 import { Textarea } from "@/shared/components/shadcn-ui/textarea";
 import { showNotification } from "@/shared/components/showNotification";
 import { type CreateCouponFormData, createCouponSchema } from "@/shared/schemas/coupons";
-import { getCurrentSlot, getEndsAtConstraints, getTodayMidnight } from "@/shared/utils/date/dateTimeISO";
+import {
+  getCurrentSlot,
+  getEndsAtConstraints,
+  getTodayMidnight,
+} from "@/shared/utils/date/dateTimeISO";
 
 import { CouponDiscountFields } from "./CouponDiscountFields";
 import { CouponSummaryTicket } from "./CouponSummaryTicket";
@@ -43,12 +47,14 @@ export function CreateCouponForm({ onSuccess }: { onSuccess?: () => void }) {
   const { errors } = form.formState;
 
   const startsAt = form.watch("startsAt");
-  const { disabledBeforeDate: endsAtDisabledBeforeDate, disabledBeforeTime: endsAtDisabledBeforeTime } =
-    getEndsAtConstraints(startsAt);
+  const {
+    disabledBeforeDate: endsAtDisabledBeforeDate,
+    disabledBeforeTime: endsAtDisabledBeforeTime,
+  } = getEndsAtConstraints(startsAt);
 
   const descLength = form.watch("description")?.length ?? 0;
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.SubmitEvent) => {
     e.preventDefault();
     const valid = await form.trigger();
     if (!valid) return;
@@ -63,7 +69,7 @@ export function CreateCouponForm({ onSuccess }: { onSuccess?: () => void }) {
       usageLimit: raw.usageLimit,
       description: raw.description || undefined,
       value: raw.type !== "FREE_SHIPPING" ? raw.value : undefined,
-      maxDiscount: raw.type === "PERCENTAGE" ? (raw.maxDiscount ?? null) : undefined,
+      maxDiscount: raw.type === "PERCENTAGE" && raw.maxDiscount ? raw.maxDiscount : undefined,
       minOrderValue: raw.minOrderValue,
       usageLimitPerUser: raw.usageLimitPerUser,
       isActive: raw.isActive,
@@ -73,7 +79,7 @@ export function CreateCouponForm({ onSuccess }: { onSuccess?: () => void }) {
       showNotification({
         type: "error",
         title: "Erro ao criar cupom",
-        message: (result.error.message as string) || "Tente novamente.",
+        message: result.error.message,
       });
       return;
     }

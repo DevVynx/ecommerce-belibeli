@@ -12,7 +12,7 @@ export type CreateCouponRequest = {
   usageLimit: number;
   description?: string;
   value?: number;
-  maxDiscount?: number | null;
+  maxDiscount?: number;
   minOrderValue?: number;
   usageLimitPerUser?: number;
   isActive?: boolean;

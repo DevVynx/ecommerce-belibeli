@@ -1,10 +1,6 @@
 "use client";
 
-import type {
-  AdminSearchPromotionsRequest,
-  PromotionTargetType,
-  PromotionType,
-} from "@repo/types/contracts";
+import type { AdminSearchPromotionsRequest } from "@repo/types/contracts";
 import { Plus } from "lucide-react";
 import { parseAsIndex, parseAsString, parseAsStringLiteral, useQueryStates } from "nuqs";
 import { Suspense, useCallback, useEffect, useMemo, useRef } from "react";

@@ -1,5 +1,3 @@
-"use client";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { AdminCouponDto, UpdateCouponRequest } from "@repo/types/contracts";
 import { useMemo } from "react";
@@ -103,7 +101,7 @@ export function EditCouponForm({
       showNotification({
         type: "error",
         title: "Erro ao editar cupom",
-        message: (result.error.message as string) || "Tente novamente.",
+        message: result.error.message,
       });
       return;
     }
