@@ -25,7 +25,7 @@ export function useAdminDashboardStats(params: AdminDashboardStatsRequest) {
       );
 
       if (error) {
-        throw new Error((error.message as string) || "Erro ao buscar Stats");
+        throw new Error(error.message);
       }
 
       return data;

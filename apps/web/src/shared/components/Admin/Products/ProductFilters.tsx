@@ -38,13 +38,12 @@ export type ProductFiltersValue = {
   sort: (typeof sortValues)[number];
 };
 
-export function ProductFilters({
-  values,
-  onChange,
-}: {
+type ProductFiltersProps = {
   values: ProductFiltersValue;
   onChange: (updates: Partial<ProductFiltersValue>) => void;
-}) {
+};
+
+export function ProductFilters({ values, onChange }: ProductFiltersProps) {
   const [categories, setCategories] = useState<CategoryDto[]>([]);
 
   useEffect(() => {
@@ -54,7 +53,7 @@ export function ProductFilters({
         showNotification({
           type: "error",
           title: "Erro ao buscar categorias",
-          message: error?.message as string,
+          message: error?.message,
         });
         return;
       }

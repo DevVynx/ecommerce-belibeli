@@ -28,6 +28,13 @@ import { useAdminCountActiveOrders } from "@/shared/hooks/data/adminQueries/useO
 import { useAdminLowStockProducts } from "@/shared/hooks/data/adminQueries/useProduct";
 import { formatPrice } from "@/shared/utils/store/price";
 
+function getErrorMessage(fallback: string, ...errors: unknown[]): string {
+  for (const err of errors) {
+    if (err instanceof Error && err.message) return err.message;
+  }
+  return fallback;
+}
+
 export default function AdminDashboardPage() {
   const [timelinePeriod, setTimelinePeriod] =
     useState<AdminDashboardTimelineRequest["range"]>("1W");
@@ -96,19 +103,12 @@ export default function AdminDashboardPage() {
           <div className="lg:col-span-3">
             <SectionError
               title="Dados indisponíveis"
-              description={
-                statsError && typeof statsError === "object" && "message" in statsError
-                  ? (statsError as { message: string }).message
-                  : activeOrdersError &&
-                      typeof activeOrdersError === "object" &&
-                      "message" in activeOrdersError
-                    ? (activeOrdersError as { message: string }).message
-                    : lowStockError &&
-                        typeof lowStockError === "object" &&
-                        "message" in lowStockError
-                      ? (lowStockError as { message: string }).message
-                      : "Não foi possível carregar os indicadores do dashboard."
-              }
+              description={getErrorMessage(
+                "Não foi possível carregar os indicadores do dashboard.",
+                statsError,
+                activeOrdersError,
+                lowStockError
+              )}
             />
           </div>
         ) : isLoadingCards ? (
@@ -164,11 +164,10 @@ export default function AdminDashboardPage() {
           {isTimelineError ? (
             <SectionError
               title="Gráfico indisponível"
-              description={
-                timelineError.message
-                  ? timelineError.message
-                  : "Não foi possível carregar os dados do gráfico de receita."
-              }
+              description={getErrorMessage(
+                "Não foi possível carregar os dados do gráfico de receita.",
+                timelineError
+              )}
             />
           ) : isTimelineLoading ? (
             <ReportChartSkeleton />

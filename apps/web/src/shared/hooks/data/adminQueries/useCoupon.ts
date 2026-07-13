@@ -24,7 +24,7 @@ export function useAdminSearchCoupons(params: AdminSearchCouponsRequest) {
       );
 
       if (error) {
-        throw new Error((error.message as string) || "Erro ao buscar cupons");
+        throw new Error(error.message);
       }
 
       return data;

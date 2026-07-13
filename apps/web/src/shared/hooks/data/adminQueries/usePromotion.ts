@@ -29,7 +29,7 @@ export function useAdminSearchPromotions(params: AdminSearchPromotionsRequest) {
       );
 
       if (error) {
-        throw new Error((error.message as string) || "Erro ao buscar promoções");
+        throw new Error(error.message);
       }
 
       return data;

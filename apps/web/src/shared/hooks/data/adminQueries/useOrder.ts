@@ -29,7 +29,7 @@ export function useAdminOrders(params: AdminGetOrdersRequest) {
       );
 
       if (error) {
-        throw new Error((error.message as string) || "Erro ao buscar pedidos");
+        throw new Error(error.message);
       }
 
       return data;
@@ -56,7 +56,7 @@ export function useAdminCountActiveOrders(params: AdminActiveOrdersRequest) {
       );
 
       if (error) {
-        throw new Error((error.message as string) || "Erro ao contar pedidos");
+        throw new Error(error.message);
       }
 
       return data;

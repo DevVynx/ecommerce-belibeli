@@ -98,7 +98,7 @@ export const ReviewOrder = ({
       showNotification({
         type: "error",
         title: "Erro ao criar pedido.",
-        message: error?.message as string,
+        message: error?.message,
       });
       return;
     }

@@ -38,11 +38,11 @@ export const CouponApplier = ({ subtotal: _subtotal }: CouponApplierProps) => {
     const { data, error } = await validateCoupon({ code });
 
     if (error || !data) {
-      setError(error?.message as string);
+      setError(error?.message ?? null);
       showNotification({
         type: "error",
         title: "Cupom inválido",
-        message: error?.message as string,
+        message: error?.message,
       });
       setIsApplying(false);
       return;

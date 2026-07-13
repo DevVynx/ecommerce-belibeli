@@ -25,7 +25,7 @@ export function useAdminDashboardTimeline(params: AdminDashboardTimelineRequest)
       );
 
       if (error) {
-        throw new Error((error.message as string) || "Erro ao buscar timeline");
+        throw new Error(error.message);
       }
 
       return data;

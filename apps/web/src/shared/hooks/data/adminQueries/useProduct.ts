@@ -33,7 +33,7 @@ export function useAdminSearchProducts(params: AdminSearchProductsRequest) {
       );
 
       if (error) {
-        throw new Error((error.message as string) || "Erro ao buscar produtos");
+        throw new Error(error.message);
       }
 
       return data;
@@ -53,7 +53,7 @@ export function useAdminLowStockProducts() {
       );
 
       if (error) {
-        throw new Error((error.message as string) || "Erro ao contar estoque");
+        throw new Error(error.message);
       }
 
       return data;
