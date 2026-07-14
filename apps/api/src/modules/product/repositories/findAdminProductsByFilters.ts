@@ -44,9 +44,13 @@ function buildWhere(params: Pick<Params, "q" | "categoryId" | "stockLt" | "isAct
   const { q, categoryId, stockLt, isActive } = params;
   const andConditions: Prisma.ProductWhereInput[] = [];
 
-  if (stockLt !== undefined) {
+  if (stockLt !== undefined && isActive !== undefined) {
     andConditions.push({
-      productVariants: { some: { stock: { lt: stockLt }, isActive: true } },
+      productVariants: { some: { stock: { lt: stockLt }, isActive } },
+    });
+  } else if (stockLt !== undefined) {
+    andConditions.push({
+      productVariants: { some: { stock: { lt: stockLt } } },
     });
   } else if (isActive === true) {
     andConditions.push({
@@ -54,7 +58,7 @@ function buildWhere(params: Pick<Params, "q" | "categoryId" | "stockLt" | "isAct
     });
   } else if (isActive === false) {
     andConditions.push({
-      productVariants: { none: { isActive: true } },
+      productVariants: { some: { isActive: false } },
     });
   }
 

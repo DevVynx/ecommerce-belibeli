@@ -5,7 +5,10 @@ import { validation } from "@/shared/middlewares/validation";
 const query = z.object({
   q: z.string().optional(),
   categoryId: z.uuid().optional(),
-  onSale: z.coerce.boolean().optional(),
+  onSale: z
+    .enum(["true", "false"])
+    .transform((v) => v === "true")
+    .optional(),
   minRating: z.coerce.number().min(1).max(5).optional(),
   optionValues: z.string().optional(),
   sortBy: z.enum(["price_asc", "price_desc", "rating_desc", "newest"]).optional(),
