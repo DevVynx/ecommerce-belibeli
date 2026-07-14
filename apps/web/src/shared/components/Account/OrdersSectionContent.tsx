@@ -12,7 +12,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/shared/components/shadcn-ui/table";
-import { STATUS_CONFIG } from "@/shared/utils/orders/statusConfig";
+import { STATUS_CONFIG } from "@/shared/utils/store/orders/statusConfig";
 
 import { OrderDetailContent } from "./OrderDetailContent";
 import { OrderExpandedRow } from "./OrderExpandedRow";

@@ -6,7 +6,7 @@ import Link from "next/link";
 
 import { SectionError } from "@/shared/components/SectionError";
 import { useAdminOrders } from "@/shared/hooks/data/adminQueries/useOrder";
-import { STATUS_CONFIG } from "@/shared/utils/orders/statusConfig";
+import { STATUS_CONFIG } from "@/shared/utils/store/orders/statusConfig";
 import { formatPrice } from "@/shared/utils/store/price";
 
 import { RecentOrdersSkeleton } from "./RecentOrdersSkeleton";
