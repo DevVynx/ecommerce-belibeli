@@ -17,18 +17,5 @@ services:
       timeout: 5s
       retries: 5
 
-  meilisearch:
-    image: getmeili/meilisearch:v1.37
-    container_name: meilisearch
-    restart: always
-    environment:
-      MEILI_ENV: development
-      MEILI_MASTER_KEY: dev-master-key
-    ports:
-      - "7700:7700"
-    volumes:
-      - meili_data:/meili_data
-
 volumes:
   postgres_data:
-  meili_data:

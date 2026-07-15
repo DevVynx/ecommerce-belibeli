@@ -1,18 +1,32 @@
-import { searchEngine } from "@/infra/search";
+import { db } from "@/shared/lib/db";
 import { productLogic } from "@/shared/utils/productLogic";
 
-import { processFacets } from "../helpers/facetProcessor";
-import { buildSearchFilters } from "../helpers/filterBuilder";
+import type { Prisma } from "../../../../prisma/generated/client/client";
 import { productRepositories } from "../repositories";
 import type { EnrichedProductList, EnrichedProductListItem } from "../types/ProductList";
 import type { SearchProductsParams } from "../types/ServiceParams";
 
-const SORT_MAP: Record<string, string> = {
-  price_asc: "salePrice:asc",
-  price_desc: "salePrice:desc",
-  rating_desc: "ratingRate:desc",
-  newest: "createdAt:desc",
-};
+const now = () => new Date();
+const promo = () => ({ isActive: true, startsAt: { lte: now() }, endsAt: { gte: now() } });
+
+function buildProductInclude() {
+  return {
+    category: { select: { promotions: { where: promo() } } },
+    promotions: { where: promo() },
+    productVariants: {
+      where: { isActive: true, stock: { gt: 0 } },
+      select: {
+        id: true,
+        price: true,
+        stock: true,
+        isActive: true,
+        promotions: { where: promo() },
+      },
+    },
+  } satisfies Prisma.ProductInclude;
+}
+
+type RawProduct = Prisma.ProductGetPayload<{ include: ReturnType<typeof buildProductInclude> }>;
 
 export const searchProducts = async ({
   q,
@@ -24,70 +38,107 @@ export const searchProducts = async ({
   offset,
   limit,
 }: SearchProductsParams) => {
-  const filters = buildSearchFilters({ categoryId, onSale, minRating });
+  const andConditions: Prisma.ProductWhereInput[] = [];
+
+  andConditions.push({
+    productVariants: { some: { isActive: true, stock: { gt: 0 } } },
+  });
+
+  if (q) {
+    andConditions.push({
+      OR: [
+        { title: { contains: q, mode: "insensitive" } },
+        { description: { contains: q, mode: "insensitive" } },
+      ],
+    });
+  }
+
+  if (categoryId) {
+    andConditions.push({ categoryId });
+  }
+
+  if (onSale === true) {
+    andConditions.push({
+      OR: [
+        { promotions: { some: promo() } },
+        { category: { promotions: { some: promo() } } },
+        { productVariants: { some: { promotions: { some: promo() } } } },
+      ],
+    });
+  } else if (onSale === false) {
+    andConditions.push({
+      NOT: {
+        OR: [
+          { promotions: { some: promo() } },
+          { category: { promotions: { some: promo() } } },
+          { productVariants: { some: { promotions: { some: promo() } } } },
+        ],
+      },
+    });
+  }
+
+  if (minRating != null) {
+    andConditions.push({ ratingRate: { gte: minRating } });
+  }
 
   if (optionValues) {
     const { productIds } = await productRepositories.findProductIdsByOptionValues(
       optionValues.split(",")
     );
-
     if (productIds.length === 0) {
-      return {
-        enrichedProducts: [] as EnrichedProductList,
-        pagination: { total: 0, hasMore: false },
-        filters: {
-          categories: [],
-          ratingOptions: [],
-          onSaleCount: 0,
-          options: [],
-        },
-      };
+      return emptyResponse();
     }
-
-    filters.push(`id IN [${productIds.map((id) => `"${id}"`).join(", ")}]`);
+    andConditions.push({ id: { in: productIds } });
   }
 
-  const searchResult = await searchEngine.search("products", {
-    query: q ?? "",
-    filters: filters.length > 0 ? filters : undefined,
-    sort: sortBy ? [SORT_MAP[sortBy]!] : undefined,
-    limit,
-    offset,
-    facets: ["categoryId", "categoryName", "onSale", "ratingRate", "optionValues"],
+  const where =
+    andConditions.length === 0
+      ? {}
+      : andConditions.length === 1
+        ? andConditions[0]!
+        : { AND: andConditions };
+
+  const total = await db.product.count({ where });
+
+  if (total === 0) {
+    return emptyResponse();
+  }
+
+  if (sortBy?.startsWith("price_")) {
+    return searchWithPriceSort(where, sortBy, offset, limit, total);
+  }
+
+  const orderBy: Prisma.ProductOrderByWithRelationInput[] =
+    sortBy === "newest"
+      ? [{ createdAt: "desc" }, { id: "asc" }]
+      : sortBy === "rating_desc"
+        ? [{ ratingRate: "desc" }, { id: "asc" }]
+        : [{ createdAt: "desc" }, { id: "asc" }];
+
+  const productInclude = buildProductInclude();
+
+  const rawProducts = await db.product.findMany({
+    where,
+    orderBy,
+    skip: offset,
+    take: limit,
+    include: productInclude,
   });
 
-  const totalHits = searchResult.totalHits;
-  const ids = searchResult.hits.map((hit) => String(hit.id));
+  const enrichedProducts = enrichResults(rawProducts);
+  const filters = await buildFilters(where);
 
-  const categoryIds = Object.keys(searchResult.facetDistribution?.categoryId ?? {});
-  const categoryNameMap =
-    categoryIds.length > 0
-      ? await productRepositories.findCategoryNamesByIds(categoryIds)
-      : new Map<string, string>();
+  return {
+    enrichedProducts,
+    pagination: { total, hasMore: offset + limit < total },
+    filters,
+  };
+};
 
-  const emptyPagination = { total: totalHits, hasMore: false };
-
-  if (ids.length === 0) {
-    return {
-      enrichedProducts: [] as EnrichedProductList,
-      pagination: emptyPagination,
-      filters: processFacets({
-        searchResult,
-        categoryNameMap,
-        options: [],
-      }),
-    };
-  }
-
-  const rawProducts = await productRepositories.findByIds(ids);
-
-  const productMap = new Map(rawProducts.map((p) => [p.id, p]));
+function enrichResults(rawProducts: RawProduct[]) {
   const enrichedProducts: EnrichedProductListItem[] = [];
 
-  for (const id of ids) {
-    const product = productMap.get(id);
-    if (!product) continue;
-
+  for (const product of rawProducts) {
     const variantsWithEnrichment = product.productVariants.map((variant) => {
       const offer = productLogic.calculateEnrichment(variant, {
         variant: variant.promotions,
@@ -104,45 +155,151 @@ export const searchProducts = async ({
       ...product,
       productVariants: variantsWithEnrichment,
       heroVariant,
-    } as EnrichedProductListItem);
+    } as unknown as EnrichedProductListItem);
   }
 
-  const optionValuesFacets = (searchResult.facetDistribution?.optionValues ?? {}) as Record<
-    string,
-    number
-  >;
-  const optionMap = new Map<
-    string,
-    { id: string; name: string; values: { value: string; count: number }[] }
-  >();
+  return enrichedProducts;
+}
 
-  for (const [key, count] of Object.entries(optionValuesFacets)) {
-    const separatorIndex = key.indexOf("::");
-    if (separatorIndex === -1) continue;
+// In-memory sort: fetches all matching products to compute effective sale price per product,
+// then sorts in-memory. Alternative: materialized `minPrice` column on Product table.
+async function searchWithPriceSort(
+  where: Prisma.ProductWhereInput,
+  sortBy: string,
+  offset: number,
+  limit: number,
+  total: number
+) {
+  const allProducts = await db.product.findMany({
+    where,
+    select: {
+      id: true,
+      promotions: { where: promo(), select: { type: true, discountValue: true } },
+      category: {
+        select: {
+          promotions: { where: promo(), select: { type: true, discountValue: true } },
+        },
+      },
+      productVariants: {
+        where: { isActive: true, stock: { gt: 0 } },
+        select: {
+          price: true,
+          promotions: { where: promo(), select: { type: true, discountValue: true } },
+        },
+      },
+    },
+  });
 
-    const name = key.slice(0, separatorIndex);
-    const value = key.slice(separatorIndex + 2);
-
-    if (!optionMap.has(name)) {
-      optionMap.set(name, { id: name, name, values: [] });
+  const withMinPrice = allProducts.map((p) => {
+    let minSale = Infinity;
+    for (const v of p.productVariants) {
+      const { salePrice } = productLogic.calculateEnrichment(
+        { price: v.price, stock: 0, isActive: true },
+        {
+          variant: v.promotions,
+          product: p.promotions,
+          category: p.category.promotions,
+        }
+      );
+      minSale = Math.min(minSale, Number(salePrice));
     }
+    return { id: p.id, minPrice: minSale };
+  });
 
-    const entry = optionMap.get(name)!;
-    entry.values.push({ value, count });
+  withMinPrice.sort((a, b) => {
+    const diff = sortBy === "price_asc" ? a.minPrice - b.minPrice : b.minPrice - a.minPrice;
+    return diff !== 0 ? diff : a.id.localeCompare(b.id);
+  });
+
+  const sortedIds = withMinPrice.slice(offset, offset + limit).map((p) => p.id);
+
+  if (sortedIds.length === 0) {
+    return emptyResponse();
   }
 
-  const options = [...optionMap.values()];
+  const productInclude = buildProductInclude();
+
+  const rawProducts = await db.product.findMany({
+    where: { id: { in: sortedIds } },
+    include: productInclude,
+  });
+
+  const orderMap = new Map(rawProducts.map((p) => [p.id, p]));
+  const ordered = sortedIds.map((id) => orderMap.get(id)).filter(Boolean) as typeof rawProducts;
+
+  const enrichedProducts = enrichResults(ordered);
+  const filters = await buildFilters(where);
 
   return {
     enrichedProducts,
-    filters: processFacets({
-      searchResult,
-      categoryNameMap,
-      options,
-    }),
-    pagination: {
-      total: totalHits,
-      hasMore: offset + limit < totalHits,
-    },
+    pagination: { total, hasMore: offset + limit < total },
+    filters,
   };
-};
+}
+
+async function buildFilters(searchWhere: Prisma.ProductWhereInput) {
+  const filteredProducts = { some: searchWhere };
+
+  const [categories, optionValues, has4Stars, has5Stars] = await Promise.all([
+    db.category.findMany({
+      where: { products: filteredProducts },
+      select: { id: true, name: true },
+    }),
+    db.productOptionValue.findMany({
+      where: {
+        productVariantOptions: {
+          some: {
+            productVariant: {
+              isActive: true,
+              stock: { gt: 0 },
+              product: searchWhere,
+            },
+          },
+        },
+      },
+      select: {
+        value: true,
+        productOption: { select: { name: true } },
+      },
+    }),
+    db.product.findFirst({
+      where: { ...searchWhere, ratingRate: { gte: 4 } },
+      select: { id: true },
+    }),
+    db.product.findFirst({
+      where: { ...searchWhere, ratingRate: { gte: 5 } },
+      select: { id: true },
+    }),
+  ]);
+
+  const grouped = new Map<string, Set<string>>();
+  for (const ov of optionValues) {
+    const name = ov.productOption.name;
+    if (!grouped.has(name)) grouped.set(name, new Set());
+    grouped.get(name)!.add(ov.value);
+  }
+
+  const options = Array.from(grouped.entries()).map(([name, values]) => ({
+    id: name,
+    name,
+    values: Array.from(values).map((value) => ({ value })),
+  }));
+
+  const ratingOptions: { value: number }[] = [];
+  if (has4Stars) ratingOptions.push({ value: 4 });
+  if (has5Stars) ratingOptions.push({ value: 5 });
+
+  return {
+    categories,
+    ratingOptions,
+    options,
+  };
+}
+
+function emptyResponse() {
+  return {
+    enrichedProducts: [] as EnrichedProductList,
+    pagination: { total: 0, hasMore: false },
+    filters: { categories: [], ratingOptions: [], options: [] },
+  };
+}

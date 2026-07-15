@@ -1,4 +1,5 @@
 import { db } from "@/shared/lib/db";
+import { productLogic } from "@/shared/utils/productLogic";
 
 import type { Prisma } from "../../../../prisma/generated/client/client";
 
@@ -12,33 +13,45 @@ type Params = {
   limit: number;
 };
 
-const select = {
-  id: true,
-  title: true,
-  slug: true,
-  image: true,
-  totalStock: true,
-  category: { select: { id: true, name: true } },
-  productVariants: {
-    select: {
-      id: true,
-      sku: true,
-      price: true,
-      stock: true,
-      isActive: true,
-      productVariantOptions: {
-        select: {
-          productOptionValue: {
-            select: {
-              value: true,
-              productOption: { select: { name: true } },
+function buildSelect(now: Date) {
+  const activePromotions = { isActive: true, startsAt: { lte: now }, endsAt: { gte: now } };
+
+  return {
+    id: true,
+    title: true,
+    slug: true,
+    image: true,
+    totalStock: true,
+    promotions: { where: activePromotions, select: { type: true, discountValue: true } },
+    category: {
+      select: {
+        id: true,
+        name: true,
+        promotions: { where: activePromotions, select: { type: true, discountValue: true } },
+      },
+    },
+    productVariants: {
+      select: {
+        id: true,
+        sku: true,
+        price: true,
+        stock: true,
+        isActive: true,
+        promotions: { where: activePromotions, select: { type: true, discountValue: true } },
+        productVariantOptions: {
+          select: {
+            productOptionValue: {
+              select: {
+                value: true,
+                productOption: { select: { name: true } },
+              },
             },
           },
         },
       },
     },
-  },
-} satisfies Prisma.ProductSelect;
+  } satisfies Prisma.ProductSelect;
+}
 
 function buildWhere(params: Pick<Params, "q" | "categoryId" | "stockLt" | "isActive">) {
   const { q, categoryId, stockLt, isActive } = params;
@@ -85,6 +98,7 @@ function buildWhere(params: Pick<Params, "q" | "categoryId" | "stockLt" | "isAct
 export const findAdminProductsByFilters = async (params: Params) => {
   const { sortBy, page, limit } = params;
   const where = buildWhere(params);
+  const select = buildSelect(new Date());
   const skip = (page - 1) * limit;
 
   const total = await db.product.count({ where });
@@ -93,29 +107,51 @@ export const findAdminProductsByFilters = async (params: Params) => {
     return { products: [], total };
   }
 
-  if (sortBy === "price_asc" || sortBy === "price_desc") {
+  // In-memory sort: fetches all matching products to compute effective sale price per product,
+  // then sorts in-memory. Alternative: materialized `minPrice` column on Product table.
+  if (sortBy?.startsWith("price_")) {
+    const activePromotions = { isActive: true, startsAt: { lte: new Date() }, endsAt: { gte: new Date() } };
+
     const allProducts = await db.product.findMany({
       where,
       select: {
         id: true,
+        promotions: { where: activePromotions, select: { type: true, discountValue: true } },
+        category: {
+          select: {
+            promotions: { where: activePromotions, select: { type: true, discountValue: true } },
+          },
+        },
         productVariants: {
           where: { isActive: true },
-          select: { price: true },
+          select: {
+            price: true,
+            promotions: { where: activePromotions, select: { type: true, discountValue: true } },
+          },
         },
       },
     });
 
-    const withMinPrice = allProducts.map((p) => ({
-      id: p.id,
-      minPrice:
-        p.productVariants.length > 0
-          ? Math.min(...p.productVariants.map((v) => Number(v.price)))
-          : Infinity,
-    }));
+    const withMinPrice = allProducts.map((p) => {
+      let minSale = Infinity;
+      for (const v of p.productVariants) {
+        const { salePrice } = productLogic.calculateEnrichment(
+          { price: v.price, stock: 0, isActive: true },
+          {
+            variant: v.promotions,
+            product: p.promotions,
+            category: p.category.promotions,
+          }
+        );
+        minSale = Math.min(minSale, Number(salePrice));
+      }
+      return { id: p.id, minPrice: minSale };
+    });
 
-    withMinPrice.sort((a, b) =>
-      sortBy === "price_asc" ? a.minPrice - b.minPrice : b.minPrice - a.minPrice
-    );
+    withMinPrice.sort((a, b) => {
+      const diff = sortBy === "price_asc" ? a.minPrice - b.minPrice : b.minPrice - a.minPrice;
+      return diff !== 0 ? diff : a.id.localeCompare(b.id);
+    });
 
     const sortedIds = withMinPrice.slice(skip, skip + limit).map((p) => p.id);
 
@@ -132,19 +168,19 @@ export const findAdminProductsByFilters = async (params: Params) => {
     return { products: ordered, total };
   }
 
-  let orderBy: Prisma.ProductOrderByWithRelationInput = { createdAt: "desc" };
+  let orderBy: Prisma.ProductOrderByWithRelationInput[] = [{ createdAt: "desc" }, { id: "asc" }];
   switch (sortBy) {
     case "stock_asc":
-      orderBy = { totalStock: "asc" };
+      orderBy = [{ totalStock: "asc" }, { id: "asc" }];
       break;
     case "stock_desc":
-      orderBy = { totalStock: "desc" };
+      orderBy = [{ totalStock: "desc" }, { id: "asc" }];
       break;
     case "newest":
-      orderBy = { createdAt: "desc" };
+      orderBy = [{ createdAt: "desc" }, { id: "asc" }];
       break;
     case "oldest":
-      orderBy = { createdAt: "asc" };
+      orderBy = [{ createdAt: "asc" }, { id: "asc" }];
       break;
   }
 

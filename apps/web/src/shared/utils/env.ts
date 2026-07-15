@@ -19,6 +19,4 @@ export const ENV = {
       ? getEnvOrThrow("GOOGLE_CLIENT_ID", process.env.GOOGLE_CLIENT_ID)
       : (process.env.GOOGLE_CLIENT_ID as string),
 
-  NEXT_PUBLIC_MEILI_HOST: process.env.NEXT_PUBLIC_MEILI_HOST ?? "",
-  NEXT_PUBLIC_MEILI_SEARCH_KEY: process.env.NEXT_PUBLIC_MEILI_SEARCH_KEY ?? "",
 } as const;
