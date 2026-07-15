@@ -1,5 +1,6 @@
-import type { OrderStatus } from "../../../../prisma/generated/client/enums";
 import { orderRepositories } from "@/modules/order/repositories";
+
+import type { OrderStatus } from "../../../../prisma/generated/client/enums";
 
 type GetAllOrdersParams = {
   page: number;

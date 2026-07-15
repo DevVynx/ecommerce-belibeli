@@ -1,5 +1,7 @@
-import type { OrderStatus, Prisma } from "../../../../prisma/generated/client/client";
 import { db } from "@/shared/lib/db";
+
+import type { OrderStatus } from "../../../../prisma/generated/client/client";
+import { buildOrderWhere } from "./buildOrderWhere";
 
 type CountAllProps = {
   q?: string;
@@ -7,25 +9,7 @@ type CountAllProps = {
 };
 
 export const countAll = async ({ q, status }: CountAllProps = {}) => {
-  const where: Prisma.OrderWhereInput = {};
-
-  if (status) {
-    where.status = status;
-  }
-
-  if (q) {
-    const orConditions: Prisma.OrderWhereInput[] = [
-      { user: { name: { contains: q, mode: "insensitive" } } },
-      { user: { email: { contains: q, mode: "insensitive" } } },
-    ];
-
-    const orderNumber = Number(q);
-    if (!isNaN(orderNumber) && orderNumber > 0) {
-      orConditions.push({ orderNumber: { equals: orderNumber } });
-    }
-
-    where.OR = orConditions;
-  }
+  const where = buildOrderWhere({ q, status });
 
   return db.order.count({ where });
 };
