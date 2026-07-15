@@ -33,6 +33,8 @@ export const searchCustomers = async (params: SearchCustomersParams) => {
     orders: { select: { total: true } },
   } satisfies Prisma.UserInclude;
 
+  // In-memory sort: Prisma cannot ORDER BY aggregated fields natively.
+  // Alternative: raw query with ORDER BY on subquery or a materialized view.
   if (sortBy === "most_orders" || sortBy === "most_spent") {
     const all = await db.user.findMany({
       where,
@@ -54,14 +56,14 @@ export const searchCustomers = async (params: SearchCustomersParams) => {
     return { customers: rows, total };
   }
 
-  const orderBy: Prisma.UserOrderByWithRelationInput =
+  const orderBy: Prisma.UserOrderByWithRelationInput[] =
     sortBy === "name_asc"
-      ? { name: "asc" }
+      ? [{ name: "asc" }, { id: "asc" }]
       : sortBy === "name_desc"
-        ? { name: "desc" }
+        ? [{ name: "desc" }, { id: "asc" }]
         : sortBy === "oldest"
-          ? { createdAt: "asc" }
-          : { createdAt: "desc" };
+          ? [{ createdAt: "asc" }, { id: "asc" }]
+          : [{ createdAt: "desc" }, { id: "asc" }];
 
   const [total, rows] = await Promise.all([
     db.user.count({ where }),

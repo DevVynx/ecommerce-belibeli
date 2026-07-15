@@ -6,7 +6,8 @@ const query = z.object({
   q: z.string().optional(),
   sortBy: z
     .enum(["name_asc", "name_desc", "recent", "oldest", "most_orders", "most_spent"])
-    .optional(),
+    .optional()
+    .default("recent"),
   page: z.coerce.number().int().min(1).optional().default(1),
   limit: z.coerce.number().int().min(1).max(50).optional().default(10),
 });

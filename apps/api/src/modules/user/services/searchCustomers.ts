@@ -1,8 +1,8 @@
-import type { AdminSearchCustomersRequest } from "@repo/types/contracts";
+import type { AdminGetCustomersRequest } from "@repo/types/contracts";
 
 import { userRepositories } from "@/modules/user/repositories";
 
-export const searchCustomers = async (params: AdminSearchCustomersRequest) => {
+export const searchCustomers = async (params: AdminGetCustomersRequest) => {
   const { q, sortBy, page = 1, limit = 10 } = params;
 
   const { customers: raw, total } = await userRepositories.searchCustomers({
