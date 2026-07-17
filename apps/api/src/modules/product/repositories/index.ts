@@ -1,4 +1,5 @@
 import { countLowStockVariants } from "@/modules/product/repositories/countLowStockVariants";
+import { createProduct } from "@/modules/product/repositories/createProduct";
 import { findAdminProductsByFilters } from "@/modules/product/repositories/findAdminProductsByFilters";
 import { findAllCategories } from "@/modules/product/repositories/findAllCategories";
 import { findProductById } from "@/modules/product/repositories/findById";
@@ -12,6 +13,7 @@ import { getRatingDistribution } from "@/modules/product/repositories/getRatingD
 import { updateRatingAggregates } from "@/modules/product/repositories/updateRatingAggregates";
 
 export const productRepositories = {
+  createProduct,
   findAllCategories,
   findAdminProductsByFilters,
   findMany: findManyProducts,

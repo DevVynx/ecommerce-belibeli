@@ -33,3 +33,19 @@ export type SearchProductsRequest = {
   offset?: number;
   limit?: number;
 };
+
+export type CreateProductRequest = {
+  name: string;
+  description: string;
+  categoryId: string;
+  options: { name: string; values: string[] }[];
+  variants: {
+    sku: string;
+    price: number;
+    stock: number;
+    weight: number;
+    isActive: boolean;
+    attributes: Record<string, string>;
+    images: { url: string; publicId: string }[];
+  }[];
+};

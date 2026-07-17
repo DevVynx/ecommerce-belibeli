@@ -1,4 +1,5 @@
 import { countLowStockVariants } from "@/modules/product/services/countLowStockVariants";
+import { createProduct } from "@/modules/product/services/createProduct";
 import { findProductById } from "@/modules/product/services/findById";
 import { findProductBySlug } from "@/modules/product/services/findBySlug";
 import { findManyProducts } from "@/modules/product/services/findMany";
@@ -8,9 +9,11 @@ import { getCategories } from "@/modules/product/services/getCategories";
 import { searchAdminProducts } from "@/modules/product/services/searchAdminProducts";
 import { searchProducts } from "@/modules/product/services/searchProducts";
 import { updateRatingAggregates } from "@/modules/product/services/updateRatingAggregates";
+import { uploadVariantImage } from "@/modules/product/services/uploadVariantImage";
 
 export const productServices = {
   countLowStockVariants,
+  createProduct,
   getCategories,
   findMany: findManyProducts,
   findById: findProductById,
@@ -20,4 +23,5 @@ export const productServices = {
   search: searchProducts,
   searchAdminProducts,
   updateRatingAggregates,
+  uploadVariantImage,
 };

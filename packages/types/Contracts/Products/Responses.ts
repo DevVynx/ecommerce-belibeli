@@ -126,3 +126,14 @@ export type CategoryDto = {
 export type GetCategoriesResponse = {
   categories: CategoryDto[];
 };
+
+export type UploadVariantImageResponse = {
+  url: string;
+  publicId: string;
+};
+
+export type CreateProductResponse = {
+  id: string;
+  name: string;
+  variantsCount: number;
+};
