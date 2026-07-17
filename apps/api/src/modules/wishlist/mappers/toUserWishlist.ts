@@ -24,7 +24,7 @@ export function toUserWishlist(wishlist: EnrichedWishlist | null): GetUserWishli
             ratingCount: product.ratingCount,
             display: {
               variantId: heroVariant.id,
-              image: product.image,
+              image: product.productVariants[0]?.images[0]?.url ?? "",
               price: Number(heroVariant.price),
               salePrice: Number(heroVariant.offer.salePrice),
               isOnSale: heroVariant.offer.isOnSale,

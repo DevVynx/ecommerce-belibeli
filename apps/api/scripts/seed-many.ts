@@ -303,7 +303,6 @@ async function main() {
         description: pick(descriptionTemplates[catName])
           .replace("{brand}", brand)
           .replace("{productLine}", line.name),
-        image: `https://picsum.photos/seed/${slug}/400/400`,
         ratingRate,
         ratingCount,
         totalStock: 0,
@@ -483,3 +482,4 @@ main()
     await prisma.$disconnect();
     await pool.end();
   });
+

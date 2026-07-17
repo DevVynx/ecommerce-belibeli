@@ -15,7 +15,7 @@ export function productMapperToProductDetails(
     ratingDistribution: enrichedProduct.ratingDistribution,
     display: {
       variantId: enrichedProduct.heroVariant.id,
-      image: enrichedProduct.image,
+      image: enrichedProduct.heroVariant.images[0]?.url ?? "",
       price: Number(enrichedProduct.heroVariant.price),
       salePrice: Number(enrichedProduct.heroVariant.offer.salePrice),
       isOnSale: enrichedProduct.heroVariant.offer.isOnSale,
@@ -44,7 +44,7 @@ export function productMapperToProductDetails(
     stock: variant.stock,
     isOnSale: variant.offer.isOnSale,
     isAvailable: variant.offer.isAvailable,
-    optionValueIds: variant.productVariantOptions.map((vOpt) => vOpt.productOptionValueId),
+    optionValueIds: variant.optionValues.map((vOpt) => vOpt.productOptionValueId),
   }));
 
   return { product: formattedProduct, options: formattedOptions, variants: formattedVariants };

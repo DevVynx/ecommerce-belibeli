@@ -14,7 +14,7 @@ export const updateReview = async ({ id, rating, comment }: UpdateReviewProps) =
       user: { select: { name: true } },
       variant: {
         include: {
-          productVariantOptions: {
+          optionValues: {
             include: {
               productOptionValue: {
                 include: { productOption: true },

@@ -15,7 +15,7 @@ export function toCartItemDto(item: EnrichedCartItem): CartItemDto {
       title: product.title,
       variant: {
         id: variant.id,
-        image: product.image,
+        image: variant.images[0]?.url ?? "",
         price: Number(variant.price),
         stock: variant.stock,
         salePrice: Number(variant.offer.salePrice),
@@ -23,7 +23,7 @@ export function toCartItemDto(item: EnrichedCartItem): CartItemDto {
         isAvailable: variant.offer.isAvailable,
       },
     },
-    selectedOptions: variant.productVariantOptions.map((pvo) => ({
+    selectedOptions: variant.optionValues.map((pvo) => ({
       name: pvo.productOptionValue.productOption.name,
       value: pvo.productOptionValue.value,
     })),

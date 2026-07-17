@@ -13,14 +13,23 @@ export const findOrderById = async ({ id, userId }: FindOrderByIdProps) => {
         include: {
           productVariant: {
             include: {
-              product: true,
-              productVariantOptions: {
+              product: {
+                include: {
+                  productVariants: {
+                    select: {
+                      images: { select: { url: true } },
+                    },
+                  },
+                },
+              },
+              optionValues: {
                 include: {
                   productOptionValue: {
                     include: { productOption: true },
                   },
                 },
               },
+              images: { select: { url: true } },
             },
           },
         },

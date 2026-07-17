@@ -20,7 +20,6 @@ function buildSelect(now: Date) {
     id: true,
     title: true,
     slug: true,
-    image: true,
     totalStock: true,
     promotions: { where: activePromotions, select: { type: true, discountValue: true } },
     category: {
@@ -37,8 +36,9 @@ function buildSelect(now: Date) {
         price: true,
         stock: true,
         isActive: true,
+        images: { select: { url: true } },
         promotions: { where: activePromotions, select: { type: true, discountValue: true } },
-        productVariantOptions: {
+        optionValues: {
           select: {
             productOptionValue: {
               select: {

@@ -7,7 +7,6 @@ export const findProductsAdmin = async (ids: string[]) => {
       id: true,
       title: true,
       slug: true,
-      image: true,
       totalStock: true,
       category: { select: { id: true, name: true } },
       productVariants: {
@@ -17,7 +16,8 @@ export const findProductsAdmin = async (ids: string[]) => {
           price: true,
           stock: true,
           isActive: true,
-          productVariantOptions: {
+          images: { select: { url: true } },
+          optionValues: {
             select: {
               productOptionValue: {
                 select: {

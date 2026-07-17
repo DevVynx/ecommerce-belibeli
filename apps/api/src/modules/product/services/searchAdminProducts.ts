@@ -34,7 +34,7 @@ async function searchWithDb(
         salePrice: Number(offer.salePrice),
         stock: variant.stock,
         isActive: variant.isActive,
-        options: variant.productVariantOptions.map((pvo) => ({
+        options: variant.optionValues.map((pvo) => ({
           name: pvo.productOptionValue.productOption.name,
           value: pvo.productOptionValue.value,
         })),
@@ -52,7 +52,7 @@ async function searchWithDb(
     return {
       id: product.id,
       title: product.title,
-      image: product.image,
+      image: product.productVariants[0]?.images[0]?.url ?? "",
       category: product.category,
       totalStock: product.totalStock,
       activeCount,

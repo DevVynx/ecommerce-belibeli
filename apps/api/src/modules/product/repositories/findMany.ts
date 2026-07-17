@@ -54,6 +54,7 @@ export const findManyProducts = async ({
             price: true,
             stock: true,
             isActive: true,
+            images: { select: { url: true } },
             promotions: {
               where: { isActive: true, startsAt: { lte: now }, endsAt: { gte: now } },
             },

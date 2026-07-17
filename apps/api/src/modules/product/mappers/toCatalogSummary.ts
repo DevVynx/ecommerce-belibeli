@@ -15,7 +15,7 @@ export function productMapperToCatalogSummary(products: EnrichedProductList): {
       ratingCount: Number(product.ratingCount),
       display: {
         variantId: product.heroVariant.id,
-        image: product.image,
+        image: product.productVariants[0]?.images[0]?.url ?? "",
         price: Number(product.heroVariant.price),
         salePrice: Number(product.heroVariant.offer.salePrice),
         isOnSale: product.heroVariant.offer.isOnSale,

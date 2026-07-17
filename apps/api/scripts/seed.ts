@@ -46,7 +46,6 @@ type VariantData = {
 type ProductData = {
   title: string;
   description: string;
-  image: string;
   totalStock: number;
   ratingRate: number;
   ratingCount: number;
@@ -110,7 +109,6 @@ const productsData: ProductData[] = [
   {
     title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
     description: "Your perfect pack for everyday use and walks in the forest...",
-    image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
     totalStock: 45,
     ratingRate: 3.9,
     ratingCount: 120,
@@ -135,7 +133,6 @@ const productsData: ProductData[] = [
   {
     title: "Mens Casual Premium Slim Fit T-Shirts",
     description: "Slim-fitting style, contrast raglan long sleeve...",
-    image: "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_t.png",
     totalStock: 95,
     ratingRate: 4.1,
     ratingCount: 259,
@@ -244,7 +241,6 @@ const productsData: ProductData[] = [
   {
     title: "Mens Cotton Jacket",
     description: "Great outerwear jackets for Spring/Autumn/Winter...",
-    image: "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_t.png",
     totalStock: 30,
     ratingRate: 4.7,
     ratingCount: 500,
@@ -323,7 +319,6 @@ const productsData: ProductData[] = [
   {
     title: "Mens Casual Slim Fit",
     description: "The color could be slightly different between on the screen and in practice...",
-    image: "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_t.png",
     totalStock: 200,
     ratingRate: 2.1,
     ratingCount: 430,
@@ -395,7 +390,6 @@ const productsData: ProductData[] = [
     title: "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",
     description:
       "From our Legends Collection, the Naga was inspired by the mythical water dragon...",
-    image: "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_t.png",
     totalStock: 8,
     ratingRate: 4.6,
     ratingCount: 400,
@@ -419,7 +413,6 @@ const productsData: ProductData[] = [
   {
     title: "Solid Gold Petite Micropave",
     description: "Satisfaction Guaranteed. Return or exchange any order within 30 days...",
-    image: "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_t.png",
     totalStock: 19,
     ratingRate: 3.9,
     ratingCount: 70,
@@ -445,7 +438,6 @@ const productsData: ProductData[] = [
   {
     title: "White Gold Plated Princess",
     description: "Classic Created Wedding Engagement Solitaire Diamond Promise Ring for Her...",
-    image: "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_t.png",
     totalStock: 150,
     ratingRate: 3.0,
     ratingCount: 400,
@@ -466,7 +458,6 @@ const productsData: ProductData[] = [
   {
     title: "Pierced Owl Rose Gold Plated Stainless Steel Double",
     description: "Rose Gold Plated Double Flared Tunnel Plug Earrings...",
-    image: "https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_t.png",
     totalStock: 300,
     ratingRate: 1.9,
     ratingCount: 100,
@@ -477,7 +468,6 @@ const productsData: ProductData[] = [
   {
     title: "WD 2TB Elements Portable External Hard Drive - USB 3.0",
     description: "USB 3.0 and USB 2.0 Compatibility Fast data transfers...",
-    image: "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_t.png",
     totalStock: 80,
     ratingRate: 3.3,
     ratingCount: 203,
@@ -506,7 +496,6 @@ const productsData: ProductData[] = [
   {
     title: "SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s",
     description: "Easy upgrade for faster boot up, shutdown, application load and response...",
-    image: "https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_t.png",
     totalStock: 50,
     ratingRate: 2.9,
     ratingCount: 470,
@@ -531,7 +520,6 @@ const productsData: ProductData[] = [
   {
     title: "Silicon Power 256GB SSD 3D NAND A55 SLC Cache Performance Boost SATA III 2.5",
     description: "3D NAND flash are applied to deliver high transfer speeds...",
-    image: "https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_t.png",
     totalStock: 60,
     ratingRate: 4.8,
     ratingCount: 319,
@@ -546,7 +534,6 @@ const productsData: ProductData[] = [
   {
     title: "WD 4TB Gaming Drive Works with Playstation 4 Portable External Hard Drive",
     description: "Expand your PS4 gaming experience, Play anywhere Fast and easy...",
-    image: "https://fakestoreapi.com/img/61mtL65D4cL._AC_SX679_t.png",
     totalStock: 35,
     ratingRate: 4.8,
     ratingCount: 400,
@@ -570,7 +557,6 @@ const productsData: ProductData[] = [
   {
     title: "Acer SB220Q bi 21.5 inches Full HD (1920 x 1080) IPS Ultra-Thin",
     description: "21.5 inches Full HD widescreen IPS display...",
-    image: "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_t.png",
     totalStock: 15,
     ratingRate: 2.9,
     ratingCount: 250,
@@ -584,7 +570,6 @@ const productsData: ProductData[] = [
   {
     title: "Samsung 49-Inch CHG90 144Hz Curved Gaming Monitor – Super Ultrawide Screen QLED",
     description: "49 INCH SUPER ULTRAWIDE 32:9 CURVED GAMING MONITOR...",
-    image: "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_t.png",
     totalStock: 8,
     ratingRate: 2.2,
     ratingCount: 140,
@@ -608,7 +593,6 @@ const productsData: ProductData[] = [
   {
     title: "BIYLACLESEN Women's 3-in-1 Snowboard Jacket Winter Coats",
     description: "Note:The Jackets is US standard size...",
-    image: "https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_t.png",
     totalStock: 55,
     ratingRate: 2.6,
     ratingCount: 235,
@@ -707,7 +691,6 @@ const productsData: ProductData[] = [
   {
     title: "Lock and Love Women's Removable Hooded Faux Leather Moto Biker Jacket",
     description: "100% POLYURETHANE(shell) 100% POLYESTER(lining)...",
-    image: "https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_t.png",
     totalStock: 65,
     ratingRate: 2.9,
     ratingCount: 340,
@@ -816,7 +799,6 @@ const productsData: ProductData[] = [
   {
     title: "Rain Jacket Women Windbreaker Striped Climbing Raincoats",
     description: "Lightweight perfect for trip or casual wear...",
-    image: "https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2t.png",
     totalStock: 40,
     ratingRate: 3.8,
     ratingCount: 679,
@@ -887,7 +869,6 @@ const productsData: ProductData[] = [
   {
     title: "MBJ Women's Solid Short Sleeve Boat Neck V",
     description: "95% RAYON 5% SPANDEX, Made in USA or Imported...",
-    image: "https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_t.png",
     totalStock: 25,
     ratingRate: 4.7,
     ratingCount: 130,
@@ -986,7 +967,6 @@ const productsData: ProductData[] = [
   {
     title: "Opna Women's Short Sleeve Moisture",
     description: "100% Polyester, Machine wash...",
-    image: "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_t.png",
     totalStock: 70,
     ratingRate: 4.5,
     ratingCount: 146,
@@ -1067,7 +1047,6 @@ const productsData: ProductData[] = [
   {
     title: "DANVOUY Womens T Shirt Casual Cotton Short",
     description: "95%Cotton,5%Spandex, Features: Casual, Short Sleeve...",
-    image: "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_t.png",
     totalStock: 90,
     ratingRate: 3.6,
     ratingCount: 145,
@@ -1216,7 +1195,6 @@ async function main() {
         slug: generateSlug(data.title),
         title: data.title,
         description: data.description,
-        image: data.image,
         ratingRate: data.ratingRate,
         ratingCount: data.ratingCount,
         totalStock: data.variants.reduce((sum, v) => sum + v.stock, 0),
@@ -1361,3 +1339,4 @@ main()
     await prisma.$disconnect();
     await pool.end();
   });
+

@@ -10,7 +10,7 @@ export const findProductIdsByOptionValues = async (
       AND: valueTexts.map((text) => ({
         productVariants: {
           some: {
-            productVariantOptions: {
+            optionValues: {
               some: {
                 productOptionValue: { value: text },
               },

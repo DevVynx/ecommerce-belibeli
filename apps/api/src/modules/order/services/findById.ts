@@ -22,7 +22,7 @@ export const findOrderById = async ({ orderId, userId }: FindOrderByIdParams) =>
   const items = await Promise.all(
     order.orderItems.map(async (item) => {
       const product = item.productVariant.product;
-      const variantLabel = formatVariantLabel(item.productVariant.productVariantOptions);
+      const variantLabel = formatVariantLabel(item.productVariant.optionValues);
       const totalPrice = Number(item.unitPrice) * item.quantity;
       const productId = product.id;
 
@@ -33,7 +33,7 @@ export const findOrderById = async ({ orderId, userId }: FindOrderByIdParams) =>
         productId,
         productName: product.title,
         productSlug: product.slug,
-        productImage: product.image,
+        productImage: product.productVariants[0]?.images[0]?.url ?? "",
         variantLabel,
         quantity: item.quantity,
         unitPrice: Number(item.unitPrice),

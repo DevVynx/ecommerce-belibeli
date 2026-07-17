@@ -18,7 +18,8 @@ export const findProductById = async ({ productId }: findProductByIdProps) => {
           price: true,
           stock: true,
           isActive: true,
-          productVariantOptions: { select: { productOptionValueId: true } },
+          images: { select: { url: true } },
+          optionValues: { select: { productOptionValueId: true } },
           promotions: {
             where: { isActive: true, startsAt: { lte: now }, endsAt: { gte: now } },
           },

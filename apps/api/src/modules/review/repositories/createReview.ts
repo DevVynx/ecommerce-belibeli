@@ -21,7 +21,7 @@ export const createReview = async ({
       user: { select: { name: true } },
       variant: {
         include: {
-          productVariantOptions: {
+          optionValues: {
             include: {
               productOptionValue: {
                 include: { productOption: true },

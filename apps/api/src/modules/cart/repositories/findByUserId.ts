@@ -58,7 +58,7 @@ export const findCartByUserId = async ({ userId }: findCartByUserIdProps) => {
                   },
                 },
               },
-              productVariantOptions: {
+              optionValues: {
                 include: {
                   productOptionValue: {
                     include: {
@@ -67,6 +67,7 @@ export const findCartByUserId = async ({ userId }: findCartByUserIdProps) => {
                   },
                 },
               },
+              images: { select: { url: true } },
             },
           },
         },
