@@ -1,16 +1,18 @@
 "use client";
 
 import type { AdminSearchProductsRequest } from "@repo/types/contracts";
-import Link from "next/link";
 import { parseAsIndex, parseAsString, parseAsStringLiteral, useQueryStates } from "nuqs";
-import { Suspense, useCallback, useEffect, useMemo, useRef } from "react";
+import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 
+import { getCategories } from "@/shared/actions/products/getCategories";
 import { PlusIcon } from "@/shared/assets/animatedIcons/plus";
 import type { ProductFiltersValue } from "@/shared/components/Admin/Products/ProductFilters";
 import { ProductFilters, sortValues } from "@/shared/components/Admin/Products/ProductFilters";
+import { CreateProductSheet } from "@/shared/components/Admin/Products/Create/CreateProductSheet";
 import { ProductTable } from "@/shared/components/Admin/Products/ProductTable";
 import { Button } from "@/shared/components/shadcn-ui/button";
 import { useAdminSearchProducts } from "@/shared/hooks/data/adminQueries/useProduct";
+import { useInvalidate } from "@/shared/hooks/lib/useInvalidate";
 import { useAnimatedIcons } from "@/shared/hooks/ui/useAnimatedIcons";
 import { useScreenSize } from "@/shared/hooks/ui/useScreenSize";
 
@@ -36,6 +38,15 @@ function AdminProductsPageContent() {
     autoStartDuration: 1500,
   });
   const [sp, setSearchParams] = useQueryStates(parsers);
+  const [isCreateOpen, setIsCreateOpen] = useState(false);
+  const [categories, setCategories] = useState<{ id: string; name: string }[]>([]);
+  const invalidate = useInvalidate();
+
+  useEffect(() => {
+    getCategories().then((res) => {
+      if (res.data) setCategories(res.data.categories);
+    });
+  }, []);
 
   const limit = useMemo(
     () =>
@@ -86,11 +97,9 @@ function AdminProductsPageContent() {
     <>
       <div className="mb-6 flex items-center justify-between">
         <h1 className="text-3xl font-bold">Produtos</h1>
-        <Button asChild {...getHandlers("create")}>
-          <Link href="/admin/products/create">
-            <PlusIcon ref={getIconRef("create")} size={18} className="mr-2" />
-            Criar Produto
-          </Link>
+        <Button {...getHandlers("create")} onClick={() => setIsCreateOpen(true)}>
+          <PlusIcon ref={getIconRef("create")} size={18} className="mr-2" />
+          Criar Produto
         </Button>
       </div>
 
@@ -109,6 +118,16 @@ function AdminProductsPageContent() {
       )}
 
       {data && <ProductTable data={data} page={sp.page + 1} onPageChange={handlePageChange} />}
+
+      <CreateProductSheet
+        open={isCreateOpen}
+        onOpenChange={setIsCreateOpen}
+        categories={categories}
+        onSuccess={() => {
+          setIsCreateOpen(false);
+          invalidate(["admin", "products", "search"]);
+        }}
+      />
     </>
   );
 }
