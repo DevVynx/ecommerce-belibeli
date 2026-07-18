@@ -1,5 +1,3 @@
-"use client";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useCallback, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
@@ -35,8 +33,12 @@ export function CreateProductForm({ categories, onSuccess }: CreateProductFormPr
 
   const options = form.watch("options");
 
+  const [optionsRevision, setOptionsRevision] = useState(0);
+  const handleOptionsChange = useCallback(() => setOptionsRevision((r) => r + 1), []);
+
   const [imageOptionIndex, setImageOptionIndex] = useState<number | null>(null);
   const [imageMap, setImageMap] = useState<Record<string, StoredImage[]>>({});
+  const [generalImages, setGeneralImages] = useState<StoredImage[]>([]);
 
   const handleImagesChange = useCallback((value: string, images: StoredImage[]) => {
     setImageMap((prev) => ({
@@ -45,15 +47,16 @@ export function CreateProductForm({ categories, onSuccess }: CreateProductFormPr
     }));
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleGeneralImagesChange = useCallback((images: StoredImage[]) => {
+    setGeneralImages((prev) => [...prev, ...images]);
+  }, []);
+
+  const onSubmit = async (data: CreateProductFormData) => {
     const valid = await form.trigger();
     if (!valid) return;
 
-    const raw = form.getValues();
     const imageOptionName = imageOptionIndex !== null ? options[imageOptionIndex]?.name : undefined;
 
-    // Validate that all image option values have at least one image
     if (imageOptionName) {
       const missingImages = options[imageOptionIndex!]!.values.filter(
         (v) => !imageMap[v] || imageMap[v]!.length === 0
@@ -66,32 +69,38 @@ export function CreateProductForm({ categories, onSuccess }: CreateProductFormPr
         });
         return;
       }
+    } else if (generalImages.length === 0) {
+      showNotification({
+        type: "error",
+        title: "Imagens necessárias",
+        message: "Adicione ao menos uma imagem ao produto.",
+      });
+      return;
     }
 
-    const imageKey = imageOptionName ?? "";
     const payload = {
-      name: raw.name,
-      description: raw.description,
-      categoryId: raw.categoryId,
-      options: raw.options,
-      variants: raw.variants.map((v) => ({
+      name: data.name,
+      description: data.description,
+      categoryId: data.categoryId,
+      options: data.options,
+      variants: data.variants.map((v) => ({
         sku: v.sku,
         price: Number(v.price),
         stock: Number(v.stock),
         weight: Number(v.weight),
         isActive: v.isActive ?? true,
         attributes: v.attributes,
-        images:
-          imageKey && v.attributes[imageKey] && imageMap[v.attributes[imageKey]!]
-            ? imageMap[v.attributes[imageKey]!]!.map((img) => ({
+        images: imageOptionName
+          ? v.attributes[imageOptionName] && imageMap[v.attributes[imageOptionName]!]
+            ? imageMap[v.attributes[imageOptionName]!]!.map((img) => ({
                 url: img.url,
                 publicId: img.publicId,
               }))
-            : [],
+            : []
+          : generalImages.map((img) => ({ url: img.url, publicId: img.publicId })),
       })),
     };
 
-    // Check if any variant has no images
     const noImageVariants = payload.variants.filter((v) => v.images.length === 0);
     if (noImageVariants.length > 0) {
       showNotification({
@@ -117,19 +126,19 @@ export function CreateProductForm({ categories, onSuccess }: CreateProductFormPr
     showNotification({
       type: "success",
       title: "Produto criado",
-      message: `O produto "${raw.name}" foi criado com ${payload.variants.length} variante${payload.variants.length !== 1 ? "s" : ""}.`,
+      message: `O produto "${data.name}" foi criado com ${payload.variants.length} variante${payload.variants.length !== 1 ? "s" : ""}.`,
     });
     onSuccess?.();
   };
 
   return (
     <FormProvider {...form}>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-8">
         <BasicInfoSection categories={categories} />
 
         <Separator />
 
-        <OptionsBuilder />
+        <OptionsBuilder onOptionsChange={handleOptionsChange} />
 
         <Separator />
 
@@ -137,11 +146,13 @@ export function CreateProductForm({ categories, onSuccess }: CreateProductFormPr
           imageOptionIndex={imageOptionIndex}
           onImageOptionIndexChange={setImageOptionIndex}
           onImagesChange={handleImagesChange}
+          generalImages={generalImages}
+          onGeneralImagesChange={handleGeneralImagesChange}
         />
 
         <Separator />
 
-        <VariantMatrix />
+        <VariantMatrix optionsRevision={optionsRevision} />
 
         <Button
           type="submit"
