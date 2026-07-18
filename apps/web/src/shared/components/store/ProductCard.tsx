@@ -68,7 +68,7 @@ export const ProductCard = ({ product, grid }: ProductCardProps) => {
           <img
             src={product.display.image}
             alt={product.title}
-            className="aspect-square w-full object-contain"
+            className="aspect-square object-cover"
           />
         </Link>
 
@@ -106,7 +106,7 @@ export const ProductCard = ({ product, grid }: ProductCardProps) => {
           <StarIcon className="mr-1 h-3 w-3 fill-yellow-400 stroke-yellow-400" />
           <span className="font-bold text-black">{product.ratingRate.toFixed(1) ?? "–"}</span>
           <span className="mx-1">·</span>
-          <span>+{product.ratingCount ? `${product.ratingCount} vendidos` : "Novo"}</span>
+          <span>{product.ratingCount ? `+${product.ratingCount} vendidos` : "Produto Novo"}</span>
         </div>
 
         {/* Price */}
