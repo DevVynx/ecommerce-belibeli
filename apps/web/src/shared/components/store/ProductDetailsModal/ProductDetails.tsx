@@ -37,8 +37,9 @@ export const ProductDetails = ({
   options,
 }: ProductDetailsProps) => {
   const { addItemToCart, isLoading: isAddingToCart } = useCartMutations();
-  const displayVariantStock =
-    variants.find((v) => v.id === selectedProduct.display.variantId)?.stock ?? 0;
+  const displayVariantObj = variants.find((v) => v.id === selectedProduct.display.variantId);
+  const displayVariantStock = displayVariantObj?.stock ?? 0;
+  const displayVariantImages = displayVariantObj?.images ?? [];
   const { selectedOptions, setSelectedOptions, selectedVariant } = useProductVariantSelection(
     variants,
     options,
@@ -49,6 +50,7 @@ export const ProductDetails = ({
       stock: displayVariantStock,
       isOnSale: selectedProduct.display.isOnSale,
       isAvailable: selectedProduct.display.isAvailable,
+      images: displayVariantImages,
     }
   );
   const {
@@ -63,6 +65,7 @@ export const ProductDetails = ({
   const [quantity, setQuantity] = useState(1);
 
   const { id, title, ratingRate, ratingCount, description, display, slug } = selectedProduct;
+  const galleryImages = selectedVariant?.images?.map((i) => i.url) ?? [display.image];
   const isOutOfStock = !!selectedVariant && !selectedVariant.isAvailable;
   const isWishlisted = hasHydratedWishlist && wishlistIds.includes(id);
 
@@ -151,17 +154,9 @@ export const ProductDetails = ({
     <div className="flex h-125 gap-10">
       {/* Imagem - lado esquerdo */}
       <ProductGallery
+        key={selectedVariant?.id ?? "no-variant"}
         title={title}
-        images={[
-          display.image,
-          display.image,
-          display.image,
-          display.image,
-          display.image,
-          display.image,
-          display.image,
-          display.image,
-        ]}
+        images={galleryImages}
       />
 
       {/* Detalhes - lado direito */}

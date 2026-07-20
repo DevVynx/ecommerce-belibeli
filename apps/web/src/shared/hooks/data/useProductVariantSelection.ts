@@ -9,6 +9,7 @@ type DisplayVariant = {
   stock: number;
   isOnSale: boolean;
   isAvailable: boolean;
+  images: { url: string }[];
 };
 
 export function useProductVariantSelection(
@@ -47,6 +48,7 @@ export function useProductVariantSelection(
         isOnSale: displayVariant.isOnSale,
         isAvailable: displayVariant.isAvailable,
         optionValueIds: [],
+        images: displayVariant.images,
       };
     }
 

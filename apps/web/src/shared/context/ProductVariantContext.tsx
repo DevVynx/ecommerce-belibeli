@@ -34,7 +34,9 @@ type ProductVariantProviderProps = {
 export const ProductVariantProvider = ({ data, children }: ProductVariantProviderProps) => {
   const { product, variants, options } = data;
 
-  const displayVariantStock = variants.find((v) => v.id === product.display.variantId)?.stock ?? 0;
+  const displayVariantObj = variants.find((v) => v.id === product.display.variantId);
+  const displayVariantStock = displayVariantObj?.stock ?? 0;
+  const displayVariantImages = displayVariantObj?.images ?? [];
   const { selectedOptions, setSelectedOptions, selectedVariant } = useProductVariantSelection(
     variants,
     options,
@@ -45,6 +47,7 @@ export const ProductVariantProvider = ({ data, children }: ProductVariantProvide
       stock: displayVariantStock,
       isOnSale: product.display.isOnSale,
       isAvailable: product.display.isAvailable,
+      images: displayVariantImages,
     }
   );
 
