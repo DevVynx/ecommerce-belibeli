@@ -20,6 +20,7 @@ function buildProductInclude() {
         price: true,
         stock: true,
         isActive: true,
+        images: { select: { url: true } },
         promotions: { where: promo() },
       },
     },
