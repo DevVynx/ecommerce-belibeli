@@ -33,7 +33,7 @@ export const findOrderById = async ({ orderId, userId }: FindOrderByIdParams) =>
         productId,
         productName: product.title,
         productSlug: product.slug,
-        productImage: product.productVariants[0]?.images[0]?.url ?? "",
+        productImage: item.productVariant.images[0]?.url ?? "",
         variantLabel,
         quantity: item.quantity,
         unitPrice: Number(item.unitPrice),
