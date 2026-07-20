@@ -28,6 +28,7 @@ export const createReview = async ({
               },
             },
           },
+          images: { select: { url: true } },
         },
       },
     },

@@ -36,6 +36,7 @@ export const findReviewsByProductId = async ({
                 },
               },
             },
+            images: { select: { url: true } },
           },
         },
       },

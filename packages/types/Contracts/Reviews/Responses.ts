@@ -5,6 +5,7 @@ export type ReviewDto = {
   comment: string;
   createdAt: string;
   variantLabel: string;
+  variantImage: string;
 };
 
 export type GetReviewsResponse = {

@@ -12,6 +12,7 @@ type ReviewRaw = Prisma.ReviewGetPayload<{
         optionValues: {
           include: { productOptionValue: { include: { productOption: true } } };
         };
+        images: { select: { url: true } };
       };
     };
   };
@@ -24,4 +25,5 @@ export const toReviewDto = (raw: ReviewRaw): ReviewDto => ({
   comment: raw.comment,
   createdAt: raw.createdAt.toISOString(),
   variantLabel: formatVariantLabel(raw.variant.optionValues),
+  variantImage: raw.variant.images[0]?.url ?? "",
 });

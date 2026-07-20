@@ -21,6 +21,7 @@ export const updateReview = async ({ id, rating, comment }: UpdateReviewProps) =
               },
             },
           },
+          images: { select: { url: true } },
         },
       },
     },
