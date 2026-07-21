@@ -7,6 +7,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/shared/components/shadcn-ui/chart";
+import { formatPrice } from "@/shared/utils/store/price";
 
 export type Period = "1D" | "1W" | "1M" | "3M" | "6M";
 const PERIODS: Period[] = ["1D", "1W", "1M", "3M", "6M"];
@@ -125,10 +126,7 @@ export function ReportChart({ data, activePeriod, onPeriodChange }: ReportChartP
                   return (
                     <div className="flex items-center gap-2">
                       <span className="font-medium tabular-nums">
-                        {new Intl.NumberFormat("pt-BR", {
-                          style: "currency",
-                          currency: "BRL",
-                        }).format(numValue)}
+                        {formatPrice(numValue)}
                       </span>
                       <span
                         className={`text-xs ${isPositive ? "text-emerald-500" : "text-red-500"}`}

@@ -13,6 +13,7 @@ import {
   TableRow,
 } from "@/shared/components/shadcn-ui/table";
 import { STATUS_CONFIG } from "@/shared/utils/store/orders/statusConfig";
+import { formatPrice } from "@/shared/utils/store/price";
 
 import { OrderDetailContent } from "./OrderDetailContent";
 import { OrderExpandedRow } from "./OrderExpandedRow";
@@ -73,10 +74,7 @@ export const OrdersSectionContent = ({ orders }: OrdersSectionContentProps) => {
                     </span>
                   </TableCell>
                   <TableCell>
-                    {new Intl.NumberFormat("pt-BR", {
-                      style: "currency",
-                      currency: "BRL",
-                    }).format(order.total)}
+                    {formatPrice(order.total)}
                   </TableCell>
                   <TableCell className="text-right">
                     <Button
@@ -121,10 +119,7 @@ export const OrdersSectionContent = ({ orders }: OrdersSectionContentProps) => {
                     {new Date(order.createdAt).toLocaleDateString("pt-BR")}
                   </p>
                   <p className="pt-1 font-semibold">
-                    {new Intl.NumberFormat("pt-BR", {
-                      style: "currency",
-                      currency: "BRL",
-                    }).format(order.total)}
+                    {formatPrice(order.total)}
                   </p>
                 </div>
                 <span

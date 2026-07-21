@@ -7,6 +7,8 @@ import { Button } from "@/shared/components/shadcn-ui/button";
 import { Skeleton } from "@/shared/components/shadcn-ui/skeleton";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/shared/components/shadcn-ui/tooltip";
 
+import { formatPrice } from "@/shared/utils/store/price";
+
 import { ReviewModal } from "./ReviewModal";
 
 type OrderDetailContentProps = {
@@ -82,37 +84,27 @@ export const OrderDetailContent = ({ orderId }: OrderDetailContentProps) => {
           <span className="text-muted-foreground whitespace-nowrap">
             Subtotal:{" "}
             <span className="font-medium">
-              {new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(
-                orderDetail.subtotal
-              )}
+              {formatPrice(orderDetail.subtotal)}
             </span>
           </span>
           <span className="text-muted-foreground hidden sm:inline">|</span>
           <span className="text-muted-foreground whitespace-nowrap">
             Frete:{" "}
             <span className="font-medium">
-              {new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(
-                orderDetail.shipping
-              )}
+              {formatPrice(orderDetail.shipping)}
             </span>
           </span>
           {orderDetail.discount > 0 && (
             <>
               <span className="text-muted-foreground hidden sm:inline">|</span>
               <span className="whitespace-nowrap text-emerald-600">
-                Desconto: -
-                {new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(
-                  orderDetail.discount
-                )}
+                Desconto: -{formatPrice(orderDetail.discount)}
               </span>
             </>
           )}
           <span className="text-muted-foreground hidden sm:inline">|</span>
           <span className="font-semibold whitespace-nowrap">
-            Total:{" "}
-            {new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(
-              orderDetail.total
-            )}
+            Total: {formatPrice(orderDetail.total)}
           </span>
         </div>
       </div>
@@ -235,37 +227,23 @@ export const OrderDetailContent = ({ orderId }: OrderDetailContentProps) => {
                   <p className="truncate text-sm font-medium">{item.productName}</p>
                   <p className="text-muted-foreground text-xs">{item.variantLabel}</p>
                   <p className="text-muted-foreground mt-1 text-xs sm:hidden">
-                    Qtd: {item.quantity} x{" "}
-                    {new Intl.NumberFormat("pt-BR", {
-                      style: "currency",
-                      currency: "BRL",
-                    }).format(item.unitPrice)}
+                    Qtd: {item.quantity} x {formatPrice(item.unitPrice)}
                   </p>
                 </div>
               </div>
 
               <div className="flex items-center justify-between gap-2 sm:hidden">
                 <span className="text-sm font-medium">
-                  {new Intl.NumberFormat("pt-BR", {
-                    style: "currency",
-                    currency: "BRL",
-                  }).format(item.totalPrice)}
+                  {formatPrice(item.totalPrice)}
                 </span>
                 {reviewButton}
               </div>
 
               <p className="text-muted-foreground hidden text-xs whitespace-nowrap sm:block">
-                Qtd: {item.quantity} x{" "}
-                {new Intl.NumberFormat("pt-BR", {
-                  style: "currency",
-                  currency: "BRL",
-                }).format(item.unitPrice)}
+                Qtd: {item.quantity} x {formatPrice(item.unitPrice)}
               </p>
               <div className="hidden text-right text-sm font-medium sm:block">
-                {new Intl.NumberFormat("pt-BR", {
-                  style: "currency",
-                  currency: "BRL",
-                }).format(item.totalPrice)}
+                {formatPrice(item.totalPrice)}
               </div>
               <div className="hidden shrink-0 sm:block">{reviewButton}</div>
             </div>
