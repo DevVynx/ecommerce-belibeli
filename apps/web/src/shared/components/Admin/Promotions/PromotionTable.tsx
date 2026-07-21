@@ -1,11 +1,30 @@
 "use client";
 
 import type { AdminPromotionDto, AdminSearchPromotionsResponse } from "@repo/types/contracts";
-import { MoreHorizontal, Tag } from "lucide-react";
+import {
+  CalendarCheck,
+  CalendarX,
+  CheckCircle2,
+  EyeOff,
+  Loader2,
+  MoreHorizontal,
+  Pencil,
+  Tag,
+  Trash2,
+} from "lucide-react";
 import { useState } from "react";
 
+import { deletePromotion } from "@/shared/actions/promotions/deletePromotion";
 import { Badge } from "@/shared/components/shadcn-ui/badge";
 import { Button } from "@/shared/components/shadcn-ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/shared/components/shadcn-ui/dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -20,41 +39,53 @@ import {
   TableHeader,
   TableRow,
 } from "@/shared/components/shadcn-ui/table";
+import { useInvalidate } from "@/shared/hooks/lib/useInvalidate";
 import { formatPrice } from "@/shared/utils/store/price";
 
-function formatDate(dateStr: string) {
+function formatDateTime(dateStr: string) {
   const d = new Date(dateStr);
-  return `${String(d.getDate()).padStart(2, "0")}/${String(d.getMonth() + 1).padStart(2, "0")}/${d.getFullYear()}`;
+  const date = d.toLocaleDateString("pt-BR");
+  const time = d.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+  return { date, time };
 }
+
+const DISCOUNT_STYLES: Record<string, string> = {
+  PERCENTAGE: "border-rose-200 bg-rose-50 text-rose-700",
+  FIXED: "border-emerald-200 bg-emerald-50 text-emerald-700",
+};
 
 function DiscountCell({ promotion: p }: { promotion: AdminPromotionDto }) {
   const label =
     p.type === "PERCENTAGE" ? `${p.discountValue}% OFF` : `${formatPrice(p.discountValue)} OFF`;
 
   return (
-    <Badge
-      variant="outline"
-      className={
-        p.type === "PERCENTAGE" ? "bg-blue-50 text-blue-700" : "bg-purple-50 text-purple-700"
-      }
-    >
+    <Badge variant="outline" className={DISCOUNT_STYLES[p.type] ?? ""}>
       {label}
     </Badge>
   );
 }
 
-function TargetCell({ promotion: p }: { promotion: AdminPromotionDto }) {
-  const targetLabels: Record<string, { label: string; color: string }> = {
-    category: { label: "Categoria", color: "bg-green-50 text-green-700" },
-    product: { label: "Produto", color: "bg-amber-50 text-amber-700" },
-    variant: { label: "Variante", color: "bg-sky-50 text-sky-700" },
-  };
+const TARGET_STYLES: Record<string, { label: string; className: string }> = {
+  category: {
+    label: "Categoria",
+    className: "border-teal-200 bg-teal-50 text-teal-700",
+  },
+  product: {
+    label: "Produto",
+    className: "border-indigo-200 bg-indigo-50 text-indigo-700",
+  },
+  variant: {
+    label: "Variante",
+    className: "border-sky-200 bg-sky-50 text-sky-700",
+  },
+};
 
-  const t = targetLabels[p.targetType] as { label: string; color: string };
+function TargetCell({ promotion: p }: { promotion: AdminPromotionDto }) {
+  const t = TARGET_STYLES[p.targetType]!;
 
   return (
     <div className="flex items-center gap-2">
-      <Badge variant="outline" className={`shrink-0 ${t.color}`}>
+      <Badge variant="outline" className={`shrink-0 ${t.className}`}>
         {t.label}
       </Badge>
       <span className="max-w-40 truncate text-sm">{p.targetName}</span>
@@ -62,23 +93,80 @@ function TargetCell({ promotion: p }: { promotion: AdminPromotionDto }) {
   );
 }
 
+const STATUS_CONFIG: Record<string, { label: string; icon: React.ReactNode; className: string }> = {
+  expired: {
+    label: "Expirado",
+    icon: <CalendarX className="size-3.5" />,
+    className: "border-red-200 bg-red-50 text-red-700",
+  },
+  scheduled: {
+    label: "Agendado",
+    icon: <CalendarCheck className="size-3.5" />,
+    className: "border-blue-200 bg-blue-50 text-blue-700",
+  },
+  active: {
+    label: "Ativo",
+    icon: <CheckCircle2 className="size-3.5" />,
+    className: "border-emerald-200 bg-emerald-50 text-emerald-700",
+  },
+  inactive: {
+    label: "Inativo",
+    icon: <EyeOff className="size-3.5" />,
+    className: "border-muted bg-muted text-muted-foreground",
+  },
+};
+
 function StatusCell({ promotion: p }: { promotion: AdminPromotionDto }) {
+  const now = new Date();
+  const startsAtDate = new Date(p.startsAt);
+  const endsAtDate = new Date(p.endsAt);
+
+  type StatusKey = keyof typeof STATUS_CONFIG;
+  let key: StatusKey;
+  let subtitle: string;
+
+  if (endsAtDate < now) {
+    key = "expired";
+    const d = formatDateTime(p.endsAt);
+    subtitle = `Expirou em ${d.date} ${d.time}`;
+  } else if (startsAtDate > now) {
+    key = "scheduled";
+    const d = formatDateTime(p.startsAt);
+    subtitle = `Inicia em ${d.date} ${d.time}`;
+  } else if (p.isActive) {
+    key = "active";
+    const d = formatDateTime(p.endsAt);
+    subtitle = `Expira em ${d.date} ${d.time}`;
+  } else {
+    key = "inactive";
+    const d = formatDateTime(p.endsAt);
+    subtitle = `Expira em ${d.date} ${d.time}`;
+  }
+
+  const config = STATUS_CONFIG[key]!;
+
   return (
     <div>
-      <div className="flex items-center gap-1.5">
-        <span
-          className={`inline-block size-2 rounded-full ${p.isActive ? "bg-green-500" : "bg-muted-foreground"}`}
-        />
-        <span className="text-sm">{p.isActive ? "Ativo" : "Inativo"}</span>
-      </div>
-      <p className="text-muted-foreground mt-0.5 text-xs tabular-nums">
-        {formatDate(p.startsAt)} — {formatDate(p.endsAt)}
-      </p>
+      <span
+        className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-semibold ${config.className}`}
+      >
+        {config.icon}
+        {config.label}
+      </span>
+      <p className="text-muted-foreground mt-1 text-xs">{subtitle}</p>
     </div>
   );
 }
 
-function ActionsCell() {
+function ActionsCell({
+  promotion,
+  onEdit,
+  onDelete,
+}: {
+  promotion: AdminPromotionDto;
+  onEdit: (promotion: AdminPromotionDto) => void;
+  onDelete: (promotion: AdminPromotionDto) => void;
+}) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -87,8 +175,15 @@ function ActionsCell() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem disabled>Editar</DropdownMenuItem>
-        <DropdownMenuItem disabled className="text-red-500">
+        <DropdownMenuItem className="cursor-pointer gap-2" onClick={() => onEdit(promotion)}>
+          <Pencil className="size-4" />
+          Editar
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          className="cursor-pointer gap-2 text-red-500 focus:text-red-600"
+          onClick={() => onDelete(promotion)}
+        >
+          <Trash2 className="size-4" />
           Excluir
         </DropdownMenuItem>
       </DropdownMenuContent>
@@ -100,13 +195,28 @@ export function PromotionTable({
   data,
   page,
   onPageChange,
+  onEdit,
 }: {
   data: AdminSearchPromotionsResponse;
   page: number;
   onPageChange: (page: number) => void;
+  onEdit: (promotion: AdminPromotionDto) => void;
 }) {
+  const [deletingPromotion, setDeletingPromotion] = useState<AdminPromotionDto | null>(null);
+  const [isDeleting, setIsDeleting] = useState(false);
   const [editingEllipsis, setEditingEllipsis] = useState<string | null>(null);
+  const invalidate = useInvalidate();
   const totalPages = data.pagination.totalPages;
+
+  const handleDelete = async () => {
+    if (!deletingPromotion) return;
+    setIsDeleting(true);
+    const { error } = await deletePromotion(deletingPromotion.id);
+    setIsDeleting(false);
+    if (error) return;
+    setDeletingPromotion(null);
+    invalidate(["admin", "promotions", "search"]);
+  };
 
   if (data.promotions.length === 0) {
     return (
@@ -131,7 +241,7 @@ export function PromotionTable({
               <TableHead>Nome</TableHead>
               <TableHead>Desconto</TableHead>
               <TableHead>Alvo</TableHead>
-              <TableHead>Vigência</TableHead>
+              <TableHead>Status</TableHead>
               <TableHead className="w-12" />
             </TableRow>
           </TableHeader>
@@ -151,13 +261,44 @@ export function PromotionTable({
                   <StatusCell promotion={promotion} />
                 </TableCell>
                 <TableCell>
-                  <ActionsCell />
+                  <ActionsCell
+                    promotion={promotion}
+                    onEdit={onEdit}
+                    onDelete={() => setDeletingPromotion(promotion)}
+                  />
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </div>
+
+      <Dialog open={!!deletingPromotion} onOpenChange={(open) => !open && setDeletingPromotion(null)}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Excluir promoção</DialogTitle>
+            <DialogDescription>
+              Tem certeza que deseja excluir a promoção{" "}
+              <span className="font-medium">{deletingPromotion?.name}</span>? Esta ação não pode ser
+              desfeita.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setDeletingPromotion(null)}>
+              Cancelar
+            </Button>
+            <Button
+              variant="destructive"
+              disabled={isDeleting}
+              onClick={handleDelete}
+              className="gap-2"
+            >
+              {isDeleting && <Loader2 className="size-4 animate-spin" />}
+              Excluir
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
       {totalPages > 1 && (
         <div className="mt-4 flex items-center justify-center gap-2">

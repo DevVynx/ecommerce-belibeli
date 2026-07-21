@@ -1,10 +1,12 @@
 "use client";
 
-import type { AdminSearchPromotionsRequest } from "@repo/types/contracts";
+import type { AdminPromotionDto, AdminSearchPromotionsRequest } from "@repo/types/contracts";
 import { parseAsIndex, parseAsString, parseAsStringLiteral, useQueryStates } from "nuqs";
-import { Suspense, useCallback, useEffect, useMemo, useRef } from "react";
+import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { PlusIcon } from "@/shared/assets/animatedIcons/plus";
+import { CreatePromotionSheet } from "@/shared/components/Admin/Promotions/Create/CreatePromotionSheet";
+import { EditPromotionSheet } from "@/shared/components/Admin/Promotions/Edit/EditPromotionSheet";
 import type { PromotionFiltersValue } from "@/shared/components/Admin/Promotions/PromotionFilters";
 import {
   PromotionFilters,
@@ -13,6 +15,7 @@ import {
 import { PromotionTable } from "@/shared/components/Admin/Promotions/PromotionTable";
 import { Button } from "@/shared/components/shadcn-ui/button";
 import { useAdminSearchPromotions } from "@/shared/hooks/data/adminQueries/usePromotion";
+import { useInvalidate } from "@/shared/hooks/lib/useInvalidate";
 import { useAnimatedIcons } from "@/shared/hooks/ui/useAnimatedIcons";
 import { useScreenSize } from "@/shared/hooks/ui/useScreenSize";
 
@@ -38,6 +41,9 @@ function AdminPromotionsPageContent() {
     autoStartDuration: 1500,
   });
   const [sp, setSearchParams] = useQueryStates(parsers);
+  const [isCreateOpen, setIsCreateOpen] = useState(false);
+  const [editingPromotion, setEditingPromotion] = useState<AdminPromotionDto | null>(null);
+  const invalidate = useInvalidate();
 
   const limit = useMemo(
     () =>
@@ -88,11 +94,20 @@ function AdminPromotionsPageContent() {
     <>
       <div className="mb-6 flex items-center justify-between">
         <h1 className="text-3xl font-bold">Promoções</h1>
-        <Button disabled {...getHandlers("create")}>
+        <Button {...getHandlers("create")} onClick={() => setIsCreateOpen(true)}>
           <PlusIcon ref={getIconRef("create")} size={18} className="mr-2" />
           Criar Promoção
         </Button>
       </div>
+
+      <CreatePromotionSheet
+        open={isCreateOpen}
+        onOpenChange={setIsCreateOpen}
+        onSuccess={() => {
+          setIsCreateOpen(false);
+          invalidate(["admin", "promotions", "search"]);
+        }}
+      />
 
       <div className="mb-6">
         <PromotionFilters values={sp} onChange={handleFilterChange} />
@@ -108,7 +123,26 @@ function AdminPromotionsPageContent() {
         </div>
       )}
 
-      {data && <PromotionTable data={data} page={sp.page + 1} onPageChange={handlePageChange} />}
+      {editingPromotion && (
+        <EditPromotionSheet
+          open={!!editingPromotion}
+          onOpenChange={(open) => !open && setEditingPromotion(null)}
+          promotion={editingPromotion}
+          onSuccess={() => {
+            setEditingPromotion(null);
+            invalidate(["admin", "promotions", "search"]);
+          }}
+        />
+      )}
+
+      {data && (
+        <PromotionTable
+          data={data}
+          page={sp.page + 1}
+          onPageChange={handlePageChange}
+          onEdit={setEditingPromotion}
+        />
+      )}
     </>
   );
 }
