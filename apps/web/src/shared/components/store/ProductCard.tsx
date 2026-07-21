@@ -82,11 +82,11 @@ export const ProductCard = ({ product, grid }: ProductCardProps) => {
         {/* Wish Button */}
         <button
           onClick={handleToggleWishlist}
-          className={`absolute top-2 right-2 cursor-pointer rounded-full bg-white p-1 shadow-md transition duration-150 hover:scale-110 active:scale-140`}
+          className={`absolute top-2 right-2 cursor-pointer rounded-full bg-white p-1.5 shadow-md transition duration-150 hover:scale-110 active:scale-140`}
           aria-label="Add to favorites"
         >
           <HeartIcon
-            className={`size-4 lg:size-5 ${
+            className={`size-5 lg:size-6 ${
               isWishlisted ? "fill-red-500 text-red-500" : "fill-gray-400 text-gray-400"
             }`}
           />
