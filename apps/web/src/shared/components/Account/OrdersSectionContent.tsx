@@ -73,9 +73,7 @@ export const OrdersSectionContent = ({ orders }: OrdersSectionContentProps) => {
                       {STATUS_CONFIG[order.status]?.label ?? order.status}
                     </span>
                   </TableCell>
-                  <TableCell>
-                    {formatPrice(order.total)}
-                  </TableCell>
+                  <TableCell>{formatPrice(order.total)}</TableCell>
                   <TableCell className="text-right">
                     <Button
                       variant="ghost"
@@ -118,9 +116,7 @@ export const OrdersSectionContent = ({ orders }: OrdersSectionContentProps) => {
                   <p className="text-muted-foreground text-xs">
                     {new Date(order.createdAt).toLocaleDateString("pt-BR")}
                   </p>
-                  <p className="pt-1 font-semibold">
-                    {formatPrice(order.total)}
-                  </p>
+                  <p className="pt-1 font-semibold">{formatPrice(order.total)}</p>
                 </div>
                 <span
                   className={`inline-flex shrink-0 items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-semibold ${STATUS_CONFIG[order.status]?.className ?? "border-muted bg-muted text-muted-foreground"}`}

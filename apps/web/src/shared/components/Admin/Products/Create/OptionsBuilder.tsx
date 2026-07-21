@@ -83,11 +83,14 @@ export function OptionsBuilder({ onOptionsChange }: OptionsBuilderProps) {
                             if (raw) {
                               const formatted = capitalizeTrim(raw);
                               const duplicate = getValues("options").some(
-                                (opt, i) => i !== index && opt.name.toLowerCase() === formatted.toLowerCase()
+                                (opt, i) =>
+                                  i !== index && opt.name.toLowerCase() === formatted.toLowerCase()
                               );
                               if (duplicate) {
                                 setValue(`options.${index}.name`, raw.trim());
-                                setError(`options.${index}.name`, { message: "Nome da opção já existe" });
+                                setError(`options.${index}.name`, {
+                                  message: "Nome da opção já existe",
+                                });
                               } else {
                                 setValue(`options.${index}.name`, formatted);
                                 clearErrors(`options.${index}.name`);

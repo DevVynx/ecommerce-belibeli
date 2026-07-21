@@ -49,7 +49,13 @@ export function BasicInfoSection({ categories }: BasicInfoSectionProps) {
         <Field>
           <FieldLabel>Categoria</FieldLabel>
           <FieldContent>
-            <Select value={watch("categoryId")} onValueChange={(v) => { setValue("categoryId", v); clearErrors("categoryId"); }}>
+            <Select
+              value={watch("categoryId")}
+              onValueChange={(v) => {
+                setValue("categoryId", v);
+                clearErrors("categoryId");
+              }}
+            >
               <SelectTrigger>
                 <SelectValue placeholder="Selecione uma categoria" />
               </SelectTrigger>

@@ -17,7 +17,8 @@ import type { CreateProductFormData } from "@/shared/schemas/createProduct";
 import { formatPrice } from "@/shared/utils/store/price";
 
 export function BaseValuesSection() {
-  const { control, register, getValues, setValue, clearErrors, watch } = useFormContext<CreateProductFormData>();
+  const { control, register, getValues, setValue, clearErrors, watch } =
+    useFormContext<CreateProductFormData>();
   const variants = watch("variants");
   const basePrice = watch("basePrice");
   const baseStock = watch("baseStock");

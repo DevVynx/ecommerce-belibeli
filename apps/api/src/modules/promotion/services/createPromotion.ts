@@ -39,8 +39,10 @@ export const createPromotion = async (params: CreatePromotionRequest) => {
     : promotion.productId
       ? "product"
       : "variant";
-  const targetName = promotion.variant?.sku ?? promotion.product?.title ?? promotion.category?.name ?? "";
-  const mappedTargetId = promotion.variant?.id ?? promotion.product?.id ?? promotion.category?.id ?? "";
+  const targetName =
+    promotion.variant?.sku ?? promotion.product?.title ?? promotion.category?.name ?? "";
+  const mappedTargetId =
+    promotion.variant?.id ?? promotion.product?.id ?? promotion.category?.id ?? "";
 
   return {
     promotion: {

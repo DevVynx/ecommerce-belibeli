@@ -12,7 +12,9 @@ type SearchPromotionsParams = {
   limit: number;
 };
 
-function buildWhere(params: Pick<SearchPromotionsParams, "q" | "isActive" | "type" | "targetType">) {
+function buildWhere(
+  params: Pick<SearchPromotionsParams, "q" | "isActive" | "type" | "targetType">
+) {
   const { q, isActive, type, targetType } = params;
   const where: Prisma.PromotionWhereInput = {};
 

@@ -273,7 +273,10 @@ export function PromotionTable({
         </Table>
       </div>
 
-      <Dialog open={!!deletingPromotion} onOpenChange={(open) => !open && setDeletingPromotion(null)}>
+      <Dialog
+        open={!!deletingPromotion}
+        onOpenChange={(open) => !open && setDeletingPromotion(null)}
+      >
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Excluir promoção</DialogTitle>

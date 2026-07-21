@@ -10,9 +10,7 @@ const query = z.object({
     .optional(),
   type: z.enum(["PERCENTAGE", "FIXED"]).optional(),
   targetType: z.enum(["category", "product", "variant"]).optional(),
-  sortBy: z
-    .enum(["newest", "oldest", "expiring_soon", "discount_desc", "discount_asc"])
-    .optional(),
+  sortBy: z.enum(["newest", "oldest", "expiring_soon", "discount_desc", "discount_asc"]).optional(),
   page: z.coerce.number().int().min(1).optional().default(1),
   limit: z.coerce.number().int().min(1).max(100).optional().default(20),
 });

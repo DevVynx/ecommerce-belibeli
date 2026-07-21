@@ -9,7 +9,10 @@ import { Field, FieldContent, FieldLabel } from "@/shared/components/shadcn-ui/f
 import { Input } from "@/shared/components/shadcn-ui/input";
 import { Switch } from "@/shared/components/shadcn-ui/switch";
 import { showNotification } from "@/shared/components/showNotification";
-import { type CreatePromotionFormData, createPromotionSchema } from "@/shared/schemas/createPromotion";
+import {
+  type CreatePromotionFormData,
+  createPromotionSchema,
+} from "@/shared/schemas/createPromotion";
 import {
   getCurrentSlot,
   getEndsAtConstraints,

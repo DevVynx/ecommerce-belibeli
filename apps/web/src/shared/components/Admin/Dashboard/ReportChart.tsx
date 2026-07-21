@@ -125,9 +125,7 @@ export function ReportChart({ data, activePeriod, onPeriodChange }: ReportChartP
                   const isPositive = payload.percentage >= 0;
                   return (
                     <div className="flex items-center gap-2">
-                      <span className="font-medium tabular-nums">
-                        {formatPrice(numValue)}
-                      </span>
+                      <span className="font-medium tabular-nums">{formatPrice(numValue)}</span>
                       <span
                         className={`text-xs ${isPositive ? "text-emerald-500" : "text-red-500"}`}
                       >

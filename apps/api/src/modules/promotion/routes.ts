@@ -1,6 +1,11 @@
 import { Router } from "express";
 
-import { createPromotion, deletePromotion, searchPromotions, updatePromotion } from "@/modules/promotion/controllers";
+import {
+  createPromotion,
+  deletePromotion,
+  searchPromotions,
+  updatePromotion,
+} from "@/modules/promotion/controllers";
 import v from "@/modules/promotion/validators";
 import { adminOnlyMiddleware } from "@/shared/middlewares/adminOnly";
 import { authMiddleware } from "@/shared/middlewares/auth";

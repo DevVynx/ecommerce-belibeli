@@ -6,7 +6,6 @@ import { getOrderById } from "@/shared/actions/orders/getOrderById";
 import { Button } from "@/shared/components/shadcn-ui/button";
 import { Skeleton } from "@/shared/components/shadcn-ui/skeleton";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/shared/components/shadcn-ui/tooltip";
-
 import { formatPrice } from "@/shared/utils/store/price";
 
 import { ReviewModal } from "./ReviewModal";
@@ -82,17 +81,11 @@ export const OrderDetailContent = ({ orderId }: OrderDetailContentProps) => {
 
         <div className="flex flex-col gap-1 text-sm sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-3 sm:gap-y-1">
           <span className="text-muted-foreground whitespace-nowrap">
-            Subtotal:{" "}
-            <span className="font-medium">
-              {formatPrice(orderDetail.subtotal)}
-            </span>
+            Subtotal: <span className="font-medium">{formatPrice(orderDetail.subtotal)}</span>
           </span>
           <span className="text-muted-foreground hidden sm:inline">|</span>
           <span className="text-muted-foreground whitespace-nowrap">
-            Frete:{" "}
-            <span className="font-medium">
-              {formatPrice(orderDetail.shipping)}
-            </span>
+            Frete: <span className="font-medium">{formatPrice(orderDetail.shipping)}</span>
           </span>
           {orderDetail.discount > 0 && (
             <>
@@ -233,9 +226,7 @@ export const OrderDetailContent = ({ orderId }: OrderDetailContentProps) => {
               </div>
 
               <div className="flex items-center justify-between gap-2 sm:hidden">
-                <span className="text-sm font-medium">
-                  {formatPrice(item.totalPrice)}
-                </span>
+                <span className="text-sm font-medium">{formatPrice(item.totalPrice)}</span>
                 {reviewButton}
               </div>
 

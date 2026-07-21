@@ -54,14 +54,14 @@ productRouter.post(
   authMiddleware,
   adminOnlyMiddleware,
   v.createProduct.middleware,
-  createProduct,
+  createProduct
 );
 
 productRouter.delete(
   "/admin/products/images/:publicId",
   authMiddleware,
   adminOnlyMiddleware,
-  deleteVariantImage,
+  deleteVariantImage
 );
 
 export { productRouter };

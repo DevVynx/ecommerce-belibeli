@@ -17,7 +17,8 @@ export const FreeShippingBanner = ({ total }: FreeShippingBannerProps) => {
   const { appliedCoupon } = useCartState();
   const remainingForFreeShipping = FREE_SHIPPING_THRESHOLD - total;
   const freeShippingProgress = Math.min(100, (total / FREE_SHIPPING_THRESHOLD) * 100);
-  const hasFreeShipping = appliedCoupon?.type === "FREE_SHIPPING" || total >= FREE_SHIPPING_THRESHOLD;
+  const hasFreeShipping =
+    appliedCoupon?.type === "FREE_SHIPPING" || total >= FREE_SHIPPING_THRESHOLD;
 
   const { handleMouseEnter, handleMouseLeave, iconRef } = useAnimatedIcon();
 

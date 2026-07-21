@@ -18,7 +18,12 @@ type EditPromotionSheetProps = {
   onSuccess?: () => void;
 };
 
-export function EditPromotionSheet({ open, onOpenChange, promotion, onSuccess }: EditPromotionSheetProps) {
+export function EditPromotionSheet({
+  open,
+  onOpenChange,
+  promotion,
+  onSuccess,
+}: EditPromotionSheetProps) {
   const { isMobile } = useScreenSize();
 
   if (isMobile) {

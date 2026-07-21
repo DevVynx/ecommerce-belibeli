@@ -28,13 +28,11 @@ export const ShippingOptions = ({
     <div className="flex flex-col gap-3">
       {freeShippingMinValue !== null && (
         <div className="rounded-lg border border-green-200 bg-green-50 p-3 text-sm text-green-700">
-          {options.every((o) => o.price === 0) ? (
-            freeShippingByCoupon
+          {options.every((o) => o.price === 0)
+            ? freeShippingByCoupon
               ? "Você possui um cupom de frete grátis!"
               : "Você atingiu o valor mínimo para frete grátis!"
-          ) : (
-            `Frete grátis a partir de ${formatPrice(freeShippingMinValue)}`
-          )}
+            : `Frete grátis a partir de ${formatPrice(freeShippingMinValue)}`}
         </div>
       )}
 
