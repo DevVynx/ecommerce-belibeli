@@ -111,12 +111,12 @@ export const ReviewsSection = ({
               Mostrando {visibleCount} avaliações de {total}
             </span>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-col items-center gap-4 lg:flex-row">
             <Select
               value={ratingFilter ? String(ratingFilter) : "todas"}
               onValueChange={handleRatingChange}
             >
-              <SelectTrigger className="h-8 w-35 py-5">
+              <SelectTrigger className="h-8 w-full py-5 lg:w-35">
                 <SelectValue placeholder="Filtrar por nota" />
               </SelectTrigger>
               <SelectContent>
@@ -132,7 +132,7 @@ export const ReviewsSection = ({
             </Select>
 
             <Select value={sort} onValueChange={handleSortChange}>
-              <SelectTrigger className="h-8 w-37 py-5">
+              <SelectTrigger className="h-8 w-full py-5 lg:w-37">
                 <SelectValue placeholder="Ordenar por" />
               </SelectTrigger>
               <SelectContent>

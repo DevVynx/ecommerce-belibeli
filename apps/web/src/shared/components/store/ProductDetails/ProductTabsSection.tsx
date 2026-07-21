@@ -13,13 +13,13 @@ export const ProductTabsSection = async ({ data }: ProductTabsSectionProps) => {
       <TabsList className="border-border flex justify-around gap-8 border-b bg-transparent shadow-none lg:justify-start">
         <TabsTrigger
           value="details"
-          className="cursor-pointer rounded-none border-black p-0 font-semibold transition-none data-[state=active]:border-b-3 lg:text-lg"
+          className="cursor-pointer rounded-none border-black p-0 text-base font-semibold transition-none data-[state=active]:border-b-3 lg:text-lg"
         >
           Detalhes do Produto
         </TabsTrigger>
         <TabsTrigger
           value="reviews"
-          className="cursor-pointer rounded-none border-black p-0 font-semibold transition-none data-[state=active]:border-b-3 lg:text-lg"
+          className="cursor-pointer rounded-none border-black p-0 text-base font-semibold transition-none data-[state=active]:border-b-3 lg:text-lg"
         >
           Avaliações ({data.product.ratingCount})
         </TabsTrigger>

@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { FileQuestionMark, LayoutDashboard, LogOut, Menu, User } from "lucide-react";
+import { LayoutDashboard, LogOut, Menu, User } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -161,18 +161,6 @@ export const MobileSideMenu = () => {
               </span>
             </button>
           )}
-
-          <button
-            className="group hover:bg-accent flex w-full cursor-pointer items-center gap-4 rounded-xl px-3 py-3 transition-all"
-            onClick={() => {}}
-          >
-            <div className="bg-background text-muted-foreground group-hover:text-primary flex size-10 items-center justify-center rounded-lg shadow-xs transition-colors">
-              <FileQuestionMark className="size-5" />
-            </div>
-            <span className="text-foreground/70 group-hover:text-foreground text-sm font-semibold transition-colors">
-              Ajuda & Suporte
-            </span>
-          </button>
         </SheetFooter>
       </SheetContent>
     </Sheet>

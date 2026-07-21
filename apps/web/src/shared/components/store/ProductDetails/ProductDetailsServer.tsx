@@ -51,10 +51,6 @@ export const ProductDetailsServer = async ({ params }: ProductDetailsServerProps
 
           <div className="mb-2 flex items-center gap-2">
             <div className="flex items-center gap-1">
-              <span className="text-xs font-semibold lg:text-sm">
-                5K+ <span className="text-muted-foreground">Vendidos</span>
-              </span>
-              •
               <div className="flex items-center gap-1">
                 <Star className="size-4 fill-yellow-500 text-yellow-500" />
                 <span className="text-xs font-semibold lg:text-sm">

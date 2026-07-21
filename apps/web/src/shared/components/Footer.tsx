@@ -81,7 +81,7 @@ const socialLinks = [
 export const Footer = () => {
   const pathname = usePathname();
 
-  const hideHeaderRoutes = ["/login", "/register", "/admin"];
+  const hideHeaderRoutes = ["/login", "/register", "/admin", "/checkout"];
   const shouldHideHeader = hideHeaderRoutes.some((route) => pathname.startsWith(route));
 
   if (shouldHideHeader) {

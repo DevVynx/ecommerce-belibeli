@@ -42,7 +42,7 @@ export const SearchBarInput = forwardRef<HTMLInputElement, SearchBarInputProps>(
           aria-expanded
           aria-autocomplete="list"
           className={cn(
-            "border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring h-10 w-full rounded-md border px-4 pr-10 text-sm outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
+            "border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring h-10 w-full rounded-md border px-4 pr-10 outline-none focus-visible:ring-2 focus-visible:ring-offset-2 md:text-sm",
             className
           )}
         />

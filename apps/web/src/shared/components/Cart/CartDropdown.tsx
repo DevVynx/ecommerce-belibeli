@@ -42,8 +42,8 @@ export const CartDropdown = () => {
   return (
     <div ref={triggerRef} onMouseEnter={handleOpen} onMouseLeave={handleClose}>
       {/* Trigger - Cart Icon */}
-      <Button variant="ghost" className="relative p-1" asChild>
-        <Link href="/cart" onClick={() => setIsOpen(false)}>
+      <Link href="/cart" onClick={() => setIsOpen(false)}>
+        <Button variant="ghost" className="relative p-1">
           <ShoppingCart className="size-7 stroke-2" />
           {count > 0 && (
             <Badge
@@ -53,8 +53,8 @@ export const CartDropdown = () => {
               {count > 99 ? "99+" : count}
             </Badge>
           )}
-        </Link>
-      </Button>
+        </Button>
+      </Link>
 
       {/* Dropdown - Fixed position, glued to right edge */}
       <AnimatePresence>

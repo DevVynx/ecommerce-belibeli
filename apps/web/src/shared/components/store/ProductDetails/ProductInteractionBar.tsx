@@ -54,7 +54,7 @@ export const ProductInteractionBar = ({ productTitle }: ProductInteractionBarPro
   };
 
   return (
-    <div className="border-border mt-6 flex items-center justify-around gap-8 border-t pt-6">
+    <div className="border-border flex items-center justify-around gap-8 border-b py-6">
       <button
         onClick={handleChat}
         className="hover:text-secondary-foreground text-muted-foreground flex cursor-pointer items-center gap-2 transition-colors"
