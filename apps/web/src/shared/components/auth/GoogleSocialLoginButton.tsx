@@ -1,6 +1,7 @@
 import { useGoogleLogin } from "@react-oauth/google";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { startTransition } from "react";
 
 import { googleAuthAction } from "@/shared/actions/auth/googleAuth";
 import googleGLogo from "@/shared/assets/images/authLogos/google-G.png";
@@ -30,7 +31,7 @@ export const GoogleSocialLoginButton = ({
       if (data) {
         setUser(data.user);
         onSuccess?.();
-        router.push(redirectTo);
+        startTransition(() => router.push(redirectTo));
       }
     },
     onError: () => setAuthError("Erro ao tentar entrar com o google"),

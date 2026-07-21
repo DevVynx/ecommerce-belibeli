@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { GoogleSocialLoginButton } from "@/shared/components/Auth/GoogleSocialLoginButton";
 import { LoginForm } from "@/shared/components/Auth/Login/LoginForm";
@@ -38,6 +38,11 @@ export const AuthModal = ({
 
   const isLogin = mode === "login";
 
+  const handleLoginSuccess = useCallback(() => {
+    onOpenChange(false);
+    onLoginSuccess?.();
+  }, [onOpenChange, onLoginSuccess]);
+
   const handleToggle = () => {
     setAuthError(null);
     setMode(isLogin ? "register" : "login");
@@ -59,9 +64,9 @@ export const AuthModal = ({
 
         <div className="flex flex-col items-center gap-4">
           {isLogin ? (
-            <LoginForm redirectTo={redirectTo} onSuccess={onLoginSuccess} />
+            <LoginForm redirectTo={redirectTo} onSuccess={handleLoginSuccess} />
           ) : (
-            <RegisterForm redirectTo={redirectTo} onSuccess={onLoginSuccess} />
+            <RegisterForm redirectTo={redirectTo} onSuccess={handleLoginSuccess} />
           )}
 
           <p className="text-center text-sm text-black/60">
@@ -92,7 +97,7 @@ export const AuthModal = ({
 
           <div className="w-full">
             <OrDivider />
-            <GoogleSocialLoginButton redirectTo={redirectTo} onSuccess={onLoginSuccess} />
+            <GoogleSocialLoginButton redirectTo={redirectTo} onSuccess={handleLoginSuccess} />
           </div>
         </div>
       </DialogContent>
