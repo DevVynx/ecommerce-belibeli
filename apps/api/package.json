@@ -14,7 +14,8 @@
     "prisma:studio": "dotenv -e .env -- prisma studio",
     "db:seed": "dotenv -e .env -- tsx scripts/seed.ts",
     "db:seed-many": "dotenv -e .env -- tsx scripts/seed-many.ts",
-    "db:reset": "dotenv -e .env -- prisma migrate reset --force && pnpm db:seed"
+    "db:seed-products": "dotenv -e .env -- tsx scripts/seed-products.ts",
+    "db:reset": "dotenv -e .env -- prisma migrate reset --force"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.3.0",
@@ -25,6 +26,7 @@
     "cors": "^2.8.6",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
+    "express-rate-limit": "^8.6.0",
     "google-auth-library": "^10.6.1",
     "helmet": "^8.1.0",
     "jsonwebtoken": "^9.0.3",
@@ -32,6 +34,7 @@
     "node-cron": "^4.2.1",
     "pg": "^8.17.2",
     "prisma": "^7.3.0",
+    "resend": "^6.18.0",
     "stripe": "^22.3.0",
     "zod": "^4.3.6"
   },
