@@ -1,5 +1,7 @@
 import { orderRepositories } from "@/modules/order/repositories";
 
+import { applyStatusSimulation } from "./applyStatusSimulation";
+
 import type { OrderStatus } from "../../../../prisma/generated/client/enums";
 
 type GetAllOrdersParams = {
@@ -17,6 +19,8 @@ export const getAll = async ({ page, limit, sort, q, status }: GetAllOrdersParam
     orderRepositories.findAll({ skip, take: limit, sort, q, status }),
     orderRepositories.countAll({ q, status }),
   ]);
+
+  await Promise.all(orders.map((order) => applyStatusSimulation(order)));
 
   const totalPages = Math.ceil(total / limit);
 

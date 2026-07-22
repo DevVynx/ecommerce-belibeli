@@ -56,6 +56,8 @@ export const createOrder = async ({
   const selectedShipping = shippingOptions.find((opt) => opt.service === shippingService);
   if (!selectedShipping) throw new BadRequestError("Serviço de frete inválido.");
 
+  const shippingDeliveryDays = selectedShipping.deadline.max;
+
   const subtotal = new Prisma.Decimal(cart.summary.subtotal);
   const shipping = new Prisma.Decimal(selectedShipping.price);
   const productDiscount = new Prisma.Decimal(cart.summary.discount);
@@ -96,6 +98,7 @@ export const createOrder = async ({
       total,
       subtotal,
       shipping,
+      shippingDeliveryDays,
       discount: totalDiscount,
       paymentMethod,
       shippingAddress: addressJson,

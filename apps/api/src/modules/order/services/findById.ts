@@ -3,6 +3,7 @@ import type { ShippingAddressDto } from "@repo/types/contracts";
 import type { FindOrderByIdParams } from "@/modules/order/types/ServiceParams";
 import { NotFoundError } from "@/shared/utils/HttpErrors";
 
+import { applyStatusSimulation } from "./applyStatusSimulation";
 import { formatVariantLabel } from "../../review/helpers/formatVariantLabel";
 import { reviewRepositories } from "../../review/repositories";
 import { orderRepositories } from "../repositories";
@@ -13,6 +14,8 @@ export const findOrderById = async ({ orderId, userId }: FindOrderByIdParams) =>
   if (!order) {
     throw new NotFoundError("Pedido não encontrado.");
   }
+
+  await applyStatusSimulation(order);
 
   const shippingAddress =
     typeof order.shippingAddress === "object" && order.shippingAddress !== null
