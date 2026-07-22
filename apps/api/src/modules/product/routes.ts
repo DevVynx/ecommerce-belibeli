@@ -3,6 +3,7 @@ import { Router } from "express";
 import v from "@/modules/product/validators";
 import { adminOnlyMiddleware } from "@/shared/middlewares/adminOnly";
 import { authMiddleware } from "@/shared/middlewares/auth";
+import { searchLimiter } from "@/shared/middlewares/rateLimiters";
 import { uploadMiddleware } from "@/shared/middlewares/upload";
 
 import {
@@ -22,7 +23,7 @@ const productRouter: Router = Router();
 
 productRouter.get("/categories", getCategories);
 productRouter.get("/products", v.getAll.middleware, getAllProducts);
-productRouter.get("/products/search", v.searchProducts.middleware, searchProducts);
+productRouter.get("/products/search", searchLimiter, v.searchProducts.middleware, searchProducts);
 productRouter.get("/products/:productId", v.getById.middleware, getProductDetails);
 productRouter.get("/products/slug/:slug", v.getBySlug.middleware, getProductBySlug);
 

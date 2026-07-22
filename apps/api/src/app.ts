@@ -15,6 +15,7 @@ import { userRouter } from "@/modules/user/routes";
 import { wishlistRouter } from "@/modules/wishlist/routes";
 import { handleGlobalError } from "@/shared/middlewares/handleGlobalError";
 import { notFoundHandler } from "@/shared/middlewares/notFoundHandler";
+import { globalLimiter } from "@/shared/middlewares/rateLimiters";
 import { ENV } from "@/shared/utils/env";
 
 import { productRouter } from "./modules/product/routes";
@@ -46,6 +47,8 @@ app.use(
 );
 
 // Routes ------------------------------------------------------------
+app.use("/api", globalLimiter);
+
 app.use("/api", authRouter);
 app.use("/api", productRouter);
 app.use("/api", cartRouter);

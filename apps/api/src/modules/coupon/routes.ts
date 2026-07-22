@@ -10,11 +10,13 @@ import {
 import v from "@/modules/coupon/validators";
 import { adminOnlyMiddleware } from "@/shared/middlewares/adminOnly";
 import { authMiddleware } from "@/shared/middlewares/auth";
+import { couponLimiter } from "@/shared/middlewares/rateLimiters";
 
 const couponRouter: Router = Router();
 
 couponRouter.post(
   "/coupons",
+  couponLimiter,
   authMiddleware,
   adminOnlyMiddleware,
   v.createCoupon.middleware,
