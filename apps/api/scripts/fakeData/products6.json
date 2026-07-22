@@ -1,0 +1,1666 @@
+{
+  "products": [
+    {
+      "id": 151,
+      "title": "Tennis Ball",
+      "description": "The Tennis Ball is a standard ball used in the sport of tennis. It is designed for bouncing and hitting with tennis rackets during matches or practice sessions.",
+      "category": "sports-accessories",
+      "price": 6.99,
+      "discountPercentage": 11.76,
+      "rating": 4.06,
+      "stock": 28,
+      "tags": ["sports equipment", "tennis"],
+      "sku": "SPO-BRD-TEN-151",
+      "weight": 3,
+      "dimensions": { "width": 8.04, "height": 20.35, "depth": 12.24 },
+      "warrantyInformation": "5 year warranty",
+      "shippingInformation": "Ships in 1 week",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 4,
+          "comment": "Would buy again!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Addison Ward",
+          "reviewerEmail": "addison.ward@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Great value for money!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Max Russell",
+          "reviewerEmail": "max.russell@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Very happy with my purchase!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Luna Perez",
+          "reviewerEmail": "luna.perez@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "7 days return policy",
+      "minimumOrderQuantity": 6,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "2793132647969",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/sports-accessories/tennis-ball/1.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/sports-accessories/tennis-ball/thumbnail.webp"
+    },
+    {
+      "id": 152,
+      "title": "Tennis Racket",
+      "description": "The Tennis Racket is an essential piece of equipment used in the sport of tennis. It features a frame with strings and a grip, allowing players to hit the tennis ball.",
+      "category": "sports-accessories",
+      "price": 49.99,
+      "discountPercentage": 19.61,
+      "rating": 4.03,
+      "stock": 6,
+      "tags": ["sports equipment", "tennis"],
+      "sku": "SPO-BRD-TEN-152",
+      "weight": 7,
+      "dimensions": { "width": 17.7, "height": 16.38, "depth": 18.74 },
+      "warrantyInformation": "5 year warranty",
+      "shippingInformation": "Ships overnight",
+      "availabilityStatus": "Low Stock",
+      "reviews": [
+        {
+          "rating": 3,
+          "comment": "Poor quality!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Mason Parker",
+          "reviewerEmail": "mason.parker@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Highly impressed!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Gabriel Bailey",
+          "reviewerEmail": "gabriel.bailey@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Highly recommended!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Lincoln Kelly",
+          "reviewerEmail": "lincoln.kelly@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "7 days return policy",
+      "minimumOrderQuantity": 5,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "5611498376196",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/sports-accessories/tennis-racket/1.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/sports-accessories/tennis-racket/thumbnail.webp"
+    },
+    {
+      "id": 153,
+      "title": "Volleyball",
+      "description": "The Volleyball is a standard ball used in the sport of volleyball. It is designed for passing, setting, and spiking over the net during volleyball matches.",
+      "category": "sports-accessories",
+      "price": 11.99,
+      "discountPercentage": 12.25,
+      "rating": 3.84,
+      "stock": 0,
+      "tags": ["sports equipment", "volleyball"],
+      "sku": "SPO-BRD-VOL-153",
+      "weight": 3,
+      "dimensions": { "width": 17.01, "height": 20.05, "depth": 9.94 },
+      "warrantyInformation": "1 week warranty",
+      "shippingInformation": "Ships in 1 week",
+      "availabilityStatus": "Out of Stock",
+      "reviews": [
+        {
+          "rating": 4,
+          "comment": "Great product!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Carter Rivera",
+          "reviewerEmail": "carter.rivera@x.dummyjson.com"
+        },
+        {
+          "rating": 1,
+          "comment": "Would not recommend!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Eli Ward",
+          "reviewerEmail": "eli.ward@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Highly recommended!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Emma Wilson",
+          "reviewerEmail": "emma.wilson@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "90 days return policy",
+      "minimumOrderQuantity": 44,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "6348576170594",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/sports-accessories/volleyball/1.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/sports-accessories/volleyball/thumbnail.webp"
+    },
+    {
+      "id": 154,
+      "title": "Black Sun Glasses",
+      "description": "The Black Sun Glasses are a classic and stylish choice, featuring a sleek black frame and tinted lenses. They provide both UV protection and a fashionable look.",
+      "category": "sunglasses",
+      "price": 29.99,
+      "discountPercentage": 4.94,
+      "rating": 4.41,
+      "stock": 60,
+      "tags": ["eyewear", "sunglasses"],
+      "brand": "Fashion Shades",
+      "sku": "SUN-FAS-BLA-154",
+      "weight": 1,
+      "dimensions": { "width": 18.51, "height": 15.69, "depth": 10.11 },
+      "warrantyInformation": "No warranty",
+      "shippingInformation": "Ships in 1-2 business days",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 3,
+          "comment": "Would not recommend!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Jonathan Pierce",
+          "reviewerEmail": "jonathan.pierce@x.dummyjson.com"
+        },
+        {
+          "rating": 2,
+          "comment": "Disappointing product!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Owen Fisher",
+          "reviewerEmail": "owen.fisher@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Very happy with my purchase!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Samantha Martinez",
+          "reviewerEmail": "samantha.martinez@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "7 days return policy",
+      "minimumOrderQuantity": 17,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "1045032983803",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/sunglasses/black-sun-glasses/1.webp",
+        "https://cdn.dummyjson.com/product-images/sunglasses/black-sun-glasses/2.webp",
+        "https://cdn.dummyjson.com/product-images/sunglasses/black-sun-glasses/3.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/sunglasses/black-sun-glasses/thumbnail.webp"
+    },
+    {
+      "id": 155,
+      "title": "Classic Sun Glasses",
+      "description": "The Classic Sun Glasses offer a timeless design with a neutral frame and UV-protected lenses. These sunglasses are versatile and suitable for various occasions.",
+      "category": "sunglasses",
+      "price": 24.99,
+      "discountPercentage": 4.94,
+      "rating": 3.86,
+      "stock": 1,
+      "tags": ["eyewear", "sunglasses"],
+      "brand": "Fashion Shades",
+      "sku": "SUN-FAS-CLA-155",
+      "weight": 8,
+      "dimensions": { "width": 19.87, "height": 16.73, "depth": 11.07 },
+      "warrantyInformation": "6 months warranty",
+      "shippingInformation": "Ships in 1 month",
+      "availabilityStatus": "Low Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Very satisfied!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Logan Lee",
+          "reviewerEmail": "logan.lee@x.dummyjson.com"
+        },
+        {
+          "rating": 3,
+          "comment": "Very dissatisfied!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Jack Ward",
+          "reviewerEmail": "jack.ward@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Very happy with my purchase!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Julian James",
+          "reviewerEmail": "julian.james@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "90 days return policy",
+      "minimumOrderQuantity": 18,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "5771263118885",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/sunglasses/classic-sun-glasses/1.webp",
+        "https://cdn.dummyjson.com/product-images/sunglasses/classic-sun-glasses/2.webp",
+        "https://cdn.dummyjson.com/product-images/sunglasses/classic-sun-glasses/3.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/sunglasses/classic-sun-glasses/thumbnail.webp"
+    },
+    {
+      "id": 156,
+      "title": "Green and Black Glasses",
+      "description": "The Green and Black Glasses feature a bold combination of green and black colors, adding a touch of vibrancy to your eyewear collection. They are both stylish and eye-catching.",
+      "category": "sunglasses",
+      "price": 34.99,
+      "discountPercentage": 1.01,
+      "rating": 4.55,
+      "stock": 24,
+      "tags": ["eyewear", "sunglasses"],
+      "brand": "Fashion Shades",
+      "sku": "SUN-FAS-GRE-156",
+      "weight": 7,
+      "dimensions": { "width": 26.13, "height": 9.8, "depth": 25.94 },
+      "warrantyInformation": "1 year warranty",
+      "shippingInformation": "Ships overnight",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 3,
+          "comment": "Waste of money!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Ava Taylor",
+          "reviewerEmail": "ava.taylor@x.dummyjson.com"
+        },
+        {
+          "rating": 3,
+          "comment": "Disappointing product!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Owen Sullivan",
+          "reviewerEmail": "owen.sullivan@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Highly impressed!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Victoria McDonald",
+          "reviewerEmail": "victoria.mcdonald@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "30 days return policy",
+      "minimumOrderQuantity": 15,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "0635466237296",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/sunglasses/green-and-black-glasses/1.webp",
+        "https://cdn.dummyjson.com/product-images/sunglasses/green-and-black-glasses/2.webp",
+        "https://cdn.dummyjson.com/product-images/sunglasses/green-and-black-glasses/3.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/sunglasses/green-and-black-glasses/thumbnail.webp"
+    },
+    {
+      "id": 157,
+      "title": "Party Glasses",
+      "description": "The Party Glasses are designed to add flair to your party outfit. With unique shapes or colorful frames, they're perfect for adding a playful touch to your look during celebrations.",
+      "category": "sunglasses",
+      "price": 19.99,
+      "discountPercentage": 11.22,
+      "rating": 2.79,
+      "stock": 86,
+      "tags": ["eyewear", "party glasses"],
+      "brand": "Fashion Fun",
+      "sku": "SUN-FAS-PAR-157",
+      "weight": 9,
+      "dimensions": { "width": 19.59, "height": 22.06, "depth": 27.53 },
+      "warrantyInformation": "3 months warranty",
+      "shippingInformation": "Ships overnight",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Very pleased!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Levi Hicks",
+          "reviewerEmail": "levi.hicks@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Excellent quality!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Ariana Ross",
+          "reviewerEmail": "ariana.ross@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Great product!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Samantha Howard",
+          "reviewerEmail": "samantha.howard@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "7 days return policy",
+      "minimumOrderQuantity": 39,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "8806276971112",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/sunglasses/party-glasses/1.webp",
+        "https://cdn.dummyjson.com/product-images/sunglasses/party-glasses/2.webp",
+        "https://cdn.dummyjson.com/product-images/sunglasses/party-glasses/3.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/sunglasses/party-glasses/thumbnail.webp"
+    },
+    {
+      "id": 158,
+      "title": "Sunglasses",
+      "description": "The Sunglasses offer a classic and simple design with a focus on functionality. These sunglasses provide essential UV protection while maintaining a timeless look.",
+      "category": "sunglasses",
+      "price": 22.99,
+      "discountPercentage": 1.51,
+      "rating": 3.02,
+      "stock": 27,
+      "tags": ["eyewear", "sunglasses"],
+      "brand": "Fashion Shades",
+      "sku": "SUN-FAS-SUN-158",
+      "weight": 1,
+      "dimensions": { "width": 16.15, "height": 24.59, "depth": 10.31 },
+      "warrantyInformation": "3 year warranty",
+      "shippingInformation": "Ships in 3-5 business days",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Would buy again!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Olivia Wilson",
+          "reviewerEmail": "olivia.wilson@x.dummyjson.com"
+        },
+        {
+          "rating": 2,
+          "comment": "Not worth the price!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Lillian Bishop",
+          "reviewerEmail": "lillian.bishop@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Fast shipping!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Leah Henderson",
+          "reviewerEmail": "leah.henderson@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "60 days return policy",
+      "minimumOrderQuantity": 8,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "8850931201716",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/sunglasses/sunglasses/1.webp",
+        "https://cdn.dummyjson.com/product-images/sunglasses/sunglasses/2.webp",
+        "https://cdn.dummyjson.com/product-images/sunglasses/sunglasses/3.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/sunglasses/sunglasses/thumbnail.webp"
+    },
+    {
+      "id": 159,
+      "title": "iPad Mini 2021 Starlight",
+      "description": "The iPad Mini 2021 in Starlight is a compact and powerful tablet from Apple. Featuring a stunning Retina display, powerful A-series chip, and a sleek design, it offers a premium tablet experience.",
+      "category": "tablets",
+      "price": 499.99,
+      "discountPercentage": 3.64,
+      "rating": 3.18,
+      "stock": 47,
+      "tags": ["electronics", "tablets"],
+      "brand": "Apple",
+      "sku": "TAB-APP-IPA-159",
+      "weight": 5,
+      "dimensions": { "width": 17.03, "height": 5.34, "depth": 29.62 },
+      "warrantyInformation": "2 year warranty",
+      "shippingInformation": "Ships in 1-2 business days",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 4,
+          "comment": "Highly impressed!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Eleanor Collins",
+          "reviewerEmail": "eleanor.collins@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Very happy with my purchase!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Leo Rivera",
+          "reviewerEmail": "leo.rivera@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Would buy again!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Carter Rivera",
+          "reviewerEmail": "carter.rivera@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "No return policy",
+      "minimumOrderQuantity": 3,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "6267995330420",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/tablets/ipad-mini-2021-starlight/1.webp",
+        "https://cdn.dummyjson.com/product-images/tablets/ipad-mini-2021-starlight/2.webp",
+        "https://cdn.dummyjson.com/product-images/tablets/ipad-mini-2021-starlight/3.webp",
+        "https://cdn.dummyjson.com/product-images/tablets/ipad-mini-2021-starlight/4.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/tablets/ipad-mini-2021-starlight/thumbnail.webp"
+    },
+    {
+      "id": 160,
+      "title": "Samsung Galaxy Tab S8 Plus Grey",
+      "description": "The Samsung Galaxy Tab S8 Plus in Grey is a high-performance Android tablet by Samsung. With a large AMOLED display, powerful processor, and S Pen support, it's ideal for productivity and entertainment.",
+      "category": "tablets",
+      "price": 599.99,
+      "discountPercentage": 13.31,
+      "rating": 4.68,
+      "stock": 62,
+      "tags": ["electronics", "tablets"],
+      "brand": "Samsung",
+      "sku": "TAB-SAM-SAM-160",
+      "weight": 1,
+      "dimensions": { "width": 6.11, "height": 25.85, "depth": 26.85 },
+      "warrantyInformation": "3 months warranty",
+      "shippingInformation": "Ships in 2 weeks",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Highly impressed!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Christopher West",
+          "reviewerEmail": "christopher.west@x.dummyjson.com"
+        },
+        {
+          "rating": 2,
+          "comment": "Disappointing product!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Owen Sullivan",
+          "reviewerEmail": "owen.sullivan@x.dummyjson.com"
+        },
+        {
+          "rating": 2,
+          "comment": "Very disappointed!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Aria Roberts",
+          "reviewerEmail": "aria.roberts@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "7 days return policy",
+      "minimumOrderQuantity": 1,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "5021907981204",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/tablets/samsung-galaxy-tab-s8-plus-grey/1.webp",
+        "https://cdn.dummyjson.com/product-images/tablets/samsung-galaxy-tab-s8-plus-grey/2.webp",
+        "https://cdn.dummyjson.com/product-images/tablets/samsung-galaxy-tab-s8-plus-grey/3.webp",
+        "https://cdn.dummyjson.com/product-images/tablets/samsung-galaxy-tab-s8-plus-grey/4.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/tablets/samsung-galaxy-tab-s8-plus-grey/thumbnail.webp"
+    },
+    {
+      "id": 161,
+      "title": "Samsung Galaxy Tab White",
+      "description": "The Samsung Galaxy Tab in White is a sleek and versatile Android tablet. With a vibrant display, long-lasting battery, and a range of features, it offers a great user experience for various tasks.",
+      "category": "tablets",
+      "price": 349.99,
+      "discountPercentage": 18.2,
+      "rating": 3.72,
+      "stock": 92,
+      "tags": ["electronics", "tablets"],
+      "brand": "Samsung",
+      "sku": "TAB-SAM-SAM-161",
+      "weight": 5,
+      "dimensions": { "width": 15.05, "height": 5.37, "depth": 11.82 },
+      "warrantyInformation": "3 months warranty",
+      "shippingInformation": "Ships overnight",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 1,
+          "comment": "Waste of money!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Max Russell",
+          "reviewerEmail": "max.russell@x.dummyjson.com"
+        },
+        {
+          "rating": 2,
+          "comment": "Poor quality!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Lincoln Kelly",
+          "reviewerEmail": "lincoln.kelly@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Very satisfied!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Elena Long",
+          "reviewerEmail": "elena.long@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "7 days return policy",
+      "minimumOrderQuantity": 5,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "3477850755498",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/tablets/samsung-galaxy-tab-white/1.webp",
+        "https://cdn.dummyjson.com/product-images/tablets/samsung-galaxy-tab-white/2.webp",
+        "https://cdn.dummyjson.com/product-images/tablets/samsung-galaxy-tab-white/3.webp",
+        "https://cdn.dummyjson.com/product-images/tablets/samsung-galaxy-tab-white/4.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/tablets/samsung-galaxy-tab-white/thumbnail.webp"
+    },
+    {
+      "id": 162,
+      "title": "Blue Frock",
+      "description": "The Blue Frock is a charming and stylish dress for various occasions. With a vibrant blue color and a comfortable design, it adds a touch of elegance to your wardrobe.",
+      "category": "tops",
+      "price": 29.99,
+      "discountPercentage": 12.13,
+      "rating": 4.17,
+      "stock": 52,
+      "tags": ["clothing", "dresses"],
+      "sku": "TOP-BRD-BLU-162",
+      "weight": 5,
+      "dimensions": { "width": 24.25, "height": 5.91, "depth": 8.79 },
+      "warrantyInformation": "Lifetime warranty",
+      "shippingInformation": "Ships in 2 weeks",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 4,
+          "comment": "Great product!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Victoria McDonald",
+          "reviewerEmail": "victoria.mcdonald@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Fast shipping!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Benjamin Foster",
+          "reviewerEmail": "benjamin.foster@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Would buy again!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Addison Ward",
+          "reviewerEmail": "addison.ward@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "60 days return policy",
+      "minimumOrderQuantity": 4,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "6410441827139",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/tops/blue-frock/1.webp",
+        "https://cdn.dummyjson.com/product-images/tops/blue-frock/2.webp",
+        "https://cdn.dummyjson.com/product-images/tops/blue-frock/3.webp",
+        "https://cdn.dummyjson.com/product-images/tops/blue-frock/4.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/tops/blue-frock/thumbnail.webp"
+    },
+    {
+      "id": 163,
+      "title": "Girl Summer Dress",
+      "description": "The Girl Summer Dress is a cute and breezy dress designed for warm weather. With playful patterns and lightweight fabric, it's perfect for keeping cool and stylish during the summer.",
+      "category": "tops",
+      "price": 19.99,
+      "discountPercentage": 19.2,
+      "rating": 4.77,
+      "stock": 43,
+      "tags": ["clothing", "girls' dresses"],
+      "sku": "TOP-BRD-GIR-163",
+      "weight": 5,
+      "dimensions": { "width": 26.19, "height": 20.65, "depth": 10.1 },
+      "warrantyInformation": "Lifetime warranty",
+      "shippingInformation": "Ships in 1 month",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Excellent quality!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Mason Pearson",
+          "reviewerEmail": "mason.pearson@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Great product!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Aubrey Garcia",
+          "reviewerEmail": "aubrey.garcia@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Very satisfied!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Charlotte Davis",
+          "reviewerEmail": "charlotte.davis@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "60 days return policy",
+      "minimumOrderQuantity": 46,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "6273976484433",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/tops/girl-summer-dress/1.webp",
+        "https://cdn.dummyjson.com/product-images/tops/girl-summer-dress/2.webp",
+        "https://cdn.dummyjson.com/product-images/tops/girl-summer-dress/3.webp",
+        "https://cdn.dummyjson.com/product-images/tops/girl-summer-dress/4.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/tops/girl-summer-dress/thumbnail.webp"
+    },
+    {
+      "id": 164,
+      "title": "Gray Dress",
+      "description": "The Gray Dress is a versatile and chic option for various occasions. With a neutral gray color, it can be dressed up or down, making it a wardrobe staple for any fashion-forward individual.",
+      "category": "tops",
+      "price": 34.99,
+      "discountPercentage": 14.28,
+      "rating": 2.72,
+      "stock": 55,
+      "tags": ["clothing", "dresses"],
+      "sku": "TOP-BRD-GRA-164",
+      "weight": 1,
+      "dimensions": { "width": 11.91, "height": 25.72, "depth": 18.55 },
+      "warrantyInformation": "1 month warranty",
+      "shippingInformation": "Ships in 1 month",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Highly impressed!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Brayden Fleming",
+          "reviewerEmail": "brayden.fleming@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Awesome product!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Michael Johnson",
+          "reviewerEmail": "michael.johnson@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Highly recommended!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Evelyn Sanchez",
+          "reviewerEmail": "evelyn.sanchez@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "90 days return policy",
+      "minimumOrderQuantity": 13,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "5201099489825",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/tops/gray-dress/1.webp",
+        "https://cdn.dummyjson.com/product-images/tops/gray-dress/2.webp",
+        "https://cdn.dummyjson.com/product-images/tops/gray-dress/3.webp",
+        "https://cdn.dummyjson.com/product-images/tops/gray-dress/4.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/tops/gray-dress/thumbnail.webp"
+    },
+    {
+      "id": 165,
+      "title": "Short Frock",
+      "description": "The Short Frock is a playful and trendy dress with a shorter length. Ideal for casual outings or special occasions, it combines style and comfort for a fashionable look.",
+      "category": "tops",
+      "price": 24.99,
+      "discountPercentage": 13.45,
+      "rating": 3.23,
+      "stock": 22,
+      "tags": ["clothing", "dresses"],
+      "sku": "TOP-BRD-SHO-165",
+      "weight": 10,
+      "dimensions": { "width": 24.29, "height": 6.79, "depth": 28.12 },
+      "warrantyInformation": "1 year warranty",
+      "shippingInformation": "Ships in 1-2 business days",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 3,
+          "comment": "Disappointing product!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Gabriel Hayes",
+          "reviewerEmail": "gabriel.hayes@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Awesome product!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Samantha Howard",
+          "reviewerEmail": "samantha.howard@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Fast shipping!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Luke Cooper",
+          "reviewerEmail": "luke.cooper@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "30 days return policy",
+      "minimumOrderQuantity": 5,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "2022014761829",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/tops/short-frock/1.webp",
+        "https://cdn.dummyjson.com/product-images/tops/short-frock/2.webp",
+        "https://cdn.dummyjson.com/product-images/tops/short-frock/3.webp",
+        "https://cdn.dummyjson.com/product-images/tops/short-frock/4.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/tops/short-frock/thumbnail.webp"
+    },
+    {
+      "id": 166,
+      "title": "Tartan Dress",
+      "description": "The Tartan Dress features a classic tartan pattern, bringing a timeless and sophisticated touch to your wardrobe. Perfect for fall and winter, it adds a hint of traditional charm.",
+      "category": "tops",
+      "price": 39.99,
+      "discountPercentage": 12.95,
+      "rating": 4.05,
+      "stock": 73,
+      "tags": ["clothing", "dresses"],
+      "sku": "TOP-BRD-TAR-166",
+      "weight": 8,
+      "dimensions": { "width": 23.14, "height": 12.44, "depth": 12.67 },
+      "warrantyInformation": "1 month warranty",
+      "shippingInformation": "Ships overnight",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Highly recommended!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Mason Pearson",
+          "reviewerEmail": "mason.pearson@x.dummyjson.com"
+        },
+        {
+          "rating": 3,
+          "comment": "Not as described!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Luke Cooper",
+          "reviewerEmail": "luke.cooper@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Excellent quality!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "William Lopez",
+          "reviewerEmail": "william.lopez@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "No return policy",
+      "minimumOrderQuantity": 1,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "3383823083995",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/tops/tartan-dress/1.webp",
+        "https://cdn.dummyjson.com/product-images/tops/tartan-dress/2.webp",
+        "https://cdn.dummyjson.com/product-images/tops/tartan-dress/3.webp",
+        "https://cdn.dummyjson.com/product-images/tops/tartan-dress/4.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/tops/tartan-dress/thumbnail.webp"
+    },
+    {
+      "id": 167,
+      "title": "300 Touring",
+      "description": "The 300 Touring is a stylish and comfortable sedan, known for its luxurious features and smooth performance.",
+      "category": "vehicle",
+      "price": 28999.99,
+      "discountPercentage": 3.98,
+      "rating": 4.05,
+      "stock": 54,
+      "tags": ["sedans", "vehicles"],
+      "brand": "Chrysler",
+      "sku": "VEH-CHR-TOU-167",
+      "weight": 9,
+      "dimensions": { "width": 19.2, "height": 26.17, "depth": 17.28 },
+      "warrantyInformation": "3 year warranty",
+      "shippingInformation": "Ships in 2 weeks",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 4,
+          "comment": "Very pleased!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Luna Russell",
+          "reviewerEmail": "luna.russell@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Great product!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Harper Garcia",
+          "reviewerEmail": "harper.garcia@x.dummyjson.com"
+        },
+        {
+          "rating": 2,
+          "comment": "Not as described!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Harper Turner",
+          "reviewerEmail": "harper.turner@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "30 days return policy",
+      "minimumOrderQuantity": 1,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "6337799339397",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/vehicle/300-touring/1.webp",
+        "https://cdn.dummyjson.com/product-images/vehicle/300-touring/2.webp",
+        "https://cdn.dummyjson.com/product-images/vehicle/300-touring/3.webp",
+        "https://cdn.dummyjson.com/product-images/vehicle/300-touring/4.webp",
+        "https://cdn.dummyjson.com/product-images/vehicle/300-touring/5.webp",
+        "https://cdn.dummyjson.com/product-images/vehicle/300-touring/6.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/vehicle/300-touring/thumbnail.webp"
+    },
+    {
+      "id": 168,
+      "title": "Charger SXT RWD",
+      "description": "The Charger SXT RWD is a powerful and sporty rear-wheel-drive sedan, offering a blend of performance and practicality.",
+      "category": "vehicle",
+      "price": 32999.99,
+      "discountPercentage": 8.23,
+      "rating": 2.58,
+      "stock": 57,
+      "tags": ["sedans", "sports cars", "vehicles"],
+      "brand": "Dodge",
+      "sku": "VEH-DOD-CHA-168",
+      "weight": 6,
+      "dimensions": { "width": 16.77, "height": 23.03, "depth": 8.18 },
+      "warrantyInformation": "1 month warranty",
+      "shippingInformation": "Ships in 3-5 business days",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 2,
+          "comment": "Not worth the price!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Lily Torres",
+          "reviewerEmail": "lily.torres@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Would buy again!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Hazel Evans",
+          "reviewerEmail": "hazel.evans@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Fast shipping!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Owen Fisher",
+          "reviewerEmail": "owen.fisher@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "No return policy",
+      "minimumOrderQuantity": 1,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "0376498933302",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/vehicle/charger-sxt-rwd/1.webp",
+        "https://cdn.dummyjson.com/product-images/vehicle/charger-sxt-rwd/2.webp",
+        "https://cdn.dummyjson.com/product-images/vehicle/charger-sxt-rwd/3.webp",
+        "https://cdn.dummyjson.com/product-images/vehicle/charger-sxt-rwd/4.webp",
+        "https://cdn.dummyjson.com/product-images/vehicle/charger-sxt-rwd/5.webp",
+        "https://cdn.dummyjson.com/product-images/vehicle/charger-sxt-rwd/6.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/vehicle/charger-sxt-rwd/thumbnail.webp"
+    },
+    {
+      "id": 169,
+      "title": "Dodge Hornet GT Plus",
+      "description": "The Dodge Hornet GT Plus is a compact and agile hatchback, perfect for urban driving with a touch of sportiness.",
+      "category": "vehicle",
+      "price": 24999.99,
+      "discountPercentage": 2.63,
+      "rating": 2.65,
+      "stock": 82,
+      "tags": ["hatchbacks", "compact cars", "vehicles"],
+      "brand": "Dodge",
+      "sku": "VEH-DOD-DOD-169",
+      "weight": 8,
+      "dimensions": { "width": 19.89, "height": 9.8, "depth": 17.8 },
+      "warrantyInformation": "1 year warranty",
+      "shippingInformation": "Ships in 1 month",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Awesome product!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Autumn Gomez",
+          "reviewerEmail": "autumn.gomez@x.dummyjson.com"
+        },
+        {
+          "rating": 2,
+          "comment": "Not as described!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Mateo Bennett",
+          "reviewerEmail": "mateo.bennett@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Very satisfied!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Harper Kelly",
+          "reviewerEmail": "harper.kelly@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "60 days return policy",
+      "minimumOrderQuantity": 1,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "8578515136594",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/vehicle/dodge-hornet-gt-plus/1.webp",
+        "https://cdn.dummyjson.com/product-images/vehicle/dodge-hornet-gt-plus/2.webp",
+        "https://cdn.dummyjson.com/product-images/vehicle/dodge-hornet-gt-plus/3.webp",
+        "https://cdn.dummyjson.com/product-images/vehicle/dodge-hornet-gt-plus/4.webp",
+        "https://cdn.dummyjson.com/product-images/vehicle/dodge-hornet-gt-plus/5.webp",
+        "https://cdn.dummyjson.com/product-images/vehicle/dodge-hornet-gt-plus/6.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/vehicle/dodge-hornet-gt-plus/thumbnail.webp"
+    },
+    {
+      "id": 170,
+      "title": "Durango SXT RWD",
+      "description": "The Durango SXT RWD is a spacious and versatile SUV, known for its strong performance and family-friendly features.",
+      "category": "vehicle",
+      "price": 36999.99,
+      "discountPercentage": 16.44,
+      "rating": 4.07,
+      "stock": 95,
+      "tags": ["suvs", "vehicles"],
+      "brand": "Dodge",
+      "sku": "VEH-DOD-DUR-170",
+      "weight": 1,
+      "dimensions": { "width": 19.02, "height": 29.52, "depth": 24.36 },
+      "warrantyInformation": "2 year warranty",
+      "shippingInformation": "Ships in 1 month",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Very pleased!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "David Martinez",
+          "reviewerEmail": "david.martinez@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Great value for money!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Nathan Dixon",
+          "reviewerEmail": "nathan.dixon@x.dummyjson.com"
+        },
+        {
+          "rating": 1,
+          "comment": "Very disappointed!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Mila Hernandez",
+          "reviewerEmail": "mila.hernandez@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "30 days return policy",
+      "minimumOrderQuantity": 1,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "7539220768239",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/vehicle/durango-sxt-rwd/1.webp",
+        "https://cdn.dummyjson.com/product-images/vehicle/durango-sxt-rwd/2.webp",
+        "https://cdn.dummyjson.com/product-images/vehicle/durango-sxt-rwd/3.webp",
+        "https://cdn.dummyjson.com/product-images/vehicle/durango-sxt-rwd/4.webp",
+        "https://cdn.dummyjson.com/product-images/vehicle/durango-sxt-rwd/5.webp",
+        "https://cdn.dummyjson.com/product-images/vehicle/durango-sxt-rwd/6.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/vehicle/durango-sxt-rwd/thumbnail.webp"
+    },
+    {
+      "id": 171,
+      "title": "Pacifica Touring",
+      "description": "The Pacifica Touring is a stylish and well-equipped minivan, offering comfort and convenience for family journeys.",
+      "category": "vehicle",
+      "price": 31999.99,
+      "discountPercentage": 14.76,
+      "rating": 3.62,
+      "stock": 53,
+      "tags": ["minivans", "vehicles"],
+      "brand": "Chrysler",
+      "sku": "VEH-CHR-PAC-171",
+      "weight": 9,
+      "dimensions": { "width": 7.11, "height": 15.51, "depth": 18.1 },
+      "warrantyInformation": "1 month warranty",
+      "shippingInformation": "Ships overnight",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Fast shipping!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Isaac Lawrence",
+          "reviewerEmail": "isaac.lawrence@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Awesome product!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Tyler Davis",
+          "reviewerEmail": "tyler.davis@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Fast shipping!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Daniel Cook",
+          "reviewerEmail": "daniel.cook@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "60 days return policy",
+      "minimumOrderQuantity": 1,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "2500742117107",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/vehicle/pacifica-touring/1.webp",
+        "https://cdn.dummyjson.com/product-images/vehicle/pacifica-touring/2.webp",
+        "https://cdn.dummyjson.com/product-images/vehicle/pacifica-touring/3.webp",
+        "https://cdn.dummyjson.com/product-images/vehicle/pacifica-touring/4.webp",
+        "https://cdn.dummyjson.com/product-images/vehicle/pacifica-touring/5.webp",
+        "https://cdn.dummyjson.com/product-images/vehicle/pacifica-touring/6.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/vehicle/pacifica-touring/thumbnail.webp"
+    },
+    {
+      "id": 172,
+      "title": "Blue Women's Handbag",
+      "description": "The Blue Women's Handbag is a stylish and spacious accessory for everyday use. With a vibrant blue color and multiple compartments, it combines fashion and functionality.",
+      "category": "womens-bags",
+      "price": 49.99,
+      "discountPercentage": 17.88,
+      "rating": 2.92,
+      "stock": 76,
+      "tags": ["fashion accessories", "handbags"],
+      "brand": "Fashionista",
+      "sku": "WOM-FAS-BLU-172",
+      "weight": 7,
+      "dimensions": { "width": 14.12, "height": 11.89, "depth": 25.69 },
+      "warrantyInformation": "1 year warranty",
+      "shippingInformation": "Ships in 1 week",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 3,
+          "comment": "Waste of money!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Grace Perry",
+          "reviewerEmail": "grace.perry@x.dummyjson.com"
+        },
+        {
+          "rating": 3,
+          "comment": "Not worth the price!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Evelyn Sanchez",
+          "reviewerEmail": "evelyn.sanchez@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Highly impressed!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Eli Ward",
+          "reviewerEmail": "eli.ward@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "7 days return policy",
+      "minimumOrderQuantity": 5,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "0558998280008",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/womens-bags/blue-women's-handbag/1.webp",
+        "https://cdn.dummyjson.com/product-images/womens-bags/blue-women's-handbag/2.webp",
+        "https://cdn.dummyjson.com/product-images/womens-bags/blue-women's-handbag/3.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/womens-bags/blue-women's-handbag/thumbnail.webp"
+    },
+    {
+      "id": 173,
+      "title": "Heshe Women's Leather Bag",
+      "description": "The Heshe Women's Leather Bag is a luxurious and high-quality leather bag for the sophisticated woman. With a timeless design and durable craftsmanship, it's a versatile accessory.",
+      "category": "womens-bags",
+      "price": 129.99,
+      "discountPercentage": 3.87,
+      "rating": 4.92,
+      "stock": 99,
+      "tags": ["fashion accessories", "leather bags"],
+      "brand": "Heshe",
+      "sku": "WOM-HES-HES-173",
+      "weight": 3,
+      "dimensions": { "width": 28.66, "height": 20.56, "depth": 6.62 },
+      "warrantyInformation": "5 year warranty",
+      "shippingInformation": "Ships overnight",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Excellent quality!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Hunter Gordon",
+          "reviewerEmail": "hunter.gordon@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Awesome product!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Mason Parker",
+          "reviewerEmail": "mason.parker@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Awesome product!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "William Gonzalez",
+          "reviewerEmail": "william.gonzalez@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "90 days return policy",
+      "minimumOrderQuantity": 5,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "4616258239513",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/womens-bags/heshe-women's-leather-bag/1.webp",
+        "https://cdn.dummyjson.com/product-images/womens-bags/heshe-women's-leather-bag/2.webp",
+        "https://cdn.dummyjson.com/product-images/womens-bags/heshe-women's-leather-bag/3.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/womens-bags/heshe-women's-leather-bag/thumbnail.webp"
+    },
+    {
+      "id": 174,
+      "title": "Prada Women Bag",
+      "description": "The Prada Women Bag is an iconic designer bag that exudes elegance and luxury. Crafted with precision and featuring the Prada logo, it's a statement piece for fashion enthusiasts.",
+      "category": "womens-bags",
+      "price": 599.99,
+      "discountPercentage": 14.09,
+      "rating": 2.71,
+      "stock": 75,
+      "tags": ["fashion accessories", "designer bags"],
+      "brand": "Prada",
+      "sku": "WOM-PRA-PRA-174",
+      "weight": 4,
+      "dimensions": { "width": 21.84, "height": 22.19, "depth": 13.41 },
+      "warrantyInformation": "3 year warranty",
+      "shippingInformation": "Ships in 1-2 business days",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 2,
+          "comment": "Would not buy again!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Caleb Perkins",
+          "reviewerEmail": "caleb.perkins@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Great value for money!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Carter Baker",
+          "reviewerEmail": "carter.baker@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Highly recommended!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Lucas Ramirez",
+          "reviewerEmail": "lucas.ramirez@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "60 days return policy",
+      "minimumOrderQuantity": 1,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "9614237439330",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/womens-bags/prada-women-bag/1.webp",
+        "https://cdn.dummyjson.com/product-images/womens-bags/prada-women-bag/2.webp",
+        "https://cdn.dummyjson.com/product-images/womens-bags/prada-women-bag/3.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/womens-bags/prada-women-bag/thumbnail.webp"
+    },
+    {
+      "id": 175,
+      "title": "White Faux Leather Backpack",
+      "description": "The White Faux Leather Backpack is a trendy and practical backpack for the modern woman. With a sleek white design and ample storage space, it's perfect for both casual and on-the-go styles.",
+      "category": "womens-bags",
+      "price": 39.99,
+      "discountPercentage": 15.2,
+      "rating": 3.36,
+      "stock": 39,
+      "tags": ["fashion accessories", "backpacks"],
+      "brand": "Urban Chic",
+      "sku": "WOM-URB-WHI-175",
+      "weight": 7,
+      "dimensions": { "width": 14.31, "height": 23.29, "depth": 28.91 },
+      "warrantyInformation": "2 year warranty",
+      "shippingInformation": "Ships in 1 week",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 4,
+          "comment": "Awesome product!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Ava Harrison",
+          "reviewerEmail": "ava.harrison@x.dummyjson.com"
+        },
+        {
+          "rating": 1,
+          "comment": "Not as described!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Liam Garcia",
+          "reviewerEmail": "liam.garcia@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Great value for money!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Cameron Perez",
+          "reviewerEmail": "cameron.perez@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "90 days return policy",
+      "minimumOrderQuantity": 7,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "8983558170212",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/womens-bags/white-faux-leather-backpack/1.webp",
+        "https://cdn.dummyjson.com/product-images/womens-bags/white-faux-leather-backpack/2.webp",
+        "https://cdn.dummyjson.com/product-images/womens-bags/white-faux-leather-backpack/3.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/womens-bags/white-faux-leather-backpack/thumbnail.webp"
+    },
+    {
+      "id": 176,
+      "title": "Women Handbag Black",
+      "description": "The Women Handbag in Black is a classic and versatile accessory that complements various outfits. With a timeless black color and functional design, it's a must-have in every woman's wardrobe.",
+      "category": "womens-bags",
+      "price": 59.99,
+      "discountPercentage": 11.63,
+      "rating": 2.89,
+      "stock": 11,
+      "tags": ["fashion accessories", "handbags"],
+      "brand": "Elegance Collection",
+      "sku": "WOM-ELE-WOM-176",
+      "weight": 6,
+      "dimensions": { "width": 29.76, "height": 12.34, "depth": 15.82 },
+      "warrantyInformation": "Lifetime warranty",
+      "shippingInformation": "Ships in 1 month",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 4,
+          "comment": "Very pleased!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Natalie Price",
+          "reviewerEmail": "natalie.price@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Great product!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Emily Johnson",
+          "reviewerEmail": "emily.johnson@x.dummyjson.com"
+        },
+        {
+          "rating": 1,
+          "comment": "Waste of money!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Henry Hill",
+          "reviewerEmail": "henry.hill@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "60 days return policy",
+      "minimumOrderQuantity": 9,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "4283648448769",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/womens-bags/women-handbag-black/1.webp",
+        "https://cdn.dummyjson.com/product-images/womens-bags/women-handbag-black/2.webp",
+        "https://cdn.dummyjson.com/product-images/womens-bags/women-handbag-black/3.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/womens-bags/women-handbag-black/thumbnail.webp"
+    },
+    {
+      "id": 177,
+      "title": "Black Women's Gown",
+      "description": "The Black Women's Gown is an elegant and timeless evening gown. With a sleek black design, it's perfect for formal events and special occasions, exuding sophistication and style.",
+      "category": "womens-dresses",
+      "price": 129.99,
+      "discountPercentage": 10.48,
+      "rating": 3.64,
+      "stock": 25,
+      "tags": ["clothing", "gowns"],
+      "sku": "WOM-BRD-BLA-177",
+      "weight": 2,
+      "dimensions": { "width": 7.86, "height": 9.02, "depth": 25.82 },
+      "warrantyInformation": "Lifetime warranty",
+      "shippingInformation": "Ships in 1 week",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 4,
+          "comment": "Great value for money!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Ethan Fletcher",
+          "reviewerEmail": "ethan.fletcher@x.dummyjson.com"
+        },
+        {
+          "rating": 3,
+          "comment": "Very dissatisfied!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Julian Newton",
+          "reviewerEmail": "julian.newton@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Very satisfied!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Savannah Gomez",
+          "reviewerEmail": "savannah.gomez@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "No return policy",
+      "minimumOrderQuantity": 5,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "0630346013554",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/womens-dresses/black-women's-gown/1.webp",
+        "https://cdn.dummyjson.com/product-images/womens-dresses/black-women's-gown/2.webp",
+        "https://cdn.dummyjson.com/product-images/womens-dresses/black-women's-gown/3.webp",
+        "https://cdn.dummyjson.com/product-images/womens-dresses/black-women's-gown/4.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/womens-dresses/black-women's-gown/thumbnail.webp"
+    },
+    {
+      "id": 178,
+      "title": "Corset Leather With Skirt",
+      "description": "The Corset Leather With Skirt is a bold and edgy ensemble that combines a stylish corset with a matching skirt. Ideal for fashion-forward individuals, it makes a statement at any event.",
+      "category": "womens-dresses",
+      "price": 89.99,
+      "discountPercentage": 16.26,
+      "rating": 3.05,
+      "stock": 30,
+      "tags": ["clothing", "corsets", "skirts"],
+      "sku": "WOM-BRD-COR-178",
+      "weight": 1,
+      "dimensions": { "width": 6.01, "height": 12.6, "depth": 11.62 },
+      "warrantyInformation": "2 year warranty",
+      "shippingInformation": "Ships overnight",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Very happy with my purchase!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Natalie Price",
+          "reviewerEmail": "natalie.price@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Highly recommended!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Sophia Jones",
+          "reviewerEmail": "sophia.jones@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Highly recommended!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Leo Rivera",
+          "reviewerEmail": "leo.rivera@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "30 days return policy",
+      "minimumOrderQuantity": 3,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "2931500162745",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/womens-dresses/corset-leather-with-skirt/1.webp",
+        "https://cdn.dummyjson.com/product-images/womens-dresses/corset-leather-with-skirt/2.webp",
+        "https://cdn.dummyjson.com/product-images/womens-dresses/corset-leather-with-skirt/3.webp",
+        "https://cdn.dummyjson.com/product-images/womens-dresses/corset-leather-with-skirt/4.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/womens-dresses/corset-leather-with-skirt/thumbnail.webp"
+    },
+    {
+      "id": 179,
+      "title": "Corset With Black Skirt",
+      "description": "The Corset With Black Skirt is a chic and versatile outfit that pairs a fashionable corset with a classic black skirt. It offers a trendy and coordinated look for various occasions.",
+      "category": "womens-dresses",
+      "price": 79.99,
+      "discountPercentage": 15.06,
+      "rating": 4.52,
+      "stock": 33,
+      "tags": ["clothing", "corsets", "skirts"],
+      "sku": "WOM-BRD-COR-179",
+      "weight": 7,
+      "dimensions": { "width": 17.56, "height": 28.42, "depth": 23.95 },
+      "warrantyInformation": "1 month warranty",
+      "shippingInformation": "Ships in 1 week",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Very satisfied!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Lucas Allen",
+          "reviewerEmail": "lucas.allen@x.dummyjson.com"
+        },
+        {
+          "rating": 2,
+          "comment": "Disappointing product!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Benjamin Wilson",
+          "reviewerEmail": "benjamin.wilson@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Very happy with my purchase!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Elena Long",
+          "reviewerEmail": "elena.long@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "No return policy",
+      "minimumOrderQuantity": 5,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "9336695899390",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/womens-dresses/corset-with-black-skirt/1.webp",
+        "https://cdn.dummyjson.com/product-images/womens-dresses/corset-with-black-skirt/2.webp",
+        "https://cdn.dummyjson.com/product-images/womens-dresses/corset-with-black-skirt/3.webp",
+        "https://cdn.dummyjson.com/product-images/womens-dresses/corset-with-black-skirt/4.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/womens-dresses/corset-with-black-skirt/thumbnail.webp"
+    },
+    {
+      "id": 180,
+      "title": "Dress Pea",
+      "description": "The Dress Pea is a stylish and comfortable dress with a pea pattern. Perfect for casual outings, it adds a playful and fun element to your wardrobe, making it a great choice for day-to-day wear.",
+      "category": "womens-dresses",
+      "price": 49.99,
+      "discountPercentage": 17.68,
+      "rating": 4.88,
+      "stock": 6,
+      "tags": ["clothing", "dresses"],
+      "sku": "WOM-BRD-DRE-180",
+      "weight": 1,
+      "dimensions": { "width": 28.51, "height": 20.99, "depth": 12.58 },
+      "warrantyInformation": "2 year warranty",
+      "shippingInformation": "Ships overnight",
+      "availabilityStatus": "Low Stock",
+      "reviews": [
+        {
+          "rating": 4,
+          "comment": "Fast shipping!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Harper Turner",
+          "reviewerEmail": "harper.turner@x.dummyjson.com"
+        },
+        {
+          "rating": 1,
+          "comment": "Not worth the price!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Luna Russell",
+          "reviewerEmail": "luna.russell@x.dummyjson.com"
+        },
+        {
+          "rating": 2,
+          "comment": "Would not buy again!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Michael Johnson",
+          "reviewerEmail": "michael.johnson@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "90 days return policy",
+      "minimumOrderQuantity": 6,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "8142375980193",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/womens-dresses/dress-pea/1.webp",
+        "https://cdn.dummyjson.com/product-images/womens-dresses/dress-pea/2.webp",
+        "https://cdn.dummyjson.com/product-images/womens-dresses/dress-pea/3.webp",
+        "https://cdn.dummyjson.com/product-images/womens-dresses/dress-pea/4.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/womens-dresses/dress-pea/thumbnail.webp"
+    }
+  ],
+  "total": 194,
+  "skip": 150,
+  "limit": 30
+}

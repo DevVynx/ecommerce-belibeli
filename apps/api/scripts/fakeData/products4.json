@@ -1,0 +1,1647 @@
+{
+  "products": [
+    {
+      "id": 91,
+      "title": "Sports Sneakers Off White & Red",
+      "description": "The Sports Sneakers in Off White and Red combine style and functionality, making them a fashionable choice for sports enthusiasts. The red and off-white color combination adds a bold and energetic touch.",
+      "category": "mens-shoes",
+      "price": 119.99,
+      "discountPercentage": 4.97,
+      "rating": 4.77,
+      "stock": 17,
+      "tags": ["footwear", "athletic shoes"],
+      "brand": "Off White",
+      "sku": "MEN-OFF-SPO-091",
+      "weight": 7,
+      "dimensions": { "width": 14.37, "height": 23.44, "depth": 12.84 },
+      "warrantyInformation": "1 week warranty",
+      "shippingInformation": "Ships in 3-5 business days",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 4,
+          "comment": "Would buy again!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Sadie Morales",
+          "reviewerEmail": "sadie.morales@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Fast shipping!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Julian Newton",
+          "reviewerEmail": "julian.newton@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Awesome product!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Logan Lee",
+          "reviewerEmail": "logan.lee@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "30 days return policy",
+      "minimumOrderQuantity": 5,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "6740319943645",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-&-red/1.webp",
+        "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-&-red/2.webp",
+        "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-&-red/3.webp",
+        "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-&-red/4.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-&-red/thumbnail.webp"
+    },
+    {
+      "id": 92,
+      "title": "Sports Sneakers Off White Red",
+      "description": "Another variant of the Sports Sneakers in Off White Red, featuring a unique design. These sneakers offer style and comfort for casual occasions.",
+      "category": "mens-shoes",
+      "price": 109.99,
+      "discountPercentage": 0.04,
+      "rating": 4.69,
+      "stock": 62,
+      "tags": ["footwear", "casual shoes"],
+      "brand": "Off White",
+      "sku": "MEN-OFF-SPO-092",
+      "weight": 9,
+      "dimensions": { "width": 21.43, "height": 9.86, "depth": 28.5 },
+      "warrantyInformation": "3 months warranty",
+      "shippingInformation": "Ships overnight",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 4,
+          "comment": "Excellent quality!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Aurora Lawson",
+          "reviewerEmail": "aurora.lawson@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Great value for money!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Gabriel Mitchell",
+          "reviewerEmail": "gabriel.mitchell@x.dummyjson.com"
+        },
+        {
+          "rating": 1,
+          "comment": "Not worth the price!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Eli Bennett",
+          "reviewerEmail": "eli.bennett@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "60 days return policy",
+      "minimumOrderQuantity": 3,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "0430266023617",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-red/1.webp",
+        "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-red/2.webp",
+        "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-red/3.webp",
+        "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-red/4.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-red/thumbnail.webp"
+    },
+    {
+      "id": 93,
+      "title": "Brown Leather Belt Watch",
+      "description": "The Brown Leather Belt Watch is a stylish timepiece with a classic design. Featuring a genuine leather strap and a sleek dial, it adds a touch of sophistication to your look.",
+      "category": "mens-watches",
+      "price": 89.99,
+      "discountPercentage": 5.99,
+      "rating": 4.19,
+      "stock": 32,
+      "tags": ["watches", "leather watches"],
+      "brand": "Fashion Timepieces",
+      "sku": "MEN-FAS-BRO-093",
+      "weight": 10,
+      "dimensions": { "width": 16.65, "height": 6.15, "depth": 20.18 },
+      "warrantyInformation": "1 year warranty",
+      "shippingInformation": "Ships in 1 month",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 1,
+          "comment": "Very unhappy with my purchase!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "James Garcia",
+          "reviewerEmail": "james.garcia@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Fast shipping!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Avery Barnes",
+          "reviewerEmail": "avery.barnes@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Would buy again!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "David Martinez",
+          "reviewerEmail": "david.martinez@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "30 days return policy",
+      "minimumOrderQuantity": 7,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "4027206714862",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/mens-watches/brown-leather-belt-watch/1.webp",
+        "https://cdn.dummyjson.com/product-images/mens-watches/brown-leather-belt-watch/2.webp",
+        "https://cdn.dummyjson.com/product-images/mens-watches/brown-leather-belt-watch/3.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/mens-watches/brown-leather-belt-watch/thumbnail.webp"
+    },
+    {
+      "id": 94,
+      "title": "Longines Master Collection",
+      "description": "The Longines Master Collection is an elegant and refined watch known for its precision and craftsmanship. With a timeless design, it's a symbol of luxury and sophistication.",
+      "category": "mens-watches",
+      "price": 1499.99,
+      "discountPercentage": 17.24,
+      "rating": 3.87,
+      "stock": 100,
+      "tags": ["watches", "luxury watches"],
+      "brand": "Longines",
+      "sku": "MEN-LON-LON-094",
+      "weight": 4,
+      "dimensions": { "width": 15.39, "height": 10.06, "depth": 20.32 },
+      "warrantyInformation": "1 week warranty",
+      "shippingInformation": "Ships in 1-2 business days",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 4,
+          "comment": "Highly impressed!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Eli Ward",
+          "reviewerEmail": "eli.ward@x.dummyjson.com"
+        },
+        {
+          "rating": 3,
+          "comment": "Very disappointed!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Owen Fisher",
+          "reviewerEmail": "owen.fisher@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Great product!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Nathan Reed",
+          "reviewerEmail": "nathan.reed@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "7 days return policy",
+      "minimumOrderQuantity": 1,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "5984080925625",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/mens-watches/longines-master-collection/1.webp",
+        "https://cdn.dummyjson.com/product-images/mens-watches/longines-master-collection/2.webp",
+        "https://cdn.dummyjson.com/product-images/mens-watches/longines-master-collection/3.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/mens-watches/longines-master-collection/thumbnail.webp"
+    },
+    {
+      "id": 95,
+      "title": "Rolex Cellini Date Black Dial",
+      "description": "The Rolex Cellini Date with Black Dial is a classic and prestigious watch. With a black dial and date complication, it exudes sophistication and is a symbol of Rolex's heritage.",
+      "category": "mens-watches",
+      "price": 8999.99,
+      "discountPercentage": 8.88,
+      "rating": 4.97,
+      "stock": 40,
+      "tags": ["watches", "luxury watches"],
+      "brand": "Rolex",
+      "sku": "MEN-ROL-ROL-095",
+      "weight": 2,
+      "dimensions": { "width": 13.46, "height": 26.1, "depth": 17.9 },
+      "warrantyInformation": "3 months warranty",
+      "shippingInformation": "Ships in 1 week",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 3,
+          "comment": "Not worth the price!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Owen Sullivan",
+          "reviewerEmail": "owen.sullivan@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Very satisfied!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Jonathan Pierce",
+          "reviewerEmail": "jonathan.pierce@x.dummyjson.com"
+        },
+        {
+          "rating": 1,
+          "comment": "Would not buy again!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Adrian Flores",
+          "reviewerEmail": "adrian.flores@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "90 days return policy",
+      "minimumOrderQuantity": 1,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "9663455783895",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/mens-watches/rolex-cellini-date-black-dial/1.webp",
+        "https://cdn.dummyjson.com/product-images/mens-watches/rolex-cellini-date-black-dial/2.webp",
+        "https://cdn.dummyjson.com/product-images/mens-watches/rolex-cellini-date-black-dial/3.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/mens-watches/rolex-cellini-date-black-dial/thumbnail.webp"
+    },
+    {
+      "id": 96,
+      "title": "Rolex Cellini Moonphase",
+      "description": "The Rolex Cellini Moonphase is a masterpiece of horology, featuring a moon phase complication and exquisite design. It reflects Rolex's commitment to precision and elegance.",
+      "category": "mens-watches",
+      "price": 12999.99,
+      "discountPercentage": 17.52,
+      "rating": 2.58,
+      "stock": 36,
+      "tags": ["watches", "luxury watches"],
+      "brand": "Rolex",
+      "sku": "MEN-ROL-ROL-096",
+      "weight": 2,
+      "dimensions": { "width": 26.06, "height": 25.19, "depth": 13.17 },
+      "warrantyInformation": "6 months warranty",
+      "shippingInformation": "Ships overnight",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 3,
+          "comment": "Poor quality!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Ella Adams",
+          "reviewerEmail": "ella.adams@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Very satisfied!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Leo Rivera",
+          "reviewerEmail": "leo.rivera@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Very pleased!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Emma Miller",
+          "reviewerEmail": "emma.miller@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "7 days return policy",
+      "minimumOrderQuantity": 1,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "1957304538726",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/mens-watches/rolex-cellini-moonphase/1.webp",
+        "https://cdn.dummyjson.com/product-images/mens-watches/rolex-cellini-moonphase/2.webp",
+        "https://cdn.dummyjson.com/product-images/mens-watches/rolex-cellini-moonphase/3.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/mens-watches/rolex-cellini-moonphase/thumbnail.webp"
+    },
+    {
+      "id": 97,
+      "title": "Rolex Datejust",
+      "description": "The Rolex Datejust is an iconic and versatile timepiece with a date window. Known for its timeless design and reliability, it's a symbol of Rolex's watchmaking excellence.",
+      "category": "mens-watches",
+      "price": 10999.99,
+      "discountPercentage": 3.73,
+      "rating": 3.66,
+      "stock": 86,
+      "tags": ["watches", "luxury watches"],
+      "brand": "Rolex",
+      "sku": "MEN-ROL-ROL-097",
+      "weight": 4,
+      "dimensions": { "width": 23.11, "height": 19.97, "depth": 27.04 },
+      "warrantyInformation": "2 year warranty",
+      "shippingInformation": "Ships in 1 month",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 4,
+          "comment": "Fast shipping!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Alice Smith",
+          "reviewerEmail": "alice.smith@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Very pleased!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Abigail Rivera",
+          "reviewerEmail": "abigail.rivera@x.dummyjson.com"
+        },
+        {
+          "rating": 3,
+          "comment": "Waste of money!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Daniel Cook",
+          "reviewerEmail": "daniel.cook@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "7 days return policy",
+      "minimumOrderQuantity": 1,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "8893788734644",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/mens-watches/rolex-datejust/1.webp",
+        "https://cdn.dummyjson.com/product-images/mens-watches/rolex-datejust/2.webp",
+        "https://cdn.dummyjson.com/product-images/mens-watches/rolex-datejust/3.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/mens-watches/rolex-datejust/thumbnail.webp"
+    },
+    {
+      "id": 98,
+      "title": "Rolex Submariner Watch",
+      "description": "The Rolex Submariner is a legendary dive watch with a rich history. Known for its durability and water resistance, it's a symbol of adventure and exploration.",
+      "category": "mens-watches",
+      "price": 13999.99,
+      "discountPercentage": 5.05,
+      "rating": 2.69,
+      "stock": 55,
+      "tags": ["watches", "luxury watches"],
+      "brand": "Rolex",
+      "sku": "MEN-ROL-ROL-098",
+      "weight": 4,
+      "dimensions": { "width": 17.69, "height": 12.48, "depth": 8.75 },
+      "warrantyInformation": "5 year warranty",
+      "shippingInformation": "Ships in 1 month",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 4,
+          "comment": "Great value for money!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Luna Perez",
+          "reviewerEmail": "luna.perez@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Highly recommended!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Hannah Robinson",
+          "reviewerEmail": "hannah.robinson@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Fast shipping!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Aaliyah Hanson",
+          "reviewerEmail": "aaliyah.hanson@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "90 days return policy",
+      "minimumOrderQuantity": 1,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "7133320173118",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/mens-watches/rolex-submariner-watch/1.webp",
+        "https://cdn.dummyjson.com/product-images/mens-watches/rolex-submariner-watch/2.webp",
+        "https://cdn.dummyjson.com/product-images/mens-watches/rolex-submariner-watch/3.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/mens-watches/rolex-submariner-watch/thumbnail.webp"
+    },
+    {
+      "id": 99,
+      "title": "Amazon Echo Plus",
+      "description": "The Amazon Echo Plus is a smart speaker with built-in Alexa voice control. It features premium sound quality and serves as a hub for controlling smart home devices.",
+      "category": "mobile-accessories",
+      "price": 99.99,
+      "discountPercentage": 12.07,
+      "rating": 4.99,
+      "stock": 61,
+      "tags": ["electronics", "smart speakers"],
+      "brand": "Amazon",
+      "sku": "MOB-AMA-AMA-099",
+      "weight": 5,
+      "dimensions": { "width": 12.68, "height": 15.24, "depth": 27.46 },
+      "warrantyInformation": "6 months warranty",
+      "shippingInformation": "Ships in 1 week",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 2,
+          "comment": "Would not recommend!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Chloe Morales",
+          "reviewerEmail": "chloe.morales@x.dummyjson.com"
+        },
+        {
+          "rating": 3,
+          "comment": "Very disappointed!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Mateo Perez",
+          "reviewerEmail": "mateo.perez@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Fast shipping!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Evelyn Walker",
+          "reviewerEmail": "evelyn.walker@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "7 days return policy",
+      "minimumOrderQuantity": 9,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "2256117192038",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/mobile-accessories/amazon-echo-plus/1.webp",
+        "https://cdn.dummyjson.com/product-images/mobile-accessories/amazon-echo-plus/2.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/mobile-accessories/amazon-echo-plus/thumbnail.webp"
+    },
+    {
+      "id": 100,
+      "title": "Apple Airpods",
+      "description": "The Apple Airpods offer a seamless wireless audio experience. With easy pairing, high-quality sound, and Siri integration, they are perfect for on-the-go listening.",
+      "category": "mobile-accessories",
+      "price": 129.99,
+      "discountPercentage": 15.54,
+      "rating": 4.15,
+      "stock": 67,
+      "tags": ["electronics", "wireless earphones"],
+      "brand": "Apple",
+      "sku": "MOB-APP-APP-100",
+      "weight": 4,
+      "dimensions": { "width": 25.79, "height": 18.38, "depth": 11.53 },
+      "warrantyInformation": "3 year warranty",
+      "shippingInformation": "Ships in 3-5 business days",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 3,
+          "comment": "Would not buy again!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Christopher West",
+          "reviewerEmail": "christopher.west@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Great product!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Emma Wilson",
+          "reviewerEmail": "emma.wilson@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Excellent quality!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Xavier Wright",
+          "reviewerEmail": "xavier.wright@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "No return policy",
+      "minimumOrderQuantity": 4,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "1104115683955",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-airpods/1.webp",
+        "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-airpods/2.webp",
+        "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-airpods/3.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-airpods/thumbnail.webp"
+    },
+    {
+      "id": 101,
+      "title": "Apple AirPods Max Silver",
+      "description": "The Apple AirPods Max in Silver are premium over-ear headphones with high-fidelity audio, adaptive EQ, and active noise cancellation. Experience immersive sound in style.",
+      "category": "mobile-accessories",
+      "price": 549.99,
+      "discountPercentage": 13.67,
+      "rating": 3.47,
+      "stock": 59,
+      "tags": ["electronics", "over-ear headphones"],
+      "brand": "Apple",
+      "sku": "MOB-APP-APP-101",
+      "weight": 2,
+      "dimensions": { "width": 24.88, "height": 14.9, "depth": 27.54 },
+      "warrantyInformation": "No warranty",
+      "shippingInformation": "Ships in 2 weeks",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Excellent quality!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Henry Adams",
+          "reviewerEmail": "henry.adams@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Very happy with my purchase!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Elijah Cruz",
+          "reviewerEmail": "elijah.cruz@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Would buy again!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "William Lopez",
+          "reviewerEmail": "william.lopez@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "No return policy",
+      "minimumOrderQuantity": 1,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "4062176053732",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-airpods-max-silver/1.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-airpods-max-silver/thumbnail.webp"
+    },
+    {
+      "id": 102,
+      "title": "Apple Airpower Wireless Charger",
+      "description": "The Apple AirPower Wireless Charger provides a convenient way to charge your compatible Apple devices wirelessly. Simply place your devices on the charging mat for effortless charging.",
+      "category": "mobile-accessories",
+      "price": 79.99,
+      "discountPercentage": 4.48,
+      "rating": 3.68,
+      "stock": 1,
+      "tags": ["electronics", "wireless chargers"],
+      "brand": "Apple",
+      "sku": "MOB-APP-APP-102",
+      "weight": 5,
+      "dimensions": { "width": 25.25, "height": 25.44, "depth": 10.98 },
+      "warrantyInformation": "2 year warranty",
+      "shippingInformation": "Ships in 1 week",
+      "availabilityStatus": "Low Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Would buy again!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Christian Perez",
+          "reviewerEmail": "christian.perez@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Awesome product!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Ruby Andrews",
+          "reviewerEmail": "ruby.andrews@x.dummyjson.com"
+        },
+        {
+          "rating": 3,
+          "comment": "Not worth the price!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Harper Turner",
+          "reviewerEmail": "harper.turner@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "90 days return policy",
+      "minimumOrderQuantity": 7,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "3323662242939",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-airpower-wireless-charger/1.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-airpower-wireless-charger/thumbnail.webp"
+    },
+    {
+      "id": 103,
+      "title": "Apple HomePod Mini Cosmic Grey",
+      "description": "The Apple HomePod Mini in Cosmic Grey is a compact smart speaker that delivers impressive audio and integrates seamlessly with the Apple ecosystem for a smart home experience.",
+      "category": "mobile-accessories",
+      "price": 99.99,
+      "discountPercentage": 18.1,
+      "rating": 4.62,
+      "stock": 27,
+      "tags": ["electronics", "smart speakers"],
+      "brand": "Apple",
+      "sku": "MOB-APP-APP-103",
+      "weight": 10,
+      "dimensions": { "width": 16.02, "height": 29.2, "depth": 19.81 },
+      "warrantyInformation": "3 months warranty",
+      "shippingInformation": "Ships in 1 month",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Great product!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Max Russell",
+          "reviewerEmail": "max.russell@x.dummyjson.com"
+        },
+        {
+          "rating": 3,
+          "comment": "Would not buy again!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Isaac Lawrence",
+          "reviewerEmail": "isaac.lawrence@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Very pleased!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Avery Carter",
+          "reviewerEmail": "avery.carter@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "90 days return policy",
+      "minimumOrderQuantity": 8,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "6135642608024",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-homepod-mini-cosmic-grey/1.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-homepod-mini-cosmic-grey/thumbnail.webp"
+    },
+    {
+      "id": 104,
+      "title": "Apple iPhone Charger",
+      "description": "The Apple iPhone Charger is a high-quality charger designed for fast and efficient charging of your iPhone. Ensure your device stays powered up and ready to go.",
+      "category": "mobile-accessories",
+      "price": 19.99,
+      "discountPercentage": 18.52,
+      "rating": 4.15,
+      "stock": 31,
+      "tags": ["electronics", "chargers"],
+      "brand": "Apple",
+      "sku": "MOB-APP-APP-104",
+      "weight": 1,
+      "dimensions": { "width": 13.63, "height": 26.25, "depth": 5.95 },
+      "warrantyInformation": "1 year warranty",
+      "shippingInformation": "Ships in 2 weeks",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 1,
+          "comment": "Very disappointed!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Sadie Morales",
+          "reviewerEmail": "sadie.morales@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Great product!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Lily Torres",
+          "reviewerEmail": "lily.torres@x.dummyjson.com"
+        },
+        {
+          "rating": 2,
+          "comment": "Waste of money!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Luke Cooper",
+          "reviewerEmail": "luke.cooper@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "90 days return policy",
+      "minimumOrderQuantity": 14,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "0879776541417",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-iphone-charger/1.webp",
+        "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-iphone-charger/2.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-iphone-charger/thumbnail.webp"
+    },
+    {
+      "id": 105,
+      "title": "Apple MagSafe Battery Pack",
+      "description": "The Apple MagSafe Battery Pack is a portable and convenient way to add extra battery life to your MagSafe-compatible iPhone. Attach it magnetically for a secure connection.",
+      "category": "mobile-accessories",
+      "price": 99.99,
+      "discountPercentage": 17.17,
+      "rating": 3.62,
+      "stock": 1,
+      "tags": ["electronics", "power banks"],
+      "brand": "Apple",
+      "sku": "MOB-APP-APP-105",
+      "weight": 6,
+      "dimensions": { "width": 15.4, "height": 11.89, "depth": 19.67 },
+      "warrantyInformation": "2 year warranty",
+      "shippingInformation": "Ships overnight",
+      "availabilityStatus": "Low Stock",
+      "reviews": [
+        {
+          "rating": 2,
+          "comment": "Would not recommend!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Stella Morris",
+          "reviewerEmail": "stella.morris@x.dummyjson.com"
+        },
+        {
+          "rating": 2,
+          "comment": "Not as described!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Henry Adams",
+          "reviewerEmail": "henry.adams@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Fast shipping!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Cameron Burke",
+          "reviewerEmail": "cameron.burke@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "No return policy",
+      "minimumOrderQuantity": 4,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "5157424897794",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-magsafe-battery-pack/1.webp",
+        "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-magsafe-battery-pack/2.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-magsafe-battery-pack/thumbnail.webp"
+    },
+    {
+      "id": 106,
+      "title": "Apple Watch Series 4 Gold",
+      "description": "The Apple Watch Series 4 in Gold is a stylish and advanced smartwatch with features like heart rate monitoring, fitness tracking, and a beautiful Retina display.",
+      "category": "mobile-accessories",
+      "price": 349.99,
+      "discountPercentage": 12.02,
+      "rating": 2.74,
+      "stock": 33,
+      "tags": ["electronics", "smartwatches"],
+      "brand": "Apple",
+      "sku": "MOB-APP-APP-106",
+      "weight": 6,
+      "dimensions": { "width": 27.69, "height": 28.03, "depth": 7.11 },
+      "warrantyInformation": "6 months warranty",
+      "shippingInformation": "Ships in 1 month",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 3,
+          "comment": "Very unhappy with my purchase!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Chloe Morales",
+          "reviewerEmail": "chloe.morales@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Fast shipping!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Ava Harrison",
+          "reviewerEmail": "ava.harrison@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Would buy again!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Nicholas Bailey",
+          "reviewerEmail": "nicholas.bailey@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "No return policy",
+      "minimumOrderQuantity": 3,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "3921248718888",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-watch-series-4-gold/1.webp",
+        "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-watch-series-4-gold/2.webp",
+        "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-watch-series-4-gold/3.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-watch-series-4-gold/thumbnail.webp"
+    },
+    {
+      "id": 107,
+      "title": "Beats Flex Wireless Earphones",
+      "description": "The Beats Flex Wireless Earphones offer a comfortable and versatile audio experience. With magnetic earbuds and up to 12 hours of battery life, they are ideal for everyday use.",
+      "category": "mobile-accessories",
+      "price": 49.99,
+      "discountPercentage": 5.73,
+      "rating": 4.24,
+      "stock": 50,
+      "tags": ["electronics", "wireless earphones"],
+      "brand": "Beats",
+      "sku": "MOB-BEA-BEA-107",
+      "weight": 8,
+      "dimensions": { "width": 17.86, "height": 25.74, "depth": 23.09 },
+      "warrantyInformation": "1 year warranty",
+      "shippingInformation": "Ships in 1-2 business days",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 2,
+          "comment": "Disappointing product!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "William Gonzalez",
+          "reviewerEmail": "william.gonzalez@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Very pleased!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Gabriel Mitchell",
+          "reviewerEmail": "gabriel.mitchell@x.dummyjson.com"
+        },
+        {
+          "rating": 2,
+          "comment": "Not worth the price!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Gabriel Adams",
+          "reviewerEmail": "gabriel.adams@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "7 days return policy",
+      "minimumOrderQuantity": 17,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "1741271692174",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/mobile-accessories/beats-flex-wireless-earphones/1.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/mobile-accessories/beats-flex-wireless-earphones/thumbnail.webp"
+    },
+    {
+      "id": 108,
+      "title": "iPhone 12 Silicone Case with MagSafe Plum",
+      "description": "The iPhone 12 Silicone Case with MagSafe in Plum is a stylish and protective case designed for the iPhone 12. It features MagSafe technology for easy attachment of accessories.",
+      "category": "mobile-accessories",
+      "price": 29.99,
+      "discountPercentage": 13.85,
+      "rating": 3.62,
+      "stock": 69,
+      "tags": ["electronics", "phone accessories"],
+      "brand": "Apple",
+      "sku": "MOB-APP-IPH-108",
+      "weight": 7,
+      "dimensions": { "width": 12.49, "height": 11.29, "depth": 23.52 },
+      "warrantyInformation": "3 months warranty",
+      "shippingInformation": "Ships in 3-5 business days",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 2,
+          "comment": "Would not buy again!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Penelope King",
+          "reviewerEmail": "penelope.king@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Great value for money!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Isabella Anderson",
+          "reviewerEmail": "isabella.anderson@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Highly recommended!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Claire Foster",
+          "reviewerEmail": "claire.foster@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "90 days return policy",
+      "minimumOrderQuantity": 4,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "8156838251449",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/mobile-accessories/iphone-12-silicone-case-with-magsafe-plum/1.webp",
+        "https://cdn.dummyjson.com/product-images/mobile-accessories/iphone-12-silicone-case-with-magsafe-plum/2.webp",
+        "https://cdn.dummyjson.com/product-images/mobile-accessories/iphone-12-silicone-case-with-magsafe-plum/3.webp",
+        "https://cdn.dummyjson.com/product-images/mobile-accessories/iphone-12-silicone-case-with-magsafe-plum/4.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/mobile-accessories/iphone-12-silicone-case-with-magsafe-plum/thumbnail.webp"
+    },
+    {
+      "id": 109,
+      "title": "Monopod",
+      "description": "The Monopod is a versatile camera accessory for stable and adjustable shooting. Perfect for capturing selfies, group photos, and videos with ease.",
+      "category": "mobile-accessories",
+      "price": 19.99,
+      "discountPercentage": 8.58,
+      "rating": 4.43,
+      "stock": 48,
+      "tags": ["electronics", "camera accessories"],
+      "brand": "TechGear",
+      "sku": "MOB-TEC-MON-109",
+      "weight": 10,
+      "dimensions": { "width": 8.8, "height": 12.93, "depth": 21.1 },
+      "warrantyInformation": "1 year warranty",
+      "shippingInformation": "Ships in 1-2 business days",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 1,
+          "comment": "Not worth the price!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Max Parker",
+          "reviewerEmail": "max.parker@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Highly recommended!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Maya Reed",
+          "reviewerEmail": "maya.reed@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Fast shipping!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Mila Hernandez",
+          "reviewerEmail": "mila.hernandez@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "60 days return policy",
+      "minimumOrderQuantity": 30,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "2915346477518",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/mobile-accessories/monopod/1.webp",
+        "https://cdn.dummyjson.com/product-images/mobile-accessories/monopod/2.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/mobile-accessories/monopod/thumbnail.webp"
+    },
+    {
+      "id": 110,
+      "title": "Selfie Lamp with iPhone",
+      "description": "The Selfie Lamp with iPhone is a portable and adjustable LED light designed to enhance your selfies and video calls. Attach it to your iPhone for well-lit photos.",
+      "category": "mobile-accessories",
+      "price": 14.99,
+      "discountPercentage": 19.4,
+      "rating": 3.55,
+      "stock": 58,
+      "tags": ["electronics", "selfie accessories"],
+      "brand": "GadgetMaster",
+      "sku": "MOB-GAD-SEL-110",
+      "weight": 10,
+      "dimensions": { "width": 5.26, "height": 13.84, "depth": 22.83 },
+      "warrantyInformation": "Lifetime warranty",
+      "shippingInformation": "Ships in 2 weeks",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 4,
+          "comment": "Highly recommended!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Luke Cooper",
+          "reviewerEmail": "luke.cooper@x.dummyjson.com"
+        },
+        {
+          "rating": 3,
+          "comment": "Poor quality!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Caleb Perkins",
+          "reviewerEmail": "caleb.perkins@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Highly recommended!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Benjamin Wilson",
+          "reviewerEmail": "benjamin.wilson@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "60 days return policy",
+      "minimumOrderQuantity": 22,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "4372781189895",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/mobile-accessories/selfie-lamp-with-iphone/1.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/mobile-accessories/selfie-lamp-with-iphone/thumbnail.webp"
+    },
+    {
+      "id": 111,
+      "title": "Selfie Stick Monopod",
+      "description": "The Selfie Stick Monopod is a extendable and foldable device for capturing the perfect selfie or group photo. Compatible with smartphones and cameras.",
+      "category": "mobile-accessories",
+      "price": 12.99,
+      "discountPercentage": 19.12,
+      "rating": 3.88,
+      "stock": 11,
+      "tags": ["electronics", "selfie accessories"],
+      "brand": "SnapTech",
+      "sku": "MOB-SNA-SEL-111",
+      "weight": 2,
+      "dimensions": { "width": 24.76, "height": 26.38, "depth": 21.39 },
+      "warrantyInformation": "3 year warranty",
+      "shippingInformation": "Ships in 1-2 business days",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 4,
+          "comment": "Great product!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Ryan Graham",
+          "reviewerEmail": "ryan.graham@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Great product!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Nora Russell",
+          "reviewerEmail": "nora.russell@x.dummyjson.com"
+        },
+        {
+          "rating": 1,
+          "comment": "Very dissatisfied!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Luna Perez",
+          "reviewerEmail": "luna.perez@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "30 days return policy",
+      "minimumOrderQuantity": 8,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "7063982050226",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/mobile-accessories/selfie-stick-monopod/1.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/mobile-accessories/selfie-stick-monopod/thumbnail.webp"
+    },
+    {
+      "id": 112,
+      "title": "TV Studio Camera Pedestal",
+      "description": "The TV Studio Camera Pedestal is a professional-grade camera support system for smooth and precise camera movements in a studio setting. Ideal for broadcast and production.",
+      "category": "mobile-accessories",
+      "price": 499.99,
+      "discountPercentage": 8.31,
+      "rating": 2.78,
+      "stock": 15,
+      "tags": ["electronics", "camera accessories"],
+      "brand": "ProVision",
+      "sku": "MOB-PRO-STU-112",
+      "weight": 4,
+      "dimensions": { "width": 29.84, "height": 11.01, "depth": 6.81 },
+      "warrantyInformation": "3 months warranty",
+      "shippingInformation": "Ships in 1-2 business days",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 3,
+          "comment": "Would not recommend!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Aubrey Gutierrez",
+          "reviewerEmail": "aubrey.gutierrez@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Would buy again!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Carter Rivera",
+          "reviewerEmail": "carter.rivera@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Fast shipping!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Max Russell",
+          "reviewerEmail": "max.russell@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "7 days return policy",
+      "minimumOrderQuantity": 1,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "1488782082307",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/mobile-accessories/tv-studio-camera-pedestal/1.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/mobile-accessories/tv-studio-camera-pedestal/thumbnail.webp"
+    },
+    {
+      "id": 113,
+      "title": "Generic Motorcycle",
+      "description": "The Generic Motorcycle is a versatile and reliable bike suitable for various riding preferences. With a balanced design, it provides a comfortable and efficient riding experience.",
+      "category": "motorcycle",
+      "price": 3999.99,
+      "discountPercentage": 12.1,
+      "rating": 4.91,
+      "stock": 34,
+      "tags": ["motorcycles"],
+      "brand": "Generic Motors",
+      "sku": "MOT-GEN-GEN-113",
+      "weight": 8,
+      "dimensions": { "width": 26.23, "height": 14.04, "depth": 17.87 },
+      "warrantyInformation": "1 year warranty",
+      "shippingInformation": "Ships in 2 weeks",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Highly impressed!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Hunter Gordon",
+          "reviewerEmail": "hunter.gordon@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Very satisfied!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Nicholas Bailey",
+          "reviewerEmail": "nicholas.bailey@x.dummyjson.com"
+        },
+        {
+          "rating": 1,
+          "comment": "Disappointing product!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Elena Long",
+          "reviewerEmail": "elena.long@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "7 days return policy",
+      "minimumOrderQuantity": 1,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "2304118422941",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/motorcycle/generic-motorcycle/1.webp",
+        "https://cdn.dummyjson.com/product-images/motorcycle/generic-motorcycle/2.webp",
+        "https://cdn.dummyjson.com/product-images/motorcycle/generic-motorcycle/3.webp",
+        "https://cdn.dummyjson.com/product-images/motorcycle/generic-motorcycle/4.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/motorcycle/generic-motorcycle/thumbnail.webp"
+    },
+    {
+      "id": 114,
+      "title": "Kawasaki Z800",
+      "description": "The Kawasaki Z800 is a powerful and agile sportbike known for its striking design and performance. It's equipped with advanced features, making it a favorite among motorcycle enthusiasts.",
+      "category": "motorcycle",
+      "price": 8999.99,
+      "discountPercentage": 9.77,
+      "rating": 3.98,
+      "stock": 52,
+      "tags": ["motorcycles", "sportbikes"],
+      "brand": "Kawasaki",
+      "sku": "MOT-KAW-KAW-114",
+      "weight": 9,
+      "dimensions": { "width": 18.3, "height": 18.27, "depth": 16.06 },
+      "warrantyInformation": "Lifetime warranty",
+      "shippingInformation": "Ships in 3-5 business days",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 4,
+          "comment": "Highly impressed!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Scarlett Bowman",
+          "reviewerEmail": "scarlett.bowman@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Awesome product!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Gabriel Bailey",
+          "reviewerEmail": "gabriel.bailey@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Fast shipping!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Henry Hill",
+          "reviewerEmail": "henry.hill@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "90 days return policy",
+      "minimumOrderQuantity": 1,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "7320871299196",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/motorcycle/kawasaki-z800/1.webp",
+        "https://cdn.dummyjson.com/product-images/motorcycle/kawasaki-z800/2.webp",
+        "https://cdn.dummyjson.com/product-images/motorcycle/kawasaki-z800/3.webp",
+        "https://cdn.dummyjson.com/product-images/motorcycle/kawasaki-z800/4.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/motorcycle/kawasaki-z800/thumbnail.webp"
+    },
+    {
+      "id": 115,
+      "title": "MotoGP CI.H1",
+      "description": "The MotoGP CI.H1 is a high-performance motorcycle inspired by MotoGP racing technology. It offers cutting-edge features and precision engineering for an exhilarating riding experience.",
+      "category": "motorcycle",
+      "price": 14999.99,
+      "discountPercentage": 6.92,
+      "rating": 2.97,
+      "stock": 10,
+      "tags": ["motorcycles", "sportbikes"],
+      "brand": "MotoGP",
+      "sku": "MOT-MOT-MOT-115",
+      "weight": 1,
+      "dimensions": { "width": 19.33, "height": 17.31, "depth": 12.05 },
+      "warrantyInformation": "1 month warranty",
+      "shippingInformation": "Ships in 3-5 business days",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 4,
+          "comment": "Awesome product!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Brandon Collins",
+          "reviewerEmail": "brandon.collins@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Fast shipping!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Miles Stevenson",
+          "reviewerEmail": "miles.stevenson@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Highly recommended!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Grayson Coleman",
+          "reviewerEmail": "grayson.coleman@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "30 days return policy",
+      "minimumOrderQuantity": 1,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "1635178066049",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/motorcycle/motogp-ci.h1/1.webp",
+        "https://cdn.dummyjson.com/product-images/motorcycle/motogp-ci.h1/2.webp",
+        "https://cdn.dummyjson.com/product-images/motorcycle/motogp-ci.h1/3.webp",
+        "https://cdn.dummyjson.com/product-images/motorcycle/motogp-ci.h1/4.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/motorcycle/motogp-ci.h1/thumbnail.webp"
+    },
+    {
+      "id": 116,
+      "title": "Scooter Motorcycle",
+      "description": "The Scooter Motorcycle is a practical and fuel-efficient bike ideal for urban commuting. It features a step-through design and user-friendly controls for easy maneuverability.",
+      "category": "motorcycle",
+      "price": 2999.99,
+      "discountPercentage": 6.27,
+      "rating": 2.53,
+      "stock": 84,
+      "tags": ["motorcycles", "scooters"],
+      "brand": "ScootMaster",
+      "sku": "MOT-SCO-SCO-116",
+      "weight": 7,
+      "dimensions": { "width": 27.31, "height": 19.34, "depth": 26.72 },
+      "warrantyInformation": "5 year warranty",
+      "shippingInformation": "Ships overnight",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 4,
+          "comment": "Highly recommended!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Luna Perez",
+          "reviewerEmail": "luna.perez@x.dummyjson.com"
+        },
+        {
+          "rating": 2,
+          "comment": "Not as described!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Samantha Howard",
+          "reviewerEmail": "samantha.howard@x.dummyjson.com"
+        },
+        {
+          "rating": 3,
+          "comment": "Very dissatisfied!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Noah Hernandez",
+          "reviewerEmail": "noah.hernandez@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "7 days return policy",
+      "minimumOrderQuantity": 1,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "6595209798181",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/motorcycle/scooter-motorcycle/1.webp",
+        "https://cdn.dummyjson.com/product-images/motorcycle/scooter-motorcycle/2.webp",
+        "https://cdn.dummyjson.com/product-images/motorcycle/scooter-motorcycle/3.webp",
+        "https://cdn.dummyjson.com/product-images/motorcycle/scooter-motorcycle/4.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/motorcycle/scooter-motorcycle/thumbnail.webp"
+    },
+    {
+      "id": 117,
+      "title": "Sportbike Motorcycle",
+      "description": "The Sportbike Motorcycle is designed for speed and agility, with a sleek and aerodynamic profile. It's suitable for riders looking for a dynamic and thrilling riding experience.",
+      "category": "motorcycle",
+      "price": 7499.99,
+      "discountPercentage": 11.58,
+      "rating": 3.94,
+      "stock": 0,
+      "tags": ["motorcycles", "sportbikes"],
+      "brand": "SpeedMaster",
+      "sku": "MOT-SPE-SPO-117",
+      "weight": 10,
+      "dimensions": { "width": 22.5, "height": 22.74, "depth": 8.38 },
+      "warrantyInformation": "5 year warranty",
+      "shippingInformation": "Ships in 2 weeks",
+      "availabilityStatus": "Out of Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Highly impressed!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Mason Parker",
+          "reviewerEmail": "mason.parker@x.dummyjson.com"
+        },
+        {
+          "rating": 1,
+          "comment": "Would not recommend!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Daniel Cook",
+          "reviewerEmail": "daniel.cook@x.dummyjson.com"
+        },
+        {
+          "rating": 1,
+          "comment": "Very disappointed!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Isabella Anderson",
+          "reviewerEmail": "isabella.anderson@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "30 days return policy",
+      "minimumOrderQuantity": 1,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "8451323904420",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/motorcycle/sportbike-motorcycle/1.webp",
+        "https://cdn.dummyjson.com/product-images/motorcycle/sportbike-motorcycle/2.webp",
+        "https://cdn.dummyjson.com/product-images/motorcycle/sportbike-motorcycle/3.webp",
+        "https://cdn.dummyjson.com/product-images/motorcycle/sportbike-motorcycle/4.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/motorcycle/sportbike-motorcycle/thumbnail.webp"
+    },
+    {
+      "id": 118,
+      "title": "Attitude Super Leaves Hand Soap",
+      "description": "Attitude Super Leaves Hand Soap is a natural and nourishing hand soap enriched with the goodness of super leaves. It cleanses and moisturizes your hands, leaving them feeling fresh and soft.",
+      "category": "skin-care",
+      "price": 8.99,
+      "discountPercentage": 18.49,
+      "rating": 3.19,
+      "stock": 94,
+      "tags": ["personal care", "hand soap"],
+      "brand": "Attitude",
+      "sku": "SKI-ATT-ATT-118",
+      "weight": 1,
+      "dimensions": { "width": 14.05, "height": 8.3, "depth": 16.62 },
+      "warrantyInformation": "6 months warranty",
+      "shippingInformation": "Ships overnight",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Very satisfied!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Liam Garcia",
+          "reviewerEmail": "liam.garcia@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Great product!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Victoria McDonald",
+          "reviewerEmail": "victoria.mcdonald@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Very happy with my purchase!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Hannah Robinson",
+          "reviewerEmail": "hannah.robinson@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "60 days return policy",
+      "minimumOrderQuantity": 41,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "3566048905322",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/skin-care/attitude-super-leaves-hand-soap/1.webp",
+        "https://cdn.dummyjson.com/product-images/skin-care/attitude-super-leaves-hand-soap/2.webp",
+        "https://cdn.dummyjson.com/product-images/skin-care/attitude-super-leaves-hand-soap/3.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/skin-care/attitude-super-leaves-hand-soap/thumbnail.webp"
+    },
+    {
+      "id": 119,
+      "title": "Olay Ultra Moisture Shea Butter Body Wash",
+      "description": "Olay Ultra Moisture Shea Butter Body Wash is a luxurious body wash that hydrates and nourishes your skin with the moisturizing power of shea butter. Enjoy a rich lather and silky-smooth skin.",
+      "category": "skin-care",
+      "price": 12.99,
+      "discountPercentage": 16.39,
+      "rating": 4.51,
+      "stock": 34,
+      "tags": ["personal care", "body wash"],
+      "brand": "Olay",
+      "sku": "SKI-OLA-OLA-119",
+      "weight": 4,
+      "dimensions": { "width": 25.23, "height": 28.33, "depth": 11.89 },
+      "warrantyInformation": "1 year warranty",
+      "shippingInformation": "Ships in 1-2 business days",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 4,
+          "comment": "Very satisfied!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Abigail Rivera",
+          "reviewerEmail": "abigail.rivera@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Great value for money!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Hunter Gordon",
+          "reviewerEmail": "hunter.gordon@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Very pleased!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Zoe Bennett",
+          "reviewerEmail": "zoe.bennett@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "30 days return policy",
+      "minimumOrderQuantity": 33,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "6532659691643",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/skin-care/olay-ultra-moisture-shea-butter-body-wash/1.webp",
+        "https://cdn.dummyjson.com/product-images/skin-care/olay-ultra-moisture-shea-butter-body-wash/2.webp",
+        "https://cdn.dummyjson.com/product-images/skin-care/olay-ultra-moisture-shea-butter-body-wash/3.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/skin-care/olay-ultra-moisture-shea-butter-body-wash/thumbnail.webp"
+    },
+    {
+      "id": 120,
+      "title": "Vaseline Men Body and Face Lotion",
+      "description": "Vaseline Men Body and Face Lotion is a specially formulated lotion designed to provide long-lasting moisture to men's skin. It absorbs quickly and helps keep the skin hydrated and healthy.",
+      "category": "skin-care",
+      "price": 9.99,
+      "discountPercentage": 13.39,
+      "rating": 3.16,
+      "stock": 95,
+      "tags": ["personal care", "body lotion"],
+      "brand": "Vaseline",
+      "sku": "SKI-VAS-VAS-120",
+      "weight": 4,
+      "dimensions": { "width": 21.83, "height": 17.38, "depth": 24.76 },
+      "warrantyInformation": "Lifetime warranty",
+      "shippingInformation": "Ships overnight",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 4,
+          "comment": "Excellent quality!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Aria Ferguson",
+          "reviewerEmail": "aria.ferguson@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Very pleased!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Nova Cooper",
+          "reviewerEmail": "nova.cooper@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Great product!",
+          "date": "2025-04-30T09:41:02.054Z",
+          "reviewerName": "Madison Collins",
+          "reviewerEmail": "madison.collins@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "90 days return policy",
+      "minimumOrderQuantity": 9,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.054Z",
+        "updatedAt": "2025-04-30T09:41:02.054Z",
+        "barcode": "8483207319090",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/skin-care/vaseline-men-body-and-face-lotion/1.webp",
+        "https://cdn.dummyjson.com/product-images/skin-care/vaseline-men-body-and-face-lotion/2.webp",
+        "https://cdn.dummyjson.com/product-images/skin-care/vaseline-men-body-and-face-lotion/3.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/skin-care/vaseline-men-body-and-face-lotion/thumbnail.webp"
+    }
+  ],
+  "total": 194,
+  "skip": 90,
+  "limit": 30
+}

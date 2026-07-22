@@ -1,0 +1,1618 @@
+{
+  "products": [
+    {
+      "id": 61,
+      "title": "Hand Blender",
+      "description": "The Hand Blender is a versatile kitchen appliance for blending, pureeing, and mixing. Its compact design and powerful motor make it a convenient tool for various recipes.",
+      "category": "kitchen-accessories",
+      "price": 34.99,
+      "discountPercentage": 17.02,
+      "rating": 3.86,
+      "stock": 84,
+      "tags": ["kitchen appliances", "blenders"],
+      "sku": "KIT-BRD-HAN-061",
+      "weight": 5,
+      "dimensions": { "width": 27.31, "height": 21, "depth": 24.27 },
+      "warrantyInformation": "1 year warranty",
+      "shippingInformation": "Ships in 1 week",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Excellent quality!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Hazel Evans",
+          "reviewerEmail": "hazel.evans@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Highly impressed!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Hannah Howard",
+          "reviewerEmail": "hannah.howard@x.dummyjson.com"
+        },
+        {
+          "rating": 1,
+          "comment": "Would not buy again!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Jonathan Pierce",
+          "reviewerEmail": "jonathan.pierce@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "No return policy",
+      "minimumOrderQuantity": 11,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "1980575898457",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/kitchen-accessories/hand-blender/1.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/hand-blender/thumbnail.webp"
+    },
+    {
+      "id": 62,
+      "title": "Ice Cube Tray",
+      "description": "The Ice Cube Tray is a practical accessory for making ice cubes in various shapes. Perfect for keeping your drinks cool and adding a fun element to your beverages.",
+      "category": "kitchen-accessories",
+      "price": 5.99,
+      "discountPercentage": 0.63,
+      "rating": 4.71,
+      "stock": 13,
+      "tags": ["kitchen tools", "ice cube trays"],
+      "sku": "KIT-BRD-CUB-062",
+      "weight": 3,
+      "dimensions": { "width": 26.67, "height": 18.14, "depth": 5.31 },
+      "warrantyInformation": "1 month warranty",
+      "shippingInformation": "Ships overnight",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Awesome product!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Isaac Lawrence",
+          "reviewerEmail": "isaac.lawrence@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Would buy again!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Leo Rivera",
+          "reviewerEmail": "leo.rivera@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Very pleased!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Henry Turner",
+          "reviewerEmail": "henry.turner@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "No return policy",
+      "minimumOrderQuantity": 16,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "9123541111825",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/kitchen-accessories/ice-cube-tray/1.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/ice-cube-tray/thumbnail.webp"
+    },
+    {
+      "id": 63,
+      "title": "Kitchen Sieve",
+      "description": "The Kitchen Sieve is a versatile tool for sifting and straining dry and wet ingredients. Its fine mesh design ensures smooth results in your cooking and baking.",
+      "category": "kitchen-accessories",
+      "price": 7.99,
+      "discountPercentage": 18.91,
+      "rating": 3.09,
+      "stock": 68,
+      "tags": ["kitchen tools", "strainers"],
+      "sku": "KIT-BRD-KIT-063",
+      "weight": 5,
+      "dimensions": { "width": 20.68, "height": 6.5, "depth": 7.86 },
+      "warrantyInformation": "1 month warranty",
+      "shippingInformation": "Ships overnight",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Highly recommended!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Stella Morris",
+          "reviewerEmail": "stella.morris@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Very happy with my purchase!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Henry Adams",
+          "reviewerEmail": "henry.adams@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Awesome product!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Lillian Simmons",
+          "reviewerEmail": "lillian.simmons@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "No return policy",
+      "minimumOrderQuantity": 5,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "7119606190291",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/kitchen-accessories/kitchen-sieve/1.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/kitchen-sieve/thumbnail.webp"
+    },
+    {
+      "id": 64,
+      "title": "Knife",
+      "description": "The Knife is an essential kitchen tool for chopping, slicing, and dicing. Its sharp blade and ergonomic handle make it a reliable choice for food preparation.",
+      "category": "kitchen-accessories",
+      "price": 14.99,
+      "discountPercentage": 18.86,
+      "rating": 3.26,
+      "stock": 7,
+      "tags": ["kitchen tools", "cutlery"],
+      "sku": "KIT-BRD-KNI-064",
+      "weight": 3,
+      "dimensions": { "width": 25.19, "height": 18.52, "depth": 20.5 },
+      "warrantyInformation": "1 month warranty",
+      "shippingInformation": "Ships in 1 week",
+      "availabilityStatus": "Low Stock",
+      "reviews": [
+        {
+          "rating": 2,
+          "comment": "Very disappointed!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Aaliyah Martinez",
+          "reviewerEmail": "aaliyah.martinez@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Fast shipping!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Addison Wright",
+          "reviewerEmail": "addison.wright@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Very pleased!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Mateo Nguyen",
+          "reviewerEmail": "mateo.nguyen@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "7 days return policy",
+      "minimumOrderQuantity": 50,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "2258278927819",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/kitchen-accessories/knife/1.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/knife/thumbnail.webp"
+    },
+    {
+      "id": 65,
+      "title": "Lunch Box",
+      "description": "The Lunch Box is a convenient and portable container for packing and carrying your meals. With compartments for different foods, it's perfect for on-the-go dining.",
+      "category": "kitchen-accessories",
+      "price": 12.99,
+      "discountPercentage": 10.34,
+      "rating": 4.93,
+      "stock": 94,
+      "tags": ["kitchen tools", "storage"],
+      "sku": "KIT-BRD-LUN-065",
+      "weight": 9,
+      "dimensions": { "width": 12.45, "height": 19.08, "depth": 8.24 },
+      "warrantyInformation": "5 year warranty",
+      "shippingInformation": "Ships in 1-2 business days",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Very pleased!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Jace Smith",
+          "reviewerEmail": "jace.smith@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Very happy with my purchase!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Zoe Bennett",
+          "reviewerEmail": "zoe.bennett@x.dummyjson.com"
+        },
+        {
+          "rating": 2,
+          "comment": "Poor quality!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Michael Johnson",
+          "reviewerEmail": "michael.johnson@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "30 days return policy",
+      "minimumOrderQuantity": 39,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "3287134465440",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/kitchen-accessories/lunch-box/1.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/lunch-box/thumbnail.webp"
+    },
+    {
+      "id": 66,
+      "title": "Microwave Oven",
+      "description": "The Microwave Oven is a versatile kitchen appliance for quick and efficient cooking, reheating, and defrosting. Its compact size makes it suitable for various kitchen setups.",
+      "category": "kitchen-accessories",
+      "price": 89.99,
+      "discountPercentage": 12.13,
+      "rating": 4.82,
+      "stock": 59,
+      "tags": ["kitchen appliances", "microwaves"],
+      "sku": "KIT-BRD-MIC-066",
+      "weight": 9,
+      "dimensions": { "width": 16.31, "height": 27.45, "depth": 13.05 },
+      "warrantyInformation": "1 year warranty",
+      "shippingInformation": "Ships in 1 week",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 3,
+          "comment": "Very dissatisfied!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Nora Russell",
+          "reviewerEmail": "nora.russell@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Fast shipping!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Alice Smith",
+          "reviewerEmail": "alice.smith@x.dummyjson.com"
+        },
+        {
+          "rating": 2,
+          "comment": "Very disappointed!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Ethan Fletcher",
+          "reviewerEmail": "ethan.fletcher@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "7 days return policy",
+      "minimumOrderQuantity": 4,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "7578271198951",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/kitchen-accessories/microwave-oven/1.webp",
+        "https://cdn.dummyjson.com/product-images/kitchen-accessories/microwave-oven/2.webp",
+        "https://cdn.dummyjson.com/product-images/kitchen-accessories/microwave-oven/3.webp",
+        "https://cdn.dummyjson.com/product-images/kitchen-accessories/microwave-oven/4.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/microwave-oven/thumbnail.webp"
+    },
+    {
+      "id": 67,
+      "title": "Mug Tree Stand",
+      "description": "The Mug Tree Stand is a stylish and space-saving solution for organizing your mugs. Keep your favorite mugs easily accessible and neatly displayed in your kitchen.",
+      "category": "kitchen-accessories",
+      "price": 15.99,
+      "discountPercentage": 9.25,
+      "rating": 2.64,
+      "stock": 88,
+      "tags": ["kitchen tools", "organization"],
+      "sku": "KIT-BRD-TRE-067",
+      "weight": 3,
+      "dimensions": { "width": 18.99, "height": 27.14, "depth": 27.29 },
+      "warrantyInformation": "1 year warranty",
+      "shippingInformation": "Ships in 1 month",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 1,
+          "comment": "Very unhappy with my purchase!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Bella Grant",
+          "reviewerEmail": "bella.grant@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Highly recommended!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Paisley Bell",
+          "reviewerEmail": "paisley.bell@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Fast shipping!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "David Martinez",
+          "reviewerEmail": "david.martinez@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "30 days return policy",
+      "minimumOrderQuantity": 45,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "4136081478055",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/kitchen-accessories/mug-tree-stand/1.webp",
+        "https://cdn.dummyjson.com/product-images/kitchen-accessories/mug-tree-stand/2.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/mug-tree-stand/thumbnail.webp"
+    },
+    {
+      "id": 68,
+      "title": "Pan",
+      "description": "The Pan is a versatile and essential cookware item for frying, sautéing, and cooking various dishes. Its non-stick coating ensures easy food release and cleanup.",
+      "category": "kitchen-accessories",
+      "price": 24.99,
+      "discountPercentage": 3,
+      "rating": 2.79,
+      "stock": 90,
+      "tags": ["cookware", "pans"],
+      "sku": "KIT-BRD-PRD-068",
+      "weight": 8,
+      "dimensions": { "width": 17.14, "height": 21.7, "depth": 25.75 },
+      "warrantyInformation": "1 year warranty",
+      "shippingInformation": "Ships in 3-5 business days",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Highly impressed!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Michael Johnson",
+          "reviewerEmail": "michael.johnson@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Highly recommended!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Adrian Flores",
+          "reviewerEmail": "adrian.flores@x.dummyjson.com"
+        },
+        {
+          "rating": 1,
+          "comment": "Not as described!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Nicholas Bailey",
+          "reviewerEmail": "nicholas.bailey@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "30 days return policy",
+      "minimumOrderQuantity": 17,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "5159803862015",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/kitchen-accessories/pan/1.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/pan/thumbnail.webp"
+    },
+    {
+      "id": 69,
+      "title": "Plate",
+      "description": "The Plate is a classic and essential dishware item for serving meals. Its durable and stylish design makes it suitable for everyday use or special occasions.",
+      "category": "kitchen-accessories",
+      "price": 3.99,
+      "discountPercentage": 7.31,
+      "rating": 3.65,
+      "stock": 66,
+      "tags": ["dinnerware", "plates"],
+      "sku": "KIT-BRD-PLA-069",
+      "weight": 4,
+      "dimensions": { "width": 16.46, "height": 5.39, "depth": 13.15 },
+      "warrantyInformation": "1 year warranty",
+      "shippingInformation": "Ships in 1-2 business days",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 3,
+          "comment": "Disappointing product!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Mia Miller",
+          "reviewerEmail": "mia.miller@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Great product!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Henry Adams",
+          "reviewerEmail": "henry.adams@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Excellent quality!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Nora Russell",
+          "reviewerEmail": "nora.russell@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "90 days return policy",
+      "minimumOrderQuantity": 6,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "8084753475328",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/kitchen-accessories/plate/1.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/plate/thumbnail.webp"
+    },
+    {
+      "id": 70,
+      "title": "Red Tongs",
+      "description": "The Red Tongs are versatile kitchen tongs suitable for various cooking and serving tasks. Their vibrant color adds a pop of excitement to your kitchen utensils.",
+      "category": "kitchen-accessories",
+      "price": 6.99,
+      "discountPercentage": 14.52,
+      "rating": 4.42,
+      "stock": 82,
+      "tags": ["kitchen tools", "tongs"],
+      "sku": "KIT-BRD-TON-070",
+      "weight": 7,
+      "dimensions": { "width": 22.86, "height": 26.2, "depth": 17 },
+      "warrantyInformation": "No warranty",
+      "shippingInformation": "Ships in 1 week",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 4,
+          "comment": "Very satisfied!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Xavier Wright",
+          "reviewerEmail": "xavier.wright@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Highly recommended!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Stella Hughes",
+          "reviewerEmail": "stella.hughes@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Excellent quality!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Jaxon Barnes",
+          "reviewerEmail": "jaxon.barnes@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "30 days return policy",
+      "minimumOrderQuantity": 23,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "1919888449594",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/kitchen-accessories/red-tongs/1.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/red-tongs/thumbnail.webp"
+    },
+    {
+      "id": 71,
+      "title": "Silver Pot With Glass Cap",
+      "description": "The Silver Pot with Glass Cap is a stylish and functional cookware item for boiling, simmering, and preparing delicious meals. Its glass cap allows you to monitor cooking progress.",
+      "category": "kitchen-accessories",
+      "price": 39.99,
+      "discountPercentage": 5.7,
+      "rating": 3.22,
+      "stock": 40,
+      "tags": ["cookware", "pots"],
+      "sku": "KIT-BRD-SIL-071",
+      "weight": 7,
+      "dimensions": { "width": 21.03, "height": 11.7, "depth": 6.69 },
+      "warrantyInformation": "1 year warranty",
+      "shippingInformation": "Ships in 1 month",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 4,
+          "comment": "Great product!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Julian Newton",
+          "reviewerEmail": "julian.newton@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Excellent quality!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Noah Lewis",
+          "reviewerEmail": "noah.lewis@x.dummyjson.com"
+        },
+        {
+          "rating": 1,
+          "comment": "Disappointing product!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Brayden Hill",
+          "reviewerEmail": "brayden.hill@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "90 days return policy",
+      "minimumOrderQuantity": 10,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "9757232943842",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/kitchen-accessories/silver-pot-with-glass-cap/1.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/silver-pot-with-glass-cap/thumbnail.webp"
+    },
+    {
+      "id": 72,
+      "title": "Slotted Turner",
+      "description": "The Slotted Turner is a kitchen utensil designed for flipping and turning food items. Its slotted design allows excess liquid to drain, making it ideal for frying and sautéing.",
+      "category": "kitchen-accessories",
+      "price": 8.99,
+      "discountPercentage": 13.35,
+      "rating": 3.4,
+      "stock": 88,
+      "tags": ["kitchen tools", "turners"],
+      "sku": "KIT-BRD-SLO-072",
+      "weight": 8,
+      "dimensions": { "width": 14.41, "height": 27.15, "depth": 14.76 },
+      "warrantyInformation": "Lifetime warranty",
+      "shippingInformation": "Ships in 1-2 business days",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 1,
+          "comment": "Would not recommend!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Ava Taylor",
+          "reviewerEmail": "ava.taylor@x.dummyjson.com"
+        },
+        {
+          "rating": 2,
+          "comment": "Would not recommend!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Liam Smith",
+          "reviewerEmail": "liam.smith@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Very satisfied!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Gabriel Mitchell",
+          "reviewerEmail": "gabriel.mitchell@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "7 days return policy",
+      "minimumOrderQuantity": 34,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "4396291569672",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/kitchen-accessories/slotted-turner/1.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/slotted-turner/thumbnail.webp"
+    },
+    {
+      "id": 73,
+      "title": "Spice Rack",
+      "description": "The Spice Rack is a convenient organizer for your spices and seasonings. Keep your kitchen essentials within reach and neatly arranged with this stylish spice rack.",
+      "category": "kitchen-accessories",
+      "price": 19.99,
+      "discountPercentage": 12.09,
+      "rating": 4.87,
+      "stock": 79,
+      "tags": ["kitchen tools", "organization"],
+      "sku": "KIT-BRD-SPI-073",
+      "weight": 7,
+      "dimensions": { "width": 28.06, "height": 22.43, "depth": 26.34 },
+      "warrantyInformation": "1 week warranty",
+      "shippingInformation": "Ships overnight",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Very satisfied!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Elena Baker",
+          "reviewerEmail": "elena.baker@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Excellent quality!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Owen Fisher",
+          "reviewerEmail": "owen.fisher@x.dummyjson.com"
+        },
+        {
+          "rating": 2,
+          "comment": "Waste of money!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Sadie Morales",
+          "reviewerEmail": "sadie.morales@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "7 days return policy",
+      "minimumOrderQuantity": 18,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "6149284465708",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/kitchen-accessories/spice-rack/1.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/spice-rack/thumbnail.webp"
+    },
+    {
+      "id": 74,
+      "title": "Spoon",
+      "description": "The Spoon is a versatile kitchen utensil for stirring, serving, and tasting. Its ergonomic design and durable construction make it an essential tool for every kitchen.",
+      "category": "kitchen-accessories",
+      "price": 4.99,
+      "discountPercentage": 1.53,
+      "rating": 4.03,
+      "stock": 59,
+      "tags": ["kitchen tools", "utensils"],
+      "sku": "KIT-BRD-SPO-074",
+      "weight": 6,
+      "dimensions": { "width": 8.49, "height": 26.04, "depth": 27.78 },
+      "warrantyInformation": "1 year warranty",
+      "shippingInformation": "Ships in 1-2 business days",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 3,
+          "comment": "Waste of money!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Jackson Evans",
+          "reviewerEmail": "jackson.evans@x.dummyjson.com"
+        },
+        {
+          "rating": 1,
+          "comment": "Disappointing product!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Elena Baker",
+          "reviewerEmail": "elena.baker@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Awesome product!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Bella Gonzalez",
+          "reviewerEmail": "bella.gonzalez@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "90 days return policy",
+      "minimumOrderQuantity": 15,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "7769627934740",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/kitchen-accessories/spoon/1.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/spoon/thumbnail.webp"
+    },
+    {
+      "id": 75,
+      "title": "Tray",
+      "description": "The Tray is a functional and decorative item for serving snacks, appetizers, or drinks. Its stylish design makes it a versatile accessory for entertaining guests.",
+      "category": "kitchen-accessories",
+      "price": 16.99,
+      "discountPercentage": 7.48,
+      "rating": 4.62,
+      "stock": 71,
+      "tags": ["serveware", "trays"],
+      "sku": "KIT-BRD-TRA-075",
+      "weight": 10,
+      "dimensions": { "width": 12.7, "height": 7.52, "depth": 9.72 },
+      "warrantyInformation": "5 year warranty",
+      "shippingInformation": "Ships in 2 weeks",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Fast shipping!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Samantha Howard",
+          "reviewerEmail": "samantha.howard@x.dummyjson.com"
+        },
+        {
+          "rating": 3,
+          "comment": "Very disappointed!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Benjamin Wilson",
+          "reviewerEmail": "benjamin.wilson@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Excellent quality!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Caleb Nelson",
+          "reviewerEmail": "caleb.nelson@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "7 days return policy",
+      "minimumOrderQuantity": 23,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "5239514403214",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/kitchen-accessories/tray/1.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/tray/thumbnail.webp"
+    },
+    {
+      "id": 76,
+      "title": "Wooden Rolling Pin",
+      "description": "The Wooden Rolling Pin is a classic kitchen tool for rolling out dough for baking. Its smooth surface and sturdy handles make it easy to achieve uniform thickness.",
+      "category": "kitchen-accessories",
+      "price": 11.99,
+      "discountPercentage": 9.75,
+      "rating": 2.92,
+      "stock": 80,
+      "tags": ["kitchen tools", "baking"],
+      "sku": "KIT-BRD-WOO-076",
+      "weight": 7,
+      "dimensions": { "width": 5.92, "height": 10.87, "depth": 19.55 },
+      "warrantyInformation": "3 year warranty",
+      "shippingInformation": "Ships in 2 weeks",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 2,
+          "comment": "Would not recommend!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Aurora Lawson",
+          "reviewerEmail": "aurora.lawson@x.dummyjson.com"
+        },
+        {
+          "rating": 3,
+          "comment": "Very disappointed!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Ava Taylor",
+          "reviewerEmail": "ava.taylor@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Great product!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Mila Hernandez",
+          "reviewerEmail": "mila.hernandez@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "30 days return policy",
+      "minimumOrderQuantity": 11,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "6934305212813",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/kitchen-accessories/wooden-rolling-pin/1.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/wooden-rolling-pin/thumbnail.webp"
+    },
+    {
+      "id": 77,
+      "title": "Yellow Peeler",
+      "description": "The Yellow Peeler is a handy tool for peeling fruits and vegetables with ease. Its bright yellow color adds a cheerful touch to your kitchen gadgets.",
+      "category": "kitchen-accessories",
+      "price": 5.99,
+      "discountPercentage": 12.48,
+      "rating": 4.24,
+      "stock": 35,
+      "tags": ["kitchen tools", "peelers"],
+      "sku": "KIT-BRD-YEL-077",
+      "weight": 7,
+      "dimensions": { "width": 9.7, "height": 6.43, "depth": 17.93 },
+      "warrantyInformation": "1 month warranty",
+      "shippingInformation": "Ships in 3-5 business days",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 1,
+          "comment": "Very unhappy with my purchase!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Claire Foster",
+          "reviewerEmail": "claire.foster@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Very happy with my purchase!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Aaliyah Hanson",
+          "reviewerEmail": "aaliyah.hanson@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Great product!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Olivia Wilson",
+          "reviewerEmail": "olivia.wilson@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "90 days return policy",
+      "minimumOrderQuantity": 6,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "8946155386929",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/kitchen-accessories/yellow-peeler/1.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/yellow-peeler/thumbnail.webp"
+    },
+    {
+      "id": 78,
+      "title": "Apple MacBook Pro 14 Inch Space Grey",
+      "description": "The MacBook Pro 14 Inch in Space Grey is a powerful and sleek laptop, featuring Apple's M1 Pro chip for exceptional performance and a stunning Retina display.",
+      "category": "laptops",
+      "price": 1999.99,
+      "discountPercentage": 4.69,
+      "rating": 3.65,
+      "stock": 24,
+      "tags": ["laptops", "apple"],
+      "brand": "Apple",
+      "sku": "LAP-APP-APP-078",
+      "weight": 9,
+      "dimensions": { "width": 20.03, "height": 9.54, "depth": 14.82 },
+      "warrantyInformation": "3 year warranty",
+      "shippingInformation": "Ships in 2 weeks",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Very happy with my purchase!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Hazel Evans",
+          "reviewerEmail": "hazel.evans@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Very happy with my purchase!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Christopher West",
+          "reviewerEmail": "christopher.west@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Very satisfied!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Aubrey Garcia",
+          "reviewerEmail": "aubrey.garcia@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "90 days return policy",
+      "minimumOrderQuantity": 1,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "5275211560367",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/laptops/apple-macbook-pro-14-inch-space-grey/1.webp",
+        "https://cdn.dummyjson.com/product-images/laptops/apple-macbook-pro-14-inch-space-grey/2.webp",
+        "https://cdn.dummyjson.com/product-images/laptops/apple-macbook-pro-14-inch-space-grey/3.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/laptops/apple-macbook-pro-14-inch-space-grey/thumbnail.webp"
+    },
+    {
+      "id": 79,
+      "title": "Asus Zenbook Pro Dual Screen Laptop",
+      "description": "The Asus Zenbook Pro Dual Screen Laptop is a high-performance device with dual screens, providing productivity and versatility for creative professionals.",
+      "category": "laptops",
+      "price": 1799.99,
+      "discountPercentage": 11.14,
+      "rating": 3.95,
+      "stock": 45,
+      "tags": ["laptops"],
+      "brand": "Asus",
+      "sku": "LAP-ASU-ASU-079",
+      "weight": 9,
+      "dimensions": { "width": 16.6, "height": 11.49, "depth": 10.89 },
+      "warrantyInformation": "3 year warranty",
+      "shippingInformation": "Ships in 1 month",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 4,
+          "comment": "Very happy with my purchase!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Michael Johnson",
+          "reviewerEmail": "michael.johnson@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Highly recommended!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Zoe Bennett",
+          "reviewerEmail": "zoe.bennett@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Very satisfied!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Mila Hernandez",
+          "reviewerEmail": "mila.hernandez@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "7 days return policy",
+      "minimumOrderQuantity": 1,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "7392988535158",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/laptops/asus-zenbook-pro-dual-screen-laptop/1.webp",
+        "https://cdn.dummyjson.com/product-images/laptops/asus-zenbook-pro-dual-screen-laptop/2.webp",
+        "https://cdn.dummyjson.com/product-images/laptops/asus-zenbook-pro-dual-screen-laptop/3.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/laptops/asus-zenbook-pro-dual-screen-laptop/thumbnail.webp"
+    },
+    {
+      "id": 80,
+      "title": "Huawei Matebook X Pro",
+      "description": "The Huawei Matebook X Pro is a slim and stylish laptop with a high-resolution touchscreen display, offering a premium experience for users on the go.",
+      "category": "laptops",
+      "price": 1399.99,
+      "discountPercentage": 9.38,
+      "rating": 4.98,
+      "stock": 75,
+      "tags": ["laptops"],
+      "brand": "Huawei",
+      "sku": "LAP-HUA-HUA-080",
+      "weight": 9,
+      "dimensions": { "width": 18.21, "height": 22.83, "depth": 17.26 },
+      "warrantyInformation": "No warranty",
+      "shippingInformation": "Ships overnight",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 4,
+          "comment": "Very satisfied!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Evan Wright",
+          "reviewerEmail": "evan.wright@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Very happy with my purchase!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Hunter Gordon",
+          "reviewerEmail": "hunter.gordon@x.dummyjson.com"
+        },
+        {
+          "rating": 1,
+          "comment": "Not worth the price!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "William Gonzalez",
+          "reviewerEmail": "william.gonzalez@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "60 days return policy",
+      "minimumOrderQuantity": 1,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "0592296671061",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/laptops/huawei-matebook-x-pro/1.webp",
+        "https://cdn.dummyjson.com/product-images/laptops/huawei-matebook-x-pro/2.webp",
+        "https://cdn.dummyjson.com/product-images/laptops/huawei-matebook-x-pro/3.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/laptops/huawei-matebook-x-pro/thumbnail.webp"
+    },
+    {
+      "id": 81,
+      "title": "Lenovo Yoga 920",
+      "description": "The Lenovo Yoga 920 is a 2-in-1 convertible laptop with a flexible hinge, allowing you to use it as a laptop or tablet, offering versatility and portability.",
+      "category": "laptops",
+      "price": 1099.99,
+      "discountPercentage": 6.55,
+      "rating": 2.86,
+      "stock": 40,
+      "tags": ["laptops"],
+      "brand": "Lenovo",
+      "sku": "LAP-LEN-LEN-081",
+      "weight": 9,
+      "dimensions": { "width": 20.84, "height": 22.68, "depth": 17.39 },
+      "warrantyInformation": "6 months warranty",
+      "shippingInformation": "Ships in 2 weeks",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 4,
+          "comment": "Would buy again!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Bella Gonzalez",
+          "reviewerEmail": "bella.gonzalez@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Great value for money!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Nathan Reed",
+          "reviewerEmail": "nathan.reed@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Great value for money!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Hazel Gardner",
+          "reviewerEmail": "hazel.gardner@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "No return policy",
+      "minimumOrderQuantity": 1,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "5506742916764",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/laptops/lenovo-yoga-920/1.webp",
+        "https://cdn.dummyjson.com/product-images/laptops/lenovo-yoga-920/2.webp",
+        "https://cdn.dummyjson.com/product-images/laptops/lenovo-yoga-920/3.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/laptops/lenovo-yoga-920/thumbnail.webp"
+    },
+    {
+      "id": 82,
+      "title": "New DELL XPS 13 9300 Laptop",
+      "description": "The New DELL XPS 13 9300 Laptop is a compact and powerful device, featuring a virtually borderless InfinityEdge display and high-end performance for various tasks.",
+      "category": "laptops",
+      "price": 1499.99,
+      "discountPercentage": 11.89,
+      "rating": 2.67,
+      "stock": 74,
+      "tags": ["laptops"],
+      "brand": "Dell",
+      "sku": "LAP-DEL-DEL-082",
+      "weight": 2,
+      "dimensions": { "width": 13.76, "height": 29, "depth": 21.42 },
+      "warrantyInformation": "2 year warranty",
+      "shippingInformation": "Ships in 2 weeks",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 3,
+          "comment": "Poor quality!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Charlotte Lopez",
+          "reviewerEmail": "charlotte.lopez@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Very satisfied!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Alice Smith",
+          "reviewerEmail": "alice.smith@x.dummyjson.com"
+        },
+        {
+          "rating": 2,
+          "comment": "Disappointing product!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Ava Taylor",
+          "reviewerEmail": "ava.taylor@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "60 days return policy",
+      "minimumOrderQuantity": 1,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "5963805976904",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/laptops/new-dell-xps-13-9300-laptop/1.webp",
+        "https://cdn.dummyjson.com/product-images/laptops/new-dell-xps-13-9300-laptop/2.webp",
+        "https://cdn.dummyjson.com/product-images/laptops/new-dell-xps-13-9300-laptop/3.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/laptops/new-dell-xps-13-9300-laptop/thumbnail.webp"
+    },
+    {
+      "id": 83,
+      "title": "Blue & Black Check Shirt",
+      "description": "The Blue & Black Check Shirt is a stylish and comfortable men's shirt featuring a classic check pattern. Made from high-quality fabric, it's suitable for both casual and semi-formal occasions.",
+      "category": "mens-shirts",
+      "price": 29.99,
+      "discountPercentage": 15.35,
+      "rating": 3.64,
+      "stock": 38,
+      "tags": ["clothing", "men's shirts"],
+      "brand": "Fashion Trends",
+      "sku": "MEN-FAS-BLU-083",
+      "weight": 4,
+      "dimensions": { "width": 27.49, "height": 23.73, "depth": 28.61 },
+      "warrantyInformation": "3 year warranty",
+      "shippingInformation": "Ships in 3-5 business days",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 1,
+          "comment": "Waste of money!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Logan Lee",
+          "reviewerEmail": "logan.lee@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Very satisfied!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Zachary Lee",
+          "reviewerEmail": "zachary.lee@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Fast shipping!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Aurora Rodriguez",
+          "reviewerEmail": "aurora.rodriguez@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "30 days return policy",
+      "minimumOrderQuantity": 18,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "7148674604957",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/mens-shirts/blue-&-black-check-shirt/1.webp",
+        "https://cdn.dummyjson.com/product-images/mens-shirts/blue-&-black-check-shirt/2.webp",
+        "https://cdn.dummyjson.com/product-images/mens-shirts/blue-&-black-check-shirt/3.webp",
+        "https://cdn.dummyjson.com/product-images/mens-shirts/blue-&-black-check-shirt/4.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/mens-shirts/blue-&-black-check-shirt/thumbnail.webp"
+    },
+    {
+      "id": 84,
+      "title": "Gigabyte Aorus Men Tshirt",
+      "description": "The Gigabyte Aorus Men Tshirt is a cool and casual shirt for gaming enthusiasts. With the Aorus logo and sleek design, it's perfect for expressing your gaming style.",
+      "category": "mens-shirts",
+      "price": 24.99,
+      "discountPercentage": 0.94,
+      "rating": 3.18,
+      "stock": 90,
+      "tags": ["clothing", "men's t-shirts"],
+      "brand": "Gigabyte",
+      "sku": "MEN-GIG-GIG-084",
+      "weight": 4,
+      "dimensions": { "width": 22.31, "height": 26.47, "depth": 13.27 },
+      "warrantyInformation": "3 year warranty",
+      "shippingInformation": "Ships overnight",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Excellent quality!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Amelia Perez",
+          "reviewerEmail": "amelia.perez@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Awesome product!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Tyler Davis",
+          "reviewerEmail": "tyler.davis@x.dummyjson.com"
+        },
+        {
+          "rating": 1,
+          "comment": "Disappointing product!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Harper King",
+          "reviewerEmail": "harper.king@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "30 days return policy",
+      "minimumOrderQuantity": 16,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "1654388837068",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/mens-shirts/gigabyte-aorus-men-tshirt/1.webp",
+        "https://cdn.dummyjson.com/product-images/mens-shirts/gigabyte-aorus-men-tshirt/2.webp",
+        "https://cdn.dummyjson.com/product-images/mens-shirts/gigabyte-aorus-men-tshirt/3.webp",
+        "https://cdn.dummyjson.com/product-images/mens-shirts/gigabyte-aorus-men-tshirt/4.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/mens-shirts/gigabyte-aorus-men-tshirt/thumbnail.webp"
+    },
+    {
+      "id": 85,
+      "title": "Man Plaid Shirt",
+      "description": "The Man Plaid Shirt is a timeless and versatile men's shirt with a classic plaid pattern. Its comfortable fit and casual style make it a wardrobe essential for various occasions.",
+      "category": "mens-shirts",
+      "price": 34.99,
+      "discountPercentage": 19.5,
+      "rating": 3.46,
+      "stock": 82,
+      "tags": ["clothing", "men's shirts"],
+      "brand": "Classic Wear",
+      "sku": "MEN-CLA-PLA-085",
+      "weight": 3,
+      "dimensions": { "width": 9.34, "height": 5.97, "depth": 10.85 },
+      "warrantyInformation": "1 week warranty",
+      "shippingInformation": "Ships in 1-2 business days",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 3,
+          "comment": "Disappointing product!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Aubrey Wagner",
+          "reviewerEmail": "aubrey.wagner@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Awesome product!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Evan Reed",
+          "reviewerEmail": "evan.reed@x.dummyjson.com"
+        },
+        {
+          "rating": 2,
+          "comment": "Very disappointed!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Evelyn Gonzalez",
+          "reviewerEmail": "evelyn.gonzalez@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "7 days return policy",
+      "minimumOrderQuantity": 13,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "2821496314023",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/mens-shirts/man-plaid-shirt/1.webp",
+        "https://cdn.dummyjson.com/product-images/mens-shirts/man-plaid-shirt/2.webp",
+        "https://cdn.dummyjson.com/product-images/mens-shirts/man-plaid-shirt/3.webp",
+        "https://cdn.dummyjson.com/product-images/mens-shirts/man-plaid-shirt/4.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/mens-shirts/man-plaid-shirt/thumbnail.webp"
+    },
+    {
+      "id": 86,
+      "title": "Man Short Sleeve Shirt",
+      "description": "The Man Short Sleeve Shirt is a breezy and stylish option for warm days. With a comfortable fit and short sleeves, it's perfect for a laid-back yet polished look.",
+      "category": "mens-shirts",
+      "price": 19.99,
+      "discountPercentage": 6.83,
+      "rating": 2.9,
+      "stock": 2,
+      "tags": ["clothing", "men's shirts"],
+      "brand": "Casual Comfort",
+      "sku": "MEN-CAS-SHO-086",
+      "weight": 2,
+      "dimensions": { "width": 5.02, "height": 16.57, "depth": 9.6 },
+      "warrantyInformation": "3 year warranty",
+      "shippingInformation": "Ships in 2 weeks",
+      "availabilityStatus": "Low Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Highly recommended!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Charlotte Lopez",
+          "reviewerEmail": "charlotte.lopez@x.dummyjson.com"
+        },
+        {
+          "rating": 2,
+          "comment": "Poor quality!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Ellie Stewart",
+          "reviewerEmail": "ellie.stewart@x.dummyjson.com"
+        },
+        {
+          "rating": 1,
+          "comment": "Would not recommend!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Sadie Morales",
+          "reviewerEmail": "sadie.morales@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "30 days return policy",
+      "minimumOrderQuantity": 4,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "9995865660204",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/mens-shirts/man-short-sleeve-shirt/1.webp",
+        "https://cdn.dummyjson.com/product-images/mens-shirts/man-short-sleeve-shirt/2.webp",
+        "https://cdn.dummyjson.com/product-images/mens-shirts/man-short-sleeve-shirt/3.webp",
+        "https://cdn.dummyjson.com/product-images/mens-shirts/man-short-sleeve-shirt/4.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/mens-shirts/man-short-sleeve-shirt/thumbnail.webp"
+    },
+    {
+      "id": 87,
+      "title": "Men Check Shirt",
+      "description": "The Men Check Shirt is a classic and versatile shirt featuring a stylish check pattern. Suitable for various occasions, it adds a smart and polished touch to your wardrobe.",
+      "category": "mens-shirts",
+      "price": 27.99,
+      "discountPercentage": 11.38,
+      "rating": 2.72,
+      "stock": 95,
+      "tags": ["clothing", "men's shirts"],
+      "brand": "Urban Chic",
+      "sku": "MEN-URB-CHE-087",
+      "weight": 10,
+      "dimensions": { "width": 23.48, "height": 7.03, "depth": 27.33 },
+      "warrantyInformation": "No warranty",
+      "shippingInformation": "Ships in 1-2 business days",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 3,
+          "comment": "Would not recommend!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Mateo Nguyen",
+          "reviewerEmail": "mateo.nguyen@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Fast shipping!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Lucas Allen",
+          "reviewerEmail": "lucas.allen@x.dummyjson.com"
+        },
+        {
+          "rating": 2,
+          "comment": "Very unhappy with my purchase!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Henry Adams",
+          "reviewerEmail": "henry.adams@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "30 days return policy",
+      "minimumOrderQuantity": 12,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "9680331363394",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/mens-shirts/men-check-shirt/1.webp",
+        "https://cdn.dummyjson.com/product-images/mens-shirts/men-check-shirt/2.webp",
+        "https://cdn.dummyjson.com/product-images/mens-shirts/men-check-shirt/3.webp",
+        "https://cdn.dummyjson.com/product-images/mens-shirts/men-check-shirt/4.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/mens-shirts/men-check-shirt/thumbnail.webp"
+    },
+    {
+      "id": 88,
+      "title": "Nike Air Jordan 1 Red And Black",
+      "description": "The Nike Air Jordan 1 in Red and Black is an iconic basketball sneaker known for its stylish design and high-performance features, making it a favorite among sneaker enthusiasts and athletes.",
+      "category": "mens-shoes",
+      "price": 149.99,
+      "discountPercentage": 4.12,
+      "rating": 4.77,
+      "stock": 7,
+      "tags": ["footwear", "athletic shoes"],
+      "brand": "Nike",
+      "sku": "MEN-NIK-NIK-088",
+      "weight": 3,
+      "dimensions": { "width": 17.44, "height": 9.52, "depth": 27 },
+      "warrantyInformation": "1 year warranty",
+      "shippingInformation": "Ships in 1 week",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Highly impressed!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Elena Long",
+          "reviewerEmail": "elena.long@x.dummyjson.com"
+        },
+        {
+          "rating": 4,
+          "comment": "Very happy with my purchase!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Addison Wright",
+          "reviewerEmail": "addison.wright@x.dummyjson.com"
+        },
+        {
+          "rating": 1,
+          "comment": "Waste of money!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Mason Wright",
+          "reviewerEmail": "mason.wright@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "No return policy",
+      "minimumOrderQuantity": 1,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "7631625812393",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/mens-shoes/nike-air-jordan-1-red-and-black/1.webp",
+        "https://cdn.dummyjson.com/product-images/mens-shoes/nike-air-jordan-1-red-and-black/2.webp",
+        "https://cdn.dummyjson.com/product-images/mens-shoes/nike-air-jordan-1-red-and-black/3.webp",
+        "https://cdn.dummyjson.com/product-images/mens-shoes/nike-air-jordan-1-red-and-black/4.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/mens-shoes/nike-air-jordan-1-red-and-black/thumbnail.webp"
+    },
+    {
+      "id": 89,
+      "title": "Nike Baseball Cleats",
+      "description": "Nike Baseball Cleats are designed for maximum traction and performance on the baseball field. They provide stability and support for players during games and practices.",
+      "category": "mens-shoes",
+      "price": 79.99,
+      "discountPercentage": 18.04,
+      "rating": 3.88,
+      "stock": 12,
+      "tags": ["footwear", "sports cleats"],
+      "brand": "Nike",
+      "sku": "MEN-NIK-NIK-089",
+      "weight": 9,
+      "dimensions": { "width": 11.75, "height": 26.65, "depth": 19.6 },
+      "warrantyInformation": "6 months warranty",
+      "shippingInformation": "Ships in 2 weeks",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Would buy again!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Aaron Cook",
+          "reviewerEmail": "aaron.cook@x.dummyjson.com"
+        },
+        {
+          "rating": 2,
+          "comment": "Very disappointed!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Noah Lewis",
+          "reviewerEmail": "noah.lewis@x.dummyjson.com"
+        },
+        {
+          "rating": 3,
+          "comment": "Would not recommend!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Michael Johnson",
+          "reviewerEmail": "michael.johnson@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "No return policy",
+      "minimumOrderQuantity": 3,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "2449851358796",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/mens-shoes/nike-baseball-cleats/1.webp",
+        "https://cdn.dummyjson.com/product-images/mens-shoes/nike-baseball-cleats/2.webp",
+        "https://cdn.dummyjson.com/product-images/mens-shoes/nike-baseball-cleats/3.webp",
+        "https://cdn.dummyjson.com/product-images/mens-shoes/nike-baseball-cleats/4.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/mens-shoes/nike-baseball-cleats/thumbnail.webp"
+    },
+    {
+      "id": 90,
+      "title": "Puma Future Rider Trainers",
+      "description": "The Puma Future Rider Trainers offer a blend of retro style and modern comfort. Perfect for casual wear, these trainers provide a fashionable and comfortable option for everyday use.",
+      "category": "mens-shoes",
+      "price": 89.99,
+      "discountPercentage": 4.2,
+      "rating": 4.9,
+      "stock": 90,
+      "tags": ["footwear", "casual shoes"],
+      "brand": "Puma",
+      "sku": "MEN-PUM-PUM-090",
+      "weight": 6,
+      "dimensions": { "width": 17.45, "height": 15.58, "depth": 23.13 },
+      "warrantyInformation": "5 year warranty",
+      "shippingInformation": "Ships in 1-2 business days",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Highly impressed!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Jackson Morales",
+          "reviewerEmail": "jackson.morales@x.dummyjson.com"
+        },
+        {
+          "rating": 1,
+          "comment": "Very disappointed!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Sophia Jones",
+          "reviewerEmail": "sophia.jones@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Very pleased!",
+          "date": "2025-04-30T09:41:02.053Z",
+          "reviewerName": "Logan Torres",
+          "reviewerEmail": "logan.torres@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "90 days return policy",
+      "minimumOrderQuantity": 10,
+      "meta": {
+        "createdAt": "2025-04-30T09:41:02.053Z",
+        "updatedAt": "2025-04-30T09:41:02.053Z",
+        "barcode": "9715091831404",
+        "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/product-images/mens-shoes/puma-future-rider-trainers/1.webp",
+        "https://cdn.dummyjson.com/product-images/mens-shoes/puma-future-rider-trainers/2.webp",
+        "https://cdn.dummyjson.com/product-images/mens-shoes/puma-future-rider-trainers/3.webp",
+        "https://cdn.dummyjson.com/product-images/mens-shoes/puma-future-rider-trainers/4.webp"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/product-images/mens-shoes/puma-future-rider-trainers/thumbnail.webp"
+    }
+  ],
+  "total": 194,
+  "skip": 60,
+  "limit": 30
+}
