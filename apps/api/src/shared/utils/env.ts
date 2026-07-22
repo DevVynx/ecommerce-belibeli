@@ -22,4 +22,5 @@ export const ENV = {
   STRIPE_SECRET_KEY: getEnvOrThrow("STRIPE_SECRET_KEY"),
   STRIPE_WEBHOOK_SECRET: getEnvOrThrow("STRIPE_WEBHOOK_SECRET"),
   FRONTEND_URL: getEnvOrThrow("FRONTEND_URL"),
+  RESEND_KEY: getEnvOrThrow("RESEND_KEY"),
 };
