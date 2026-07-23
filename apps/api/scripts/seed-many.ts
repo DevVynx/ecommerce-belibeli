@@ -204,14 +204,37 @@ function randomInt(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function generateSku(title: string, productIndex: number, variantIndex: number): string {
-  const sanitized = title
-    .toUpperCase()
-    .replace(/[^A-Z0-9\s]/g, "")
-    .replace(/\s+/g, "-")
-    .substring(0, 30);
+function abbreviate(word: string, maxLength = 4): string {
+  return word
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-zA-Z0-9]/g, "")
+    .slice(0, maxLength)
+    .toUpperCase();
+}
 
-  return `${sanitized}-${String(productIndex).padStart(4, "0")}${String(variantIndex).padStart(3, "0")}`;
+function generateShortHash(str: string): string {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = (hash << 5) - hash + str.charCodeAt(i);
+    hash |= 0;
+  }
+  return Math.abs(hash).toString(36).toUpperCase().padEnd(4, "0").slice(0, 4);
+}
+
+function generateSku(name: string, attributes: Record<string, string>): string {
+  const sortedKeys = Object.keys(attributes).sort();
+  const attrParts = sortedKeys.map((key) => {
+    const val = attributes[key];
+    return abbreviate(val ?? "");
+  });
+
+  const fullAttrString = sortedKeys.map((key) => `${key}:${attributes[key]}`).join("|");
+  const uniqueSeed = `${name.trim()}|${fullAttrString}`;
+  const uniqueId = generateShortHash(uniqueSeed);
+
+  const parts = [abbreviate(name), ...attrParts, uniqueId];
+  return parts.join("-");
 }
 
 function makeTitle(brand: string, lineName: string, color: string): string {
@@ -341,7 +364,11 @@ async function main() {
       for (const combo of combos) {
         const price = randomFloat(line.priceMin, line.priceMax);
         const stock = randomInt(0, 100);
-        const sku = generateSku(title, i, variantIndex);
+        const attributes: Record<string, string> = {};
+        for (let gi = 0; gi < selectedGroups.length; gi++) {
+          attributes[selectedGroups[gi]!.name] = combo[gi]!;
+        }
+        const sku = generateSku(title, attributes);
         const isActive = Math.random() < 0.9;
 
         const variant = await prisma.productVariant.create({
@@ -376,7 +403,7 @@ async function main() {
     } else {
       const price = randomFloat(line.priceMin, line.priceMax);
       const stock = randomInt(0, 100);
-      const sku = generateSku(title, i, 0);
+      const sku = generateSku(title, {});
       const isActive = Math.random() < 0.9;
 
       const variant = await prisma.productVariant.create({

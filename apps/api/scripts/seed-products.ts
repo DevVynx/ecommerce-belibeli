@@ -253,12 +253,12 @@ function generateDescription(title: string, categoryPt: string): string {
   return pick(templates).replace("{title}", title);
 }
 
-function abbreviate(word: string): string {
+function abbreviate(word: string, maxLength = 4): string {
   return word
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/[^a-zA-Z0-9]/g, "")
-    .slice(0, 4)
+    .slice(0, maxLength)
     .toUpperCase();
 }
 
