@@ -2,18 +2,20 @@
 import { usePathname } from "next/navigation";
 import { Suspense } from "react";
 
+import { useNotFound } from "@/shared/contexts/not-found";
 import { useScrollDirection } from "@/shared/hooks/ui/useScrollDirection";
 
 import { NavBar } from "./NavBar";
 
 export function Header() {
+  const { isNotFound } = useNotFound();
   const pathname = usePathname();
   const scrollDir = useScrollDirection();
 
   const hideHeaderRoutes = ["/checkout", "/login", "/register", "/admin"];
   const shouldHideHeader = hideHeaderRoutes.some((route) => pathname.startsWith(route));
 
-  if (shouldHideHeader) {
+  if (shouldHideHeader || isNotFound) {
     return null;
   }
 

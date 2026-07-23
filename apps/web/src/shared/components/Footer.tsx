@@ -3,6 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { Separator } from "@/shared/components/shadcn-ui/separator";
+import { useNotFound } from "@/shared/contexts/not-found";
 
 const sobreLinks = [
   { label: "Quem Somos" },
@@ -13,7 +14,8 @@ const sobreLinks = [
 
 const ajudaLinks = [
   { label: "FAQ" },
-  { label: "Políticas de Privacidade" },
+  { label: "Políticas de Privacidade", href: "/privacy" },
+  { label: "Termos e Condições", href: "/terms" },
   { label: "Contate a Gente" },
   { label: "Trocas e Devoluções" },
 ];
@@ -79,12 +81,13 @@ const socialLinks = [
 ];
 
 export const Footer = () => {
+  const { isNotFound } = useNotFound();
   const pathname = usePathname();
 
   const hideHeaderRoutes = ["/login", "/register", "/admin", "/checkout"];
   const shouldHideHeader = hideHeaderRoutes.some((route) => pathname.startsWith(route));
 
-  if (shouldHideHeader) {
+  if (shouldHideHeader || isNotFound) {
     return null;
   }
 
@@ -96,7 +99,7 @@ export const Footer = () => {
           <div className="col-span-2 lg:col-span-1">
             <Link href="/">
               <h1 className="font-kotta text-foreground mb-2 text-2xl font-semibold">
-                BeliBeli.com
+                Veloce
               </h1>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
@@ -129,7 +132,10 @@ export const Footer = () => {
             <div className="space-y-2">
               {ajudaLinks.map((link) => (
                 <div key={link.label}>
-                  <Link href="#" className="text-muted-foreground hover:text-foreground text-sm">
+                  <Link
+                    href={link.href ?? "#"}
+                    className="text-muted-foreground hover:text-foreground text-sm"
+                  >
                     {link.label}
                   </Link>
                 </div>
@@ -162,7 +168,7 @@ export const Footer = () => {
         {/* Bottom bar */}
         <div className="flex flex-col items-center justify-between gap-2 sm:flex-row">
           <p className="text-muted-foreground text-xs">
-            © 2026 BeliBeli. Desenvolvido por{" "}
+            © 2026 Veloce. Desenvolvido por{" "}
             <a
               href="https://github.com/DevVynx"
               target="_blank"
@@ -173,9 +179,19 @@ export const Footer = () => {
             .
           </p>
           <div className="flex items-center gap-2">
-            <span className="text-muted-foreground text-xs">Política de Privacidade</span>
+            <Link
+              href="/privacy"
+              className="text-muted-foreground hover:text-foreground text-xs"
+            >
+              Política de Privacidade
+            </Link>
             <span className="text-muted-foreground">•</span>
-            <span className="text-muted-foreground text-xs">Termos e Condições</span>
+            <Link
+              href="/terms"
+              className="text-muted-foreground hover:text-foreground text-xs"
+            >
+              Termos e Condições
+            </Link>
           </div>
         </div>
       </div>

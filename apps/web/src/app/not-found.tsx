@@ -1,11 +1,18 @@
-import Link from "next/link";
+"use client";
 
-export const metadata = {
-  title: "404, Página não encontrada | BeliBeli Store",
-  description: "Ops! A página que você tentou acessar não existe.",
-};
+import Link from "next/link";
+import { useEffect } from "react";
+
+import { useNotFound } from "@/shared/contexts/not-found";
 
 const NotFound = () => {
+  const { setIsNotFound } = useNotFound();
+
+  useEffect(() => {
+    setIsNotFound(true);
+    return () => setIsNotFound(false);
+  }, [setIsNotFound]);
+
   return (
     <div className="flex min-h-screen w-full flex-col items-center justify-center gap-5 bg-black p-3">
       <div className="flex flex-col gap-2 bg-black text-center text-white">

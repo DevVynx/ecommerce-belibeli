@@ -10,6 +10,7 @@ import { Footer } from "@/shared/components/Footer";
 import { Toaster } from "@/shared/components/shadcn-ui/sonner";
 import { TooltipProvider } from "@/shared/components/shadcn-ui/tooltip";
 import { Header } from "@/shared/components/Store/Header/Header";
+import { NotFoundProvider } from "@/shared/contexts/not-found";
 import { CartProvider } from "@/shared/providers/CartProvider";
 import { QueryProvider } from "@/shared/providers/QueryProvider";
 import { WishlistProvider } from "@/shared/providers/WishlistProvider";
@@ -32,10 +33,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BeliBeli | Sua Loja Online de Produtos",
+  title: "Veloce | Sua Loja Online de Produtos",
   description:
-    "Bem-vindo à BeliBeli Store! Explore nossa loja online e encontre os melhores produtos com qualidade e praticidade em um só lugar.",
-  icons: "/belilogo.png",
+    "Bem-vindo à Veloce Store! Explore nossa loja online e encontre os melhores produtos com qualidade e praticidade em um só lugar.",
+  icons: "/veloce-logo.jpeg",
 };
 
 export default async function RootLayout({
@@ -52,18 +53,20 @@ export default async function RootLayout({
           <GoogleOAuthProvider clientId={ENV.GOOGLE_CLIENT_ID}>
             <CartProvider />
             <WishlistProvider />
-            <TooltipProvider>
-              <Suspense fallback={null}>
-                <Header />
-              </Suspense>
-              <NuqsAdapter>
-                <div className="min-h-screen">{children}</div>
-              </NuqsAdapter>
-              <Suspense fallback={null}>
-                <Footer />
-              </Suspense>
-              <Toaster />
-            </TooltipProvider>
+            <NotFoundProvider>
+              <TooltipProvider>
+                <Suspense fallback={null}>
+                  <Header />
+                </Suspense>
+                <NuqsAdapter>
+                  <div className="min-h-screen">{children}</div>
+                </NuqsAdapter>
+                <Suspense fallback={null}>
+                  <Footer />
+                </Suspense>
+                <Toaster />
+              </TooltipProvider>
+            </NotFoundProvider>
           </GoogleOAuthProvider>
         </QueryProvider>
       </body>
