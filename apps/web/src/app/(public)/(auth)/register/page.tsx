@@ -4,9 +4,9 @@ import { LeftRegisterSide } from "@/shared/components/Auth/Register/LeftRegister
 import { RightRegisterSide } from "@/shared/components/Auth/Register/RightRegisterSide";
 
 export const metadata: Metadata = {
-  title: "Criar Conta | BeliBeli Store",
+  title: "Criar Conta | Veloce Store",
   description:
-    "Cadastre-se na BeliBeli Store e descubra uma nova experiência de compras online. Crie sua conta e aproveite promoções exclusivas e vantagens especiais.",
+    "Cadastre-se na Veloce Store e descubra uma nova experiência de compras online. Crie sua conta e aproveite promoções exclusivas e vantagens especiais.",
 };
 
 export default function RegisterPage() {

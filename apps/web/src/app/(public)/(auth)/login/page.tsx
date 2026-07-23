@@ -4,9 +4,9 @@ import { LeftLoginSide } from "@/shared/components/Auth/Login/LeftLoginSide";
 import { RightLoginSide } from "@/shared/components/Auth/Login/RightLoginSide";
 
 export const metadata: Metadata = {
-  title: "Entrar | BeliBeli Store",
+  title: "Entrar | Veloce Store",
   description:
-    "Acesse sua conta na BeliBeli Store para acompanhar pedidos, gerenciar informações e aproveitar as melhores ofertas com praticidade.",
+    "Acesse sua conta na Veloce Store para acompanhar pedidos, gerenciar informações e aproveitar as melhores ofertas com praticidade.",
 };
 
 export default function LoginPage() {

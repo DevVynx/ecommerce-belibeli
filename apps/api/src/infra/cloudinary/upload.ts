@@ -4,7 +4,7 @@ import { cloudinary } from "@/infra/cloudinary";
 
 export function uploadToCloudinary(
   buffer: Buffer,
-  folder: string = "belibeli"
+  folder: string = "veloce"
 ): Promise<{ url: string; publicId: string }> {
   return new Promise((resolve, reject) => {
     const uploadStream = cloudinary.uploader.upload_stream(

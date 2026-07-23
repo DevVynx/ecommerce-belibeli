@@ -14,11 +14,11 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   const { data } = await getProductBySlug({ slug });
 
   if (!data) {
-    return { title: "Produto não encontrado | BeliBeli Store" };
+    return { title: "Produto não encontrado | Veloce Store" };
   }
 
   return {
-    title: `${data.product.title} | BeliBeli Store`,
+    title: `${data.product.title} | Veloce Store`,
     description: data.product.description,
   };
 }

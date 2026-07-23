@@ -30,7 +30,7 @@ export const SettingsTab = () => {
             <div>
               <p className="text-sm font-medium">E-mails promocionais</p>
               <p className="text-muted-foreground text-xs">
-                Receba ofertas e novidades da BeliBeli
+                Receba ofertas e novidades da Veloce
               </p>
             </div>
             <Switch />

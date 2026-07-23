@@ -28,7 +28,7 @@ export const UserMenuContentAuthenticated = () => {
         </div>
         <div className="flex flex-col overflow-hidden">
           <span className="truncate text-sm font-semibold">Olá, {user?.name?.split(" ")[0]}</span>
-          <span className="text-muted-foreground truncate text-xs">Bem-vindo à BeliBeli</span>
+          <span className="text-muted-foreground truncate text-xs">Bem-vindo à Veloce</span>
         </div>
       </div>
 

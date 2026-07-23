@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import logo from "./belilogo-nobg.png";
+import logo from "./veloce-logo-nobg.png";
 
 type Props = {
   width?: number;
@@ -8,7 +8,7 @@ type Props = {
   onClick?: () => void;
 };
 
-export const Logo = ({ width = 40, height = 0, onClick }: Props) => {
+export const Logo = ({ width = 45, height = 0, onClick }: Props) => {
   return (
     <Image
       onClick={onClick}

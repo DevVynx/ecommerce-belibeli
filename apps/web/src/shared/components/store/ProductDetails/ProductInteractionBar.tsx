@@ -18,7 +18,7 @@ export const ProductInteractionBar = ({ productTitle }: ProductInteractionBarPro
 
   const handleChat = () => {
     const msg = encodeURIComponent(
-      `Olá! Vi esse produto "${productTitle}" na BeliBeli Store. Gostaria de saber mais detalhes sobre ele.\n\n${window.location.href}`
+      `Olá! Vi esse produto "${productTitle}" na Veloce Store. Gostaria de saber mais detalhes sobre ele.\n\n${window.location.href}`
     );
     window.open(`https://wa.me/send?text=${msg}`);
   };
@@ -28,7 +28,7 @@ export const ProductInteractionBar = ({ productTitle }: ProductInteractionBarPro
     if (navigator.share) {
       await navigator.share({
         title: productTitle,
-        text: "Confira este produto incrível que encontrei na BeliBeli Store!",
+        text: "Confira este produto incrível que encontrei na Veloce Store!",
         url,
       });
       return;

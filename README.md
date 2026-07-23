@@ -1,4 +1,4 @@
-# 🚀 E-commerce BeliBeli
+# 🚀 E-commerce Veloce
 
 **Simulação de uma plataforma de e-commerce moderna e responsiva em constante desenvolvimento.**
 
@@ -6,7 +6,7 @@
 
 ## 💡 Sobre o Projeto
 
-O **E-commerce BeliBeli** é um projeto de portfólio pessoal focado em demonstrar proficiência em **desenvolvimento Full Stack** com o ecossistema **Next.js/TypeScript**.  
+O **E-commerce Veloce** é um projeto de portfólio pessoal focado em demonstrar proficiência em **desenvolvimento Full Stack** com o ecossistema **Next.js/TypeScript**.  
 O objetivo é construir uma plataforma completa de comércio eletrônico, priorizando a **experiência do usuário (UX)** e uma **arquitetura de código limpa**.
 
 > 🧠 Este projeto está em **desenvolvimento ativo** e em constante melhoria.  
@@ -39,7 +39,7 @@ Este projeto utiliza a seguinte stack:
 ### 🖥️ Layout e Responsividade
 - **Layout Totalmente Responsivo:** O design se adapta a todas as telas (mobile, tablet e desktop).
 
-![GIF: Responsividade da Página Inicial](docs/gifs/belibeliresponsivity.gif)
+![GIF: Responsividade da Página Inicial](docs/gifs/veloceresponsivity.gif)
 
 ---
 
@@ -68,8 +68,8 @@ Siga estas instruções para configurar o projeto na sua máquina:
 
 ```bash
 # Clone o repositório
-git clone https://github.com/SeuUsuario/ecommerce-belibeli-app.git
-cd ecommerce-belibeli-app
+git clone https://github.com/SeuUsuario/ecommerce-veloce-app.git
+cd ecommerce-veloce-app
 
 # Instale as dependências
 npm install

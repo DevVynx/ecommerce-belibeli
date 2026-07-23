@@ -75,7 +75,7 @@ export const MobileSideMenu = () => {
               Olá, {user?.name ? user.name.split(" ")[0] : "Visitante"}!
             </SheetTitle>
             <p className="text-muted-foreground text-[10px] font-bold tracking-widest uppercase">
-              BeliBeli • Bem-vindo
+              Veloce • Bem-vindo
             </p>
           </div>
         </SheetHeader>

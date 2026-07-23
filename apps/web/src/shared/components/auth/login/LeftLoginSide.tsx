@@ -20,7 +20,7 @@ export const LeftLoginSide = () => {
         >
           <h1 className="text-muted-foreground text-4xl font-black 2xl:text-6xl">
             Bem-vindo à{" "}
-            <span className="font-kotta text-card-foreground tracking-tight">BeliBeli.</span>
+            <span className="font-kotta text-card-foreground tracking-tight">Veloce.</span>
           </h1>
           <p className="text-muted-foreground mx-auto max-w-md text-base font-medium italic 2xl:text-xl">
             "Sua loja favorita, agora com as melhores ofertas a um clique de distância."

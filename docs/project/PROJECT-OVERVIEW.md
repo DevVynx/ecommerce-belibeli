@@ -1,8 +1,8 @@
 # Project Overview
 
-## What is BeliBeli?
+## What is Veloce?
 
-BeliBeli is a **modern e-commerce platform** designed to simulate a full-featured online store. It's a personal portfolio project focused on demonstrating full-stack development proficiency with a modern tech stack.
+Veloce is a **modern e-commerce platform** designed to simulate a full-featured online store. It's a personal portfolio project focused on demonstrating full-stack development proficiency with a modern tech stack.
 
 **Core Goal**: Build a complete, production-ready e-commerce experience with excellent UX and clean architecture.
 

@@ -30,7 +30,7 @@ export function orderStatusEmailHtml(data: OrderStatusEmailData): string {
         <table role="presentation" width="480" cellpadding="0" cellspacing="0" style="background-color:#ffffff;border-radius:12px;overflow:hidden">
           <tr>
             <td style="padding:40px 32px 24px;text-align:center;background-color:#6b21a8">
-              <h1 style="margin:0;font-size:24px;color:#ffffff;font-weight:700">BeliBeli</h1>
+              <h1 style="margin:0;font-size:24px;color:#ffffff;font-weight:700">Veloce</h1>
             </td>
           </tr>
           <tr>
@@ -41,7 +41,7 @@ export function orderStatusEmailHtml(data: OrderStatusEmailData): string {
               </p>
               <p style="margin:0 0 24px;font-size:15px;color:#71717a;line-height:1.5">${message}</p>
               <p style="margin:0;font-size:14px;color:#a1a1aa">
-                Obrigado por comprar na BeliBeli!
+                Obrigado por comprar na Veloce!
               </p>
             </td>
           </tr>

@@ -6,7 +6,7 @@ interface UploadVariantImageResponse {
 }
 
 export async function uploadVariantImage(buffer: Buffer): Promise<UploadVariantImageResponse> {
-  const { url, publicId } = await uploadToCloudinary(buffer, "belibeli/products");
+  const { url, publicId } = await uploadToCloudinary(buffer, "veloce/products");
 
   return { url, publicId };
 }

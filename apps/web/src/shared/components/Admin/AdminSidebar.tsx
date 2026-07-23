@@ -47,7 +47,7 @@ export function AdminSidebar({ onNavClick }: AdminSidebarProps) {
   return (
     <div className="flex h-full flex-col pt-5">
       <div className="flex h-16 flex-col justify-center px-6">
-        <h1 className="text-2xl font-bold tracking-tight">BELIBELI</h1>
+        <h1 className="text-2xl font-bold tracking-tight">VELOCE</h1>
         <p className="text-muted-foreground text-xs tracking-wider uppercase">Painel de Controle</p>
       </div>
 

@@ -93,7 +93,7 @@ export function CreateCouponForm({ onSuccess }: { onSuccess?: () => void }) {
           <FieldLabel>Código</FieldLabel>
           <FieldContent>
             <Input
-              placeholder="Ex: BELIBELI10"
+              placeholder="Ex: VELOCE10"
               maxLength={15}
               className="uppercase"
               {...form.register("code")}

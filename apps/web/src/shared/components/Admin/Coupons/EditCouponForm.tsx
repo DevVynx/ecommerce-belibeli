@@ -114,7 +114,7 @@ export function EditCouponForm({ coupon, onSuccess }: EditCouponFormProps) {
           <FieldLabel>Código</FieldLabel>
           <FieldContent>
             <Input
-              placeholder="Ex: BELIBELI10"
+              placeholder="Ex: VELOCE10"
               maxLength={15}
               className="uppercase"
               disabled={isFrozen}

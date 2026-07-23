@@ -17,7 +17,7 @@ export function AdminLayout({ children }: { children: React.ReactNode }) {
       </aside>
 
       <header className="border-border bg-card left-0 z-30 container mx-auto flex h-14 items-center justify-between border-b px-2 lg:hidden">
-        <span className="text-lg font-bold">BELIBELI</span>
+        <span className="text-lg font-bold">VELOCE</span>
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
             <Button variant="ghost" size="icon">

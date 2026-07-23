@@ -1,4 +1,4 @@
-## Agentic Coding Guidelines for E-commerce BeliBeli
+## Agentic Coding Guidelines for E-commerce Veloce
 
 **IMPORTANT: Read this entire file before starting any task.**
 
@@ -55,7 +55,7 @@ Example:
 When you see a reference like `@docs/guides/API-OVERVIEW.md` or need information from a specific topic, use the Read tool:
 
 ```
-Read tool → filePath: "C:\Code\Projetos-FullStack\ecommerce-belibeli\docs\guides\API-OVERVIEW.md"
+Read tool → filePath: "C:\Code\Projetos-FullStack\ecommerce-veloce\docs\guides\API-OVERVIEW.md"
 ```
 
 ### Recursive Loading

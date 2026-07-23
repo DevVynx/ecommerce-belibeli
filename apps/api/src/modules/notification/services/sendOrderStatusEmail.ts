@@ -26,7 +26,7 @@ export async function sendOrderStatusEmail(orderId: string, status: OrderStatus)
   const label = labelMap[status] ?? status;
 
   await resend.emails.send({
-    from: "BeliBeli <onboarding@resend.dev>",
+    from: "Veloce <onboarding@resend.dev>",
     to: order.user.email,
     subject: `Seu pedido BEL-${String(order.orderNumber).padStart(6, "0")} foi ${label}!`,
     html: orderStatusEmailHtml({
