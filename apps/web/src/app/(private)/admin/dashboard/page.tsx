@@ -8,6 +8,8 @@ import { useState } from "react";
 import { BadgeAlertIcon } from "@/shared/assets/animatedIcons/badge-alert";
 import { BoxesIcon } from "@/shared/assets/animatedIcons/boxes";
 import { DollarSignIcon } from "@/shared/assets/animatedIcons/dollar-sign";
+import { DaySummaryCard } from "@/shared/components/Admin/Dashboard/DaySummaryCard";
+import { DaySummaryCardSkeleton } from "@/shared/components/Admin/Dashboard/DaySummaryCardSkeleton";
 import { DeltaLabel } from "@/shared/components/Admin/Dashboard/DeltaLabel";
 import { RecentOrders } from "@/shared/components/Admin/Dashboard/RecentOrders";
 import { ReportChart } from "@/shared/components/Admin/Dashboard/ReportChart";
@@ -22,6 +24,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/shared/components/shadcn-ui/select";
+import { useAdminDashboardDaySummary } from "@/shared/hooks/data/adminQueries/useAdminDashboardDaySummary";
 import { useAdminDashboardStats } from "@/shared/hooks/data/adminQueries/useDashboardStats";
 import { useAdminDashboardTimeline } from "@/shared/hooks/data/adminQueries/useDashboardTimeline";
 import { useAdminCountActiveOrders } from "@/shared/hooks/data/adminQueries/useOrder";
@@ -70,6 +73,12 @@ export default function AdminDashboardPage() {
     isError: isLowStockError,
     error: lowStockError,
   } = useAdminLowStockProducts();
+  const {
+    data: daySummaryData,
+    isLoading: isDaySummaryLoading,
+    isError: isDaySummaryError,
+    error: daySummaryError,
+  } = useAdminDashboardDaySummary();
 
   const isLoadingCards = isStatsLoading || isActiveOrdersLoading || isLowStockLoading;
   const isCardsError = isStatsError || isActiveOrdersError || isLowStockError;
@@ -179,10 +188,19 @@ export default function AdminDashboardPage() {
             />
           ) : null}
         </div>
-        <div className="bg-card rounded-xl border p-6">
-          <h3 className="mb-4 text-lg font-semibold">Resumo do Dia</h3>
-          <p className="text-muted-foreground text-sm">Em breve</p>
-        </div>
+        {isDaySummaryError ? (
+          <SectionError
+            title="Indisponível"
+            description={getErrorMessage(
+              "Não foi possível carregar o resumo do dia.",
+              daySummaryError
+            )}
+          />
+        ) : isDaySummaryLoading ? (
+          <DaySummaryCardSkeleton />
+        ) : daySummaryData ? (
+          <DaySummaryCard data={daySummaryData} />
+        ) : null}
       </div>
 
       <RecentOrders />
