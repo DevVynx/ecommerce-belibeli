@@ -3,10 +3,10 @@ import type { ShippingAddressDto } from "@repo/types/contracts";
 import type { FindOrderByIdParams } from "@/modules/order/types/ServiceParams";
 import { NotFoundError } from "@/shared/utils/HttpErrors";
 
-import { applyStatusSimulation } from "./applyStatusSimulation";
 import { formatVariantLabel } from "../../review/helpers/formatVariantLabel";
 import { reviewRepositories } from "../../review/repositories";
 import { orderRepositories } from "../repositories";
+import { applyStatusSimulation } from "./applyStatusSimulation";
 
 export const findOrderById = async ({ orderId, userId }: FindOrderByIdParams) => {
   const order = await orderRepositories.findOrderById({ id: orderId, userId });

@@ -98,9 +98,7 @@ export const Footer = () => {
           {/* Brand */}
           <div className="col-span-2 lg:col-span-1">
             <Link href="/">
-              <h1 className="font-kotta text-foreground mb-2 text-2xl font-semibold">
-                Veloce
-              </h1>
+              <h1 className="font-kotta text-foreground mb-2 text-2xl font-semibold">Veloce</h1>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Sua loja online de produtos com qualidade e praticidade. Explore nossa seleção e
@@ -179,17 +177,11 @@ export const Footer = () => {
             .
           </p>
           <div className="flex items-center gap-2">
-            <Link
-              href="/privacy"
-              className="text-muted-foreground hover:text-foreground text-xs"
-            >
+            <Link href="/privacy" className="text-muted-foreground hover:text-foreground text-xs">
               Política de Privacidade
             </Link>
             <span className="text-muted-foreground">•</span>
-            <Link
-              href="/terms"
-              className="text-muted-foreground hover:text-foreground text-xs"
-            >
+            <Link href="/terms" className="text-muted-foreground hover:text-foreground text-xs">
               Termos e Condições
             </Link>
           </div>

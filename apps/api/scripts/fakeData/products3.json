@@ -203,9 +203,7 @@
         "barcode": "2258278927819",
         "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
       },
-      "images": [
-        "https://cdn.dummyjson.com/product-images/kitchen-accessories/knife/1.webp"
-      ],
+      "images": ["https://cdn.dummyjson.com/product-images/kitchen-accessories/knife/1.webp"],
       "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/knife/thumbnail.webp"
     },
     {
@@ -255,9 +253,7 @@
         "barcode": "3287134465440",
         "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
       },
-      "images": [
-        "https://cdn.dummyjson.com/product-images/kitchen-accessories/lunch-box/1.webp"
-      ],
+      "images": ["https://cdn.dummyjson.com/product-images/kitchen-accessories/lunch-box/1.webp"],
       "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/lunch-box/thumbnail.webp"
     },
     {
@@ -415,9 +411,7 @@
         "barcode": "5159803862015",
         "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
       },
-      "images": [
-        "https://cdn.dummyjson.com/product-images/kitchen-accessories/pan/1.webp"
-      ],
+      "images": ["https://cdn.dummyjson.com/product-images/kitchen-accessories/pan/1.webp"],
       "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/pan/thumbnail.webp"
     },
     {
@@ -467,9 +461,7 @@
         "barcode": "8084753475328",
         "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
       },
-      "images": [
-        "https://cdn.dummyjson.com/product-images/kitchen-accessories/plate/1.webp"
-      ],
+      "images": ["https://cdn.dummyjson.com/product-images/kitchen-accessories/plate/1.webp"],
       "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/plate/thumbnail.webp"
     },
     {
@@ -519,9 +511,7 @@
         "barcode": "1919888449594",
         "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
       },
-      "images": [
-        "https://cdn.dummyjson.com/product-images/kitchen-accessories/red-tongs/1.webp"
-      ],
+      "images": ["https://cdn.dummyjson.com/product-images/kitchen-accessories/red-tongs/1.webp"],
       "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/red-tongs/thumbnail.webp"
     },
     {
@@ -675,9 +665,7 @@
         "barcode": "6149284465708",
         "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
       },
-      "images": [
-        "https://cdn.dummyjson.com/product-images/kitchen-accessories/spice-rack/1.webp"
-      ],
+      "images": ["https://cdn.dummyjson.com/product-images/kitchen-accessories/spice-rack/1.webp"],
       "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/spice-rack/thumbnail.webp"
     },
     {
@@ -727,9 +715,7 @@
         "barcode": "7769627934740",
         "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
       },
-      "images": [
-        "https://cdn.dummyjson.com/product-images/kitchen-accessories/spoon/1.webp"
-      ],
+      "images": ["https://cdn.dummyjson.com/product-images/kitchen-accessories/spoon/1.webp"],
       "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/spoon/thumbnail.webp"
     },
     {
@@ -779,9 +765,7 @@
         "barcode": "5239514403214",
         "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
       },
-      "images": [
-        "https://cdn.dummyjson.com/product-images/kitchen-accessories/tray/1.webp"
-      ],
+      "images": ["https://cdn.dummyjson.com/product-images/kitchen-accessories/tray/1.webp"],
       "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/tray/thumbnail.webp"
     },
     {

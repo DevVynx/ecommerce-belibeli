@@ -1,6 +1,5 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -40,7 +39,6 @@ type RegisterFormProps = {
 export const RegisterForm = ({ redirectTo = "/", onSuccess }: RegisterFormProps) => {
   const [step, setStep] = useState("account");
   const { setUser, authError, setAuthError } = useAuthState();
-  const router = useRouter();
 
   useEffect(() => {
     if (authError) {

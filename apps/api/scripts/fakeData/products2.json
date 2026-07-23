@@ -47,9 +47,7 @@
         "barcode": "4871812433378",
         "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
       },
-      "images": [
-        "https://cdn.dummyjson.com/product-images/groceries/lemon/1.webp"
-      ],
+      "images": ["https://cdn.dummyjson.com/product-images/groceries/lemon/1.webp"],
       "thumbnail": "https://cdn.dummyjson.com/product-images/groceries/lemon/thumbnail.webp"
     },
     {
@@ -99,9 +97,7 @@
         "barcode": "9835034508303",
         "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
       },
-      "images": [
-        "https://cdn.dummyjson.com/product-images/groceries/milk/1.webp"
-      ],
+      "images": ["https://cdn.dummyjson.com/product-images/groceries/milk/1.webp"],
       "thumbnail": "https://cdn.dummyjson.com/product-images/groceries/milk/thumbnail.webp"
     },
     {
@@ -151,9 +147,7 @@
         "barcode": "2206629068605",
         "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
       },
-      "images": [
-        "https://cdn.dummyjson.com/product-images/groceries/mulberry/1.webp"
-      ],
+      "images": ["https://cdn.dummyjson.com/product-images/groceries/mulberry/1.webp"],
       "thumbnail": "https://cdn.dummyjson.com/product-images/groceries/mulberry/thumbnail.webp"
     },
     {
@@ -203,9 +197,7 @@
         "barcode": "8572637994159",
         "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
       },
-      "images": [
-        "https://cdn.dummyjson.com/product-images/groceries/nescafe-coffee/1.webp"
-      ],
+      "images": ["https://cdn.dummyjson.com/product-images/groceries/nescafe-coffee/1.webp"],
       "thumbnail": "https://cdn.dummyjson.com/product-images/groceries/nescafe-coffee/thumbnail.webp"
     },
     {
@@ -255,9 +247,7 @@
         "barcode": "3590399655074",
         "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
       },
-      "images": [
-        "https://cdn.dummyjson.com/product-images/groceries/potatoes/1.webp"
-      ],
+      "images": ["https://cdn.dummyjson.com/product-images/groceries/potatoes/1.webp"],
       "thumbnail": "https://cdn.dummyjson.com/product-images/groceries/potatoes/thumbnail.webp"
     },
     {
@@ -307,9 +297,7 @@
         "barcode": "0435397154434",
         "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
       },
-      "images": [
-        "https://cdn.dummyjson.com/product-images/groceries/protein-powder/1.webp"
-      ],
+      "images": ["https://cdn.dummyjson.com/product-images/groceries/protein-powder/1.webp"],
       "thumbnail": "https://cdn.dummyjson.com/product-images/groceries/protein-powder/thumbnail.webp"
     },
     {
@@ -359,9 +347,7 @@
         "barcode": "4716374115631",
         "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
       },
-      "images": [
-        "https://cdn.dummyjson.com/product-images/groceries/red-onions/1.webp"
-      ],
+      "images": ["https://cdn.dummyjson.com/product-images/groceries/red-onions/1.webp"],
       "thumbnail": "https://cdn.dummyjson.com/product-images/groceries/red-onions/thumbnail.webp"
     },
     {
@@ -411,9 +397,7 @@
         "barcode": "7339757397015",
         "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
       },
-      "images": [
-        "https://cdn.dummyjson.com/product-images/groceries/rice/1.webp"
-      ],
+      "images": ["https://cdn.dummyjson.com/product-images/groceries/rice/1.webp"],
       "thumbnail": "https://cdn.dummyjson.com/product-images/groceries/rice/thumbnail.webp"
     },
     {
@@ -463,9 +447,7 @@
         "barcode": "2991169581178",
         "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
       },
-      "images": [
-        "https://cdn.dummyjson.com/product-images/groceries/soft-drinks/1.webp"
-      ],
+      "images": ["https://cdn.dummyjson.com/product-images/groceries/soft-drinks/1.webp"],
       "thumbnail": "https://cdn.dummyjson.com/product-images/groceries/soft-drinks/thumbnail.webp"
     },
     {
@@ -515,9 +497,7 @@
         "barcode": "0792647462295",
         "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
       },
-      "images": [
-        "https://cdn.dummyjson.com/product-images/groceries/strawberry/1.webp"
-      ],
+      "images": ["https://cdn.dummyjson.com/product-images/groceries/strawberry/1.webp"],
       "thumbnail": "https://cdn.dummyjson.com/product-images/groceries/strawberry/thumbnail.webp"
     },
     {
@@ -620,9 +600,7 @@
         "barcode": "2409829645213",
         "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
       },
-      "images": [
-        "https://cdn.dummyjson.com/product-images/groceries/water/1.webp"
-      ],
+      "images": ["https://cdn.dummyjson.com/product-images/groceries/water/1.webp"],
       "thumbnail": "https://cdn.dummyjson.com/product-images/groceries/water/thumbnail.webp"
     },
     {
@@ -887,9 +865,7 @@
         "barcode": "8806138916048",
         "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
       },
-      "images": [
-        "https://cdn.dummyjson.com/product-images/home-decoration/table-lamp/1.webp"
-      ],
+      "images": ["https://cdn.dummyjson.com/product-images/home-decoration/table-lamp/1.webp"],
       "thumbnail": "https://cdn.dummyjson.com/product-images/home-decoration/table-lamp/thumbnail.webp"
     },
     {
@@ -1044,9 +1020,7 @@
         "barcode": "3112495795209",
         "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
       },
-      "images": [
-        "https://cdn.dummyjson.com/product-images/kitchen-accessories/black-whisk/1.webp"
-      ],
+      "images": ["https://cdn.dummyjson.com/product-images/kitchen-accessories/black-whisk/1.webp"],
       "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/black-whisk/thumbnail.webp"
     },
     {
@@ -1307,9 +1281,7 @@
         "barcode": "6456249953517",
         "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
       },
-      "images": [
-        "https://cdn.dummyjson.com/product-images/kitchen-accessories/egg-slicer/1.webp"
-      ],
+      "images": ["https://cdn.dummyjson.com/product-images/kitchen-accessories/egg-slicer/1.webp"],
       "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/egg-slicer/thumbnail.webp"
     },
     {
@@ -1466,9 +1438,7 @@
         "barcode": "2851192866410",
         "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
       },
-      "images": [
-        "https://cdn.dummyjson.com/product-images/kitchen-accessories/fork/1.webp"
-      ],
+      "images": ["https://cdn.dummyjson.com/product-images/kitchen-accessories/fork/1.webp"],
       "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/fork/thumbnail.webp"
     },
     {
@@ -1518,9 +1488,7 @@
         "barcode": "4900880403720",
         "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
       },
-      "images": [
-        "https://cdn.dummyjson.com/product-images/kitchen-accessories/glass/1.webp"
-      ],
+      "images": ["https://cdn.dummyjson.com/product-images/kitchen-accessories/glass/1.webp"],
       "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/glass/thumbnail.webp"
     },
     {

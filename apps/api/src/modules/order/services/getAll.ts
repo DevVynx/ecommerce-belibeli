@@ -1,8 +1,7 @@
 import { orderRepositories } from "@/modules/order/repositories";
 
-import { applyStatusSimulation } from "./applyStatusSimulation";
-
 import type { OrderStatus } from "../../../../prisma/generated/client/enums";
+import { applyStatusSimulation } from "./applyStatusSimulation";
 
 type GetAllOrdersParams = {
   page: number;

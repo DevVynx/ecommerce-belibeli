@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { PrismaPg } from "@prisma/adapter-pg";
 import fs from "fs";
 import path from "path";
-import { fileURLToPath } from "url";
-import { PrismaPg } from "@prisma/adapter-pg";
 import { Pool } from "pg";
+import { fileURLToPath } from "url";
 
 import { generateSlug } from "@/modules/product/helpers/generateSlug";
 import { ENV } from "@/shared/utils/env";

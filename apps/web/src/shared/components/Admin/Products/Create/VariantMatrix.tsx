@@ -151,7 +151,10 @@ export function VariantMatrix({ optionsRevision }: VariantMatrixProps) {
                 <TableCell>
                   <div className="flex items-center gap-1">
                     <Input
-                      className={cn("h-8 text-xs", errors.variants?.[0]?.sku && "border-destructive")}
+                      className={cn(
+                        "h-8 text-xs",
+                        errors.variants?.[0]?.sku && "border-destructive"
+                      )}
                       {...register("variants.0.sku")}
                     />
                     {errors.variants?.[0]?.sku && (

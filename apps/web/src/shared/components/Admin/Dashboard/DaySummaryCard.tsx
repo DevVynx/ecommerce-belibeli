@@ -33,9 +33,7 @@ export function DaySummaryCard({ data }: DaySummaryCardProps) {
       <div className="space-y-5">
         <div>
           <p className="text-muted-foreground text-sm font-medium">Faturamento</p>
-          <p className="mt-1 text-3xl font-bold tracking-tight">
-            {formatPrice(data.todayRevenue)}
-          </p>
+          <p className="mt-1 text-3xl font-bold tracking-tight">{formatPrice(data.todayRevenue)}</p>
           <p className="mt-0.5 text-sm">
             <Delta current={data.todayRevenue} previous={data.yesterdayRevenue} />
           </p>

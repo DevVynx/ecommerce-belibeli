@@ -13,18 +13,66 @@ const prisma = new PrismaClient({ adapter });
 
 // ── Categories ──
 const categories = [
-  { name: "Masculino", image: "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824658/cat_mens_clothing_vrcraj.webp" },
-  { name: "Joias", image: "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824659/joias_l42luj.jpg" },
-  { name: "Eletrônicos", image: "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824658/cat_eletronics_pirhxe.webp" },
-  { name: "Feminino", image: "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824659/cat_womens_clothing_irlkvw.jpg" },
-  { name: "Beleza", image: "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824176/beleza_spxf2s.jpg" },
-  { name: "Perfumes", image: "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824177/perfume_hlc7qy.webp" },
-  { name: "Casa & Decoração", image: "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824176/casa-decoracao_jpujav.jpg" },
-  { name: "Alimentos", image: "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824153/alimento_wpury8.jpg" },
-  { name: "Cozinha", image: "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824176/cozinha_crtdmv.webp" },
-  { name: "Acessórios", image: "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824176/Acessorios_t0vm3m.webp" },
-  { name: "Esportes", image: "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824176/esporte_aw6wwe.jpg" },
-  { name: "Veículos", image: "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824175/veiculos_zelfej.jpg" },
+  {
+    name: "Masculino",
+    image:
+      "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824658/cat_mens_clothing_vrcraj.webp",
+  },
+  {
+    name: "Joias",
+    image:
+      "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824659/joias_l42luj.jpg",
+  },
+  {
+    name: "Eletrônicos",
+    image:
+      "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824658/cat_eletronics_pirhxe.webp",
+  },
+  {
+    name: "Feminino",
+    image:
+      "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824659/cat_womens_clothing_irlkvw.jpg",
+  },
+  {
+    name: "Beleza",
+    image:
+      "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824176/beleza_spxf2s.jpg",
+  },
+  {
+    name: "Perfumes",
+    image:
+      "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824177/perfume_hlc7qy.webp",
+  },
+  {
+    name: "Casa & Decoração",
+    image:
+      "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824176/casa-decoracao_jpujav.jpg",
+  },
+  {
+    name: "Alimentos",
+    image:
+      "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824153/alimento_wpury8.jpg",
+  },
+  {
+    name: "Cozinha",
+    image:
+      "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824176/cozinha_crtdmv.webp",
+  },
+  {
+    name: "Acessórios",
+    image:
+      "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824176/Acessorios_t0vm3m.webp",
+  },
+  {
+    name: "Esportes",
+    image:
+      "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824176/esporte_aw6wwe.jpg",
+  },
+  {
+    name: "Veículos",
+    image:
+      "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824175/veiculos_zelfej.jpg",
+  },
 ];
 
 // Promoções de categoria

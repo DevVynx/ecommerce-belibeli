@@ -12,10 +12,26 @@ const adapter = new PrismaPg(pool);
 const prisma = new PrismaClient({ adapter });
 
 const CATEGORIES = [
-  { name: "Eletrônicos", image: "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824658/cat_eletronics_pirhxe.webp" },
-  { name: "Masculino", image: "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824658/cat_mens_clothing_vrcraj.webp" },
-  { name: "Feminino", image: "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824659/cat_womens_clothing_irlkvw.jpg" },
-  { name: "Joias", image: "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824659/joias_l42luj.jpg" },
+  {
+    name: "Eletrônicos",
+    image:
+      "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824658/cat_eletronics_pirhxe.webp",
+  },
+  {
+    name: "Masculino",
+    image:
+      "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824658/cat_mens_clothing_vrcraj.webp",
+  },
+  {
+    name: "Feminino",
+    image:
+      "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824659/cat_womens_clothing_irlkvw.jpg",
+  },
+  {
+    name: "Joias",
+    image:
+      "https://res.cloudinary.com/lj6rrdyz/image/upload/f_auto,q_auto/v1784824659/joias_l42luj.jpg",
+  },
 ] as const;
 
 type CategoryName = (typeof CATEGORIES)[number]["name"];

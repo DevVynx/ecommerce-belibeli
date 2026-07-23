@@ -1086,9 +1086,7 @@
         "barcode": "3219724919696",
         "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
       },
-      "images": [
-        "https://cdn.dummyjson.com/product-images/sports-accessories/basketball/1.webp"
-      ],
+      "images": ["https://cdn.dummyjson.com/product-images/sports-accessories/basketball/1.webp"],
       "thumbnail": "https://cdn.dummyjson.com/product-images/sports-accessories/basketball/thumbnail.webp"
     },
     {
@@ -1190,9 +1188,7 @@
         "barcode": "0027512125380",
         "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
       },
-      "images": [
-        "https://cdn.dummyjson.com/product-images/sports-accessories/cricket-ball/1.webp"
-      ],
+      "images": ["https://cdn.dummyjson.com/product-images/sports-accessories/cricket-ball/1.webp"],
       "thumbnail": "https://cdn.dummyjson.com/product-images/sports-accessories/cricket-ball/thumbnail.webp"
     },
     {
@@ -1242,9 +1238,7 @@
         "barcode": "1225217575490",
         "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
       },
-      "images": [
-        "https://cdn.dummyjson.com/product-images/sports-accessories/cricket-bat/1.webp"
-      ],
+      "images": ["https://cdn.dummyjson.com/product-images/sports-accessories/cricket-bat/1.webp"],
       "thumbnail": "https://cdn.dummyjson.com/product-images/sports-accessories/cricket-bat/thumbnail.webp"
     },
     {
@@ -1453,9 +1447,7 @@
         "barcode": "7605305555987",
         "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
       },
-      "images": [
-        "https://cdn.dummyjson.com/product-images/sports-accessories/football/1.webp"
-      ],
+      "images": ["https://cdn.dummyjson.com/product-images/sports-accessories/football/1.webp"],
       "thumbnail": "https://cdn.dummyjson.com/product-images/sports-accessories/football/thumbnail.webp"
     },
     {
@@ -1505,9 +1497,7 @@
         "barcode": "6940117186155",
         "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
       },
-      "images": [
-        "https://cdn.dummyjson.com/product-images/sports-accessories/golf-ball/1.webp"
-      ],
+      "images": ["https://cdn.dummyjson.com/product-images/sports-accessories/golf-ball/1.webp"],
       "thumbnail": "https://cdn.dummyjson.com/product-images/sports-accessories/golf-ball/thumbnail.webp"
     },
     {
@@ -1557,9 +1547,7 @@
         "barcode": "4196059523236",
         "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
       },
-      "images": [
-        "https://cdn.dummyjson.com/product-images/sports-accessories/iron-golf/1.webp"
-      ],
+      "images": ["https://cdn.dummyjson.com/product-images/sports-accessories/iron-golf/1.webp"],
       "thumbnail": "https://cdn.dummyjson.com/product-images/sports-accessories/iron-golf/thumbnail.webp"
     },
     {

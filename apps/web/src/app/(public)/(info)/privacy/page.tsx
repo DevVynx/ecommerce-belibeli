@@ -5,9 +5,9 @@ export default function PrivacidadePage() {
       <p className="text-muted-foreground mb-8 text-sm">Última atualização: Julho de 2026</p>
 
       <p className="text-muted-foreground mb-8 leading-relaxed">
-        No Veloce, a sua privacidade é levada a sério, mesmo sendo este um ambiente de
-        demonstração técnica. Esta política descreve como coletamos e usamos as informações geradas
-        durante o seu teste na plataforma.
+        No Veloce, a sua privacidade é levada a sério, mesmo sendo este um ambiente de demonstração
+        técnica. Esta política descreve como coletamos e usamos as informações geradas durante o seu
+        teste na plataforma.
       </p>
 
       <section className="mb-8">
@@ -64,8 +64,8 @@ export default function PrivacidadePage() {
       <section className="mb-8">
         <h2 className="mb-2 text-xl font-semibold">4. Retenção e Exclusão de Dados</h2>
         <p className="text-muted-foreground leading-relaxed">
-          Como o Veloce é um portfólio, o banco de dados é limpo e resetado periodicamente. Todas
-          as contas de teste e pedidos simulados são deletados de forma irreversível nessas
+          Como o Veloce é um portfólio, o banco de dados é limpo e resetado periodicamente. Todas as
+          contas de teste e pedidos simulados são deletados de forma irreversível nessas
           manutenções. Caso deseje que seus dados de teste sejam removidos imediatamente, basta
           solicitar.
         </p>

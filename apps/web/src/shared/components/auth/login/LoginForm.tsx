@@ -31,7 +31,7 @@ export const LoginForm = ({ redirectTo = "/", onSuccess }: LoginFormProps) => {
   useEffect(() => {
     if (authError) {
       console.log(authError);
-      
+
       showNotification({
         type: "error",
         title: "Erro ao tentar fazer login",

@@ -1,18 +1,19 @@
 export default function TermosPage() {
   return (
-    <div className="mx-auto max-w-3xl px-4 py-12 mt-8">
+    <div className="mx-auto mt-8 max-w-3xl px-4 py-12">
       <h1 className="mb-2 text-3xl font-bold">Termos de Uso - Veloce</h1>
       <p className="text-muted-foreground mb-8 text-sm">Última atualização: Julho de 2026</p>
 
       <section className="mb-8">
         <h2 className="mb-2 text-xl font-semibold">
-          1. Natureza do Projeto <span className="text-muted-foreground text-base font-normal">(Aviso Importante)</span>
+          1. Natureza do Projeto{" "}
+          <span className="text-muted-foreground text-base font-normal">(Aviso Importante)</span>
         </h2>
         <p className="text-muted-foreground leading-relaxed">
           O Veloce é uma aplicação web desenvolvida exclusivamente para fins de demonstração técnica
           e portfólio profissional. Este site <strong>NÃO</strong> é um e-commerce real. Nenhuma
-          transação comercial verdadeira é realizada, e nenhum produto físico ou digital será enviado
-          ou entregue.
+          transação comercial verdadeira é realizada, e nenhum produto físico ou digital será
+          enviado ou entregue.
         </p>
       </section>
 
@@ -35,8 +36,8 @@ export default function TermosPage() {
             utiliza em outros serviços reais.
           </li>
           <li>
-            Reservamo-nos o direito de apagar contas, zerar o banco de dados e remover informações
-            a qualquer momento, sem aviso prévio, para manutenção do portfólio.
+            Reservamo-nos o direito de apagar contas, zerar o banco de dados e remover informações a
+            qualquer momento, sem aviso prévio, para manutenção do portfólio.
           </li>
         </ul>
       </section>

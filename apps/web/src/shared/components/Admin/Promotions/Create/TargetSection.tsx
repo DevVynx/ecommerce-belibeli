@@ -64,7 +64,7 @@ export function TargetSection({ defaultTarget }: { defaultTarget?: SelectedTarge
       setValue("targetName", defaultTarget.name);
       clearErrors("targetId");
     }
-  }, []);  
+  }, []);
 
   useEffect(() => {
     getCategories().then(({ data }) => {
