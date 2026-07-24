@@ -1,5 +1,7 @@
 import { Suspense } from "react";
 
+export const dynamic = "force-dynamic";
+
 import { HeroBanner } from "@/shared/components/Store/Banner";
 import { BestOffersSection } from "@/shared/components/Store/BestOffersSection/BestOffersSection";
 import { BestOffersSkeleton } from "@/shared/components/Store/BestOffersSection/BestOffersSkeleton";
