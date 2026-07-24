@@ -1,6 +1,5 @@
 import { Suspense } from "react";
-
-export const dynamic = "force-dynamic";
+import { connection } from "next/server";
 
 import { HeroBanner } from "@/shared/components/Store/Banner";
 import { BestOffersSection } from "@/shared/components/Store/BestOffersSection/BestOffersSection";
@@ -11,6 +10,8 @@ import { ForYouSectionSkeleton } from "@/shared/components/Store/ForYouSection/F
 import { Header } from "@/shared/components/Store/Header/Header";
 
 const Home = async () => {
+  await connection();
+
   return (
     <div className="relative z-10 overflow-x-hidden">
       <Header />
