@@ -29,7 +29,7 @@ export const LoginModal = ({ open, onOpenChange, redirectTo = "/checkout" }: Log
         <div className="flex flex-col items-center gap-4">
           <LoginForm redirectTo={redirectTo} />
 
-          <div className="w-full">
+          <div className="w-full hidden">
             <OrDivider />
             <GoogleSocialLoginButton redirectTo={redirectTo} />
           </div>
