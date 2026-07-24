@@ -49,26 +49,28 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${kottaOne.variable} antialiased`}
       >
-        <QueryProvider>
-          <GoogleOAuthProvider clientId={ENV.GOOGLE_CLIENT_ID}>
-            <CartProvider />
-            <WishlistProvider />
-            <NotFoundProvider>
-              <TooltipProvider>
-                <Suspense fallback={null}>
-                  <Header />
-                </Suspense>
-                <NuqsAdapter>
-                  <div className="min-h-screen">{children}</div>
-                </NuqsAdapter>
-                <Suspense fallback={null}>
-                  <Footer />
-                </Suspense>
-                <Toaster />
-              </TooltipProvider>
-            </NotFoundProvider>
-          </GoogleOAuthProvider>
-        </QueryProvider>
+        <Suspense fallback={null}>
+          <QueryProvider>
+            <GoogleOAuthProvider clientId={ENV.GOOGLE_CLIENT_ID}>
+              <CartProvider />
+              <WishlistProvider />
+              <NotFoundProvider>
+                <TooltipProvider>
+                  <Suspense fallback={null}>
+                    <Header />
+                  </Suspense>
+                  <NuqsAdapter>
+                    <div className="min-h-screen">{children}</div>
+                  </NuqsAdapter>
+                  <Suspense fallback={null}>
+                    <Footer />
+                  </Suspense>
+                  <Toaster />
+                </TooltipProvider>
+              </NotFoundProvider>
+            </GoogleOAuthProvider>
+          </QueryProvider>
+        </Suspense>
       </body>
     </html>
   );
